@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!DOCTYPE ursuppe SYSTEM "gamecard.dtd">
+<ursuppe>
+	<genecard>
+		<alias>1</alias>
+		<name>blablab</name>
+		<description>die erste Karte</description>
+		<grafik>
+			<uri>
+				<file>eins.jpg</file>
+				<filepathrelative>filezzz</filepathrelative>
+			</uri>
+		</grafik>
+	</genecard>
+	<genecard>
+		<alias>2</alias>
+		<name>blablab2</name>
+		<description>die zweite Karte</description>
+	</genecard>
+	<genecard>
+		<alias>3</alias>
+		<name>blablab3</name>
+		<description>die dritte Karte</description>
+	</genecard>
+</ursuppe>

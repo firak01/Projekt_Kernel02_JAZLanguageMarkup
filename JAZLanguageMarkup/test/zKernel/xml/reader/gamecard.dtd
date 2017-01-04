@@ -1,0 +1,12 @@
+<!ELEMENT ursuppe (genecard+)>
+<!--Kommentar: Die Reihenfolge der Attribute ist nicht beliebig -->
+<!ELEMENT genecard (alias, name, description?,grafik?)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!--Kommentar: die Beschreibung -->
+<!ELEMENT description (#PCDATA)>
+<!--Kommentar: die Position und der Dateiname eines Bilds -->
+<!ELEMENT grafik (uri)>
+<!ELEMENT uri (file, filepathrelative)>
+<!ELEMENT file (#PCDATA)> 
+<!ELEMENT filepathrelative (#PCDATA)>

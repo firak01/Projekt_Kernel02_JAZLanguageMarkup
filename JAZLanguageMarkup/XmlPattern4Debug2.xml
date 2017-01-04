@@ -1,0 +1,9 @@
+<document>
+<noteinfo noteid='0' unid='7D375DEC57FED1F9C1257401002C77BB' sequence='0'>
+<created><datetime>20080303T090542,35+01</datetime></created>
+<modified><datetime/></modified>
+<revised><datetime>20080303T090542,35+01</datetime></revised>
+<lastaccessed><datetime>20080303T090542,35+01</datetime></lastaccessed>
+<addedtofile><datetime/></addedtofile></noteinfo>
+<item name='txtItem'><text>testtextär</text></item>
+<item name='textItemMultivalue'><textlist><text>testtextär1</text><text>textvalue2</text></textlist></item></document>

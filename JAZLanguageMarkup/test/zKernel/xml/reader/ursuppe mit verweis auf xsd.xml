@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<ursuppe xmlns:xsi="http://www.w3.org/XMLSchema-instance" xsi:noNamespaceSchemaLocation="gamecard.xsd">
+	<genecard>
+		<alias>das ist ein Test</alias>
+		<name>blablab</name>
+	</genecard>
+	<genecard>
+		<alias>das ist ein Test2</alias>
+		<alias>das ist ein Test3</alias>
+		<name>blablab2</name>
+	</genecard>
+</ursuppe>
