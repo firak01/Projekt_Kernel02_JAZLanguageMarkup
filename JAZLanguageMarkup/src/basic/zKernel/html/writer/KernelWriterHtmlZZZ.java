@@ -132,7 +132,7 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	 * The following new flags are supported:
 	 * --- useFile
 	 * --- useEcs
-	 * @see basic.zBasic.IFunctionZZZ#getFlag(java.lang.String)
+	 * @see basic.zBasic.IFunctionZZZ_loesch#getFlag(java.lang.String)
 	 */
 	public boolean getFlag(String sFlagName) {
 		boolean bFunction = false;
@@ -163,7 +163,7 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	 * The following new flags are supported:
 	 * --- useFile
 	 * --- useEcs
- * @see basic.zBasic.IFunctionZZZ#setFlag(java.lang.String, boolean)
+ * @see basic.zBasic.IFunctionZZZ_loesch#setFlag(java.lang.String, boolean)
  */
 public boolean setFlag(String sFlagName, boolean bFlagValue){
 	boolean bFunction = false;
@@ -178,7 +178,7 @@ public boolean setFlag(String sFlagName, boolean bFlagValue){
 		String stemp = sFlagName.toLowerCase();
 		if(stemp.equals("usefile")){
 			this.bFlagUseFile = bFlagValue;
-			bFunction = true;                            //durch diesen return wert kann man "reflexiv" ermitteln, ob es in dem ganzen hierarchie-strang das flag überhaupt gibt !!!
+			bFunction = true;                            //durch diesen return wert kann man "reflexiv" ermitteln, ob es in dem ganzen hierarchie-strang das flag ï¿½berhaupt gibt !!!
 			break main;
 		}else if(stemp.equals("useecs")){
 			this.bFlagUseEcs = bFlagValue;
