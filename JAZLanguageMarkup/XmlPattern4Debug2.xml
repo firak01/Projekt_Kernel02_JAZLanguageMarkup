@@ -5,5 +5,5 @@
 <revised><datetime>20080303T090542,35+01</datetime></revised>
 <lastaccessed><datetime>20080303T090542,35+01</datetime></lastaccessed>
 <addedtofile><datetime/></addedtofile></noteinfo>
-<item name='txtItem'><text>testtextär</text></item>
-<item name='textItemMultivalue'><textlist><text>testtextär1</text><text>textvalue2</text></textlist></item></document>
+<item name='txtItem'><text>testtextÃ¼r</text></item>
+<item name='textItemMultivalue'><textlist><text>testtextï¿½r1</text><text>textvalue2</text></textlist></item></document>
