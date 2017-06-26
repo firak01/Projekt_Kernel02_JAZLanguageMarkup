@@ -18,8 +18,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-import basic.zKernel.KernelZZZ;
+import org.apache.commons.codec.binary.Base64;
 
+import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -52,7 +53,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 	
 	
 	/**
-	 * Use this constructor if you don´t need a password/user for the page
+	 * Use this constructor if you donï¿½t need a password/user for the page
 	 * @param objKernel
 	 * @param objLog
 	 * @param sURLToRead, e.g. "http://192.168.3.253/doc/de/home.htm"
@@ -116,7 +117,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 			}
 		
 			
-			//Ggf. notwendige Accountdateen übernehmen
+			//Ggf. notwendige Accountdateen ï¿½bernehmen
 			if(!StringZZZ.isEmpty(sAccountIn)){ 
 					this.setAccountEnabled(sAccountIn, sPasswordIn);					
 				}					
@@ -256,7 +257,7 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 				
 					if(bFlagUseAccount == false){
 							//only receiving data
-							//TODO Fall, das eine nicht kennwortgeschützte URL aufgerufen werden soll
+							//TODO Fall, das eine nicht kennwortgeschï¿½tzte URL aufgerufen werden soll
 							//???
 							connection.setDoOutput(false);					
 					}else{
@@ -266,7 +267,12 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 					
 							//BASE64 encoding of the account/passord-combination
 							String sInput = this.getAccountString() + ":" + this.getPasswordString();
-							String sEncoded = new sun.misc.BASE64Encoder().encode(sInput.getBytes());
+							new Base64();
+							//Problem in Java 6: Untenstehender BASE64Encoder() ist verborgen.
+							//https://stackoverflow.com/questions/5908574/base64-decoding-using-jdk6-only
+							//String sEncoded = new sun.misc.BASE64Encoder().encode(sInput.getBytes());
+							//Als Alternative verwende ich den BASE64 Encoder, der von Apache Commons Codec 1.7 bereitgestellt wird.
+							String sEncoded = Base64.encodeBase64String(sInput.getBytes());
 							connection.setRequestProperty("Authorization", "Basic " + sEncoded);    //IMPORTANT: BLANC behind the 'Basic'-word
 					}
 				this.setURLConnection(connection);
@@ -274,7 +280,7 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 				//After all properties are set, connect
 				connection.connect();
 			}//End if url.getProtocol().equalsIgnoreCase("file")) {
-				   //Proof connection, if the connection doesn´t work it will throw a IOException, but here i additionally check this by a workarround function									
+				   //Proof connection, if the connection doesnï¿½t work it will throw a IOException, but here i additionally check this by a workarround function									
 				   //FGL DAs liefert im Domino - Servertask immer einen Fehler !!! boolean btemp = this.isconnected();
 				   /* if(btemp==false){
 						//if the passed URL - String is not a valid URL
@@ -302,7 +308,7 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 }
 
 /**
- * the property connected of the URLConnection-Klass is protected and i can´t find a getter-method for it, so this is a try to evaluate it
+ * the property connected of the URLConnection-Klass is protected and i canï¿½t find a getter-method for it, so this is a try to evaluate it
  * @return
  */
 public boolean isconnected() {
@@ -316,13 +322,13 @@ public boolean isconnected() {
 		}
 		
 		//now evaluate a connection proof
-		//String stemp = objURLCon.toString(); //gibt wohl immer Strings wie z.B. 'sun.net.www.protocol.http.HttpURLConnection:http://192.168.3.253/doc/de/home.htm' zurück					
-		// stemp = objURLCon.getHeaderField("Connection"); //gibt wohl immer 'close' zurück
-		// int itemp = objURLCon.getContentLength(); //nicht signifikant, gibt im Test auch -1 zurück, wenn die Verbindung geklappt hat.
-		// String stemp = objURLCon.getContentType(); //gibt auch ohne connection einen wert z.B: 'txt/html' zurück.
+		//String stemp = objURLCon.toString(); //gibt wohl immer Strings wie z.B. 'sun.net.www.protocol.http.HttpURLConnection:http://192.168.3.253/doc/de/home.htm' zurï¿½ck					
+		// stemp = objURLCon.getHeaderField("Connection"); //gibt wohl immer 'close' zurï¿½ck
+		// int itemp = objURLCon.getContentLength(); //nicht signifikant, gibt im Test auch -1 zurï¿½ck, wenn die Verbindung geklappt hat.
+		// String stemp = objURLCon.getContentType(); //gibt auch ohne connection einen wert z.B: 'txt/html' zurï¿½ck.
 		
 		
-		//Das Setzen diverser Porperties liefert einen Fehler, wenn schon connect()-Methode ausgeführt worden ist.
+		//Das Setzen diverser Porperties liefert einen Fehler, wenn schon connect()-Methode ausgefï¿½hrt worden ist.
 		//Diesen Umstand machen wir uns zu Nutze:
 		long ltemp = objURLCon.getIfModifiedSince();
 		try{
@@ -333,7 +339,7 @@ public boolean isconnected() {
 		    bReturn = false;
 		    break main;
 		}catch(IllegalStateException e){
-			//Falls dieser Fehler auftritt, dann wurde schon connect() ausgeführt
+			//Falls dieser Fehler auftritt, dann wurde schon connect() ausgefï¿½hrt
 			bReturn =  true;
 			break main;	
 		}
@@ -375,7 +381,7 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 			}
 			this.setURLConnection(objURLCon);
 
-			//nochmal auslesen, merke über die URL stürzt es hier ab
+			//nochmal auslesen, merke ï¿½ber die URL stï¿½rzt es hier ab
 				//InputStream uin = connection.getURL().openStream();
 				//BufferedReader in = new BufferedReader(new InputStreamReader(uin));
 			
@@ -391,8 +397,8 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 					this.obj_inStreamURLContent = in;
 					
 				}else{
-					//TODO Das BufferedReaderObjekt zur Verfügung stellen, damit andere Klassen damit weiterarbeiten können
-					//TODO Die Strings des Buffered Reader in eine Arraylist packen, den dann die Z-Kernel-Script-Reader-Klassen verarbeiten können.
+					//TODO Das BufferedReaderObjekt zur Verfï¿½gung stellen, damit andere Klassen damit weiterarbeiten kï¿½nnen
+					//TODO Die Strings des Buffered Reader in eine Arraylist packen, den dann die Z-Kernel-Script-Reader-Klassen verarbeiten kï¿½nnen.
 					//Diese connection wie folgt auslesen
 					BufferedReader in = 
 					new BufferedReader(new InputStreamReader(objURLCon.getInputStream()));
@@ -414,11 +420,11 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 				
 				
 								/*nun ja, die Infos, die interessieren sind unterhalb
-								 * ES SCHEINT MIR SO, ALS MÜSSTE FÜR JEDE NEUE URL EINE NEUE CONNECTION ERZEUGT WERDEN !!!
+								 * ES SCHEINT MIR SO, ALS Mï¿½SSTE Fï¿½R JEDE NEUE URL EINE NEUE CONNECTION ERZEUGT WERDEN !!!
 								 * DARUM DIE URL DIRECT ANSTEUERN ???
 								url = new URL("http://192.168.3.253/doc/de/home.htm");
 				
-								// Auslesen der Serverantwort funktioniert natürlich nur, wennkeine Passwortfrage kommt
+								// Auslesen der Serverantwort funktioniert natï¿½rlich nur, wennkeine Passwortfrage kommt
 								InputStream uin = url.openStream();
 								in = new BufferedReader(new InputStreamReader(uin));
 								while((line = in.readLine()) != null){

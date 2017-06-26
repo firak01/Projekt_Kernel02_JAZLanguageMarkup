@@ -2,6 +2,8 @@ package debug.zKernel.net.client;
 import java.net.*;
 import java.io.*;
 
+import org.apache.commons.codec.binary.Base64;
+
 /**
  * @author Lindhauer
  *
@@ -37,10 +39,10 @@ public class GetClientIPPageFromRouter {
 			
 			//URL url = new URL("http://192.168.3.253");
 			//URL url = new URL("http://www.itelligence.de");
-			//URL url = new URL("http://www.inselkampf.de"); hier kommt raus, dass men Browser ;) also diese Programm keine Frames unterstützt.
+			//URL url = new URL("http://www.inselkampf.de"); hier kommt raus, dass men Browser ;) also diese Programm keine Frames unterstï¿½tzt.
 			//URL url = new URL("http://web1.austria093.server4free.de");
 			
-			/* Auslesen der Serverantwort funktioniert natürlich nur, wennkeine Passwortfrage kommt
+			/* Auslesen der Serverantwort funktioniert natï¿½rlich nur, wennkeine Passwortfrage kommt
 			InputStream uin = url.openStream();
 			BufferedReader in = new BufferedReader(new InputStreamReader(uin));
 			String line;
@@ -59,13 +61,18 @@ public class GetClientIPPageFromRouter {
 			
 			//Das Kennwort
 			String sInput = "admin:1fgl2fgl";
-			String sEncoded = new sun.misc.BASE64Encoder().encode(sInput.getBytes());
+			
+			//Problem in Java 6: Untenstehender BASE64Encoder() ist verborgen.
+			//https://stackoverflow.com/questions/5908574/base64-decoding-using-jdk6-only
+			//String sEncoded = new sun.misc.BASE64Encoder().encode(sInput.getBytes());
+			//Als Alternative verwende ich den BASE64 Encoder, der von Apache Commons Codec 1.7 bereitgestellt wird.
+			String sEncoded = Base64.encodeBase64String(sInput.getBytes());
 			connection.setRequestProperty("Authorization", "Basic " + sEncoded);    //WICHTIG: DAS LEERZEICHEN HINTER DEM BASIC
 			
 			//Nachdem alle Properties gesetzt sind connecten
 			connection.connect();
 			
-			//nochmal auslesen, merke über die URL stürzt es hier ab
+			//nochmal auslesen, merke ï¿½ber die URL stï¿½rzt es hier ab
 			//InputStream uin = connection.getURL().openStream();
 			//BufferedReader in = new BufferedReader(new InputStreamReader(uin));
 			
@@ -83,11 +90,11 @@ public class GetClientIPPageFromRouter {
 			
 			
 			/*nun ja, die Infos, die interessieren sind unterhalb
-			 * ES SCHEINT MIR SO, ALS MÜSSTE FÜR JEDE NEUE URL EINE NEUE CONNECTION ERZEUGT WERDEN !!!
+			 * ES SCHEINT MIR SO, ALS Mï¿½SSTE Fï¿½R JEDE NEUE URL EINE NEUE CONNECTION ERZEUGT WERDEN !!!
 			 * DARUM DIE URL DIRECT ANSTEUERN ???
 			url = new URL("http://192.168.3.253/doc/de/home.htm");
 			
-			// Auslesen der Serverantwort funktioniert natürlich nur, wennkeine Passwortfrage kommt
+			// Auslesen der Serverantwort funktioniert natï¿½rlich nur, wennkeine Passwortfrage kommt
 			InputStream uin = url.openStream();
 			in = new BufferedReader(new InputStreamReader(uin));
 			while((line = in.readLine()) != null){
