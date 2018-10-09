@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
-
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
@@ -31,7 +31,7 @@ public class KernelReaderPageZZZ extends KernelUseObjectZZZ{
 	private InputStream obj_inStreamURLContent;
 	private KernelReaderHtmlZZZ objReaderHTML;
 	
-	public KernelReaderPageZZZ(KernelZZZ objKernel, ArrayList obj_alsURLContent, String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
+	public KernelReaderPageZZZ(IKernelZZZ objKernel, ArrayList obj_alsURLContent, String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
 		super(objKernel);
 		KernelPageReaderNew_(saFlagControl);
 		if(this.getFlag("init")==false){
@@ -39,7 +39,7 @@ public class KernelReaderPageZZZ extends KernelUseObjectZZZ{
 		}
 	}
 	
-	public KernelReaderPageZZZ(KernelZZZ objKernel, InputStream obj_inStreamURLContent, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ{
+	public KernelReaderPageZZZ(IKernelZZZ objKernel, InputStream obj_inStreamURLContent, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		KernelPageReaderNew_(saFlagControl);
 		if(this.getFlag("init")==false){

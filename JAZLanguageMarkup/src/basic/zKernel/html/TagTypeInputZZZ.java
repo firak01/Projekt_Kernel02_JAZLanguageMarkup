@@ -2,6 +2,7 @@ package basic.zKernel.html;
 
 import org.jdom.Element;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -14,7 +15,7 @@ public class TagTypeInputZZZ extends KernelTagTypeZZZ{
 	public final static String TagName = "input";
 	
 	//###### Constructor
-	public TagTypeInputZZZ(KernelZZZ objKernel) {
+	public TagTypeInputZZZ(IKernelZZZ objKernel) {
 		super(objKernel);
 	}
 

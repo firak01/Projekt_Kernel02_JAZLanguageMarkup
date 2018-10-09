@@ -1,5 +1,6 @@
 package basic.zKernel.html;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -8,7 +9,7 @@ import basic.zKernel.KernelUseObjectZZZ;
 public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 
 	
-	public static KernelTagTypeZZZ createTagTypeByElement(KernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
+	public static KernelTagTypeZZZ createTagTypeByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
 		KernelTagTypeZZZ objReturn = null;
 		main:{			
 			check:{
@@ -41,7 +42,7 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 	* 
 	* lindhaueradmin; 30.06.2006 07:23:31
 	 */
-	public static KernelTagZZZ createTagByElement(KernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
+	public static KernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
 		KernelTagZZZ objReturn = null;
 		main:{ 
 			check:{
@@ -75,7 +76,7 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 	* 
 	* lindhaueradmin; 02.07.2006 08:22:02
 	 */
-	public static KernelTagZZZ createTagByElement(KernelZZZ objKernel, org.jdom.Element objElem, KernelTagTypeZZZ objType) throws ExceptionZZZ{
+	public static KernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem, KernelTagTypeZZZ objType) throws ExceptionZZZ{
 		KernelTagZZZ objReturn = null;
 		main:{ 
 			check:{

@@ -8,8 +8,8 @@ package basic.zKernel.script.data;
 
 import java.util.ArrayList;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
-
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -24,17 +24,17 @@ import basic.zKernel.KernelUseObjectZZZ;
  */
 public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
 	private String sName;
-	private ArrayList obj_alVar=new ArrayList(0);  //Merke: Intern wird nämlich auch eine einfache Variable in solch einer ArrayList gespeichert.
+	private ArrayList obj_alVar=new ArrayList(0);  //Merke: Intern wird nï¿½mlich auch eine einfache Variable in solch einer ArrayList gespeichert.
 	
 	private boolean bFlagIsArray;
 	
 	
-	public KernelScriptVariableZZZ(KernelZZZ objKernel, String sName, String sValue) throws ExceptionZZZ{
+	public KernelScriptVariableZZZ(IKernelZZZ objKernel, String sName, String sValue) throws ExceptionZZZ{
 		super(objKernel);
 		String[] saTemp = {""};
 		KernelScriptVariableNew_(sName, 0, sValue, saTemp, "");
 	}//end constructor
-	public KernelScriptVariableZZZ(KernelZZZ objKernel, String sName, int iRange) throws ExceptionZZZ{
+	public KernelScriptVariableZZZ(IKernelZZZ objKernel, String sName, int iRange) throws ExceptionZZZ{
 		super(objKernel);
 		String[] saTemp=null;
 		if(iRange >= 1 ){
@@ -144,8 +144,8 @@ public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
 	}
 
 	/**
-	 * Gibt den so ausgelesenen Wert zurück. Falls die Variable ein Array ist, wird die Indexposition 0 zurückgegeben.
-	 * Falls es ein String ist, steht der Wert dabei in Anführungszeichen.
+	 * Gibt den so ausgelesenen Wert zurï¿½ck. Falls die Variable ein Array ist, wird die Indexposition 0 zurï¿½ckgegeben.
+	 * Falls es ein String ist, steht der Wert dabei in Anfï¿½hrungszeichen.
 	 * @return //null, wenn es keine Variable in der ArrayListe der Variablen gibt. Ansonsten die Position 0 der ArrayListe
 	 */
 	public String getValuePure() {
@@ -153,7 +153,7 @@ public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
 	}
 	
 	/**
-	 * Gibt den so ausgelesenen Wert zurück. Dabei steht der Wert in Anführungszeichen, wenn es ein String ist.
+	 * Gibt den so ausgelesenen Wert zurï¿½ck. Dabei steht der Wert in Anfï¿½hrungszeichen, wenn es ein String ist.
 	 * @param iIndex
 	 * @return // null, wenn es entweder die Variable nicht gibt, oder die Position in der Arrayliste nicht vorhanden ist.
 	 */
@@ -169,8 +169,8 @@ public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
 	}
 	
 	/**
-	 * @return String, falls es ein Array ist, wird die Indexposition 0 zurückgegeben.
-	 * Aber im Gegensatz zu "ValuePure" werden hier ggf. die String-Anführungszeichen entfernt.
+	 * @return String, falls es ein Array ist, wird die Indexposition 0 zurï¿½ckgegeben.
+	 * Aber im Gegensatz zu "ValuePure" werden hier ggf. die String-Anfï¿½hrungszeichen entfernt.
 	 */
 	public String getValueString(){
 		return this.getValueString(0);
@@ -179,8 +179,8 @@ public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
 	
 	/**
 	 * @param iIndex
-	 * @return String, falls es ein Array ist, wird die Indexposition zurückgegeben.
-	 * Aber im Gegensatz zu "ValuePure" werden hier ggf. die String-Anführungszeichen entfernt.
+	 * @return String, falls es ein Array ist, wird die Indexposition zurï¿½ckgegeben.
+	 * Aber im Gegensatz zu "ValuePure" werden hier ggf. die String-Anfï¿½hrungszeichen entfernt.
 	 */
 	public String getValueString(int iIndex){
 		String sReturn = null;

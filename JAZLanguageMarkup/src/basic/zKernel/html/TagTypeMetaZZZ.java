@@ -5,13 +5,14 @@ import org.jdom.Element;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
 public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {	
 	public final static String TagName = "meta";
 	 
 	//######## Constructor
-	public TagTypeMetaZZZ(KernelZZZ objKernel){
+	public TagTypeMetaZZZ(IKernelZZZ objKernel){
 		super(objKernel);
 	}
 	
@@ -20,7 +21,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 		return TagTypeMetaZZZ.TagName;
 	}
 
-	/* Gibt NULL zurück, weil es nur einen META-TAG gibt, und nix womit man die Tags unterscheiden kann.
+	/* Gibt NULL zurï¿½ck, weil es nur einen META-TAG gibt, und nix womit man die Tags unterscheiden kann.
 	 * 
 	 * (non-Javadoc)
 	 * @see basic.zKernel.html.IKernelTagTypeZZZ#getTagKey(org.jdom.Element)
@@ -29,7 +30,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 		return null;
 	}
 
-	/* Gibt hier null zurück, weil dazwischen ja kein Wert steht
+	/* Gibt hier null zurï¿½ck, weil dazwischen ja kein Wert steht
 	 * 
 	 * (non-Javadoc)
 	 * @see basic.zKernel.html.IKernelTagTypeZZZ#readValue(org.jdom.Element)
@@ -38,7 +39,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 		return null;
 	}
 
-	/* Gibt NULL zurück, weil es kein NAME-Attribut gibt
+	/* Gibt NULL zurï¿½ck, weil es kein NAME-Attribut gibt
 	 *  (non-Javadoc)
 	 * @see basic.zKernel.html.IKernelTagTypeZZZ#readName(org.jdom.Element)
 	 */
@@ -46,7 +47,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 		return null;
 	}
 	
-	/** Liest aus dem Tag das Attribut 'content' aus. Zerlegt dies und gibt das 'charset' zurück.
+	/** Liest aus dem Tag das Attribut 'content' aus. Zerlegt dies und gibt das 'charset' zurï¿½ck.
 	 *   Merke: Der Tag sieht so aus:    <META content="text/html; charset=ISO-8859-1" http-equiv="content-type" ........
 	* @param objElem
 	* @return
@@ -76,7 +77,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 			
 			//TODO: Was, wenn noch weitere Werte dahinter folgen ???
 			
-			//Nun ist der Charset immer in Großbuchstaben, darum einfach wieder zurückwandeln
+			//Nun ist der Charset immer in Groï¿½buchstaben, darum einfach wieder zurï¿½ckwandeln
 			sReturn = sReturn.toUpperCase();
 			
 			

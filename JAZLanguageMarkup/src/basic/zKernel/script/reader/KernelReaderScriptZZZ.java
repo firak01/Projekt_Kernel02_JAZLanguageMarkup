@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 import org.apache.regexp.RE;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
-
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -29,14 +29,14 @@ import basic.zKernel.script.data.KernelScriptVariableZZZ;
 public class KernelReaderScriptZZZ extends KernelUseObjectZZZ{
 	private ArrayList obj_alsHTML;
 	private ArrayList obj_alsScript;
-    private RE objRegExp_VarCompare; //Regulärer Ausdruck für den Vergleichsoperator (z.B. in der if-Klause
-	private RE objRegExp_ScriptStart; //Regulärer Ausdruck für das Start Tag eines Scriptteils
-	private RE objRegExp_VarDeclare;  //Regulärer Ausdruck "Variablendeklaration"
-	private RE objRegExp_VarDecline;  //Regulärer Ausdruck "Variablenzuweisung" (nicht if-Abragen vergleich)
-	private RE objRegExp_LineEnd;      //Regulärer Ausdruck "Zeilenende"
+    private RE objRegExp_VarCompare; //Regulï¿½rer Ausdruck fï¿½r den Vergleichsoperator (z.B. in der if-Klause
+	private RE objRegExp_ScriptStart; //Regulï¿½rer Ausdruck fï¿½r das Start Tag eines Scriptteils
+	private RE objRegExp_VarDeclare;  //Regulï¿½rer Ausdruck "Variablendeklaration"
+	private RE objRegExp_VarDecline;  //Regulï¿½rer Ausdruck "Variablenzuweisung" (nicht if-Abragen vergleich)
+	private RE objRegExp_LineEnd;      //Regulï¿½rer Ausdruck "Zeilenende"
 	private HashMap obj_hm_objVar; //Die Hashmap der Variablen. Darf nur Objecte vom Typ ScriptVariableZZZ enthalten
 	
-	public KernelReaderScriptZZZ(KernelZZZ objKernel, ArrayList obj_alsHTML, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ{
+	public KernelReaderScriptZZZ(IKernelZZZ objKernel, ArrayList obj_alsHTML, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		KernelReaderScriptNew_(obj_alsHTML, saFlagControl, sFlagControl);
 	}
@@ -96,9 +96,9 @@ public class KernelReaderScriptZZZ extends KernelUseObjectZZZ{
 						}else{
 								if(sScriptLanguage.toLowerCase().equals("javascript")){
 									//<script language='javascript'>
-									// in allen varianten der Groß-Kleinschreibung
+									// in allen varianten der Groï¿½-Kleinschreibung
 									// mit einfachen Hochkommata oder doppelten Hochkommata
-									// mit beliebigen Zeichen vorher und nachher, sowie mit beliebig vielen füllenden Leerzeichen 
+									// mit beliebigen Zeichen vorher und nachher, sowie mit beliebig vielen fï¿½llenden Leerzeichen 
 										this.objRegExp_ScriptStart = new RE(".*< *[sS][cC][rR][iI][pP][tT] *[lL][aA][nN][gG][uU][aA][gG][eE] *= *['\"][jJ][aA][vV][aA][sS][cC][rR][iI][pP][tT]['\"] *>.*");
 										objReturn = this.objRegExp_ScriptStart;
 									}
@@ -124,7 +124,7 @@ public class KernelReaderScriptZZZ extends KernelUseObjectZZZ{
 		
 		
 	//Parse the ArrayList
-	//TODO Eine Funktion zur Verfügung stellen, oder ein Array mit allen möglichen Start - Script Tags, mit dem dann quasi ein "ArrayStringContains" durchgeführt werden kann.
+	//TODO Eine Funktion zur Verfï¿½gung stellen, oder ein Array mit allen mï¿½glichen Start - Script Tags, mit dem dann quasi ein "ArrayStringContains" durchgefï¿½hrt werden kann.
 	int icount=0;
 	for(icount = icountin;icount <= obj_alsPage.size(); icount++ ){
 		stemp = (String)obj_alsPage.get(icount);

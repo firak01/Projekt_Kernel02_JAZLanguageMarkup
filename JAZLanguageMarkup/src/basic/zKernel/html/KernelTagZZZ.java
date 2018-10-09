@@ -1,5 +1,6 @@
 package basic.zKernel.html;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -9,7 +10,7 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 		private org.jdom.Element objElem = null;
 		private KernelTagTypeZZZ objTagType = null;
 		
-		public KernelTagZZZ(KernelZZZ objKernel, KernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
+		public KernelTagZZZ(IKernelZZZ objKernel, KernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
 			super(objKernel);
 			KernelTagNew_(objType, objElem);
 		}

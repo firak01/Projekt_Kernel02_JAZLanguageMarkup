@@ -1,13 +1,14 @@
 package basic.zKernel.html;
 
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 
 public abstract class KernelTagTypeZZZ extends KernelUseObjectZZZ implements IKernelTagTypeZZZ {
 
-	public KernelTagTypeZZZ(KernelZZZ objKernel){
+	public KernelTagTypeZZZ(IKernelZZZ objKernel){
 		super(objKernel);
 	}
 	 

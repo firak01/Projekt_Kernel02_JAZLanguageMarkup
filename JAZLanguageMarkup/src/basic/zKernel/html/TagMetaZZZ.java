@@ -4,11 +4,12 @@ import org.jdom.Element;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
 public class TagMetaZZZ extends KernelTagZZZ{
 
-	public TagMetaZZZ(KernelZZZ objKernel, KernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
+	public TagMetaZZZ(IKernelZZZ objKernel, KernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
 		super(objKernel, objType, objElem);		
 	}
 	

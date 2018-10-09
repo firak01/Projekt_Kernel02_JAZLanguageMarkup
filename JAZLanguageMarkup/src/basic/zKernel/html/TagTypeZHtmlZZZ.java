@@ -4,13 +4,14 @@ import org.jdom.Element;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
 public class TagTypeZHtmlZZZ  extends KernelTagTypeZZZ{
 	public final static String TagName = "zhtml";
 	
 	//###### Constructor
-	public TagTypeZHtmlZZZ(KernelZZZ objKernel) {
+	public TagTypeZHtmlZZZ(IKernelZZZ objKernel) {
 		super(objKernel);
 	}
 
@@ -73,7 +74,7 @@ public class TagTypeZHtmlZZZ  extends KernelTagTypeZZZ{
 		sReturn = objElem.getValue();
 		
 		
-		/* FGL: So liest man den Value-Wert aus. ABER: Beim ZHTML - Tag zählt nur der name
+		/* FGL: So liest man den Value-Wert aus. ABER: Beim ZHTML - Tag zï¿½hlt nur der name
 		//org.jdom.Attribute att = objElem.getAttribute("value");
 		//if(att==null) break main;
 		

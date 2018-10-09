@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -26,7 +27,7 @@ public class PortScanRunnerZZZ extends KernelUseObjectZZZ implements Runnable {
 	private boolean bFlagHasError = false;
 	private boolean bFlagHostUnknown = false;
 	
-	public PortScanRunnerZZZ(KernelZZZ objKernel, KernelPortScanHostZZZ objPortScanner, int iPort, String[] saFlagControl) throws ExceptionZZZ{
+	public PortScanRunnerZZZ(IKernelZZZ objKernel, KernelPortScanHostZZZ objPortScanner, int iPort, String[] saFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		PortScanRunnerNew_(objPortScanner, iPort, saFlagControl);
 	}
@@ -89,7 +90,7 @@ public class PortScanRunnerZZZ extends KernelUseObjectZZZ implements Runnable {
 					//e1.printStackTrace();
 				}
 				
-			//Weitere Fehler treten "erwartet" auf, wenn der scan fehlschlägt.	Sie werden auch nicht weiter verfolgt.
+			//Weitere Fehler treten "erwartet" auf, wenn der scan fehlschlï¿½gt.	Sie werden auch nicht weiter verfolgt.
 			//zu  beachten: Das weitere target.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

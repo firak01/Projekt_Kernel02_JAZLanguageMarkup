@@ -15,6 +15,7 @@ import org.jdom.input.DOMBuilder;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -45,12 +46,12 @@ public class KernelReaderHtmlZZZ extends KernelUseObjectZZZ{
 		String[] satemp = {"init"};
 		KernelReaderHtmlNew_((File) null, satemp);
 	}
-	public KernelReaderHtmlZZZ(KernelZZZ objKernel, InputStream inStream, String[] saFlagControl) throws ExceptionZZZ {
+	public KernelReaderHtmlZZZ(IKernelZZZ objKernel, InputStream inStream, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
 		KernelReaderHTMLNew_(inStream, saFlagControl);
 	}
 	
-	public KernelReaderHtmlZZZ(KernelZZZ objKernel, File objFile, String[] saFlagControl) throws ExceptionZZZ{
+	public KernelReaderHtmlZZZ(IKernelZZZ objKernel, File objFile, String[] saFlagControl) throws ExceptionZZZ{
 		super(objKernel);		
 		KernelReaderHtmlNew_(objFile, saFlagControl);
 	}
@@ -112,11 +113,11 @@ public class KernelReaderHtmlZZZ extends KernelUseObjectZZZ{
 		this.objDOMParser = builder;
 		this.objDocument = document;
 		
- 		 //+++ Für debug-zwecke, WICHTIG, NICHT LÖSCHEN
+ 		 //+++ Fï¿½r debug-zwecke, WICHTIG, NICHT Lï¿½SCHEN
 		 //Element root = document.getRootElement();
 	     //listChildren(root, 0); 
 		 //listNodes(root, 0);
-		 //listChildrenValue(root, 0);  //!!!Hierdurch erfährt man z.B. dass bis zu desem Zeitpunkt die deutschen Umlaute noch vorhanden sind
+		 //listChildrenValue(root, 0);  //!!!Hierdurch erfï¿½hrt man z.B. dass bis zu desem Zeitpunkt die deutschen Umlaute noch vorhanden sind
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		
 		
@@ -201,7 +202,7 @@ System.out.println("test:" + stemp2);
 		this.objDOMParser = builder;
 		this.objDocument = document;
 		
- 		 //Für debug-zwecke 
+ 		 //Fï¿½r debug-zwecke 
 		 //Element root = document.getRootElement();
 	     //listChildren(root, 0); 
 		 //listNodes(root, 0);
@@ -234,7 +235,7 @@ System.out.println("test:" + stemp2);
 		}//End main:
 	}
 	
-	/** Gibt den verwendeten Encoding Typen zurück, wie er im Tag <Meta .... > verwendet wird
+	/** Gibt den verwendeten Encoding Typen zurï¿½ck, wie er im Tag <Meta .... > verwendet wird
 	* @return
 	* @param document
 	* 
@@ -307,7 +308,7 @@ System.out.println("test:" + stemp2);
 			}
 			/*
 			else if(l.size()>= 2){
-				ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"JDOM-Document seems to have more thän one body-tag. Only one Body Tag is expected for a html-file.",iERROR_PARAMETER_VALUE, this, ReflectionZZZ.getMethodCurrentName(), "");
+				ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"JDOM-Document seems to have more thï¿½n one body-tag. Only one Body Tag is expected for a html-file.",iERROR_PARAMETER_VALUE, this, ReflectionZZZ.getMethodCurrentName(), "");
 				throw ez;
 			}
 			*/
@@ -374,7 +375,7 @@ System.out.println("test:" + stemp2);
 			}
 			/*
 			else if(l.size()>= 2){
-				ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"JDOM-Document seems to have more thän one body-tag. Only one Body Tag is expected for a html-file.",iERROR_PARAMETER_VALUE, this, ReflectionZZZ.getMethodCurrentName(), "");
+				ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"JDOM-Document seems to have more thï¿½n one body-tag. Only one Body Tag is expected for a html-file.",iERROR_PARAMETER_VALUE, this, ReflectionZZZ.getMethodCurrentName(), "");
 				throw ez;
 			}
 			*/
@@ -399,7 +400,7 @@ System.out.println("test:" + stemp2);
 		return elemReturn;
 	}
 	
-	/** Liest aus dem HEAD des Html-Dokuments den gewünschten Tag aus.
+	/** Liest aus dem HEAD des Html-Dokuments den gewï¿½nschten Tag aus.
 	 *   Merke: Anders als bei den Tags des BODY, wird hier davon ausgegangen, das es keine Tags mit dem Attribut 'Name' gibt, 
 	 *              nach denen gesucht werden kann.
 	* @param docin
@@ -852,7 +853,7 @@ System.out.println("test:" + stemp2);
 			System.out.println("Comment");
 		}else if(o instanceof org.jdom.CDATA){
 			System.out.println("CDATA-Section");
-			//CDATA ist eine unterklasse von text, daher muss erst auf cdata abgeprüft werden.
+			//CDATA ist eine unterklasse von text, daher muss erst auf cdata abgeprï¿½ft werden.
 		}else if(o instanceof org.jdom.Text){
 			System.out.println("Text");			
 		}else if(o instanceof org.jdom.EntityRef){
@@ -915,7 +916,7 @@ System.out.println("test:" + stemp2);
 				this.setInputStream(streamIn);
 											
 			} catch (FileNotFoundException e) {
-				//Das wird zwar schon vorher abgefragt. Kann sich aber doch während der Verarbeitung ändern.
+				//Das wird zwar schon vorher abgefragt. Kann sich aber doch wï¿½hrend der Verarbeitung ï¿½ndern.
 				ExceptionZZZ ez = new ExceptionZZZ("File not found exception: "+e.getMessage(), iERROR_RUNTIME, this, ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;
 			}

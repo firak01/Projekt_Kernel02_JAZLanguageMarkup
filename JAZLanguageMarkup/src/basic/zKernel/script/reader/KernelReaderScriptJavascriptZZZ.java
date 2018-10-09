@@ -6,7 +6,7 @@
  - Array declaration with Variables (e.g. var myarray[a] ....)
  - Loops
  - any formula compution
- - if an expression is in a String (e.g. My father said:" e=mc isn´t correct" will result in a Variable e with the text left to the =
+ - if an expression is in a String (e.g. My father said:" e=mc isnï¿½t correct" will result in a Variable e with the text left to the =
    Idea: make a regular expression for Strings. Remember strings can start with " or with ' and have to end with the same letter.
 
  */
@@ -21,7 +21,7 @@ import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.ArrayListExtendedZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.script.data.KernelScriptVariableZZZ;
-
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
 
@@ -41,7 +41,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 	 * @param sFlagControl
 	 * @throws ExceptionZZZ
 	 */
-	public KernelReaderScriptJavascriptZZZ(KernelZZZ objKernel, ArrayList obj_alsHTML, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ {
+	public KernelReaderScriptJavascriptZZZ(IKernelZZZ objKernel, ArrayList obj_alsHTML, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ {
 		super(objKernel, obj_alsHTML, saFlagControl, sFlagControl);
 	}
 	
@@ -60,7 +60,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 					throw ez;			
 					  }
 			}else{
-				//Verwende die übergebene ArrayList
+				//Verwende die ï¿½bergebene ArrayList
 			    if(obj_alsHTMLIn == null){
 			    	ExceptionZZZ ez = new ExceptionZZZ("PageContent", iERROR_PARAMETER_MISSING,   this, ReflectCodeZZZ.getMethodCurrentName());
 					throw ez;		
@@ -198,7 +198,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 					}else{
 							//Single Variable, directe Wertzuweisung
 							objReturn = new KernelScriptVariableZZZ(this.getKernelObject(), sVarVAR,0);
-							sVarVAL=this.VarValueParse(sLine);		//Merke: Bisher ist VarVAL noch nicht der endgültige Wert. Es kann z.B. ein Semikolon anhängen.													
+							sVarVAL=this.VarValueParse(sLine);		//Merke: Bisher ist VarVAL noch nicht der endgï¿½ltige Wert. Es kann z.B. ein Semikolon anhï¿½ngen.													
 							objReturn.setValueString(sVarVAL);									
 					}		
 			}
@@ -240,7 +240,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 										//Bestehendes Variablenobjekt ermitteln
 										objReturn = this.getVarObjectByName(sVar); 
 										
-										//2. Möglichen Index auslesen
+										//2. Mï¿½glichen Index auslesen
 										int iIndex = this.VarIndexParse(sLine, sVar);
 										if(iIndex==-1) break main;  //dann gibt es die Variable garnicht in der Zeile !!!
 										
@@ -287,7 +287,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 		
 		
 		//Parse the ArrayList
-		//TODO Eine Funktion zur Verfügung stellen, oder ein Array mit allen möglichen Start - Script Tags, mit dem dann quasi ein "ArrayStringContains" durchgeführt werden kann.
+		//TODO Eine Funktion zur Verfï¿½gung stellen, oder ein Array mit allen mï¿½glichen Start - Script Tags, mit dem dann quasi ein "ArrayStringContains" durchgefï¿½hrt werden kann.
 		int icount=0;
 		for(icount = icountIn; icount <= obj_alsPage.size()-1; icount++ ){
 			stemp = (String)obj_alsPage.get(icount);
@@ -345,7 +345,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 							if( itemp2==-1) break main;
 							sReturn = sLineTemp.substring(0,itemp2).trim();
 				
-							//Falls es eckige Klammern [] enthält sind diese und deren Inhalt zu entfernen !!!
+							//Falls es eckige Klammern [] enthï¿½lt sind diese und deren Inhalt zu entfernen !!!
 							itemp2 = sReturn.indexOf("[");
 							if(itemp2 == 0){  //eckige Klammer direkt am Anfang, igitt !!!
 								sReturn=null;
@@ -407,18 +407,18 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 				//Parsen der Zeile
 				int itemp2 = sLine.lastIndexOf(sVarName);				
 				if(itemp2==-1){
-					//Variable ist überhaupt nicht in der Zeile vorhanden
+					//Variable ist ï¿½berhaupt nicht in der Zeile vorhanden
 					iReturn = -1;
 					break main;
 				}
 				
-				//Es wird als index der Stringanfang zurückgegeben, also
+				//Es wird als index der Stringanfang zurï¿½ckgegeben, also
 				itemp2=itemp2+sVarName.length();
 				
 				stemp=sLine.substring(itemp2);
 				itemp2=stemp.indexOf("[");
 				if(itemp2==-1){
-					//Variable ist per se kein Array, wird aber in der Klasse ScriptVariableZZZ als Array der Größe 0 behandelt.
+					//Variable ist per se kein Array, wird aber in der Klasse ScriptVariableZZZ als Array der Grï¿½ï¿½e 0 behandelt.
 					iReturn=0;
 					break main;
 				}
@@ -429,12 +429,12 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 					break main;					
 				}
 				
-				//Rückgabe des Indexwerts
+				//Rï¿½ckgabe des Indexwerts
 				stemp=stemp.substring(itemp2+1, itemp3);
 				if(stemp.equals("")){
 					iReturn = 0;
 				}else{
-					//TODO Was tun, wenn eine Variable (also Buchstaben) die Index-Größe bestimmt ????
+					//TODO Was tun, wenn eine Variable (also Buchstaben) die Index-Grï¿½ï¿½e bestimmt ????
 				    iReturn = Integer.parseInt(stemp);	
 				}
 											
