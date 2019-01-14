@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.codec.binary.Base64;
 
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -60,7 +60,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 	 * @param saFlagControl
 	 * @param sFlagControl
 	 */
-	public KernelReaderURLZZZ(KernelZZZ objKernel, String sURLToRead,String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
+	public KernelReaderURLZZZ(IKernelZZZ objKernel, String sURLToRead,String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
 		super(objKernel);
 		KernelReaderURLNew_(sURLToRead, null, null ,saFlagControl, sFlagControl);
 	}	//end constructor
@@ -76,7 +76,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 		 * @param saFlagControl
 		 * @param sFlagControl
 		 */
-	public KernelReaderURLZZZ(KernelZZZ objKernel, String sURLToRead, String sAccount, String sPassword,String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
+	public KernelReaderURLZZZ(IKernelZZZ objKernel, String sURLToRead, String sAccount, String sPassword,String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
 		super(objKernel);
 		KernelReaderURLNew_(sURLToRead, sAccount ,sPassword, saFlagControl, sFlagControl);
 }//end constructor

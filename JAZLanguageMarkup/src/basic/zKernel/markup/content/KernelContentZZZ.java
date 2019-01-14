@@ -11,7 +11,7 @@ import java.util.HashMap;
 import org.apache.commons.collections.map.MultiValueMap;
 import org.jdom.Document;
 
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -24,12 +24,12 @@ import basic.zKernel.KernelUseObjectZZZ;
  * global class, which contains methods relevant to all content aspects. e.g. saving content to file
  * - Handling Variable-Content
  * 
- * Von diser Klasse erben spezielle abstrakte KernelKlassen. Z.B. für Ecs, File, .....
+ * Von diser Klasse erben spezielle abstrakte KernelKlassen. Z.B. fï¿½r Ecs, File, .....
  * Merke: Xml wird hiermit nicht behandelt, da dabei intern ein JDOM Dokument verwendet wird.
  * @author Lindhauer
  */
 public class KernelContentZZZ extends KernelUseObjectZZZ implements IKernelContentZZZ{
-	private HashMapMultiZZZ hmVar=new HashMapMultiZZZ();//Speicherung der Variablen: hmVar("UE1")="Beispiel Überschrift"
+	private HashMapMultiZZZ hmVar=new HashMapMultiZZZ();//Speicherung der Variablen: hmVar("UE1")="Beispiel ï¿½berschrift"
 	//private MultiValueMap hmVar = new MultiValueMap();
 	
 	private boolean bFlagRemoveTagZHTML = false;
@@ -38,7 +38,7 @@ public class KernelContentZZZ extends KernelUseObjectZZZ implements IKernelConte
 		super();
 	}
 	 
-	public KernelContentZZZ(KernelZZZ objKernel){ 
+	public KernelContentZZZ(IKernelZZZ objKernel){ 
 		super(objKernel);
 	}
 	
@@ -114,7 +114,7 @@ public class KernelContentZZZ extends KernelUseObjectZZZ implements IKernelConte
 	/* (non-Javadoc)
 	 * @see basic.zKernel.markup.content.IKernelContentZZZ#getVarHm(java.lang.String)
 	 * 
-	 *!!! Merke: Es wird immer das zuletzt hinzugefügte Objekt zurückgegeben.
+	 *!!! Merke: Es wird immer das zuletzt hinzugefï¿½gte Objekt zurï¿½ckgegeben.
 	 */
 	public HashMapMultiZZZ getVarHm(String sVarName) throws ExceptionZZZ{
 		HashMapMultiZZZ objReturn = null;

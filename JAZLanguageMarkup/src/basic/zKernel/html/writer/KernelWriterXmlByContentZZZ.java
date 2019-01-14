@@ -15,7 +15,7 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.markup.content.ContentXmlZZZ;
 import basic.zKernel.markup.content.IKernelContentEcsZZZ;
@@ -27,13 +27,13 @@ import basic.zKernel.markup.content.IKernelContentFileZZZ;
  */
 public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 	private ContentXmlZZZ objContent = null;
-	private String sEncodingUsed = "ISO-8859-1"; // für deutsch";
+	private String sEncodingUsed = "ISO-8859-1"; // fÃ¼r deutsch";
 	
-	public KernelWriterXmlByContentZZZ(KernelZZZ objKernel){
+	public KernelWriterXmlByContentZZZ(IKernelZZZ objKernel){
 		super(objKernel);
 	}
 	
-	/** übergib den Content an diese Klasse. 
+	/** ï¿½bergib den Content an diese Klasse. 
 	 *   Merke: Intern wird das im Conent gespeicherte jdom-Dokument 
 	* @param objContent
 	* @return
@@ -78,7 +78,7 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 				  throw ez;
 			  }
 			  
-			  //+++ Nun wäre System.out ein möglicher Outputstream. Hier soll aber in eine Datei ausgegeben werden.
+			  //+++ Nun wï¿½re System.out ein mï¿½glicher Outputstream. Hier soll aber in eine Datei ausgegeben werden.
 			  /*
 			   XMLOutputter xmlout = new XMLOutputter();
 			    try {
@@ -88,7 +88,7 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 				}
 				######################### 
 			  
-			  //1. den Dateinamen prüfen					 
+			  //1. den Dateinamen prï¿½fen					 
 			  File objFileProof = new File(sFilePathin);
 			  File objFile;
 			  String sFilePath;
@@ -100,7 +100,7 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 				  objFile = new File(sFilePath);
 			  }
 			  
-			  //2. Stream für das Schreiben in die Datei holen.
+			  //2. Stream fï¿½r das Schreiben in die Datei holen.
 			  try {
 				FileOutputStream fout = new FileOutputStream(objFile);
 				BufferedOutputStream bfout = new BufferedOutputStream(fout);
@@ -108,7 +108,7 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 				 XMLOutputter xmlout = new XMLOutputter();
 				
 				 Format format = xmlout.getFormat();				
-				 format.setOmitDeclaration(true); //Ohne diese Formatierungshinweise, wird die Zeile <?xml version="1.0" encoding="UTF-8"?> vorangestellt, was bei einem HTML-Dokument ggf. für falsche Deutsche Umlaute sorgt.
+				 format.setOmitDeclaration(true); //Ohne diese Formatierungshinweise, wird die Zeile <?xml version="1.0" encoding="UTF-8"?> vorangestellt, was bei einem HTML-Dokument ggf. fï¿½r falsche Deutsche Umlaute sorgt.
 				 format.setOmitEncoding(true);   
 				// format.setExpandEmptyElements(true); //aus <aaa/> wird dann <aaa></aaa>    
 				 format.setTextMode(TextMode.PRESERVE);//Ohne diesen Formatierungshinweis, wird ggf. auch der META-Tag mit /> als Abschluss versehen. Dann funktioniert scheinbar dieser Tag im Browser nicht mehr. Die deutschen Umlaute gehen verloren.
@@ -116,9 +116,9 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 				 //!!! Den Encoding String kann man als Information aus dem Tage <META .... > holen.
 				 KernelReaderHtmlZZZ objReader = this.getReaderCurrent();
 				 String sCharset = objReader.readEncodingUsed(doc);
-				 if(!StringZZZ.isEmpty( sCharset)) format.setEncoding(sCharset);      //Ziel: "ISO-8859-1" für deutsch       //Ohne diesen Formatierungshinweis wird UTF-8 verwendet. Das bewirkt, dass z.B. die Deutschen Umlaute ä, etc. in die korrespondierende HTML-Umschreibung umgewandelt werden. 
+				 if(!StringZZZ.isEmpty( sCharset)) format.setEncoding(sCharset);      //Ziel: "ISO-8859-1" fï¿½r deutsch       //Ohne diesen Formatierungshinweis wird UTF-8 verwendet. Das bewirkt, dass z.B. die Deutschen Umlaute ï¿½, etc. in die korrespondierende HTML-Umschreibung umgewandelt werden. 
 				 
-				 xmlout.setFormat(format);  //Das muss man machen, sonst sind werden die neuen Format Einstellungen nicht übernommen
+				 xmlout.setFormat(format);  //Das muss man machen, sonst sind werden die neuen Format Einstellungen nicht ï¿½bernommen
 				 xmlout.output(doc, bfout);
 				 
 				 bReturn = true;
@@ -146,26 +146,26 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 				  throw ez;
 			  }
 			  
-			  //+++ Nun wäre System.out ein möglicher Outputstream. Hier soll aber in eine Datei ausgegeben werden.		  
+			  //+++ Nun wï¿½re System.out ein mï¿½glicher Outputstream. Hier soll aber in eine Datei ausgegeben werden.		  
 			  //1. Outputter - Objekt holen
 			  XMLOutputter xmlout = new XMLOutputter();
 				 
 			  //2. Format einstellen
 			 Format format = xmlout.getFormat();		
-			 format.setOmitDeclaration(false); //Die Declaration ist die Zeile <?xml version="1.0" encoding="UTF-8"?>  am Anfang des XMLs, dies ist bei  einem HTML-Dokument nicht gewünscht.
+			 format.setOmitDeclaration(false); //Die Declaration ist die Zeile <?xml version="1.0" encoding="UTF-8"?>  am Anfang des XMLs, dies ist bei  einem HTML-Dokument nicht gewï¿½nscht.
 			// format.setExpandEmptyElements(true); //aus <aaa/> wird dann <aaa></aaa>    
 			 format.setTextMode(TextMode.PRESERVE);//Ohne diesen Formatierungshinweis, wird ggf. auch der META-Tag mit /> als Abschluss versehen. Dann funktioniert scheinbar dieser Tag im Browser nicht mehr. Die deutschen Umlaute gehen verloren.
 				 
 			String sCharset = this.getEncoding();
 			 if(!StringZZZ.isEmpty( sCharset)){
-				 format.setOmitEncoding(false);    //Ohne das Encoding wird es unmöglich den deutschen Zeichensatz zur Verfügung zu stellen. Dies wird als Attribut dem Declarations-Tag am Anfang des XMLs zugefügt.
+				 format.setOmitEncoding(false);    //Ohne das Encoding wird es unmï¿½glich den deutschen Zeichensatz zur Verfï¿½gung zu stellen. Dies wird als Attribut dem Declarations-Tag am Anfang des XMLs zugefï¿½gt.
 				 //System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "#Setze den encoding String: '" + sCharset + "'");
-				 format.setEncoding(sCharset);      //Ziel: "ISO-8859-1" für deutsch       //Ohne diesen Formatierungshinweis wird UTF-8 verwendet. Das bewirkt, dass z.B. die Deutschen Umlaute ä, etc. in die korrespondierende HTML-Umschreibung umgewandelt werden. 
+				 format.setEncoding(sCharset);      //Ziel: "ISO-8859-1" fï¿½r deutsch       //Ohne diesen Formatierungshinweis wird UTF-8 verwendet. Das bewirkt, dass z.B. die Deutschen Umlaute ï¿½, etc. in die korrespondierende HTML-Umschreibung umgewandelt werden. 
 			 }else{
-				 format.setOmitEncoding(true);    //Ohne das Encoding wird es unmöglich den deutschen Zeichensatz zur Verfügung zu stellen
+				 format.setOmitEncoding(true);    //Ohne das Encoding wird es unmï¿½glich den deutschen Zeichensatz zur Verfï¿½gung zu stellen
 				 //System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "#Setze KEINEN spezifischen  encoding String.");
 			 }
-			xmlout.setFormat(format);  //Das muss man machen, sonst sind werden die neuen Format Einstellungen nicht übernommen
+			xmlout.setFormat(format);  //Das muss man machen, sonst sind werden die neuen Format Einstellungen nicht ï¿½bernommen
 			
 			//3. Endlich: Das XML-Dokument als String
 			sReturn = xmlout.outputString(doc);				 
@@ -200,7 +200,7 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 		return objReturn;
 	}
 	
-	/** setze den verwendeten Zeichensatz "ISO-8859-1" für deutsch, steht im xml-Tag, nomalerweise als Attribut hinter 'version'
+	/** setze den verwendeten Zeichensatz "ISO-8859-1" fï¿½r deutsch, steht im xml-Tag, nomalerweise als Attribut hinter 'version'
 	* @param sEncoding
 	* 
 	* lindhauer; 03.03.2008 15:24:23

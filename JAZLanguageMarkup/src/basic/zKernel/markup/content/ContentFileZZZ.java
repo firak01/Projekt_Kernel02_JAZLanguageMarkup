@@ -2,7 +2,7 @@ package basic.zKernel.markup.content;
 
 import java.io.File;
 import java.util.ArrayList;
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.html.TagTypeZHtmlZZZ;
@@ -12,10 +12,10 @@ public class ContentFileZZZ extends KernelContentZZZ implements IKernelContentFi
 	File objFile;
 	KernelReaderHtmlZZZ objReaderHtml;
 	
-	public ContentFileZZZ(KernelZZZ objKernel) {
+	public ContentFileZZZ(IKernelZZZ objKernel) {
 		super(objKernel);
 	}
-	public ContentFileZZZ(KernelZZZ objKernel, File objFile) throws ExceptionZZZ{
+	public ContentFileZZZ(IKernelZZZ objKernel, File objFile) throws ExceptionZZZ{
 		super(objKernel);
 		if(objFile==null){
 			ExceptionZZZ ez = new ExceptionZZZ("File-Object", iERROR_PARAMETER_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
@@ -27,7 +27,7 @@ public class ContentFileZZZ extends KernelContentZZZ implements IKernelContentFi
 	/* (non-Javadoc)
 	 * @see basic.zKernel.markup.content.KernelContentZZZ#compute()
 	 * 
-	 * Mit dem Flag "RemoveZHTML" wird dafür gesorgt, das die Tags anschliessend entfernt sind.
+	 * Mit dem Flag "RemoveZHTML" wird dafï¿½r gesorgt, das die Tags anschliessend entfernt sind.
 	 */
 	public boolean compute() throws ExceptionZZZ {
 		boolean bReturn = false;
@@ -47,9 +47,9 @@ public class ContentFileZZZ extends KernelContentZZZ implements IKernelContentFi
 				//TYXPECAST FALSCH  !!!! org.jdom.Text text = (org.jdom.Text) listaElement.get(icount);
 				org.jdom.Element elem = (org.jdom.Element) listaElement.get(icount); 
 				String stemp = elem.getValue();		//Das ist der text der variable, die es zu ersetzen gilt			
-				String sValue = this.getVarString(stemp); //dadurch wird für die variable der Wert geholt aus einer hashmap
+				String sValue = this.getVarString(stemp); //dadurch wird fï¿½r die variable der Wert geholt aus einer hashmap
 				
-				//Nun den Wert im ZHTML-Tag ersetzen. Dadurch wird automatisch der Wert im Parent Element auch geändert
+				//Nun den Wert im ZHTML-Tag ersetzen. Dadurch wird automatisch der Wert im Parent Element auch geï¿½ndert
 				elem.setText(sValue);
 				
 			}//END FOR
@@ -64,16 +64,16 @@ public class ContentFileZZZ extends KernelContentZZZ implements IKernelContentFi
 					if(elemParent!=null){
 //						System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "# Parentname: " + elemParent.getName() + " #Parentvalue: " + elemParent.getValue());
 						
-//						Vor dem Entfernen des ZHTM-Elements muss der Wert des Parents ermittelt werden und kann nach dem Entfernen wieder ganz an das Parent Element übergeben werden
+//						Vor dem Entfernen des ZHTM-Elements muss der Wert des Parents ermittelt werden und kann nach dem Entfernen wieder ganz an das Parent Element ï¿½bergeben werden
 						String sValueTotalTemp = elemParent.getValue();
 					
 						//Nun das element aus dem Parent entfernen
 						elemParent.removeContent(elem);
 						//System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "#Nach dem Entfernen des ZHTML-Elemtents# Parentname: " + elemParent.getName() + " #Parentvalue2: " + elemParent.getValue());
 					
-						//Nun den ganzen Wert wieder an das PArent Element übergeben.
+						//Nun den ganzen Wert wieder an das PArent Element ï¿½bergeben.
 						elemParent.setText(sValueTotalTemp);
-						//System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "#Nach dem Entfernen des ZHTML-Elemtents und dem Erneuten Hinzufügen# Parentname: " + elemParent.getName() + " #Parentvalue2: " + elemParent.getValue());
+						//System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "#Nach dem Entfernen des ZHTML-Elemtents und dem Erneuten Hinzufï¿½gen# Parentname: " + elemParent.getName() + " #Parentvalue2: " + elemParent.getValue());
 					}//end if elemParent != null
 					
 				}//END FOR

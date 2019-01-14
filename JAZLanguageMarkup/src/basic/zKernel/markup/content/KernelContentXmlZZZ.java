@@ -18,7 +18,7 @@ import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 
 /** Merke: Anders als bei KernelContentZZZ wird hier intern ein JDOM-Dokument zum Speichern der Daten verwendet.
  * @author lindhaueradmin
@@ -31,13 +31,13 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 	public KernelContentXmlZZZ(){
 		super(); 
 	}	
-	public KernelContentXmlZZZ(KernelZZZ objKernel) throws ExceptionZZZ{
+	public KernelContentXmlZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel); 
 		if(this.getFlag("init")==false){
 			this.createDocument("");
 		}
 	}
-	public KernelContentXmlZZZ(KernelZZZ objKernel, String sRootName) throws ExceptionZZZ{
+	public KernelContentXmlZZZ(IKernelZZZ objKernel, String sRootName) throws ExceptionZZZ{
 		super(objKernel);
 		if(this.getFlag("init")==false){
 			Document document = this.createDocument(sRootName);
@@ -158,7 +158,7 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 	/* (non-Javadoc)
 	 * @see basic.zKernel.markup.content.IKernelContentMultiZZZ#setVarAsNth(java.lang.String, java.lang.String, int)
 	 * 
-	 * Fügt den Wert an der Stelle hinzu
+	 * Fï¿½gt den Wert an der Stelle hinzu
 	 */
 	public boolean setVarAsNth(String sVariableName, String sVariableValue, int iIndex) throws ExceptionZZZ {
 		boolean bReturn = false;
@@ -189,8 +189,8 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 						elemDummy = (Element) list.get(icount + 1);
 						elemRoot.setContent(icount + 1, elem);
 					}else if(icount == list.size()-1){
-						elemDummy.detach();//Wichtig, sonst kann man es nicht mit addConent() hinzufügen
-						elemRoot.addContent(elemDummy);   //Die in der vorherigen Schleifenrunde gesicherte Dummy Variable ganz ans Ende anhängen
+						elemDummy.detach();//Wichtig, sonst kann man es nicht mit addConent() hinzufï¿½gen
+						elemRoot.addContent(elemDummy);   //Die in der vorherigen Schleifenrunde gesicherte Dummy Variable ganz ans Ende anhï¿½ngen
 					}else if(icount >= iIndex){
 						//Nun umkopieren
 						elem = (Element) elemDummy.clone();
@@ -327,8 +327,8 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 						elemDummy = (Element) list.get(icount + 1);
 						elemRoot.setContent(icount + 1, elem);
 					}else if(icount == list.size()-1){
-						elemDummy.detach();//Wichtig, sonst kann man es nicht mit addConent() hinzufügen
-						elemRoot.addContent(elemDummy);   //Die in der vorherigen Schleifenrunde gesicherte Dummy Variable ganz ans Ende anhängen
+						elemDummy.detach();//Wichtig, sonst kann man es nicht mit addConent() hinzufï¿½gen
+						elemRoot.addContent(elemDummy);   //Die in der vorherigen Schleifenrunde gesicherte Dummy Variable ganz ans Ende anhï¿½ngen
 					}else{
 						elem = (Element) elemDummy.clone();
 						elemDummy = (Element) list.get(icount + 1);
@@ -369,7 +369,7 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 		/* (non-Javadoc)
 		 * @see basic.zKernel.markup.content.IKernelContentZZZ#setVarHm(java.lang.String, basic.zBasic.util.abstractList.HashMapMultiZZZ)
 		 * 
-		 * Dies erzeugt einen XML-String eine Ebene höher als das Root, falls dort noch kein Element mit dem Namen vorhanden ist.
+		 * Dies erzeugt einen XML-String eine Ebene hï¿½her als das Root, falls dort noch kein Element mit dem Namen vorhanden ist.
 		 * Ansonsten wird das Element erzeugt.
 		 */
 		public boolean setVar(String sVariableName, HashMapMultiZZZ hmVariableValue) throws ExceptionZZZ {
@@ -417,8 +417,8 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 		}
 	
 	//######### DOCUMENT ###########################################################
-		/* Füge das übergebene Xml-Dokument an das intern verwaltete Dokument an.
-		 * Der Root des übergebenen Xml-Dokuments wird dabei in den Variablennamen umbenannt.
+		/* Fï¿½ge das ï¿½bergebene Xml-Dokument an das intern verwaltete Dokument an.
+		 * Der Root des ï¿½bergebenen Xml-Dokuments wird dabei in den Variablennamen umbenannt.
 		 * 
 		 * 
 		 * 
@@ -444,13 +444,13 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 				}
 				
 				//######################################
-				//1. Umbenennen des Roots vom hinzuzufügenden Dokument. Unter diesem Namen wird man wieder darauf zugreifen können.
+				//1. Umbenennen des Roots vom hinzuzufï¿½genden Dokument. Unter diesem Namen wird man wieder darauf zugreifen kï¿½nnen.
 				elemRoot2Add.setName(sVariableName);
 				
 				Document document = this.getDocument();
 				Element elemRoot = document.getRootElement();
 				
-				//Umhängen des Elements von einem Dokument zu einem anderen !!!
+				//Umhï¿½ngen des Elements von einem Dokument zu einem anderen !!!
 				elemRoot2Add.detach(); //sonst gibt es die Fehelrmeldung, das dieses Element schon ein parent documetn hat.
 				elemRoot.addContent(elemRoot2Add);				
 				
@@ -472,7 +472,7 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 				Element elemSub = elemRoot.getChild(sVariableName);
 				if(elemSub==null) break main;
 				
-				//Neues Dokument für die Rückgabe erstellen und das bisherige Unterelement als Rootelement anhängen
+				//Neues Dokument fï¿½r die Rï¿½ckgabe erstellen und das bisherige Unterelement als Rootelement anhï¿½ngen
 				objReturn = new Document();
 				elemSub.detach(); //!!! nicht vergessen, sonst Fehlermeldung
 				objReturn.setRootElement(elemSub);
@@ -531,20 +531,20 @@ public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements 
 			}
 						
 			try{
-				//FileWriter objWriter = new FileWriter(objFile, true); //true = anhängen
-				FileWriter objWriter = new FileWriter(objFile); //true = anhängen
+				//FileWriter objWriter = new FileWriter(objFile, true); //true = anhï¿½ngen
+				FileWriter objWriter = new FileWriter(objFile); //true = anhï¿½ngen
 				
 				XMLOutputter outputter = new XMLOutputter();
 				
 				 Format format = outputter.getFormat();				
-				 format.setOmitDeclaration(false); //Merke: Bei true  wird die Zeile <?xml version="1.0" encoding="UTF-8"?> weggelassen, was z.B. bei einem HTML-Dokument ggf. für falsche Deutsche Umlaute sorgt.
+				 format.setOmitDeclaration(false); //Merke: Bei true  wird die Zeile <?xml version="1.0" encoding="UTF-8"?> weggelassen, was z.B. bei einem HTML-Dokument ggf. fï¿½r falsche Deutsche Umlaute sorgt.
 				 
 				 format.setOmitEncoding(false);   //Damit die Encoding Zeile angezeigt wird   
 				// format.setExpandEmptyElements(true); //aus <aaa/> wird dann <aaa></aaa>    
 				 //format.setTextMode(TextMode.PRESERVE);//Ohne diesen Formatierungshinweis, wird ggf. auch der META-Tag mit /> als Abschluss versehen. Dann funktioniert scheinbar dieser Tag im Browser nicht mehr. Die deutschen Umlaute gehen verloren. 
-				format.setEncoding("ISO-8859-1");      //Ziel: "ISO-8859-1" für deutsch       //Ohne diesen Formatierungshinweis wird UTF-8 verwendet. Das bewirkt, dass z.B. die Deutschen Umlaute ä, etc. in die korrespondierende HTML-Umschreibung umgewandelt werden. 
+				format.setEncoding("ISO-8859-1");      //Ziel: "ISO-8859-1" fï¿½r deutsch       //Ohne diesen Formatierungshinweis wird UTF-8 verwendet. Das bewirkt, dass z.B. die Deutschen Umlaute ï¿½, etc. in die korrespondierende HTML-Umschreibung umgewandelt werden. 
 				 
-			    outputter.setFormat(format);  //Das muss man machen, sonst sind werden die neuen Format Einstellungen nicht übernommen				
+			    outputter.setFormat(format);  //Das muss man machen, sonst sind werden die neuen Format Einstellungen nicht ï¿½bernommen				
 				outputter.output(this.getDocument(),objWriter);
 				
 				//String sContent = this.getDocument().toString();				

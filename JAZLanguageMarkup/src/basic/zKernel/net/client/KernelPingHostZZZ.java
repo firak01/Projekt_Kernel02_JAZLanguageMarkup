@@ -17,7 +17,7 @@ import java.nio.channels.UnsupportedAddressTypeException;
 
 import org.apache.commons.lang.time.StopWatch;
 
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -36,7 +36,7 @@ public class KernelPingHostZZZ extends KernelUseObjectZZZ{
 	private String sPort2Check = "";
 	private long lMilliSeconds = 0; //Die Anzahl der Millisekunden, die es ben�tigt, einen ping durchzuf�hren.
 	
-	public KernelPingHostZZZ(KernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ{
+	public KernelPingHostZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		KernelPingHostNew_(saFlagControl);
 	}

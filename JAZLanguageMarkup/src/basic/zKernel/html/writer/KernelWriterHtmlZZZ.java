@@ -16,7 +16,7 @@ import org.apache.ecs.Document;
 import org.apache.ecs.Element;
 import org.apache.ecs.html.Html;
 
-import basic.zKernel.KernelZZZ;
+import basic.zKernel.IKernelZZZ;
 
 
 import basic.zBasic.ExceptionZZZ;
@@ -38,7 +38,7 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	private boolean bFlagUseFile = false;
 	private boolean bFlagUseEcs = false;
 	
-	public KernelWriterHtmlZZZ(KernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
+	public KernelWriterHtmlZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
 		main:{		
 			if(saFlagControl != null){
