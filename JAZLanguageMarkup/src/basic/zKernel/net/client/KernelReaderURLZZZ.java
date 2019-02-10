@@ -24,6 +24,8 @@ import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
+import basic.zBasic.util.file.FileEasyZZZ;
+import basic.zBasic.util.web.cgi.UrlLogicZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 
 
@@ -39,6 +41,7 @@ import basic.zKernel.KernelUseObjectZZZ;
  */
 public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 	private String sURLToRead=null;
+	private String sURLUsed = null; //die tatsächlich verwendete URL, z.B. wenn relative Dateien noch mit dem Protokoll und absoluten Dateipfad ergänzt werden müssen.
 	private String sPassword=null;
 	private String sAccount=null;
 	private String sProxyHost=null;
@@ -222,9 +225,20 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 			}
 			*/
 	
-												
+							
+			String sUrl = this.getURLString();
+			String sUrlToUse = "";
+			if(UrlLogicZZZ.hasProtocolValid(sUrl)){
+				sUrlToUse = sUrl;				
+			}else{
+				File objFile = FileEasyZZZ.searchFile(sUrl);
+				String sFilePath = objFile.getAbsolutePath();				
+				sUrlToUse = "file" + UrlLogicZZZ.sURL_SEPARATOR_PROTOCOL_FILE + sFilePath;	//Ein Slash mehr als das Protokoll
+			}
+			this.setURLStringUsed(sUrlToUse);
+				
 			//get the URL-Object
-			URL url = new URL(this.getURLString());
+			URL url = new URL(this.getURLStringUsed());
 												
 			//FGL 20070306 NEU: Falls das Protokoll 'file' ist. Z.B.: file:///F:\Workplace\Eclipse3FGL\JAZVideoInternetArchive\pagIPLinkFGLTest.html
 			//Merke: Beim File Protokoll gibt es bei absoluten Pfaden noch ein / vor dem Pfad.
@@ -457,6 +471,18 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 	public void setURLString(String string) {
 		sURLToRead = string;
 	}
+	
+	public String getURLStringUsed(){
+		return this.sURLUsed;
+	}
+	
+	/**Ist private, weil dieser Wert erst beim .connect() gesetzt wird und die tatsächliche URL enthalten soll.
+	 * @param sUrl
+	 */
+	private void setURLStringUsed(String sUrl){
+		this.sURLUsed = sUrl;
+	}
+	
 	/**
 	 * @return
 	 */
