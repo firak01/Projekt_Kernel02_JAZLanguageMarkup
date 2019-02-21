@@ -235,6 +235,7 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 				String sFilePath = objFile.getAbsolutePath();				
 				sUrlToUse = "file" + UrlLogicZZZ.sURL_SEPARATOR_PROTOCOL_FILE + sFilePath;	//Ein Slash mehr als das Protokoll
 			}
+			System.out.println(ReflectCodeZZZ.getPositionCurrent()+"#Verwende Url: '" + sUrlToUse + "'");
 			this.setURLStringUsed(sUrlToUse);
 				
 			//get the URL-Object
@@ -258,7 +259,7 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 						connection.connect();
 						bReturn = true;
 		 			}else{
-		 				System.out.println(ReflectCodeZZZ.getMethodCurrentName()+"#file not found: " + file.getPath());
+		 				System.out.println(ReflectCodeZZZ.getPositionCurrent()+"#file not found: " + file.getPath());
 		 				break main;
 		 			}
 				} catch (URISyntaxException e) {					
@@ -271,7 +272,7 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 				
 					if(bFlagUseAccount == false){
 							//only receiving data
-							//TODO Fall, das eine nicht kennwortgesch�tzte URL aufgerufen werden soll
+							//TODO Fall, das eine nicht kennwortgeschützte URL aufgerufen werden soll
 							//???
 							connection.setDoOutput(false);					
 					}else{
