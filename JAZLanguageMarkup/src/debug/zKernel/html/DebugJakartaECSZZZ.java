@@ -7,9 +7,10 @@
 package debug.zKernel.html;
 
 import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
+//import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 
 import org.apache.ecs.html.A;
 import org.apache.ecs.html.BR;
@@ -24,7 +25,6 @@ import org.apache.ecs.html.Title;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-
 import basic.zKernel.KernelZZZ;
 import custom.zKernel.LogZZZ;
 
@@ -84,12 +84,19 @@ public class DebugJakartaECSZZZ {
 			 throw ez;
 		 }
 		 
-		DataOutputStream output = null;
-  		output =  new DataOutputStream(new BufferedOutputStream(new FileOutputStream(sDir+File.separator+sFile)));
-  		String stemp = html.toString();
-  		System.out.println(stemp);
-  		output.write(html.toString().getBytes());
-  		output.close();//Ohne schliessen des Streams wird der Inhalt dort nicht eingefügt.
+		//20190712: Ziel ist es nun UTF-8 Datei zu erstellen
+//		DataOutputStream output = null;
+//  		output =  new DataOutputStream(new BufferedOutputStream(new FileOutputStream(sDir+File.separator+sFile)));
+//  		String stemp = html.toString();
+//  		System.out.println(stemp);
+//  		output.write(html.toString().getBytes());
+//  		output.close();//Ohne schliessen des Streams wird der Inhalt dort nicht eingefï¿½gt.
+  		
+  		//20190712: Ziel ist es nun UTF-8 Datei zu erstellen
+     	OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sDir+File.separator+sFile),"UTF-8"); 
+     	writer.write(html.toString());
+     	writer.close();
+     	
 	      }catch(ExceptionZZZ ez){
 	    	  if (objLog != null) objLog.WriteLineDate(ez.getDetailAllLast());
 	    	  System.out.println(ez.getDetailAllLast());									

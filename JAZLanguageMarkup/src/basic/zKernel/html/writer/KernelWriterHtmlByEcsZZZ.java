@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import org.apache.ecs.Document;
 import org.apache.ecs.html.Html;
@@ -127,12 +128,18 @@ public class KernelWriterHtmlByEcsZZZ extends KernelWriterHtmlZZZ {
 			
 			Html objHtml = this.getDocument().getHtml();
 			
-			    DataOutputStream output = null;
-				output =  new DataOutputStream(new BufferedOutputStream(new FileOutputStream(sFilePath)));
-				//String stemp = html.toString();
-				//System.out.println(stemp);
-				output.write(objHtml.toString().getBytes());
-				output.close();//Ohne schliessen des Streams wird der Inhalt dort nicht eingefügt.
+			//20190712: Ziel ist es nun UTF-8 Datei zu erstellen
+			//DataOutputStream output = null;
+			//output =  new DataOutputStream(new BufferedOutputStream(new FileOutputStream(sFilePath)));
+			//String stemp = html.toString();
+			//System.out.println(stemp);
+			//output.write(objHtml.toString().getBytes());
+			//output.close();//Ohne schliessen des Streams wird der Inhalt dort nicht eingefÃ¼gt.
+         	
+				//20190712: Ziel ist es nun UTF-8 Datei zu erstellen
+	         	OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sFilePath),"UTF-8"); 
+	         	writer.write(objHtml.toString());
+	         	writer.close();
 			}catch(FileNotFoundException e){
 				ExceptionZZZ ez = new ExceptionZZZ("File '"+sFilePath+"' can not be found.", iERROR_RUNTIME,(Object)this,ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;

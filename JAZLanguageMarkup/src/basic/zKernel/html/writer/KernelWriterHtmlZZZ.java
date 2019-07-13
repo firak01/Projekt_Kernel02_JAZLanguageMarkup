@@ -7,7 +7,7 @@
 package basic.zKernel.html.writer;
 
 import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
+//import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
