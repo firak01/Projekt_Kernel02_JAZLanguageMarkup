@@ -55,7 +55,7 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 			System.out.println("local IP-Number is: " + sIP);
 										
 			//Zur Web-Seite verbinden, dazu mal den KernelReaderURL verwenden
-			String sURL = objKernel.getParameterByProgramAlias("IPPage","ProgIPReader","URL2Read");
+			String sURL = objKernel.getParameterByProgramAlias("IPPage","ProgIPReader","URL2Read").getValue(); 
 			if(sURL==null){
 				ExceptionZZZ ez = new ExceptionZZZ(sERROR_CONFIGURATION_MISSING+"URL String", iERROR_CONFIGURATION_MISSING, ReflectCodeZZZ.getMethodCurrentName(), "");
 				throw ez;
@@ -64,10 +64,10 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 			String[] satemp = {"UseStream"};
 			KernelReaderURLZZZ objReaderURL = new KernelReaderURLZZZ(objKernel, sURL,satemp, "");
 			//Hier bei der itelligence bin ich hinter einem Proxy. Die auszulesende Seite ist aber im Web
-			String sProxyHost = objKernel.getParameterByProgramAlias("IPPage","ProgIPReader","ProxyHost");
+			String sProxyHost = objKernel.getParameterByProgramAlias("IPPage","ProgIPReader","ProxyHost").getValue(); 
 			String sProxyPort = null;
 			if(sProxyHost!=null && sProxyHost.equals("")==false){				
-				sProxyPort = objKernel.getParameterByProgramAlias("IPPage","ProgIPReader","ProxyPort");
+				sProxyPort = objKernel.getParameterByProgramAlias("IPPage","ProgIPReader","ProxyPort").getValue(); 
 				//TODO: Existenz des Proxies testen und nur dann enablen, wenn er auch existiert !!!
 				//objReaderURL.setProxyEnabled(sProxyHost, sProxyPort);
 			}
@@ -129,7 +129,7 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 			}//END for
 			
 			
-			//### Neuer Verbindungsauf, diesmal mit einem Kennwortgeschützten Server:  MEINEM
+			//### Neuer Verbindungsauf, diesmal mit einem Kennwortgeschï¿½tzten Server:  MEINEM
 			if(sURLNext!=null){
 				if(sURLNext.equals("")){
 					System.out.println("No further URL was read out.");

@@ -19,13 +19,13 @@ public class DebugKernelPortScanHostZZZ {
 		KernelPortScanHostZZZ objScan=null;
 		try {
 			KernelZZZ objKernel = new KernelZZZ("Scan", "01", "", "ZKernelConfigPortScan_test.ini",(String)null);
-			String sHost = objKernel.getParameter("HostDefault");
+			String sHost = objKernel.getParameter("HostDefault").getValue();
 			objScan = new KernelPortScanHostZZZ(objKernel, sHost, null);
 			
 			
-			String sPortLowest = objKernel.getParameter("PortLowest");
-			String sPortHighest = objKernel.getParameter("PortHighest");
-			String sPortKnown = objKernel.getParameter("PortKnown");
+			String sPortLowest = objKernel.getParameter("PortLowest").getValue();
+			String sPortHighest = objKernel.getParameter("PortHighest").getValue();
+			String sPortKnown = objKernel.getParameter("PortKnown").getValue();
 			objScan.setPortKnown(sPortKnown);
 			
 			//Zum testen der Verbindung mit port 5000
@@ -36,7 +36,7 @@ public class DebugKernelPortScanHostZZZ {
 			int iPortLowest = Integer.parseInt(sPortLowest);
 			int iPortHighest = Integer.parseInt(sPortHighest);
 			
-			String sThreadStorageSize = objKernel.getParameter("ThreadStorageSize");
+			String sThreadStorageSize = objKernel.getParameter("ThreadStorageSize").getValue();
 			if(sThreadStorageSize!=null){
 				int iTemp = Integer.parseInt(sThreadStorageSize);
 				objScan.setThreadStorageSize(iTemp);
@@ -73,7 +73,7 @@ public class DebugKernelPortScanHostZZZ {
 					System.exit(1);
 				}
 			}
-			//Alle möglichen anderen Fehler
+			//Alle mï¿½glichen anderen Fehler
 			e.printStackTrace();			
 			System.out.println(e.getDetailAllLast());
 		}

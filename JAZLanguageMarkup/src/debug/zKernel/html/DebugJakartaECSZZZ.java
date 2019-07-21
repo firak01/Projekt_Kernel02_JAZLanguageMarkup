@@ -73,8 +73,8 @@ public class DebugJakartaECSZZZ {
 		 //Ausgabe des HTML-Codes in eine Datei
 		 //TODO Dies durch eine Z-Kernel-Wrapper-Klasse erledigen
 		 File objFileConfig = objKernel.getFileConfigByAlias("IPPage");
-		 String sFile = objKernel.getParameterByProgramAlias(objFileConfig, "ProgPage", "TargetFile");
-		 String sDir = objKernel.getParameterByProgramAlias(objFileConfig, "ProgPage", "TargetDirectory");
+		 String sFile = objKernel.getParameterByProgramAlias(objFileConfig, "ProgPage", "TargetFile").getValue(); 
+		 String sDir = objKernel.getParameterByProgramAlias(objFileConfig, "ProgPage", "TargetDirectory").getValue(); 
 		 if(sDir==null||sDir.equals("")){
 		 	ExceptionZZZ ez = new ExceptionZZZ(objKernel.sERROR_CONFIGURATION_MISSING+"'TargetDirectory' of Program 'ProgPage'", objKernel.iERROR_CONFIGURATION_MISSING, ReflectCodeZZZ.getMethodCurrentName(), "");
 		 	throw ez;

@@ -55,11 +55,11 @@ public class KernelPingHostZZZTest extends TestCase {
 			
 			
 			//++ Proxy aufbauen'
-			String sProxyHost = objKernel.getParameter("ProxyHost");
+			String sProxyHost = objKernel.getParameter("ProxyHost").getValue();
 			if(StringZZZ.isEmpty(sProxyHost)){
 				
 			}else{
-				String sProxyPort = objKernel.getParameter("ProxyPort");
+				String sProxyPort = objKernel.getParameter("ProxyPort").getValue();
 				
 				System.setProperty( "proxySet", "true" );
 				System.setProperty( "proxyHost", sProxyHost);
