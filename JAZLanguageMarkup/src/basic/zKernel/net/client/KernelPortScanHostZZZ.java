@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 import basic.zKernel.KernelZZZ;
 
 public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 	private String sHost = null;
-	private String sPortKnown = null; //Der Port wird für den 
+	private String sPortKnown = null; //Der Port wird fï¿½r den 
 	public final static String sPORT_KNOWN = "80";
 	private ArrayList listaPortConnected = new ArrayList();
 	private int iPortRangeLowest;
@@ -23,7 +24,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 	private boolean bFlagUnknownHost=false;
 	private boolean bFlagHasRuntimeError=false;
 	
-	public KernelPortScanHostZZZ(KernelZZZ objKernel, String sHost, String[] saFlagControl) throws ExceptionZZZ{
+	public KernelPortScanHostZZZ(IKernelZZZ objKernel, String sHost, String[] saFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		KernelPortScanHostNew_(sHost, saFlagControl);
 	}
@@ -51,7 +52,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 	 * The ports found will be filled from the started threads in an arraylist, which you can receive with .getPortConnected().
 	 * This arraylist will be cleared on every scan.
 	 * 
-	 * If the scan finishes without an error, it returns true. This doesn´t mean, that there was any open port found !!!
+	 * If the scan finishes without an error, it returns true. This doesnï¿½t mean, that there was any open port found !!!
 	 * If the scan finishes with an unknownHost-Error, it will return false..
 	 * @param iPortRangeLowestIn
 	 * @param iPortRangeHighestIn
@@ -81,7 +82,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 					throw ez;
 				}
 				
-				//Vor den Scans das durchführen. Merke: Während des Scans wird das auch immer wieder überprüft.
+				//Vor den Scans das durchfï¿½hren. Merke: Wï¿½hrend des Scans wird das auch immer wieder ï¿½berprï¿½ft.
 				boolean btemp = KernelPingHostZZZ.isHostKnown(this.sHost, this.getPortKnown());
 				if(btemp==false){
 					this.setFlag("IsUnknownHost", true);
@@ -89,7 +90,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 					throw ez;
 				}
 			}//END check:
-		//Damit wird ein vorheriger Port-Scan wieder "gelöscht"
+		//Damit wird ein vorheriger Port-Scan wieder "gelï¿½scht"
 		this.listaPortConnected.clear();
 
 		int iStorageSize = this.getThreadStorageSize();
@@ -121,12 +122,12 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 						//System.out.println("Waiting for finished runner thread. Scanning port: "+iPort);
 						Thread.sleep(200);
 					}else{
-						Thread.sleep(10);   //Damit schläft DIESER Thread und nicht th
+						Thread.sleep(10);   //Damit schlï¿½ft DIESER Thread und nicht th
 					}					
 				}catch(InterruptedException ex){					
 				}				
 			}while(bStored==false);
-			th.start();  //Der Thread füllt die Arraylist der Portscans
+			th.start();  //Der Thread fï¿½llt die Arraylist der Portscans
 			try{
 				Thread.sleep(1);
 			}catch(InterruptedException ex){					
@@ -141,7 +142,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 						this.setFlag("HasRuntimeError", true); //Anders als ein UnknownHost-Fehler beim Check des Scanns.
 						break main;
 					}else{
-						break; // es reicht ein runner-objekt auf den "UnknownHost" Fehler zu prüfen.
+						break; // es reicht ein runner-objekt auf den "UnknownHost" Fehler zu prï¿½fen.
 					}
 				}
 			}//END for

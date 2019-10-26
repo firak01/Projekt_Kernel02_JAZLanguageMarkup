@@ -9,6 +9,7 @@ import java.net.UnknownHostException;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 
 import basic.zKernel.KernelZZZ;
@@ -26,18 +27,18 @@ public class KernelServerTcpZZZ extends KernelUseObjectZZZ implements Runnable{
 	private boolean bFlagIsTimeout = false;
 	private boolean bFlagHasError = false;
 		
-	public static final int BACKLOG = 20;    //Die Anzahl der Verbindungen, die gleichzeitig verarbeitet werden können, bevor der Server die Meldung "ausgelastet" zurückgibt.
-	public static final int iTIMEOUT_CONNECTED = 60000;  //Die Zeit, welche für einen Timeout eingestellt wird.
+	public static final int BACKLOG = 20;    //Die Anzahl der Verbindungen, die gleichzeitig verarbeitet werden kï¿½nnen, bevor der Server die Meldung "ausgelastet" zurï¿½ckgibt.
+	public static final int iTIMEOUT_CONNECTED = 60000;  //Die Zeit, welche fï¿½r einen Timeout eingestellt wird.
 	private int iTimeout=-1; //d.h. bei -1 wird der defaultwert genommen. Zeit in Millisekunden. Gesetzt mit setTimeout(..). 
 	
 	
-	public KernelServerTcpZZZ(KernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ{
+	public KernelServerTcpZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		KernelServerTcpNewFlag_(saFlagControl);
 		//Bei diesem Konstruktor ist man darauf angewiesen, dass der Host und der Port ggf. gesetzt werden.
 	}
 	
-	public KernelServerTcpZZZ(KernelZZZ objKernel, String sHost, String sPort, String[] saFlagControl) throws ExceptionZZZ{
+	public KernelServerTcpZZZ(IKernelZZZ objKernel, String sHost, String sPort, String[] saFlagControl) throws ExceptionZZZ{
 		super(objKernel);
 		boolean btemp = KernelServerTcpNewFlag_(saFlagControl);
 		if(btemp==true){
@@ -91,7 +92,7 @@ public boolean start(){
 	try{
 		main:{
 			check:{
-				//Ggf. ist es notwendig vorher zu prüfen, ob irgendwelche Randbedingungen (z.B. ist die Netzwerkverbindung hergestellt erfüllt sind.
+				//Ggf. ist es notwendig vorher zu prï¿½fen, ob irgendwelche Randbedingungen (z.B. ist die Netzwerkverbindung hergestellt erfï¿½llt sind.
 				boolean btemp = this.customQueryProcess();
 				if(btemp == false){
 					String stemp = "(" + this.sHost +":"+this.sPort+")";
@@ -105,7 +106,7 @@ public boolean start(){
 			try{
 				this.objSockServer = new ServerSocket(this.getPort(), BACKLOG, this.getHost());		
 				
-				//TODO Dies Konfigurierbar machen, so dass eine Klasse, die hiervon erbt individuell die TimeoutZeit einstellen kann (falls überhaupt gewünscht)
+				//TODO Dies Konfigurierbar machen, so dass eine Klasse, die hiervon erbt individuell die TimeoutZeit einstellen kann (falls ï¿½berhaupt gewï¿½nscht)
 				int iTimeout = this.getTimeout();
 				if(iTimeout >= 1){
 					this.objSockServer.setSoTimeout(iTimeout); //60000 Millisekunden, d.h. jede Minute erwarte ich eine Connection.
@@ -134,10 +135,10 @@ public boolean start(){
 							this.setFlag("istimeout", true);
 							///? das haserrror flag ebenfalls auf false setzen ???
 							customProcessOnTimeoutConnected();
-							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close(); //Sonst müssen vom Client immer wieder neue Ports zur Verfügung gestellt werden.
+							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close(); //Sonst mï¿½ssen vom Client immer wieder neue Ports zur Verfï¿½gung gestellt werden.
 						}else{
 							customProcessOnTimeout();
-							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();  //Sonst müssen vom Client immer wieder neue Ports zur Verfügung gestellt werden.
+							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();  //Sonst mï¿½ssen vom Client immer wieder neue Ports zur Verfï¿½gung gestellt werden.
 						}						
 						break; //Damit die innere do while schleife verlassen, es ist ein timeout-fall.
 					}
@@ -145,11 +146,11 @@ public boolean start(){
 					this.setFlag("isconnected", true);
 					this.setFlag("HasError", false);
 					customProcess();
-					if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();  //Sonst müssen vom Client immer wieder neue Ports zur Verfügung gestellt werden.
+					if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();  //Sonst mï¿½ssen vom Client immer wieder neue Ports zur Verfï¿½gung gestellt werden.
 					//TODO GOON Warum werden soviele Ports beim Client "verbraucht"
-					//Danach wird die Verbindung zum Pingenden Client abgebrochen  !!! Darum nicht tun. if(this.getServerSocketObject()!=null) this.getServerSocketObject().close();      //Sonst müssen vom Client immer wieder neue Ports zur Verfügung gestellt werden.
+					//Danach wird die Verbindung zum Pingenden Client abgebrochen  !!! Darum nicht tun. if(this.getServerSocketObject()!=null) this.getServerSocketObject().close();      //Sonst mï¿½ssen vom Client immer wieder neue Ports zur Verfï¿½gung gestellt werden.
 				}while(this.objSockCur!=null);
-				}while(true); //Endlasschleife, die auch im timeoutfall bewirkt, dass der server weiter läuft.
+				}while(true); //Endlasschleife, die auch im timeoutfall bewirkt, dass der server weiter lï¿½uft.
 			}catch(IOException e){
 				String stemp = "(" + this.sHost +":"+this.sPort+")";
 				ExceptionZZZ ez = new ExceptionZZZ("IOException thrown. " + stemp + ": " + e.getMessage(), iERROR_RUNTIME, this, ReflectCodeZZZ.getMethodCurrentName());
@@ -161,11 +162,11 @@ public boolean start(){
 						this.getServerSocketObject().close();
 						if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();
 					} catch (IOException e) {
-						//Da dies im finally ausgeführt wird, erwarte ich keinen Fehler, der durch .accept() ausgelöst werden könnte.
+						//Da dies im finally ausgefï¿½hrt wird, erwarte ich keinen Fehler, der durch .accept() ausgelï¿½st werden kï¿½nnte.
 						e.printStackTrace();
 						this.setFlag("HasError", true);
 					}		
-					bReturn = true; /*wird also nur return zurückgebgeben, wenn ein ServerSocket mal erfolgreich initialisiert worden ist */
+					bReturn = true; /*wird also nur return zurï¿½ckgebgeben, wenn ein ServerSocket mal erfolgreich initialisiert worden ist */
 				}
 				this.getLogObject().WriteLineDate("listener ended. #" + ReflectCodeZZZ.getMethodCurrentName());
 			}						
