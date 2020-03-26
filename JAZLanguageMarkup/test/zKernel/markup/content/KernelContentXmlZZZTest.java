@@ -108,7 +108,7 @@ public class KernelContentXmlZZZTest extends TestCase{
 			FileEasyZZZ.removeDirectory(sDirectoryTest, true);  //Ziel: Das Verzeichnis mit allem was darin ist l�schen !!!
 			FileEasyZZZ.makeDirectory(sDirectoryTest);
 			
-			String[] saFlag = {"ExpansionAppend"};
+			String[] saFlag = {"use_file_expansion"};
 			KernelFileZZZ objFileZ = new KernelFileZZZ(sDirectoryTest, "test.xml", 3, saFlag);
 			//+++++++++++++++++++++++++++++++++++++++++++++
 			File objFile = new File(objFileZ.PathNameTotalExpandedNextCompute());  //.getNameExpandedNext());
@@ -256,7 +256,7 @@ public class KernelContentXmlZZZTest extends TestCase{
 			FileEasyZZZ.removeDirectory(sDirectoryTest, true);  //Ziel: Das Verzeichnis mit allem was darin ist l�schen !!!
 			FileEasyZZZ.makeDirectory(sDirectoryTest);
 			
-			String[] saFlag = {"ExpansionAppend"};
+			String[] saFlag = {"use_file_expansion"};
 			KernelFileZZZ objFileZ = new KernelFileZZZ(sDirectoryTest, "test.xml", 3, saFlag);
 			File objFile = null; //Variable f�r die einzelnen Dateien
 			
@@ -266,11 +266,11 @@ public class KernelContentXmlZZZTest extends TestCase{
 			//File objFileXml = objKernel.getParameterFileByProgramAlias(this.getClass().getName(), "XML_CONTENT", "FileToRead");  //Merke: Der ApplicationKey ist schon im KernelObject vorgegeben.
 			File objFileXml = objKernel.getParameterFileByProgramAlias("Test", "XML_CONTENT", "FileToRead");
 			if(objFileXml==null){
-				ExceptionZZZ ez = new ExceptionZZZ("Kann Datei f�r diesen Test nicht finden.", KernelZZZ.iERROR_CONFIGURATION_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+				ExceptionZZZ ez = new ExceptionZZZ("Kann Datei für diesen Test nicht finden.", KernelZZZ.iERROR_CONFIGURATION_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;
 			}			
 			if(objFileXml.exists()==false){
-				ExceptionZZZ ez = new ExceptionZZZ("Die f�r diesen Test angegebene Datei existiert nicht: '" + objFileXml.getPath() + "'", KernelZZZ.iERROR_CONFIGURATION_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+				ExceptionZZZ ez = new ExceptionZZZ("Die für diesen Test angegebene Datei existiert nicht: '" + objFileXml.getPath() + "'", KernelZZZ.iERROR_CONFIGURATION_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;
 			}
 			
