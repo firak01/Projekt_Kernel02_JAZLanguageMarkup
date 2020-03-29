@@ -28,7 +28,9 @@ import basic.zKernel.html.TagTypeZHtmlZZZ;
 import basic.zKernel.html.TagZHtmlZZZ;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.markup.content.KernelContentXmlZZZ;
+import basic.zUtil.io.IFileExpansionZZZ;
 import basic.zUtil.io.KernelFileZZZ;
+import custom.zUtil.io.FileExpansionZZZ;
 
 public class KernelContentXmlZZZTest extends TestCase{
 	private KernelZZZ objKernel;
@@ -66,7 +68,7 @@ public class KernelContentXmlZZZTest extends TestCase{
 	//Die Tests		
 	public void testContructor(){
 		
-		//try{ 
+//		try{ 
 				//+++ Hier wird ein Fehler erwarte
 				KernelContentXmlZZZ objContentInit = new ContentXmlDummyZZZ();
 				boolean btemp = objContentInit.getFlag("init");
@@ -90,9 +92,9 @@ public class KernelContentXmlZZZTest extends TestCase{
 				assertNotNull(objKernelLog);				
 				objKernelLog.Write(ReflectCodeZZZ.getMethodCurrentName() + "# succesfully created");
 					
-		//}catch(ExceptionZZZ ez){
-		//	fail("Method throws an exception." + ez.getMessageLast());			
-		//}
+//		}catch(ExceptionZZZ ez){
+//			fail("Method throws an exception." + ez.getMessageLast());			
+//		}
 	}//END testConstructor
 	
 	public void testSetGetVarFromString(){
@@ -109,7 +111,8 @@ public class KernelContentXmlZZZTest extends TestCase{
 			FileEasyZZZ.makeDirectory(sDirectoryTest);
 			
 			String[] saFlag = {"use_file_expansion"};
-			KernelFileZZZ objFileZ = new KernelFileZZZ(sDirectoryTest, "test.xml", 3, saFlag);
+			IFileExpansionZZZ objFileExpansion = new FileExpansionZZZ('0',3);
+			KernelFileZZZ objFileZ = new KernelFileZZZ(sDirectoryTest, "test.xml", objFileExpansion, saFlag);
 			//+++++++++++++++++++++++++++++++++++++++++++++
 			File objFile = new File(objFileZ.PathNameTotalExpandedNextCompute());  //.getNameExpandedNext());
 			objContentTest.toFile(objFile);
@@ -257,7 +260,8 @@ public class KernelContentXmlZZZTest extends TestCase{
 			FileEasyZZZ.makeDirectory(sDirectoryTest);
 			
 			String[] saFlag = {"use_file_expansion"};
-			KernelFileZZZ objFileZ = new KernelFileZZZ(sDirectoryTest, "test.xml", 3, saFlag);
+			IFileExpansionZZZ objFileExpansion = new FileExpansionZZZ('0',3);
+			KernelFileZZZ objFileZ = new KernelFileZZZ(sDirectoryTest, "test.xml", objFileExpansion, saFlag);
 			File objFile = null; //Variable f�r die einzelnen Dateien
 			
 			
