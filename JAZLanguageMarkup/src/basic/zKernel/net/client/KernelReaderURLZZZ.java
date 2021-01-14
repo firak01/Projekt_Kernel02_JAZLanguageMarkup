@@ -25,6 +25,7 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
+import basic.zBasic.util.file.ResourceEasyZZZ;
 import basic.zBasic.util.web.cgi.UrlLogicZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 
@@ -231,8 +232,8 @@ private boolean connect_(boolean bFlagUseAccount) throws ExceptionZZZ{
 			if(UrlLogicZZZ.hasProtocolValid(sUrl)){
 				sUrlToUse = sUrl;				
 			}else{
-				File objFile = FileEasyZZZ.searchFile(sUrl);
-				String sFilePath = objFile.getAbsolutePath();				
+				File objFile = ResourceEasyZZZ.searchFile(sUrl);//Jetzt nicht einfach FileEasyZZZ.searchFile, sondern aust einer JAR Datei ggfs. die HTML-Datei auslesen.
+                String sFilePath = objFile.getAbsolutePath();				
 				sUrlToUse = "file" + UrlLogicZZZ.sURL_SEPARATOR_PROTOCOL_FILE + sFilePath;	//Ein Slash mehr als das Protokoll
 			}
 			System.out.println(ReflectCodeZZZ.getPositionCurrent()+"#Verwende Url: '" + sUrlToUse + "'");
