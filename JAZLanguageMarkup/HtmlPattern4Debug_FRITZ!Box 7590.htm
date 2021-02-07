@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="de"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="private, no-transform">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta http-equiv="cleartype" content="on">
+<link rel="shortcut icon" type="image/x-icon" href="http://192.168.3.253/favicon.ico">
+<link rel="apple-touch-icon" href="http://192.168.3.253/css/rd/logos/logo_fritzDiamond.png">
+<link rel="apple-touch-startup-image" href="http://192.168.3.253/css/rd/logos/logo_fritzDiamond.png">
+<style>
+@font-face {
+font-family: 'AVM';
+src: url('/css/rd/fonts/metaWebProBold.woff') format('woff');
+font-weight: bold;
+}
+@font-face {
+font-family: 'Source Sans Pro';
+font-style: normal;
+font-weight: 400;
+src: url('/css/rd/fonts/sourcesanspro.woff') format('woff');
+}
+@font-face {
+font-family: 'Source Sans Pro';
+font-style: normal;
+font-weight: 600;
+src: url('/css/rd/fonts/sourcesansproBold.woff') format('woff');
+}
+@font-face {
+font-family: 'Hack';
+font-style: normal;
+font-weight: 400;
+src: url('/css/rd/fonts/hack.woff') format('woff');
+}
+html, input, textarea, keygen, select, button {
+font-family: 'Source Sans Pro', Arial, sans-serif;
+font-size: 100%;
+}
+.blue_bar_title,
+.logoArea {
+font-family: 'AVM', 'Source Sans Pro', Arial, sans-serif;
+}
+.monospace {
+font-family: 'Hack', monospace;
+}
+</style>
+
+<link rel="stylesheet" type="text/css" href="FRITZ%21Box%207590-Dateien/main.css">
+<title>FRITZ!Box 7590</title>
+<script class="oldpage" src="FRITZ%21Box%207590-Dateien/chartist.js"></script><link rel="stylesheet" type="text/css" href="FRITZ%21Box%207590-Dateien/chartist.css" class="oldpage"><link rel="stylesheet" type="text/css" href="FRITZ%21Box%207590-Dateien/chartistplugins.css" class="oldpage"><link rel="stylesheet" type="text/css" href="FRITZ%21Box%207590-Dateien/inetstat.css" class="oldpage"><style class="oldpage">
+main table.newzebra {
+border-collapse: collapse;
+width: 100%;
+margin: 1rem 0;
+}
+main table.newzebra td,
+main table.newzebra th {
+padding: 0.125rem 0.5rem;
+}
+main table.newzebra td {
+vertical-align: top;
+}
+main table.newzebra tbody tr:nth-of-type(even) {
+background-color: #f7f7f5;
+}
+main table.newzebra tbody tr:nth-of-type(odd) {
+background-color: #ffffff;
+}
+main table.newzebra thead tr {
+background-color: #d7e9f7;
+}
+main table.newzebra thead th {
+height: 2rem;
+color: #7b90a0;
+}
+#uiInternetMonitor table.newzebra tbody tr td {
+width: auto;
+}
+#uiInternetMonitor table.newzebra tbody tr td.connhead {
+width: 10rem;
+}
+#uiInternetMonitor table.newzebra tbody tr td.connstate {
+width: 1.6rem;
+background-position: right 0.35rem;
+}
+.IMonHead {
+width: 10rem;
+}
+.IMonIcon {
+width: 1.6rem;
+}
+.IMonDetail {
+width: auto;
+}
+@media (max-width: 63.9375em) {
+#uiInternetMonitor table.newzebra tbody tr td.connhead {
+width: 7.5rem;
+}
+#uiInternetMonitor table.newzebra tbody tr td.connstate {
+width: 1.5rem;
+}
+.IMonHead {
+width: 7.5rem;
+}
+.IMonIcon {
+width: 1.5rem;
+}
+}
+@media (max-width: 37.5em) {
+#uiInternetMonitor table.newzebra tbody tr td.connhead {
+width: 4rem;
+}
+}
+.ct-chart .ct-label.ct-vertical.ct-start {
+word-break: normal;
+line-height: 1;
+}
+.ct-chart .ct-label, .ct-chart .ct-extended.ct-label {
+fill: black;
+}
+.ct-label.ct-horizontal.ct-end {
+justify-content: center;
+color: #3f464c;
+}
+span.downstream,
+span.upstream {
+background-position: 0 -0.25rem;
+padding-left: 1rem;
+padding-bottom: 0.35rem;
+width: auto;
+}
+</style><script class="oldpage" src="FRITZ%21Box%207590-Dateien/chartistplugins.js"></script><script class="oldpage">if (typeof jxl === 'undefined') {
+location.href = "/";
+}
+
+
+var g_Timer;
+var g_refresh_interval_object = null;
+var g_refresh_time = 30000;
+var g_aktPageRefreshTime = g_refresh_time;
+var g_cfg = {"sample_interval":5000,"num_samples":20,"num_sgs":1,"names":["sync_dsl"]};
+var g_nqos = convertNqosValues([{"us_bps_curr_max":552,"us_default_bps_curr":[16,0,0,0,0,32,16,0,0,0,0,0,0,0,0,0,0,16,0,16],"ds_bps_max":7776625,"_node":"sg0","mode":"VDSL","ds_mc_bps_curr":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"ds_bps_curr":[51,18,79,18,28,39,58,459,18,18,38,40,40,18,33,18,1357,56,74,18],"us_bps_max":1555375,"dynamic":false,"us_realtime_bps_curr":[40,26,62,26,27,26,90,538,27,26,63,494,40,26,27,26,54,26,103,26],"downstream":6.2213e+07,"upstream":1.2443e+07,"name":"sync_dsl","guest_us_bps":[0],"ds_guest_bps_curr":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"us_background_bps_curr":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"ds_bps_curr_max":1357,"us_important_bps_curr":[0,0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,13,40,0,0]}]);
+function convertNqosValues(obj) {
+obj = obj || [];
+var len = Math.min(obj.length, g_cfg.num_sgs);
+for (var i = 0; i < len; i++) {
+obj[i].us_realtime_bps_curr = bpsToIntArray(obj[i].us_realtime_bps_curr || "");
+obj[i].us_important_bps_curr = bpsToIntArray(obj[i].us_important_bps_curr || "");
+obj[i].us_default_bps_curr = bpsToIntArray(obj[i].us_default_bps_curr || "");
+obj[i].us_background_bps_curr = bpsToIntArray(obj[i].us_background_bps_curr || "");
+obj[i].ds_bps_curr = bpsToIntArray(obj[i].ds_bps_curr || "");
+// Check if Guest Traffic exsit... sometimes Lua translates Empty Strings to an Array of one item of "0"
+if (obj[i].ds_guest_bps_curr && Array.isArray(obj[i].ds_guest_bps_curr) && obj[i].ds_guest_bps_curr.length >1) {
+obj[i].ds_guest_bps_curr = bpsToIntArray(obj[i].ds_guest_bps_curr || "");
+}
+// Check if Guest Traffic exsit... sometimes Lua translates Empty Strings to an Array of one item of "0"
+if (obj[i].guest_us_bps && Array.isArray(obj[i].guest_us_bps) && obj[i].guest_us_bps.length > 1) {
+obj[i].guest_us_bps = bpsToIntArray(obj[i].guest_us_bps || "");
+}
+obj[i].ds_mc_bps_curr = bpsToIntArray(obj[i].ds_mc_bps_curr || "");
+if (obj[i].dynamic) {
+var nMax = parseInt(obj[i].us_bps_curr_max, 10);
+if (nMax) {
+obj[i].upstream = 8 * nMax;
+}
+nMax = parseInt(obj[i].ds_bps_curr_max, 10);
+if (nMax) {
+obj[i].downstream = 8 * nMax;
+}
+obj[i].upstream = Math.max(10000, Math.floor(11 * obj[i].upstream / 10));
+obj[i].downstream = Math.max(10000, Math.floor(11 * obj[i].downstream / 10));
+}
+}
+return obj;
+}
+function bpsToIntArray(bps) {
+for (var i = 0, len = bps.length; i < len; i++) {
+bps[i] = (parseInt(bps[i],10) || 0) * 8;
+}
+return bps.splice(0).reverse();
+}
+// Add the value of the previous data serie array to the next array item within the serie.
+// This process enables the data base for drawing a stracked Line / Area chart
+function makeAddedValues(valArrs) {
+var workOnData, result, numberOfDataSeries, numberOfDataItems, counterDataSeries, counterDataItems;
+//valArrs = valArrs.slice(0).reverse();
+// Remove the the first Data series, Florian do not know why, but Yakup did for an unknown purpose
+// Upstream has an EdgeCase of one DataSerie only with one Empty Array, which has to be deleted
+// Guess: The Upstream for Guest Traffic is sometimes an empty Array. In that Edge Case delete that Empty data from the rendering data set
+if(valArrs[valArrs.length -1].length <= 1 ) {
+workOnData = valArrs.slice(0, valArrs.length -1);
+} else {
+workOnData = valArrs.slice(0, valArrs.length);
+}
+// Change the order of the data series arrangement
+// The first item should be on the top of the stacked area chart
+workOnData = workOnData.reverse();
+// Definitionsbereich Menge der dargestellten Daten im Chart
+numberOfDataSeries = workOnData.length;
+numberOfDataItems = workOnData[1].length;
+// Create Final DataSeries Array
+result = [];
+var previousValue = 0;
+var currentValue = 0;
+for (counterDataSeries = 0; counterDataSeries < numberOfDataSeries; counterDataSeries++) {
+result[counterDataSeries] = [];
+for (counterDataItems = 0; counterDataItems < numberOfDataItems; counterDataItems++) {
+currentValue = workOnData[counterDataSeries][counterDataItems];
+// Fallback solution if no DataItem exist within the previous dataSeries
+if(isNaN(currentValue) || (typeof currentValue === 'undefined')) {
+currentValue = 0
+}
+// The first data series are transferred into the result without any operation
+if(counterDataSeries === 0) {
+result[counterDataSeries][counterDataItems] = currentValue;
+} else {
+// Add DataItem of the previous DataSerie to the current DataItem for establishing a stacked Area Chart Rendering
+previousValue = result[counterDataSeries - 1][counterDataItems];
+result[counterDataSeries][counterDataItems] = previousValue + currentValue;
+}
+}
+}
+// Change the order into the oppsite direction for a chart drawing from right to left
+// Most current and new data items are added at the end of the chart
+return result.reverse();
+}
+function stopTimer() {
+if (g_Timer) {
+window.clearTimeout(g_Timer);
+g_Timer = null;
+}
+}
+function calcTicks(maxValue)
+{
+var lastPercent, scaleCount, suffix;
+lastPercent = 0.9;
+scaleCount = 4;
+suffix = Math.pow(10, String(maxValue).length - 1);
+var step = parseInt(Math.ceil(maxValue / suffix));
+var num = scaleCount - 1;
+while (((step * suffix / scaleCount) * (num)) > (maxValue * lastPercent)) {
+scaleCount = scaleCount + 1;
+if ((scaleCount + num) > 10) {
+break;
+}
+}
+step = step * suffix / scaleCount;
+var ticks = [];
+for (var i = 0; i < (maxValue * lastPercent); i = i + step) {
+ticks.push(i);
+}
+ticks.push(maxValue);
+return ticks;
+}
+function getOptions(maxValue)
+{
+var ticks = calcTicks(maxValue);
+var extendedScaleOptions =
+{
+axisX: {
+text: "Zeit in s",
+textAlign: "right",
+labelPercentOffset: -50
+},
+axisY: {
+text: "Geschwindigkeit in kbit/s"
+},
+dotted: true
+};
+var options = {
+low: 0,
+axisY: {
+type: Chartist.FixedScaleAxis,
+ticks: ticks,
+low: 0,
+high: maxValue,
+offset: 55,
+labelOffset: {
+y: 6
+},
+showGrid: false,
+scaleMinSpace: 10,
+labelInterpolationFnc: function(val, axis) {
+if (val === 0) {
+return val;
+}
+else if (maxValue < ticks.length * 1000) {
+return (val / 1000).toFixed(3).replace(".",",");
+} else {
+return dottedStr(val/1000);
+}
+}
+},
+axisX: {
+showGrid: false,
+labelInterpolationFnc: function(val, axis) {
+if (axis % 4 == 0 || axis == 19) {
+return val;
+}
+}
+},
+plugins: [ ctplugins.ctRect({showBg: true}),
+ctplugins.ctScaleExtended(extendedScaleOptions)
+],
+chartPadding:20,
+showPoint: false,
+showLine: false,
+showArea: true,
+lineSmooth: false,
+fullWidth: true
+};
+if (maxValue) {
+options.high = maxValue;
+}
+return options;
+}
+function getLabels(data) {
+var labels, i, n;
+labels = new Array(data.length);
+n = data.length;
+for (i = 0; i < n; i = i +1) {
+labels[i] = 5 * i - 100;
+};
+return labels;
+}
+var g_charts = [];
+function drawChart(idx) {
+var idDown = "uiQosDown" + idx;
+var idUp = "uiQosUp" + idx;
+var seriesDown;
+var seriesUp;
+if (g_charts[idDown]) {
+g_charts[idDown].detach();
+}
+if (g_charts[idUp]) {
+g_charts[idUp].detach();
+}
+var ds_mc_bps_curr = g_nqos[idx].ds_mc_bps_curr.slice(0);
+var ds_bps_curr = g_nqos[idx].ds_bps_curr.slice(0);
+if (g_nqos[idx].ds_guest_bps_curr && Array.isArray(g_nqos[idx].ds_guest_bps_curr) && g_nqos[idx].ds_guest_bps_curr.length > 1) {
+seriesDown = [ds_bps_curr, makeAddedValues([g_nqos[idx].ds_guest_bps_curr.slice(0), ds_mc_bps_curr])[0], ds_mc_bps_curr];
+} else {
+seriesDown = [ds_bps_curr, [0], ds_mc_bps_curr];
+}
+if (g_nqos[idx].guest_us_bps && Array.isArray(g_nqos[idx].guest_us_bps) && g_nqos[idx].guest_us_bps.length > 1) {
+seriesUp = makeAddedValues([g_nqos[idx].us_realtime_bps_curr, g_nqos[idx].us_important_bps_curr, g_nqos[idx].us_default_bps_curr, g_nqos[idx].us_background_bps_curr, g_nqos[idx].guest_us_bps]);
+} else {
+seriesUp = makeAddedValues([g_nqos[idx].us_realtime_bps_curr, g_nqos[idx].us_important_bps_curr, g_nqos[idx].us_default_bps_curr, g_nqos[idx].us_background_bps_curr]);
+}
+g_charts[idDown] = new Chartist.Line(jxl.get(idDown), {labels:getLabels(ds_bps_curr), series: seriesDown},
+getOptions(g_nqos[idx].downstream));
+g_charts[idUp] = new Chartist.Line(jxl.get(idUp), {series: seriesUp, labels:getLabels(g_nqos[idx].us_important_bps_curr)}, getOptions(g_nqos[idx].upstream));
+}
+function nqosConflict(newNqos) {
+if (g_cfg.num_sgs !== newNqos.length) {
+return true;
+}
+var i = g_cfg.num_sgs;
+while (i > 0) {
+i--;
+if (g_cfg.names[i] !== newNqos[i].name) {
+return true;
+}
+}
+return false;
+}
+function updateNqosValues() {
+var my_url = "/internet/inetstat_monitor.lua?sid=a24a2f2f3ee4e902&myXhr=1&action=get_graphic";
+var jsonParse = makeJSONParser();
+stopTimer();
+sendUpdateRequest();
+function sendUpdateRequest() {
+ajaxGet(my_url, cbUpdateValues);
+}
+function cbUpdateValues(xhr) {
+var txt, seriesDown, seriesUp;
+txt = xhr.responseText || "null";
+if (xhr.status != 200) {
+txt = "null";
+}
+var newNqos = jsonParse(txt);
+if (!newNqos) {
+return;
+}
+if (nqosConflict(newNqos)) {
+uiDoRefresh();
+return;
+}
+newNqos = convertNqosValues(newNqos);
+for (var i = 0; i < g_cfg.num_sgs; i++) {
+if (newNqos[i].dynamic || g_nqos[i].upstream != newNqos[i].upstream || g_nqos[i].downstream != newNqos[i].downstream) {
+g_nqos[i] = newNqos[i];
+drawChart(i);
+} else {
+var ds_mc_bps_curr = newNqos[i].ds_mc_bps_curr.slice(0);
+var ds_bps_curr = newNqos[i].ds_bps_curr.slice(0);
+if (newNqos[i].ds_guest_bps_curr) {
+seriesDown = [ds_bps_curr, makeAddedValues([newNqos[i].ds_guest_bps_curr.slice(0), ds_mc_bps_curr])[0], ds_mc_bps_curr];
+} else {
+seriesDown = [ds_bps_curr, [0], ds_mc_bps_curr];
+}
+if (g_nqos[i].guest_us_bps) {
+seriesUp = makeAddedValues([newNqos[i].us_realtime_bps_curr,newNqos[i].us_important_bps_curr,newNqos[i].us_default_bps_curr,newNqos[i].us_background_bps_curr,newNqos[i].guest_us_bps]);
+} else {
+seriesUp = makeAddedValues([newNqos[i].us_realtime_bps_curr,newNqos[i].us_important_bps_curr,newNqos[i].us_default_bps_curr,newNqos[i].us_background_bps_curr]);
+}
+g_charts["uiQosDown" + i].update({labels:getLabels(ds_bps_curr), series: seriesDown});
+g_charts["uiQosUp" + i].update({labels:getLabels(newNqos[i].us_default_bps_curr), series: seriesUp});
+}
+g_nqos[i] = newNqos[i];
+}
+g_Timer = jxl.setTimeout(sendUpdateRequest, g_cfg.sample_interval);
+}
+}
+function numToStr3(num) {
+var prefix = "";
+if (num < 100) {
+prefix += "0";
+}
+if (num < 10) {
+prefix += "0";
+}
+return prefix + num;
+}
+function dottedStr(num, round) {
+var result = [];
+var z = parseInt(num,10);
+while (z > 999) {
+result.push(numToStr3(z % 1000));
+z = Math.floor(z/1000);
+}
+result.push(z);
+return result.reverse().join(".");
+}
+function change_time_interval_ajax(refresh_time)
+{
+g_aktPageRefreshTime = refresh_time;
+resetRefreshPageContentTimer();
+}
+function resetRefreshPageContentTimer() {
+if(g_refresh_interval_object) window.clearTimeout(g_refresh_interval_object);
+g_refresh_interval_object = jxl.setTimeout(RefreshPageContent, g_aktPageRefreshTime);
+}
+function RefreshPageContent(part)
+{
+var url = encodeURI( "/internet/inetstat_monitor.lua" );
+url = addUrlParam( url, "sid", "a24a2f2f3ee4e902" );
+url = addUrlParam( url, "no_sidrenew", 1 );
+url = addUrlParam( url, "myXhr", 1 );
+url = addUrlParam( url, "action", "get_table" );
+sendUpdateRequest();
+function sendUpdateRequest() {
+ajaxGet(url, cbUpdateTable);
+}
+function cbUpdateTable(xhr) {
+var txt = xhr.responseText || "null";
+if (xhr.status != 200) {
+resetRefreshPageContentTimer();
+return;
+}
+jxl.setHtml("uiInternetMonitor",txt);
+zebra();
+var obj=document.getElementById("uiConnectState");
+if (obj && obj.value=="5") {
+jxl.enable("uiReconnectBtn");
+}
+resetRefreshPageContentTimer();
+}
+}
+function uiDoRefresh() {
+if (g_refresh_interval_object) {
+window.clearTimeout(g_refresh_interval_object);
+}
+if (g_Timer) {
+window.clearTimeout(g_Timer);
+}
+//--location.href=""
+jxl.goTo("/internet/inetstat_monitor.lua");
+}
+function connect_again()
+{
+var url = encodeURI( "/internet/inetstat_monitor.lua" );
+url = addUrlParam( url, "sid", "a24a2f2f3ee4e902" );
+url = addUrlParam( url, "no_sidrenew", 1 );
+url = addUrlParam( url, "myXhr", 1 );
+url = addUrlParam( url, "action", "connect" );
+sendUpdateRequest();
+function sendUpdateRequest()
+{
+ajaxGet( url, cbConnected );
+}
+function cbConnected()
+{
+jxl.enable("uiReconnectBtn");
+jxl.hide("uiWarnDisconnecting");
+RefreshPageContent();
+change_time_interval_ajax(g_refresh_time);
+}
+}
+function DoDisconnectInternet()
+{
+var my_url = "/internet/inetstat_monitor.lua?sid=a24a2f2f3ee4e902&myXhr=1&action=disconnect";
+sendUpdateRequest();
+function sendUpdateRequest()
+{
+change_time_interval_ajax(2000);
+jxl.disable("uiReconnectBtn");
+jxl.show("uiWarnDisconnecting");
+ajaxGet(my_url, cbDisconnected);
+}
+function cbDisconnected()
+{
+jxl.setTimeout(connect_again, 6000);
+jxl.setTimeout(function(){change_time_interval_ajax(g_refresh_time);}, 60000);
+}
+return false;
+}
+function transitionListener(event) {
+if (event.target.id == "contentBox") {
+for (var i = 0; i < g_cfg.num_sgs; i++) {
+g_charts["uiQosDown" + i].update();
+g_charts["uiQosUp" + i].update();
+}
+}
+}
+function init()
+{
+for (var i = 0; i < g_nqos.length || 0; i++) {
+drawChart(i);
+}
+updateNqosValues();
+change_time_interval_ajax(g_refresh_time);
+RefreshPageContent();
+jxl.setTimeout(uiDoRefresh, 3600000);
+var contentBox = jxl.get("contentBox");
+if (typeof contentBox == "object") {
+jxl.addEventHandler(contentBox, "transitionend", transitionListener);
+}
+}
+ready.onReady(init);
+</script></head>
+<body class="mainTab mainBtn stickyBottom">
+<nav id="menuBox" class="" aria-live="off">
+<div class="logoBox">
+<div id="avmLogo" class="logoArea">
+FRITZ!Box 7590
+</div>
+</div>
+<div id="navigationMenu" class="menuArea">
+<div class="menue head" role="menu"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=overview" id="overview" style="-moz-box-ordinal-group: 10; order: 10;" class="menu_item icon_overview show" role="link" aria-hidden="false">Übersicht</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=inet" id="inet" style="-moz-box-ordinal-group: 30; order: 30;" class="show menu_item with_sub icon_inet open selected" role="menuitem" aria-haspopup="true" aria-hidden="false">Internet</a><div id="inetsub" class="submenu open" aria-live="polite" aria-hidden="false" aria-labelledby="inet" style="-moz-box-ordinal-group: 31; order: 31;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mNetMoni" id="mNetMoni" style="-moz-box-ordinal-group: 10; order: 10;" class="menu_item show selected" role="link" aria-hidden="false">Online-Monitor</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mCred" id="mCred" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">Zugangsdaten</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mobile" id="mobile" style="-moz-box-ordinal-group: 30; order: 30;" class="menu_item" role="link" aria-hidden="true">Mobilfunk</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=filter" id="filter" style="-moz-box-ordinal-group: 40; order: 40;" class="menu_item show" role="link" aria-hidden="false">Filter</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=shares" id="shares" style="-moz-box-ordinal-group: 50; order: 50;" class="menu_item show" role="link" aria-hidden="false">Freigaben</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mfSet" id="mfSet" style="-moz-box-ordinal-group: 65; order: 65;" class="menu_item show" role="link" aria-hidden="false">MyFRITZ!-Konto</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslInfo" id="dslInfo" style="-moz-box-ordinal-group: 75; order: 75;" class="menu_item show" role="link" aria-hidden="false">DSL-Informationen</a></div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=tel" id="tel" style="-moz-box-ordinal-group: 40; order: 40;" class="show menu_item with_sub icon_tel" role="menuitem" aria-haspopup="true" aria-hidden="false">Telefonie</a><div id="telsub" class="submenu" aria-live="polite" aria-hidden="true" aria-labelledby="tel" style="-moz-box-ordinal-group: 41; order: 41;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=calls" id="calls" style="-moz-box-ordinal-group: 10; order: 10;" class="menu_item show" role="link" aria-hidden="false">Anrufe</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=tam" id="tam" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">Anrufbeantworter</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=tBook" id="tBook" style="-moz-box-ordinal-group: 30; order: 30;" class="menu_item show" role="link" aria-hidden="false">Telefonbuch</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=tAlarm" id="tAlarm" style="-moz-box-ordinal-group: 40; order: 40;" class="menu_item show" role="link" aria-hidden="false">Weckruf</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mFax" id="mFax" style="-moz-box-ordinal-group: 50; order: 50;" class="menu_item show" role="link" aria-hidden="false">Fax</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=callHan" id="callHan" style="-moz-box-ordinal-group: 60; order: 60;" class="menu_item show" role="link" aria-hidden="false">Rufbehandlung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=telDev" id="telDev" style="-moz-box-ordinal-group: 70; order: 70;" class="menu_item show" role="link" aria-hidden="false">Telefoniegeräte</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=myNum" id="myNum" style="-moz-box-ordinal-group: 80; order: 80;" class="menu_item show" role="link" aria-hidden="false">Eigene Rufnummern</a></div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=lan" id="lan" style="-moz-box-ordinal-group: 50; order: 50;" class="show menu_item with_sub icon_lan" role="menuitem" aria-haspopup="true" aria-hidden="false">Heimnetz</a><div id="lansub" class="submenu" aria-live="polite" aria-hidden="false" aria-labelledby="lan" style="-moz-box-ordinal-group: 51; order: 51;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=meshNet" id="meshNet" style="-moz-box-ordinal-group: 14; order: 14;" class="menu_item show" role="link" aria-hidden="false">Mesh</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=net" id="net" style="-moz-box-ordinal-group: 15; order: 15;" class="menu_item show" role="link" aria-hidden="false">Netzwerk</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=usbDev" id="usbDev" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">USB-Geräte</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=nasSet" id="nasSet" style="-moz-box-ordinal-group: 30; order: 30;" class="menu_item show" role="link" aria-hidden="false">Speicher (NAS)</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mSrv" id="mSrv" style="-moz-box-ordinal-group: 40; order: 40;" class="menu_item show" role="link" aria-hidden="false">Mediaserver</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=boxname" id="boxname" style="-moz-box-ordinal-group: 50; order: 50;" class="menu_item show" role="link" aria-hidden="false">FRITZ!Box-Name</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sh" id="sh" style="-moz-box-ordinal-group: 60; order: 60;" class="menu_item show" role="link" aria-hidden="false">Smart Home</a></div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wlan" id="wlan" style="-moz-box-ordinal-group: 70; order: 70;" class="show menu_item with_sub icon_wlan" role="menuitem" aria-haspopup="true" aria-hidden="false">WLAN</a><div id="wlansub" class="submenu" aria-live="polite" aria-hidden="true" aria-labelledby="wlan" style="-moz-box-ordinal-group: 71; order: 71;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wSet" id="wSet" style="-moz-box-ordinal-group: 15; order: 15;" class="menu_item show" role="link" aria-hidden="false">Funknetz</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=chan" id="chan" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">Funkkanal</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wSecu" id="wSecu" style="-moz-box-ordinal-group: 50; order: 50;" class="menu_item show" role="link" aria-hidden="false">Sicherheit</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wTime" id="wTime" style="-moz-box-ordinal-group: 60; order: 60;" class="menu_item show" role="link" aria-hidden="false">Zeitschaltung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wGuest" id="wGuest" style="-moz-box-ordinal-group: 70; order: 70;" class="menu_item show" role="link" aria-hidden="false">Gastzugang</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wlanmesh" id="wlanmesh" style="-moz-box-ordinal-group: 80; order: 80;" class="menu_item show" role="link" aria-hidden="false">Mesh Repeater</a></div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dect" id="dect" style="-moz-box-ordinal-group: 80; order: 80;" class="show menu_item with_sub icon_dect" role="menuitem" aria-haspopup="true" aria-hidden="false">DECT</a><div id="dectsub" class="submenu" aria-live="polite" aria-hidden="true" aria-labelledby="dect" style="-moz-box-ordinal-group: 81; order: 81;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectDev" id="dectDev" style="-moz-box-ordinal-group: 10; order: 10;" class="menu_item show" role="link" aria-hidden="false">Schnurlostelefone</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectSet" id="dectSet" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">Basisstation</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectOv" id="dectOv" style="-moz-box-ordinal-group: 30; order: 30;" class="menu_item show" role="link" aria-hidden="false">DECT-Monitor</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectSer" id="dectSer" style="-moz-box-ordinal-group: 50; order: 50;" class="menu_item show" role="link" aria-hidden="false">Internetdienste</a></div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=diag" id="diag" style="-moz-box-ordinal-group: 100; order: 100;" class="show menu_item with_sub icon_diag" role="menuitem" aria-haspopup="true" aria-hidden="false">Diagnose</a><div id="diagsub" class="submenu" aria-live="polite" aria-hidden="false" aria-labelledby="diag" style="-moz-box-ordinal-group: 101; order: 101;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=funcCheck" id="funcCheck" style="-moz-box-ordinal-group: 10; order: 10;" class="menu_item show" role="link" aria-hidden="false">Funktion</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=secCheck" id="secCheck" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">Sicherheit</a></div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sys" id="sys" style="-moz-box-ordinal-group: 110; order: 110;" class="show menu_item with_sub icon_sys" role="menuitem" aria-haspopup="true" aria-hidden="false">System</a><div id="syssub" class="submenu" aria-live="polite" aria-hidden="true" aria-labelledby="sys" style="-moz-box-ordinal-group: 111; order: 111;"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=log" id="log" style="-moz-box-ordinal-group: 10; order: 10;" class="menu_item show" role="link" aria-hidden="false">Ereignisse</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=eMon" id="eMon" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item show" role="link" aria-hidden="false">Energiemonitor</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=boxname" id="boxname" style="-moz-box-ordinal-group: 50; order: 50;" class="menu_item" role="link">FRITZ!Box-Name</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mPush" id="mPush" style="-moz-box-ordinal-group: 60; order: 60;" class="menu_item show" role="link" aria-hidden="false">Push Service</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mfn" id="mfn" style="-moz-box-ordinal-group: 70; order: 70;" class="menu_item show" role="link" aria-hidden="false">Tasten und LEDs</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mUser" id="mUser" style="-moz-box-ordinal-group: 90; order: 90;" class="menu_item show" role="link" aria-hidden="false">FRITZ!Box-Benutzer</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mSave" id="mSave" style="-moz-box-ordinal-group: 100; order: 100;" class="menu_item show" role="link" aria-hidden="false">Sicherung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mUp" id="mUp" style="-moz-box-ordinal-group: 110; order: 110;" class="menu_item show" role="link" aria-hidden="false">Update</a></div></div>
+<div class="menue foot" role="menu"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wizOv" id="wizOv" style="-moz-box-ordinal-group: 1010; order: 1010;" class="menu_item icon_wizOv show" role="link" aria-hidden="false">Assistenten</a></div>
+</div>
+<div id="menuFooter" class="footer"><a id="menuFooterViewLnk" href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=expert" role="button">Ansicht: Erweitert</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sitemap">Inhalt</a><a href="http://192.168.3.253/secure_link.lua?sid=a24a2f2f3ee4e902&amp;lnk=https%3A%2F%2Fassets.avm.de%2Fmanual%2F%3Fhardware%3D226%26oem%3Davm%26language%3Dde%26country%3D049%26version%3D154.07.12%26subversion%3D" class="nocancel" target="_blank">Handbuch</a><a href="http://192.168.3.253/help/help.lua?sid=a24a2f2f3ee4e902&amp;lang=de&amp;helppage=hilfe_datenschutzerklaerung" class="nocancel" target="_blank">Rechtliches</a><a href="http://192.168.3.253/secure_link.lua?sid=a24a2f2f3ee4e902&amp;lnk=https%3A%2F%2Fwww.avm.de%2Ffritzbox-service-portal.php%3Fhardware%3D226%26oem%3Davm%26language%3Dde%26country%3D049%26version%3D154.07.12%26subversion%3D" class="nocancel" target="_blank">Tipps &amp; Tricks</a><a href="http://192.168.3.253/secure_link.lua?sid=a24a2f2f3ee4e902&amp;lnk=https%3A%2F%2Fwww.avm.de%2Fnewsletter%3Fhardware%3D226%26oem%3Davm%26language%3Dde%26country%3D049%26version%3D154.07.12%26subversion%3D" class="nocancel" target="_blank">Newsletter</a><a href="http://192.168.3.253/secure_link.lua?sid=a24a2f2f3ee4e902&amp;lnk=http%3A%2F%2Fwww.avm.de" class="nocancel" target="_blank">avm.de</a></div></nav>
+<nav id="userMenuBox" class="" aria-hidden="true" aria-live="off">
+<div class="logoBox">
+<div id="userLogo" class="logoArea">
+
+</div>
+</div>
+<div id="userMenu" class="menuArea">
+<div class="menue head" role="menu"><a href="http://192.168.3.253/myfritz?sid=a24a2f2f3ee4e902" id="myfritz" class="nocancel menu_item icon_myfritz show" style="-moz-box-ordinal-group: 80; order: 80;" role="link" aria-hidden="false">MyFRITZ!</a><a href="http://192.168.3.253/nas?sid=a24a2f2f3ee4e902" id="nas" class="nocancel menu_item icon_nas show" style="-moz-box-ordinal-group: 70; order: 70;" role="link" aria-hidden="false">FRITZ!NAS</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=liveTv" id="liveTv" style="-moz-box-ordinal-group: 65; order: 65;" class="menu_item icon_liveTv" role="link" aria-hidden="true">Live TV</a><a href="http://192.168.3.253/expert" id="expert" class="menu_item icon_expert show" style="-moz-box-ordinal-group: 40; order: 40;" role="link" aria-hidden="false">Erweiterte Ansicht</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=ssoPass" id="ssoPass" style="-moz-box-ordinal-group: 30; order: 30;" class="menu_item icon_ssoPass show" role="link" aria-hidden="false">Kennwort ändern</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=ssoSet" id="ssoSet" style="-moz-box-ordinal-group: 25; order: 25;" class="menu_item icon_ssoSet" role="link" aria-hidden="true">Kennwort setzen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=ssoEmail" id="ssoEmail" style="-moz-box-ordinal-group: 20; order: 20;" class="menu_item icon_ssoEmail" role="link" aria-hidden="true">E-Mail-Adresse ändern</a><a href="http://192.168.3.253/logout" id="logout" class="nocancel menu_item icon_logout show" style="-moz-box-ordinal-group: 10; order: 10;" role="link" aria-hidden="false"><span id="logout_timer" class="timer"> 15m 15s</span>Abmelden</a></div>
+<div class="menue foot" role="menu"></div>
+</div>
+</nav>
+<div id="uiPageTitleBox" class="breadcrumb"><div id="uiPageTitle"><div class="arrow_box">Internet</div><div class="arrow_box">Online-Monitor</div></div></div>
+<div id="disablePage"></div>
+<header id="blueBarBox" class="">
+<div id="blueBarLogo" class="blueBarLogo"></div>
+<div id="blueBarRightBox" class="blueBarRightBox">
+<div id="blueBarTitel" class="blue_bar_title hide">
+FRITZ!Box 7590
+</div>
+<div id="blueBarUserMenuIcon" class="blueBarUser " role="button" aria-haspopup="true" aria-label="Nutzermenü" aria-expanded="false" aria-controls="userMenuBox">
+
+</div>
+<a href="http://192.168.3.253/myfritz?sid=a24a2f2f3ee4e902" class="myfritz blueBarLnk nocancel" role="link" style="-moz-box-ordinal-group: 80; order: 80;">MyFRITZ!</a><a href="http://192.168.3.253/nas?sid=a24a2f2f3ee4e902" class="nas blueBarLnk nocancel" role="link" style="-moz-box-ordinal-group: 70; order: 70;">FRITZ!NAS</a></div>
+</header>
+<div id="contextHelp" title="Hilfe" class="contextHelp">
+<div></div>
+</div>
+<main id="contentBox" class="" aria-live="off">
+<nav id="tabMenu" class="tab_menu show" role="menu" aria-live="polite">
+<div><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=netMoni" id="netMoni" class="tab selected show" role="menuitem" aria-hidden="false" style="-moz-box-ordinal-group: 10; order: 10;">Online-Monitor</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=netCnt" id="netCnt" class="tab show" role="menuitem" aria-hidden="false" style="-moz-box-ordinal-group: 20; order: 20;">Online-Zähler</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=cred" id="cred" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Internetzugang</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=ipv6" id="ipv6" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 50; order: 50;">IPv6</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=lisp" id="lisp" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 60; order: 60;">LISP</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=provServ" id="provServ" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 80; order: 80;">Anbieter-Dienste</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=rootServices" id="rootServices" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 85; order: 85;">AVM-Dienste</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dnsSrv" id="dnsSrv" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 90; order: 90;">DNS-Server</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=kidLis" id="kidLis" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Kindersicherung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=kidPro" id="kidPro" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Zugangsprofile</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=trafprio" id="trafprio" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Priorisierung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=trafapp" id="trafapp" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 40; order: 40;">Listen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=portoverview" id="portoverview" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Portfreigaben</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=shareUsb" id="shareUsb" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Speicher</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=remoteHttps" id="remoteHttps" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 40; order: 40;">FRITZ!Box-Dienste</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dyndns" id="dyndns" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 50; order: 50;">DynDNS</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=shareVpn" id="shareVpn" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 60; order: 60;">VPN</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslOv" id="dslOv" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Übersicht</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslStat" id="dslStat" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">DSL</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslSpec" id="dslSpec" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Spektrum</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslGraph" id="dslGraph" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 50; order: 50;">Statistik</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslSet" id="dslSet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 60; order: 60;">Störsicherheit</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dslFeed" id="dslFeed" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 80; order: 80;">Feedback</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dialLi" id="dialLi" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Anrufliste</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dial" id="dial" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Wählhilfe</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=bookLi" id="bookLi" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Telefonbuch</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=telInt" id="telInt" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Interne Nummern</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=telDial" id="telDial" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Wählhilfe</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=alarm" id="alarm" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Wecker 1</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=alarm1" id="alarm1" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Wecker 2</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=alarm2" id="alarm2" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Wecker 3</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=fax" id="fax" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Fax senden</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=faxSet" id="faxSet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Einstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=callLock" id="callLock" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Rufsperren</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=callRedi" id="callRedi" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Rufumleitung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=callThro" id="callThro" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Callthrough</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dialList" id="dialList" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 40; order: 40;">Wahlregeln</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dialProv" id="dialProv" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 50; order: 50;">Anbietervorwahlen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=numLi" id="numLi" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Rufnummern</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=phoneline" id="phoneline" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Anschlusseinstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sipQual" id="sipQual" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Sprachübertragung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=homeNet" id="homeNet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 16; order: 16;">Mesh Übersicht</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=meshSet" id="meshSet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 17; order: 17;">Mesh Einstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=netDev" id="netDev" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Netzwerkverbindungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=netSet" id="netSet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Netzwerkeinstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=usbOv" id="usbOv" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Geräteübersicht</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=usbMode" id="usbMode" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">USB-Einstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=usbRemo" id="usbRemo" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">USB-Fernanschluss</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mServSet" id="mServSet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Einstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=rdio" id="rdio" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Internetradio</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=pod" id="pod" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Podcast</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sh_dev" id="sh_dev" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 60; order: 60;">Smart-Home-Geräte</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sh_templ" id="sh_templ" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 60; order: 60;">Vorlagen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wKey" id="wKey" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Verschlüsselung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=wps" id="wps" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">WPS-Schnellverbindung</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectMoni" id="dectMoni" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Monitor</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectMoniEx" id="dectMoniEx" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Erweiterte Informationen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectMail" id="dectMail" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">E-Mail</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=rss" id="rss" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">RSS-Nachrichten</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=dectRdio" id="dectRdio" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Internetradio / Podcast</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=liveImg" id="liveImg" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 40; order: 40;">Live-Bild</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=energy" id="energy" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Energieverbrauch</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=ecoStat" id="ecoStat" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Statistik</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=push" id="push" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Push Services</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=pushAcc" id="pushAcc" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Absender</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=fn" id="fn" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Info-Anzeige</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=led" id="led" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">LED-Anzeige</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=keyLo" id="keyLo" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Tastensperre</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=user" id="user" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Benutzer</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=userSet" id="userSet" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Anmeldung im Heimnetz</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=apps" id="apps" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Apps</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sysSave" id="sysSave" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">Sichern</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=sysImp" id="sysImp" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Wiederherstellen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=reboot" id="reboot" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">Neustart</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=default" id="default" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 40; order: 40;">Werkseinstellungen</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=update" id="update" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 10; order: 10;">FRITZ!OS-Version</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=autoUp" id="autoUp" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 20; order: 20;">Auto-Update</a><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=userUp" id="userUp" class="tab" role="menuitem" aria-hidden="true" style="-moz-box-ordinal-group: 30; order: 30;">FRITZ!OS-Datei</a></div>
+<div></div>
+<div></div>
+</nav>
+<div id="content" class="selectable" role="main" aria-live="polite"><div>
+
+
+
+
+
+
+
+
+
+
+<form method="POST" action="/internet/inetstat_monitor.lua?sid=a24a2f2f3ee4e902" name="main_form">
+<div id="uiMonitor" style="">
+<p>Der Online-Monitor stellt Informationen zu Ihrer Internetverbindung und zu aktivierten Zusatzfunktionen zur Verfügung.</p>
+<div id="uiInternetMonitor"><table id="tInternetMonitor" class="zebra">
+<colgroup>
+<col class="IMonHead">
+<col class="IMonIcon">
+<col class="IMonDetail">
+</colgroup>
+<tbody><tr id="uiTrDsl"><td><a href="http://192.168.3.253/internet/dsl_overview.lua?sid=a24a2f2f3ee4e902">DSL</a></td><td><div class="led_col led_green">&nbsp;</div></td><td>verbunden, <span>↓ 63,7 Mbit/s ↑ 12,7 Mbit/s</span></td></tr><tr id="uiTrInternet"><td><div id="ipv4_title">Internet, IPv4</div></td><td id="ipv4_led"><div class="led_col led_green">&nbsp;</div></td><td><div id="ipv4_info"><span class="limited">verbunden seit 16.09.2020, 02:05 Uhr</span>, <span class="limited" style="max-width: 15rem;">Telekom</span>, <span>Geschwindigkeit des Internetzugangs (verfügbare Bitrate): ↓ 62,2 Mbit/s ↑ 12,4 Mbit/s</span><span class="limited">,<br>IP-Adresse: 217.224.124.51</span></div></td></tr><tr>
+<td class="tdName">Genutzte DNS-Server</td>
+<td><div class="led_col ">&nbsp;</div></td>
+<td class="tdinfo">217.0.43.1 (aktuell genutzt für Standardanfragen)<br>217.0.43.193 <br></td>
+</tr>
+<tr>
+<td class="tdName"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=mfSet">MyFRITZ!</a></td>
+<td><div class="led_col led_green">&nbsp;</div></td>
+<td class="tdinfo"><a target="_blank" href="https://yxecagdghcffmnoj.myfritz.net:46397/">https://yxecagdghcffmnoj.myfritz.net:46397</a>, Benutzername: lindhauer@t-online.de</td>
+</tr>
+<tr>
+<td class="tdName"><a href="http://192.168.3.253/internet/remote_https.lua?sid=a24a2f2f3ee4e902">FRITZ!Box-Dienste</a></td>
+<td><div class="led_col ">&nbsp;</div></td>
+<td class="tdinfo">erreichbar aus dem Internet (HTTPS)</td>
+</tr>
+<tr>
+<td class="tdName"><a href="http://192.168.3.253/?sid=a24a2f2f3ee4e902&amp;lp=portoverview">Portfreigabe</a></td>
+<td><div class="led_col ">&nbsp;</div></td>
+<td class="tdinfo">aktiviert, 6 Portfreigaben eingerichtet</td>
+</tr>
+<tr style="display:none">
+<td colspan="3"><input id="uiConnectState" value="5" type="hidden">
+</td>
+</tr>
+</tbody></table>
+</div> <!-- uiInternetMontior -->
+<!-- früher IC_Btn -->
+<div id="uiReconnection_Btn" style="">
+<hr>
+<div>
+Durch einen Klick auf die Schaltfläche "Neu verbinden" wird die 
+Internetverbindung kurzzeitig getrennt und anschließend automatisch 
+wiederhergestellt. Die FRITZ!Box erhält dabei von Ihrem Internetanbieter
+ in der Regel eine neue IP-Adresse.
+</div>
+<div class="ReconnectBlock">
+<span id="uiWarnDisconnecting" style="display:none">Bitte haben Sie einen Moment Geduld. Der Vorgang kann bis zu 30 Sekunden dauern.</span>
+<input id="uiReconnectBtn" onclick="return DoDisconnectInternet();" value="Neu verbinden" type="button">
+</div>
+
+</div><!-- uiReconnection_Btn -->
+<div id="uiDownUpDiag" style="">
+<hr>
+<h4>Aktuelle Auslastung der Internetverbindung</h4>
+<div>
+Die folgenden Darstellungen zeigen die aktuelle Auslastung Ihrer 
+Internetverbindung. Downstream (Empfangsrichtung) zeigt den Datenfluss 
+aus dem Internet in Ihr Heimnetz. Upstream (Senderichtung) zeigt den 
+Datenfluss von Ihrem Heimnetz zum Internet.
+</div>
+<div class="qos_back"><h4 class="qos_title">Downstream</h4><div id="uiQosDown0" class="ct-chart ct-golden-section qos_ds"><svg ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-back"><rect x="75" y="20" width="944.199951171875" height="138" class="ct-rect"></rect></g><g class="ct-grids"></g><g><g class="ct-series ct-series-a"><path d="M75,158L75,158L124.695,158L174.389,158L224.084,158L273.779,157.999L323.474,157.999L373.168,158L422.863,158L472.558,158L522.253,158L571.947,158L621.642,158L671.337,158L721.032,158L770.726,157.999L820.421,158L870.116,157.999L919.81,158L969.505,158L1019.2,158L1019.2,158Z" class="ct-area"></path></g><g class="ct-series ct-series-b"><path d="M75,158L75,158L124.695,158L174.389,158L224.084,158L273.779,158L323.474,158L373.168,158L422.863,158L472.558,158L522.253,158L571.947,158L621.642,158L671.337,158L721.032,158L770.726,158L820.421,158L870.116,158L919.81,158L969.505,158L1019.2,158L1019.2,158Z" class="ct-area"></path></g><g class="ct-series ct-series-c"><path d="M75,158L75,158L124.695,158L174.389,158L224.084,158L273.779,158L323.474,158L373.168,158L422.863,158L472.558,158L522.253,158L571.947,158L621.642,158L671.337,158L721.032,158L770.726,158L820.421,158L870.116,158L919.81,158L969.505,158L1019.2,158L1019.2,158Z" class="ct-area"></path></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="50.15263286389803" y="163" width="49.694734272203945" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-100</span></foreignObject><line x1="75" y1="158" x2="75" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="248.9315699527138" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-80</span></foreignObject><line x1="273.7789370888158" y1="158" x2="273.7789370888158" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="447.7105070415296" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-60</span></foreignObject><line x1="472.55787417763156" y1="158" x2="472.55787417763156" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="646.4894441303453" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-40</span></foreignObject><line x1="671.3368112664473" y1="158" x2="671.3368112664473" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="845.2683812191611" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-20</span></foreignObject><line x1="870.1157483552631" y1="158" x2="870.1157483552631" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="994.352584035773" y="163" width="50" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 3.125rem;height: 1.25rem;" xmlns="http://www.w3.org/2000/xmlns/">-5</span></foreignObject><line x1="1019.199951171875" y1="158" x2="1019.199951171875" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" y="125.18174658029673" x="20" height="38.818253419703275" width="45"><span class="ct-label ct-vertical ct-start" style="height: 39px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">0</span></foreignObject><line x1="71" y1="158.01507482736704" x2="75" y2="158.01507482736704" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="86.36349316059346" x="20" height="38.818253419703275" width="45"><span class="ct-label ct-vertical ct-start" style="height: 39px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">17.500</span></foreignObject><line x1="71" y1="119.19682140766378" x2="75" y2="119.19682140766378" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="47.54523974089017" x="20" height="38.81825341970328" width="45"><span class="ct-label ct-vertical ct-start" style="height: 39px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">35.000</span></foreignObject><line x1="71" y1="80.37856798796048" x2="75" y2="80.37856798796048" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="26" x="20" height="21.545239740890167" width="45"><span class="ct-label ct-vertical ct-start" style="height: 22px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">52.500</span></foreignObject><line x1="71" y1="41.55000305175781" x2="75" y2="41.55000305175781" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="-4" x="20" height="30" width="45"><span class="ct-label ct-vertical ct-start" style="height: 30px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">62.213</span></foreignObject><line x1="71" y1="20" x2="75" y2="20" class="ct-grid ct-extend ct-vertical"></line><foreignObject x="0" y="0" width="200" height="5" style="overflow: visible;"><span class="ct-label ct-vertical ct-extend" xmlns="http://www.w3.org/2000/xmlns/">Geschwindigkeit in kbit/s</span></foreignObject><text x="977.5832824707031" y="193" class="ct-label ct-extend ct-horizontal">Zeit in s</text></g><g class="ct-front"><rect x="75" y="20" width="944.199951171875" height="138" class="ct-rect"></rect></g></svg></div></div><div class="qos_back"><h4 class="qos_title">Upstream</h4><div id="uiQosUp0" class="ct-chart ct-golden-section qos_us"><svg ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-back"><rect x="75" y="20" width="944.199951171875" height="138" class="ct-rect"></rect></g><g class="ct-grids"></g><g><g class="ct-series ct-series-a"><path d="M75,158L75,157.988L124.695,157.997L174.389,157.999L224.084,157.999L273.779,157.99L323.474,157.995L373.168,158L422.863,157.999L472.558,158L522.253,157.999L571.947,157.999L621.642,157.999L671.337,157.995L721.032,157.999L770.726,157.997L820.421,157.999L870.116,157.994L919.81,157.999L969.505,158L1019.2,157.999L1019.2,158Z" class="ct-area"></path></g><g class="ct-series ct-series-b"><path d="M75,158L75,157.99L124.695,157.998L174.389,157.999L224.084,158L273.779,157.999L323.474,157.999L373.168,158L422.863,158L472.558,158L522.253,158L571.947,158L621.642,158L671.337,157.997L721.032,158L770.726,158L820.421,158L870.116,158L919.81,158L969.505,158L1019.2,158L1019.2,158Z" class="ct-area"></path></g><g class="ct-series ct-series-c"><path d="M75,158L75,157.99L124.695,157.998L174.389,157.999L224.084,158L273.779,157.999L323.474,158L373.168,158L422.863,158L472.558,158L522.253,158L571.947,158L621.642,158L671.337,157.997L721.032,158L770.726,158L820.421,158L870.116,158L919.81,158L969.505,158L1019.2,158L1019.2,158Z" class="ct-area"></path></g><g class="ct-series ct-series-d"><path d="M75,158L75,158L124.695,158L174.389,158L224.084,158L273.779,158L323.474,158L373.168,158L422.863,158L472.558,158L522.253,158L571.947,158L621.642,158L671.337,158L721.032,158L770.726,158L820.421,158L870.116,158L919.81,158L969.505,158L1019.2,158L1019.2,158Z" class="ct-area"></path></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="50.15263286389803" y="163" width="49.694734272203945" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-100</span></foreignObject><line x1="75" y1="158" x2="75" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="248.9315699527138" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-80</span></foreignObject><line x1="273.7789370888158" y1="158" x2="273.7789370888158" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="447.7105070415296" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-60</span></foreignObject><line x1="472.55787417763156" y1="158" x2="472.55787417763156" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="646.4894441303453" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-40</span></foreignObject><line x1="671.3368112664473" y1="158" x2="671.3368112664473" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="845.2683812191611" y="163" width="49.69473427220396" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 50px; height: 20px" xmlns="http://www.w3.org/2000/xmlns/">-20</span></foreignObject><line x1="870.1157483552631" y1="158" x2="870.1157483552631" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" x="994.352584035773" y="163" width="50" height="20"><span class="ct-label ct-horizontal ct-end" style="width: 3.125rem;height: 1.25rem;" xmlns="http://www.w3.org/2000/xmlns/">-5</span></foreignObject><line x1="1019.199951171875" y1="158" x2="1019.199951171875" y2="163" class="ct-grid ct-extend ct-horizontal ticklength"></line><foreignObject style="overflow: visible;" y="127.03142329020332" x="20" height="36.96857670979667" width="45"><span class="ct-label ct-vertical ct-start" style="height: 37px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">0</span></foreignObject><line x1="71" y1="158.03142329020332" x2="75" y2="158.03142329020332" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="90.06284658040664" x="20" height="36.96857670979667" width="45"><span class="ct-label ct-vertical ct-start" style="height: 37px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">3.333</span></foreignObject><line x1="71" y1="121.04618398275039" x2="75" y2="121.04618398275039" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="53.09426987060998" x="20" height="36.96857670979668" width="45"><span class="ct-label ct-vertical ct-start" style="height: 37px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">6.666</span></foreignObject><line x1="71" y1="84.07759201416467" x2="75" y2="84.07759201416467" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="26" x="20" height="27.094269870609978" width="45"><span class="ct-label ct-vertical ct-start" style="height: 27px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">10.000</span></foreignObject><line x1="71" y1="47.100006103515625" x2="75" y2="47.100006103515625" class="ct-grid ct-extend ct-vertical"></line><foreignObject style="overflow: visible;" y="-4" x="20" height="30" width="45"><span class="ct-label ct-vertical ct-start" style="height: 30px; width: 45px" xmlns="http://www.w3.org/2000/xmlns/">12.443</span></foreignObject><line x1="71" y1="20" x2="75" y2="20" class="ct-grid ct-extend ct-vertical"></line><foreignObject x="0" y="0" width="200" height="5" style="overflow: visible;"><span class="ct-label ct-vertical ct-extend" xmlns="http://www.w3.org/2000/xmlns/">Geschwindigkeit in kbit/s</span></foreignObject><text x="977.5832824707031" y="193" class="ct-label ct-extend ct-horizontal">Zeit in s</text></g><g class="ct-front"><rect x="75" y="20" width="944.199951171875" height="138" class="ct-rect"></rect></g></svg></div></div><div class="qos_legend"><div class="qos_back_legend"><h4 class="qos_title">Downstream</h4><div><table class="prio_legend"><tbody><tr><td class="prio_color"><div class="ds_color">&nbsp;</div></td><td>Internet</td></tr><tr><td class="prio_color"><div class="guest_color">&nbsp;</div></td><td>Gastzugang</td></tr><tr><td class="prio_color"><div class="mc_color">&nbsp;</div></td><td>IPTV</td></tr></tbody></table></div></div><div class="qos_back_legend"><h4 class="qos_title">Upstream</h4><div><table class="prio_legend"><tbody><tr><td class="prio_color"><div class="prio_0">&nbsp;</div></td><td>Echtzeitanwendungen</td></tr><tr><td class="prio_color"><div class="prio_1">&nbsp;</div></td><td>Priorisierte Anwendungen</td></tr><tr><td class="prio_color"><div class="prio_2">&nbsp;</div></td><td>Normale Anwendungen</td></tr><tr><td class="prio_color"><div class="prio_3">&nbsp;</div></td><td>Hintergrundanwendungen</td></tr><tr><td class="prio_color"><div class="guest">&nbsp;</div></td><td>Gastanwendungen</td></tr></tbody></table></div></div></div>
+</div><!-- uiDownUpDiag -->
+</div><!-- uiMontior -->
+<div id="btn_form_foot">
+<input name="sid" value="a24a2f2f3ee4e902" type="hidden">
+<button type="submit" name="btn_refresh">Aktualisieren</button>
+</div>
+</form>
+<input id="oldPageXhrSid" value="a24a2f2f3ee4e902" type="hidden"><input id="fdhidedata" value="{&quot;ssoEmail&quot;:true,&quot;shareUsb&quot;:true,&quot;liveTv&quot;:true,&quot;faxSet&quot;:true,&quot;provServ&quot;:true,&quot;rss&quot;:true,&quot;mobile&quot;:true,&quot;dectMail&quot;:true,&quot;ssoSet&quot;:true,&quot;liveImg&quot;:true}" type="hidden"><input id="oldpageactive" value="/internet/inetstat_monitor.lua" type="hidden"><input id="oldPageTitle" value="" type="hidden"><input id="gHelpPage" value="hilfe_online_monitor.html" type="hidden"><div id="domReady" style="display:none"></div>
+
+
+
+
+</div></div>
+<menu id="bottomMenu" class="bottomMenu"></menu>
+</main>
+<div id="fallback" class="hidden"></div>
+<!--Nur essentiell wichtige Scripte für den Start werden geladen. Alle weiteren erst später-->
+<script>
+var gNbc = false,
+config = {"gu_type":"release","GUI_IS_POWERLINE":false,"GUI_IS_REPEATER":false,"isDebug":false,"language":"de"};
+</script>
+<script src="FRITZ%21Box%207590-Dateien/avmcore.js"></script>
+<!--<script src="/js/browser.js"></script> -->
+<!--<script src="/js/jsl.js"></script> -->
+<!--<script src="/js/http.js"></script> -->
+<!--<script src="/js/html.js"></script> -->
+<!--<script src="/js/func.js"></script> -->
+<!--<script src="/js/html2.js?lang=de"></script>-->
+<script src="FRITZ%21Box%207590-Dateien/avmcontent.js"></script>
+<!--<script src="/js/dialog.js?lang=de"></script>-->
+<!--<script src="/js/history.js"></script>-->
+<!--<script src="/js/main.js?lang=de"></script>-->
+<!--<script src="/js/newval.js"></script>-->
+<!--<script src="/js/oldpage.js"></script>-->
+<!--<script src="/js/require.js"></script>-->
+<!--<script src="/js/sort.js"></script>-->
+<script src="FRITZ%21Box%207590-Dateien/avmold.js"></script>
+<script>
+if (/*@cc_on!@*/false && document.documentMode === 10) {
+document.documentElement.className += ' ie10';
+}
+if (main) {
+main.init({"avmUrl":"\/secure_link.lua?sid=a24a2f2f3ee4e902&lnk=http%3A%2F%2Fwww.avm.de","aktPid":"overview","manUrl":"\/secure_link.lua?sid=a24a2f2f3ee4e902&lnk=https%3A%2F%2Fassets.avm.de%2Fmanual%2F%3Fhardware%3D226%26oem%3Davm%26language%3Dde%26country%3D049%26version%3D154.07.12%26subversion%3D","username":"","usePwd":true,"boxName":"","fromInternet":false,"serviceUrl":"\/secure_link.lua?sid=a24a2f2f3ee4e902&lnk=https%3A%2F%2Fwww.avm.de%2Ffritzbox-service-portal.php%3Fhardware%3D226%26oem%3Davm%26language%3Dde%26country%3D049%26version%3D154.07.12%26subversion%3D","oauthError":"","newsUrl":"\/secure_link.lua?sid=a24a2f2f3ee4e902&lnk=https%3A%2F%2Fwww.avm.de%2Fnewsletter%3Fhardware%3D226%26oem%3Davm%26language%3Dde%26country%3D049%26version%3D154.07.12%26subversion%3D","setBoxTime":false,"boxType":"FRITZ!Box 7590","pages":{"isp_change":{"show":true,"lua":"internet\/isp_change.lua"},"dpm":{"show":true,"help":true,"wiz":true,"js":"internet\/dsl_pcl_mitigation.js"},"assi_fon_nums":{"show":true,"wiz":true,"lua":"assis\/assi_fon_nums.lua"},"sitemap":{"show":true,"txt":"Inhalt","js":"menus\/sitemap.js"},"boxuser_edit":{"show":true,"lua":"system\/boxuser_edit.lua","txt":"Benutzerkonto"},"internet_dsl":{"show":true,"wiz":true,"lua":"assis\/internet_dsl.lua"},"wlan_feedback":{"show":true,"lua":"wlan\/wlan_feedback.lua","js":"wlan\/wlan_feedback.js"},"dslFeed":{"show":true,"lua":"internet\/dsl_feedback.lua","help":true},"static_route_table":{"show":true,"lua":"net\/static_route_table.lua"},"kids_whitelist":{"show":true,"help":true,"lua":"kids\/kids_urllist.lua","js":"kids\/kids_urllist.js"},"fonbook_edit":{"show":true,"lua":"fon_num\/fonbook_edit.lua"},"dialList":{"show":true,"lua":"fon_num\/dialrul_list.lua","help":true},"firstAssist":{"show":true,"wiz":true},"faxSet":{"show":false,"lua":"fon_devices\/fax_option.lua","help":true},"edit_isdn_num":{"show":true,"lua":"fon_devices\/edit_isdn_num.lua"},"assi_isdn_telefonanlage":{"show":true,"wiz":true,"lua":"assis\/assi_isdn_telefonanlage.lua"},"assi_tam_intern":{"show":true,"wiz":true,"lua":"assis\/assi_tam_intern.lua"},"ecosettings":{"show":true,"lua":"system\/ecosettings.lua"},"edit_fon_option":{"show":true,"lua":"fon_devices\/edit_fon_option.lua"},"internet_umts_all":{"show":true,"wiz":true,"lua":"assis\/internet_umts_all.lua"},"kidPro":{"show":true,"lua":"internet\/kids_profilelist.lua","help":true},"push":{"show":true,"lua":"system\/push_list.lua","help":true},"usbRemo":{"show":true,"lua":"usb\/usb_remote_settings.lua","help":true},"sh_dev":{"show":true,"lua":"net\/home_auto_overview.lua","help":true},"meshSet":{"show":true,"help":true,"lua":"wlan\/mesh_settings.lua","js":"wlan\/mesh_settings.js"},"mfEmailVerified":{"show":true},"newdevice":{"show":true,"lua":"net\/newdevice.lua"},"funcCheck":{"show":true,"help":true,"lua":"system\/diagnosis.lua","js":"system\/diagnosis.js"},"numLi":{"show":true,"lua":"fon_num\/fon_num_list.lua","help":true},"kids_profileinfo":{"show":true,"lua":"internet\/kids_profileinfo.lua"},"rdio":{"show":true,"lua":"dect\/internetradio.lua","help":true},"assi_telefon_start":{"show":true,"wiz":true,"lua":"assis\/assi_telefon_start.lua"},"umts_query":{"show":true,"wiz":true,"lua":"assis\/umts_query.lua"},"edit_dect_ring_block":{"show":true,"lua":"fon_devices\/edit_dect_ring_block.lua"},"edit_isdn_option":{"show":true,"lua":"fon_devices\/edit_isdn_option.lua"},"ecoStat":{"show":true,"help":true,"lua":"system\/ecostat.lua","js":"system\/ecostat.js"},"dectMail":{"show":false,"lua":"dect\/show_mail.lua","help":true},"usbMode":{"show":true,"lua":"usb\/usb_mode.lua","help":true},"sysSave":{"show":true,"help":true,"lua":"system\/export.lua","js":"system\/export.js"},"pp_qrcode":{"show":true,"lua":"wlan\/pp_qrcode.lua"},"dslSpec":{"show":true,"lua":"internet\/dsl_spectrum.lua","help":true},"wizOv":{"show":true,"help":true,"lua":"wizards\/wizardhome.lua","js":"wizards\/wizardhome.js"},"tr069vodafone":{"show":true,"wiz":true,"lua":"tr69_autoconfig\/tr069vodafone.lua"},"assi_fondevices_list":{"show":true,"wiz":true,"lua":"assis\/assi_fondevices_list.lua"},"internet_multiwan_select":{"show":true,"lua":"internet\/multiwan.lua","wiz":true,"js":"internet\/multiwan.js"},"sh_templ_assi":{"show":true,"lua":"net\/home_auto_template_new.lua"},"userSet":{"show":true,"lua":"system\/boxuser_settings.lua","help":true},"edit_fax_option":{"show":true,"lua":"fon_devices\/edit_fax_option.lua"},"dectMoniEx":{"show":true,"lua":"dect\/dect_moni_ex.lua","help":true},"internet_lte":{"show":true,"wiz":true,"lua":"assis\/internet_lte.lua"},"home_auto_timer_view":{"show":true,"lua":"net\/home_auto_timer_view.lua"},"alarm2":{"show":true,"help":true,"js":"fon_devices\/alarm.js"},"ssoEmail":{"show":false,"wiz":true,"js":"sso_email.js"},"log":{"show":true,"help":true,"lua":"system\/syslog.lua","js":"system\/syslog.js"},"audio_download":{"show":true,"lua":"audio\/audio_download.lua"},"pushmail_account":{"show":true,"wiz":true,"lua":"assis\/pushmail_account.lua"},"sysImp":{"show":true,"help":true,"lua":"system\/import.lua","js":"system\/import.js"},"callRedi":{"show":true,"lua":"fon_num\/rul_list.lua","help":true},"netCnt":{"show":true,"lua":"internet\/inetstat_counter.lua","help":true},"sysSaveWiz":{"show":true,"lua":"system\/export.lua","help":true,"txt":"Einstellungen sichern","wiz":true,"js":"system\/export.js"},"edit_isdn_name":{"show":true,"lua":"fon_devices\/edit_isdn_name.lua"},"sysImpWiz":{"show":true,"lua":"system\/import.lua","help":true,"txt":"Wiederherstellen","wiz":true,"js":"system\/import.js"},"dsl_test":{"show":true,"lua":"internet\/dsl_test.lua","dev":true},"feedback":{"show":true,"lua":"wlan\/feedback.lua"},"oauth":{"show":true,"wiz":true,"lua":"storage\/oauth.lua"},"photo_upload":{"show":true,"lua":"fon_num\/photo_upload.lua"},"dslOv":{"show":true,"lua":"internet\/dsl_overview.lua","help":true},"edit_sms_option":{"show":true,"lua":"fon_devices\/edit_sms_option.lua","js":"fon_devices\/edit_sms_option.js"},"callLock":{"show":true,"lua":"fon_num\/sperre.lua","help":true},"home_auto_sort":{"show":true,"lua":"net\/home_auto_sort.lua"},"usbOv":{"show":true,"lua":"usb\/show_usb_devices.lua","help":true},"sh_templ":{"show":true,"lua":"net\/home_auto_template_list.lua","help":true},"edit_doorline_num":{"show":true,"lua":"fon_devices\/edit_doorline_num.lua"},"internet_cable":{"show":true,"wiz":true,"lua":"assis\/internet_cable.lua"},"direct_first":{"show":true,"wiz":true,"lua":"assis\/direct_first.lua"},"trafprio":{"show":true,"lua":"internet\/trafficprio.lua","help":true},"tam_upload":{"show":true,"lua":"fon_devices\/tam_upload.lua"},"wTime":{"show":true,"lua":"system\/wlan_night.lua","help":true},"cfgtakeover_edit":{"show":true,"help":true,"lua":"system\/cfgtakeover_edit.lua","js":"system\/cfgtakeover_edit.js"},"wSet":{"show":{"has_wpa2_support":true,"is_triband":false,"has_wpa_wpa2_mixed_support":true},"help":true,"lua":"wlan\/wlan_settings.lua","js":"wlan\/wlan_settings.js"},"edit_fon_num":{"show":true,"lua":"fon_devices\/edit_fon_num.lua"},"tam":{"show":true,"lua":"fon_devices\/tam_list.lua","help":true},"shareUsb":{"show":false,"lua":"internet\/usbdisk_freigabe.lua","help":true},"mail_edit":{"show":true,"lua":"dect\/mail_edit.lua"},"home_auto_edit_view":{"show":true,"lua":"net\/home_auto_edit_view.lua"},"sh_templ_edit":{"show":true,"lua":"net\/home_auto_template_edit.lua"},"assi_fax_extern":{"show":true,"wiz":true,"lua":"assis\/assi_fax_extern.lua"},"remoteHttps":{"show":true,"lua":"internet\/remote_https.lua","help":true},"prefs":{"show":true,"js":true},"fonbook_onlinetest":{"show":true,"lua":"fon_num\/fonbook_onlinetest.lua"},"expert":{"show":true,"js":true},"home_auto_registering":{"show":true,"lua":"net\/home_auto_registering.lua"},"trafficprio_edit":{"show":true,"lua":"internet\/trafficprio_edit.lua"},"wlan_first":{"show":true,"wiz":true,"lua":"assis\/wlan_first.lua"},"vpn_print":{"show":true,"lua":"system\/vpn_print.lua"},"telDev":{"show":true,"lua":"fon_devices\/fondevices_list.lua","help":true},"fonbook_google_oauth2":{"show":true,"lua":"fon_num\/fonbook_google_oauth2.lua"},"rul_edit":{"show":true,"lua":"fon_num\/rul_edit.lua"},"pod":{"show":true,"lua":"dect\/podcast.lua","help":true},"home_auto_group_config":{"show":true,"lua":"net\/home_auto_group_config.lua"},"portoverview":{"show":true,"lua":"internet\/ports.lua","js":"internet\/port_overview.js"},"apps":{"show":true,"lua":"system\/apps_list.lua","help":true},"assi_fax_intern":{"show":true,"wiz":true,"lua":"assis\/assi_fax_intern.lua"},"fonbook_select":{"show":true,"lua":"fon_num\/fonbook_select.lua"},"user":{"show":true,"lua":"system\/boxuser_list.lua","help":true},"provServ":{"show":false,"lua":"internet\/providerservices.lua","help":true},"edit_dect_ring_tone_upload":{"show":true,"lua":"fon_devices\/edit_dect_ring_tone_upload.lua"},"netMoni":{"show":true,"lua":"internet\/inetstat_monitor.lua","help":true},"wGuest":{"show":true,"help":true,"lua":"wlan\/guest_access.lua","js":"wlan\/guest_access.js"},"trafapp":{"show":true,"lua":"internet\/trafficappl.lua","help":true},"kids_blockedip_list":{"show":true,"help":true,"lua":"kids\/kids_blockedip_list.lua","js":"kids\/kids_blockedip_list.js"},"support":{"show":true,"lua":"support.lua","dev":true},"fonbook_photo":{"show":true,"lua":"fon_num\/fonbook_photo.lua"},"no_password":{"show":true,"wiz":true,"lua":"no_password.lua"},"add_by_mac":{"show":true,"lua":"wlan\/add_by_mac.lua","help":true,"txt":"WLAN-Gerät hinzufügen","js":"wlan\/add_by_mac.js"},"fonbook_entry":{"show":true,"lua":"fon_num\/fonbook_entry.lua"},"callThro":{"show":true,"lua":"fon_num\/callthrough.lua","help":true},"sip_feedback":{"show":true,"lua":"fon_num\/sip_feedback.lua"},"default":{"show":true,"help":true,"lua":"system\/defaults.lua","js":"system\/defaults.js"},"dectDev":{"show":true,"lua":"dect\/dect_list.lua","help":true},"sip_edit_normal":{"show":true,"lua":"fon_num\/sip_edit_normal.lua"},"telDial":{"show":true,"lua":"fon_num\/dial_fonbook.lua","help":true},"push_edit_info":{"show":true,"lua":"system\/push_edit_info.lua"},"secCheck":{"show":true,"help":true,"lua":"system\/security.lua","js":"system\/security.js"},"ipv6":{"show":true,"lua":"internet\/ipv6.lua","help":true},"trafficprotocol_edit":{"show":true,"lua":"internet\/trafficprotocol_edit.lua"},"nasSet":{"show":true,"lua":"storage\/settings.lua","help":true},"edit_device":{"show":true,"lua":"net\/edit_device.lua"},"dslGraph":{"show":true,"lua":"internet\/dsl_stats_graph.lua","help":true},"dyndns":{"show":true,"lua":"internet\/dyn_dns.lua","help":true},"mServSet":{"show":true,"lua":"storage\/media_settings.lua","help":true},"led":{"show":true,"lua":"system\/led_display.lua","js":"system\/led_display.js"},"mfSet":{"show":true,"help":true,"js":"internet\/myfritzAccount.js"},"ssoPass":{"show":true,"wiz":true,"js":"sso_password.js"},"trafficappl_edit":{"show":true,"lua":"internet\/trafficappl_edit.lua"},"edit_dect_ring_tone":{"show":true,"lua":"fon_devices\/edit_dect_ring_tone.lua"},"push_edit_calls":{"show":true,"lua":"system\/push_edit_calls.lua"},"usb_diskcut":{"show":true,"lua":"usb\/usb_diskcut.lua"},"static_IPv6_route_table":{"show":true,"lua":"net\/static_IPv6_route_table.lua","help":true},"pushAcc":{"show":true,"lua":"system\/push_account.lua","help":true},"dialrul_edit":{"show":true,"lua":"fon_num\/dialrul_edit.lua"},"msn_pots_edit":{"show":true,"lua":"fon_num\/msn_pots_edit.lua"},"autoUp":{"show":true,"lua":"system\/update_auto.lua","help":true},"boxuser_googleauth":{"show":true,"lua":"system\/boxuser_googleauth.lua"},"new_IPv6_static_route":{"show":true,"lua":"net\/new_IPv6_static_route.lua"},"edit_dect_num":{"show":true,"lua":"fon_devices\/edit_dect_num.lua"},"plc_tonemaps":{"show":true,"lua":"net\/plc_tonemaps.lua"},"boxname":{"show":true,"help":true,"js":"net\/boxname.js"},"fonbook_intern_edit":{"show":true,"lua":"fon_num\/fonbook_intern_edit.lua"},"aura_change":{"show":true,"lua":"usb\/aura_change.lua"},"lisp":{"show":true,"lua":"internet\/lisp.lua","help":true},"mobile":{"show":false,"lua":"internet\/umts_settings.lua","help":true},"mfwiz":{"show":true,"wiz":true,"lua":"wizards\/myfritzwiz.lua","js":"wizards\/myfritzwiz.js"},"home_auto_energy_view":{"show":true,"lua":"net\/home_auto_energy_view.lua"},"dectSet":{"show":true,"lua":"dect\/dect_settings.lua","help":true},"dectRdio":{"show":true,"lua":"dect\/radiopodcast.lua","help":true},"kids_profileedit":{"show":true,"lua":"internet\/kids_profileedit.lua"},"wKey":{"show":true,"help":true,"lua":"wlan\/encrypt.lua","js":"wlan\/encrypt.js"},"updateNote":{"show":true,"lua":"firmware_update_notify.lua"},"cred":{"show":true,"lua":"internet\/internet_settings.lua","help":true},"dslSet":{"show":true,"lua":"internet\/dsl_line_settings.lua","help":true},"alarm":{"show":true,"help":true,"js":"fon_devices\/alarm.js"},"dialProv":{"show":true,"lua":"fon_num\/dialrul_provider.lua","help":true},"assi_tam_extern":{"show":true,"wiz":true,"lua":"assis\/assi_tam_extern.lua"},"rss":{"show":false,"lua":"dect\/rss.lua","help":true},"reboot":{"show":true,"help":true,"lua":"system\/reboot.lua","js":"system\/reboot.js"},"fax":{"show":true,"lua":"fon_devices\/fax_send.lua","help":true},"energy":{"show":true,"help":true,"lua":"system\/energy.lua","js":"system\/energy.js"},"fonbook_restore":{"show":true,"lua":"fon_num\/fonbook_restore.lua"},"startcode":{"show":true,"lua":"startcode.lua"},"pp_wanbridge":{"show":true,"lua":"internet\/pp_wanbridge.lua"},"home_auto_hkr_group":{"show":true,"lua":"net\/home_auto_hkr_group.lua"},"liveTv":{"show":false,"lnk":""},"dev":{"show":true,"lua":"developer.lua","dev":true},"source_edit":{"show":true,"lua":"dect\/source_edit.lua"},"inetstat_budget":{"show":true,"lua":"internet\/inetstat_budget.lua"},"chan":{"show":true,"help":true,"js":"wlan\/wlan_channel.js"},"cap":{"show":true,"lua":"capture.lua","dev":true},"wds2_final":{"show":true,"lua":"wds2_final.lua"},"tr069warning":{"show":true,"lua":"tr69_autoconfig\/tr069warning.lua"},"rootServices":{"show":true,"lua":"services.lua","help":true},"home_auto_grouptype":{"show":true,"lua":"net\/home_auto_grouptype.lua"},"dsldiagstop":{"show":true,"lua":"dsldiagstop.lua"},"fonbook_addnum":{"show":true,"wiz":true,"lua":"fon_num\/fonbook_addnum.lua"},"edit_tam":{"show":true,"lua":"fon_devices\/edit_tam.lua"},"userUp":{"show":true,"lua":"system\/update_file.lua","help":true},"alarm1":{"show":true,"help":true,"js":"fon_devices\/alarm.js"},"networkchange":{"show":true,"lua":"networkchange.lua"},"edit_dect_option":{"show":true,"lua":"fon_devices\/edit_dect_option.lua"},"rootRestore":{"show":true,"lua":"restore.lua"},"keyLo":{"show":true,"help":true,"lua":"system\/keylocker.lua","js":"system\/keylocker.js"},"rootReboot":{"show":true,"lua":"reboot.lua"},"wps_test":{"show":true,"lua":"wlan\/wps_test.lua"},"dial":{"show":true,"lua":"fon_num\/dial_foncalls.lua","help":true},"imexport":{"show":true,"wiz":true,"lua":"assis\/imexport.lua"},"edit_fon_ring_block":{"show":true,"lua":"fon_devices\/edit_fon_ring_block.lua"},"aura_download":{"show":true,"lua":"usb\/aura_download.lua"},"tr069startcode":{"show":true,"wiz":true,"lua":"tr69_autoconfig\/tr069startcode.lua"},"push_editlist":{"show":true,"lua":"system\/push_editlist.lua"},"update":{"show":true,"lua":"system\/update.lua","help":true},"dialLi":{"show":true,"lua":"fon_num\/foncalls_list.lua","help":true},"push_edit":{"show":true,"lua":"system\/push_edit.lua"},"ssoSet":{"show":false,"wiz":true,"lua":"system\/boxuser_settings_sso.lua"},"boxnet":{"show":true,"lua":"net\/boxnet.lua"},"radio_edit":{"show":true,"lua":"audio\/radio_edit.lua"},"kidLis":{"show":true,"lua":"internet\/kids_userlist.lua","help":true},"dect_rep_unsub":{"show":true,"lua":"dect\/dect_rep_unsub.lua"},"edit_starter":{"show":true,"wiz":true,"lua":"assis\/edit_starter.lua"},"dnsSrv":{"show":true,"help":true,"lua":"internet\/dnsserver.lua","js":"internet\/dnsserver.js"},"update_device":{"show":true,"lua":"net\/update_device.lua"},"pp_fbos":{"show":true,"lua":"home\/pp_fbos.lua"},"pp_ipaddr":{"show":true,"lua":"net\/pp_ipaddr.lua"},"new_static_route":{"show":true,"lua":"net\/new_static_route.lua"},"dectMoni":{"show":true,"lua":"dect\/dect_moni.lua","help":true},"home_auto_hkr_edit":{"show":true,"lua":"net\/home_auto_hkr_edit.lua"},"home_auto_temp_view":{"show":true,"lua":"net\/home_auto_temp_view.lua"},"edit_ipfon_num":{"show":true,"lua":"fon_devices\/edit_ipfon_num.lua"},"boxnet_ipv6":{"show":true,"lua":"net\/boxnet_ipv6.lua","help":true},"vpn_edit":{"show":true,"lua":"internet\/vpn_edit.lua"},"sip_edit":{"show":true,"lua":"fon_num\/sip_edit.lua"},"wlanmesh":{"show":true,"help":true,"lua":"wlan\/mesh_settings_wlan.lua","js":"wlan\/mesh_settings_wlan.js"},"upnp":{"show":true,"lua":"net\/upnp.lua"},"sperre_edit":{"show":true,"lua":"fon_num\/sperre_edit.lua"},"overview":{"show":true,"help":true,"js":"home\/home.js"},"sip_edit_no_change":{"show":true,"lua":"fon_num\/sip_edit_no_change.lua"},"wps":{"show":true,"lua":"wlan\/wps.lua","help":true},"kids_useredit":{"show":true,"lua":"internet\/kids_useredit.lua"},"moh_upload":{"show":true,"lua":"fon_num\/moh_upload.lua"},"edit_isdn_ring_block":{"show":true,"lua":"fon_devices\/edit_isdn_ring_block.lua"},"edit_ipfon_option":{"show":true,"lua":"fon_devices\/edit_ipfon_option.lua"},"home_auto_install_gcal":{"show":true,"lua":"net\/home_auto_install_gcal.lua"},"edit_fax_num":{"show":true,"lua":"fon_devices\/edit_fax_num.lua"},"edit_doorline_option":{"show":true,"lua":"fon_devices\/edit_doorline_option.lua"},"push_check":{"show":true,"lua":"system\/push_check.lua"},"liveimg_edit":{"show":true,"lua":"dect\/liveimg_edit.lua"},"netSet":{"show":true,"help":true,"lua":"net\/net_settings.lua","js":"net\/net_settings.js"},"query":{"show":true,"lua":"query.lua"},"dect_repeater_info":{"show":true,"lua":"dect\/dect_repeater_info.lua"},"homeNet":{"show":true,"lua":"net\/network.lua","help":true},"rep_dvb":{"show":true,"wiz":true,"lua":"assis\/rep_dvb.lua"},"internet_umts":{"show":true,"wiz":true,"lua":"assis\/internet_umts.lua"},"internet_wandsl":{"show":true,"wiz":true,"lua":"assis\/internet_wandsl.lua"},"dslStat":{"show":true,"lua":"internet\/dsl_stats_tab.lua","help":true},"basic_first":{"show":true,"wiz":true,"lua":"assis\/basic_first.lua"},"assi_telefon":{"show":true,"wiz":true,"lua":"assis\/assi_telefon.lua"},"assi_doorline":{"show":true,"wiz":true,"lua":"assis\/assi_doorline.lua"},"update_info":{"show":true,"lua":"wizards\/update_info.lua","wiz":true,"js":"wizards\/update_info.js"},"sta_reboot":{"show":true,"lua":"sta_reboot.lua"},"shareVpn":{"show":true,"help":true,"lua":"internet\/vpn.lua","js":"internet\/vpn.js"},"fn":{"show":true,"help":true,"lua":"system\/infoled.lua","js":"system\/infoled.js"},"liveImg":{"show":false,"lua":"dect\/liveimg.lua","help":true},"kids_blacklist":{"show":true,"help":true,"lua":"kids\/kids_urllist_black.lua","js":"kids\/kids_urllist_black.js"},"netDev":{"show":true,"help":true,"lua":"net\/net_overview.lua","js":"net\/net_overview.js"},"sipQual":{"show":true,"lua":"fon_num\/sip_quality.lua","help":true},"phoneline":{"show":true,"help":true,"js":"fon_num\/phoneline.js"},"telInt":{"show":true,"lua":"fon_num\/fonbook_intern.lua","help":true},"bookLi":{"show":true,"lua":"fon_num\/fonbook_list.lua","help":true}},"menu":{"mUp":{"txt":"Update","par":"sys","tab":["update","autoUp","userUp"],"pos":110},"mCred":{"txt":"Zugangsdaten","par":"inet","tab":["multiwan","multiwanSet","cred","ataSet","fiberSet","lteSet","docSet","multiwan_ipv6","ipv6","lisp","lanbridges","lanpublic","provServ","rootServices","dnsSrv"],"pos":20},"netMoni":{"txt":"Online-Monitor","par":"mNetMoni","pos":10},"wGuest":{"txt":"Gastzugang","par":"wlan","pos":70},"trafapp":{"txt":"Listen","par":"filter","pos":40},"shares":{"txt":"Freigaben","par":"inet","tab":["portoverview","shareUsb","remoteHttps","dyndns","shareVpn"],"pos":50},"callThro":{"txt":"Callthrough","par":"callHan","pos":30},"dslFeed":{"txt":"Feedback","par":"dslInfo","pos":80},"dectDev":{"txt":"Schnurlostelefone","par":"dect","pos":10},"telDial":{"txt":"Wählhilfe","par":"tBook","pos":30},"dialList":{"txt":"Wahlregeln","par":"callHan","pos":40},"faxSet":{"txt":"Einstellungen","par":"mFax","pos":20},"secCheck":{"txt":"Sicherheit","par":"diag","pos":20},"ipv6":{"txt":"IPv6","par":"mCred","pos":50},"kidPro":{"txt":"Zugangsprofile","par":"filter","pos":20},"push":{"txt":"Push Services","par":"mPush","pos":10},"nasSet":{"txt":"Speicher (NAS)","par":"lan","pos":30},"myfritz":{"txt":"MyFRITZ!","lnk":"myfritz","pos":-80},"usbRemo":{"txt":"USB-Fernanschluss","par":"usbDev","pos":30},"dslGraph":{"txt":"Statistik","par":"dslInfo","pos":50},"sh_dev":{"txt":"Smart-Home-Geräte","par":"sh","pos":60},"mFax":{"txt":"Fax","par":"tel","tab":["fax","faxSet"],"pos":50},"dyndns":{"txt":"DynDNS","par":"shares","pos":50},"mServSet":{"txt":"Einstellungen","par":"mSrv","pos":10},"funcCheck":{"txt":"Funktion","par":"diag","pos":10},"numLi":{"txt":"Rufnummern","par":"myNum","pos":10},"eMon":{"txt":"Energiemonitor","par":"sys","tab":["energy","ecoStat"],"pos":20},"mfSet":{"txt":"MyFRITZ!-Konto","par":"inet","pos":65},"ssoPass":{"txt":"Kennwort ändern","pos":-30},"callHan":{"txt":"Rufbehandlung","par":"tel","tab":["callLock","callRedi","callThro","dialList","dialProv"],"pos":60},"inet":{"txt":"Internet","sub":["mNetMoni","mCred","filter","shares","mobile","mfSet","mLte","dslInfo","docsis","fiber"],"pos":30},"net":{"txt":"Netzwerk","par":"lan","tab":["netDev","netSet"],"pos":15},"ecoStat":{"txt":"Statistik","par":"eMon","pos":20},"tAlarm":{"txt":"Weckruf","par":"tel","tab":["alarm","alarm1","alarm2"],"pos":40},"dectMail":{"txt":"E-Mail","par":"dectSer","pos":10},"mfn":{"txt":"Tasten und LEDs","par":"sys","tab":["fn","led","keyLo"],"pos":70},"tBook":{"txt":"Telefonbuch","par":"tel","tab":["bookLi","telInt","telDial"],"pos":30},"usbDev":{"txt":"USB-Geräte","par":"lan","tab":["usbOv","usbMode","usbRemo"],"pos":20},"usbMode":{"txt":"USB-Einstellungen","par":"usbDev","pos":20},"sysSave":{"txt":"Sichern","par":"mSave","pos":10},"dslInfo":{"txt":"DSL-Informationen","par":"inet","tab":["dslOv","dslStat","dslSpec","vdslProf","dslGraph","dslSet","dslLab","dslFeed"],"pos":75},"dslSpec":{"txt":"Spektrum","par":"dslInfo","pos":30},"boxname":{"txt":"FRITZ!Box-Name","par":"lan","pos":50},"dectSer":{"txt":"Internetdienste","par":"dect","tab":["dectMail","rss","dectRdio","liveImg"],"pos":50},"userSet":{"txt":"Anmeldung im Heimnetz","par":"mUser","pos":20},"lisp":{"txt":"LISP","par":"mCred","pos":60},"sh":{"txt":"Smart Home","par":"lan","tab":["sh_dev","sh_templ"],"pos":60},"mobile":{"txt":"Mobilfunk","par":"inet","pos":30},"alarm2":{"txt":"Wecker 3","par":"tAlarm","pos":30},"dectSet":{"txt":"Basisstation","par":"dect","pos":20},"ssoEmail":{"txt":"E-Mail-Adresse ändern","pos":-20},"log":{"txt":"Ereignisse","par":"sys","pos":10},"mUser":{"txt":"FRITZ!Box-Benutzer","par":"sys","tab":["user","userSet","apps"],"pos":90},"dectRdio":{"txt":"Internetradio \/ Podcast","par":"dectSer","pos":30},"sysImp":{"txt":"Wiederherstellen","par":"mSave","pos":20},"callRedi":{"txt":"Rufumleitung","par":"callHan","pos":20},"netCnt":{"txt":"Online-Zähler","par":"mNetMoni","pos":20},"wKey":{"txt":"Verschlüsselung","par":"wSecu","pos":10},"calls":{"txt":"Anrufe","par":"tel","tab":["dialLi","dial"],"pos":10},"cred":{"txt":"Internetzugang","par":"mCred","pos":10},"dslSet":{"txt":"Störsicherheit","par":"dslInfo","pos":60},"alarm":{"txt":"Wecker 1","par":"tAlarm","pos":10},"dialProv":{"txt":"Anbietervorwahlen","par":"callHan","pos":50},"rss":{"txt":"RSS-Nachrichten","par":"dectSer","pos":20},"reboot":{"txt":"Neustart","par":"mSave","pos":30},"myNum":{"txt":"Eigene Rufnummern","par":"tel","tab":["numLi","phoneline","sipQual"],"pos":80},"dslOv":{"txt":"Übersicht","par":"dslInfo","pos":10},"fax":{"txt":"Fax senden","par":"mFax","pos":10},"energy":{"txt":"Energieverbrauch","par":"eMon","pos":10},"callLock":{"txt":"Rufsperren","par":"callHan","pos":10},"usbOv":{"txt":"Geräteübersicht","par":"usbDev","pos":10},"sh_templ":{"txt":"Vorlagen","par":"sh","pos":60},"mNetMoni":{"txt":"Online-Monitor","par":"inet","tab":["netMoni","netCnt"],"pos":10},"expert":{"txt":"Erweiterte Ansicht","state":true,"lnk":"expert","pos":-40},"chan":{"txt":"Funkkanal","par":"wlan","pos":20},"keyLo":{"txt":"Tastensperre","par":"mfn","pos":30},"wizOv":{"txt":"Assistenten","pos":1010},"rootServices":{"txt":"AVM-Dienste","par":"mCred","pos":85},"lan":{"txt":"Heimnetz","sub":["meshNet","net","usbDev","nasSet","mSrv","boxname","sh"],"pos":50},"trafprio":{"txt":"Priorisierung","par":"filter","pos":30},"tel":{"txt":"Telefonie","sub":["calls","tam","tBook","tAlarm","mFax","callHan","telDev","myNum"],"pos":40},"wTime":{"txt":"Zeitschaltung","par":"wlan","pos":60},"alarm1":{"txt":"Wecker 2","par":"tAlarm","pos":20},"wSet":{"txt":"Funknetz","par":"wlan","pos":15},"userUp":{"txt":"FRITZ!OS-Datei","par":"mUp","pos":30},"autoUp":{"txt":"Auto-Update","par":"mUp","pos":20},"dial":{"txt":"Wählhilfe","par":"calls","pos":20},"shareUsb":{"txt":"Speicher","par":"shares","pos":30},"apps":{"txt":"Apps","par":"mUser","pos":30},"default":{"txt":"Werkseinstellungen","par":"mSave","pos":40},"cfgtakeover_edit":{"txt":"Wiederherstellen","par":"mSave","pos":20},"wSecu":{"txt":"Sicherheit","par":"wlan","tab":["wKey","wps"],"pos":50},"update":{"txt":"FRITZ!OS-Version","par":"mUp","pos":10},"dialLi":{"txt":"Anrufliste","par":"calls","pos":10},"sipQual":{"txt":"Sprachübertragung","par":"myNum","pos":30},"ssoSet":{"txt":"Kennwort setzen","pos":-25},"led":{"txt":"LED-Anzeige","par":"mfn","pos":20},"fn":{"txt":"Info-Anzeige","par":"mfn","pos":10},"kidLis":{"txt":"Kindersicherung","par":"filter","pos":10},"remoteHttps":{"txt":"FRITZ!Box-Dienste","par":"shares","pos":40},"pushAcc":{"txt":"Absender","par":"mPush","pos":20},"dnsSrv":{"txt":"DNS-Server","par":"mCred","pos":90},"mPush":{"txt":"Push Service","par":"sys","tab":["push","pushAcc"],"pos":60},"sys":{"txt":"System","sub":["log","eMon","boxname","mPush","mfn","night","rBlock","mUser","mSave","mUp","regi"],"pos":110},"mSrv":{"txt":"Mediaserver","par":"lan","tab":["mServSet","rdio","pod"],"pos":40},"liveTv":{"txt":"Live TV","lnk":"","pos":-65},"dectMoni":{"txt":"Monitor","par":"dectOv","pos":10},"logout":{"txt":"Abmelden","lnk":"logout","pos":-10},"dect":{"txt":"DECT","sub":["dectDev","dectSet","dectOv","dectRep","dectSer"],"pos":80},"liveImg":{"txt":"Live-Bild","par":"dectSer","pos":40},"nas":{"txt":"FRITZ!NAS","show":true,"lnk":"nas","pos":-70},"dectMoniEx":{"txt":"Erweiterte Informationen","par":"dectOv","pos":20},"dectOv":{"txt":"DECT-Monitor","par":"dect","tab":["dectMoni","dectMoniEx"],"pos":30},"telDev":{"txt":"Telefoniegeräte","par":"tel","pos":70},"overview":{"txt":"Übersicht","pos":10},"wlanmesh":{"txt":"Mesh Repeater","par":"wlan","pos":80},"wps":{"txt":"WPS-Schnellverbindung","par":"wSecu","pos":20},"mSave":{"txt":"Sicherung","par":"sys","tab":["sysSave","sysImp","reboot","default"],"pos":100},"wlan":{"txt":"WLAN","sub":["chan","wRepSet","wSet","wSecu","wTime","wGuest","wds2","wlanmesh"],"pos":70},"pod":{"txt":"Podcast","par":"mSrv","pos":30},"meshNet":{"txt":"Mesh","par":"lan","tab":["homeNet","meshSet"],"pos":14},"portoverview":{"txt":"Portfreigaben","par":"shares","pos":10},"netSet":{"txt":"Netzwerkeinstellungen","par":"net","pos":30},"rdio":{"txt":"Internetradio","par":"mSrv","pos":20},"diag":{"txt":"Diagnose","sub":["funcCheck","secCheck"],"pos":100},"homeNet":{"txt":"Mesh Übersicht","par":"meshNet","pos":16},"netDev":{"txt":"Netzwerkverbindungen","par":"net","pos":20},"meshSet":{"txt":"Mesh Einstellungen","par":"meshNet","pos":17},"dslStat":{"txt":"DSL","par":"dslInfo","pos":20},"user":{"txt":"Benutzer","par":"mUser","pos":10},"phoneline":{"txt":"Anschlusseinstellungen","par":"myNum","pos":20},"provServ":{"txt":"Anbieter-Dienste","par":"mCred","pos":80},"telInt":{"txt":"Interne Nummern","par":"tBook","pos":20},"shareVpn":{"txt":"VPN","par":"shares","pos":60},"bookLi":{"txt":"Telefonbuch","par":"tBook","pos":10},"tam":{"txt":"Anrufbeantworter","par":"tel","pos":20},"filter":{"txt":"Filter","par":"inet","tab":["kidLis","kidPro","trafprio","trafapp"],"pos":40}},"oauthCode":"","lang":"de","sid":"a24a2f2f3ee4e902"});
+}
+</script>
+
+
+
+<div id="myScreenAutogenDivRemInPx" style="position: fixed; top: -999rem; width: 1rem;"></div></body></html>
