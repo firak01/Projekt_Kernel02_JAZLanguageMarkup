@@ -38,6 +38,9 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	private boolean bFlagUseFile = false;
 	private boolean bFlagUseEcs = false;
 	
+	Document objDocEcs=new Document();
+	
+	
 	public KernelWriterHtmlZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
 		main:{		
@@ -126,7 +129,19 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	 */
 	abstract public boolean toFile(String sFilePath) throws ExceptionZZZ;
 	
+	/**
+	 * @return ECS-Document
+	 */
+	public Document getDocumentEcs(){
+		return this.objDocEcs;
+	}
 	
+	/**
+	 * @param objDoc, of Type ECS-Document
+	 */
+	public void setDocumentEcs(Document objDoc){
+		this.objDocEcs=objDoc;
+	}
 
 	/** Function can get the flags of this class or the super-class.
 	 * The following new flags are supported:
