@@ -101,7 +101,7 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 						}
 			
 						objDoc.appendBody((Element) obj);
-			
+						
 			/* das ist nicht notwendig, Typecast Element reicht !!!
 			String sClass = obj.getClass().getName();
 			if (sClass.equals("org.apache.ecs.html.H1")){

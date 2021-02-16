@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry exported="true" kind="lib" path="/ZKernelFileCollection/ecs-1.4.2.jar"/>
 	<classpathentry exported="true" kind="src" path="/JAZKernel"/>
 	<classpathentry exported="true" kind="lib" path="/ZKernelFileCollection/jdom.jar">
 		<attributes>
@@ -21,6 +20,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.4">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2.jar" sourcepath="/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2-src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2.zip!/docs/apidocs"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
