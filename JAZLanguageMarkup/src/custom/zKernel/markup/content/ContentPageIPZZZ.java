@@ -13,6 +13,7 @@ import org.apache.ecs.html.Font;
 import org.apache.ecs.html.H1;
 import org.apache.ecs.html.HR;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
 import basic.zBasic.ExceptionZZZ;
@@ -31,7 +32,7 @@ public class ContentPageIPZZZ extends ContentEcsZZZ {
 	 * @param objLog
 	 * @param strings
 	 */
-	public ContentPageIPZZZ(KernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
+	public ContentPageIPZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
 		main:{
 			if(saFlagControl != null){
@@ -85,7 +86,7 @@ public class ContentPageIPZZZ extends ContentEcsZZZ {
 		StringElement objECS_4a = new StringElement("IP-Nr: " + sIPNr);
 		//this.addElement("IPString",objECS_4a);
 		
-		//Füge nun die Variable ein. Setze gleichzeitig die Schriftart, etc.				
+		//Fï¿½ge nun die Variable ein. Setze gleichzeitig die Schriftart, etc.				
 		Font objECS_3a = new Font().setSize("-2").setColor(HtmlColor.RED);
 		objECS_3a.addElement(objECS_3b);
 		objECS_3a.addElement(objECS_4);

@@ -6,13 +6,14 @@ import java.util.HashMap;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
 public abstract class ContentEcsZZZ extends KernelContentZZZ implements IKernelContentEcsZZZ, IKernelContentComputableZZZ {
 	private HashMap hmECS=new HashMap(); //Speicherung der ECS-Elemente: hmECS("Alias")= new H1(hmVar("UE1");
 	private ArrayList alsECSIndex = new ArrayList(); //Speicherung der Reihenfolge der ECS-Elemente: alsECSIndex(i)="Alias"
 
-	public ContentEcsZZZ(KernelZZZ objKernel) {
+	public ContentEcsZZZ(IKernelZZZ objKernel) {
 		super(objKernel);
 	}
 
