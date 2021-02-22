@@ -261,11 +261,9 @@ public class WriterHtmlZZZ extends KernelWriterHtmlZZZ {
 	 */
 	public boolean toFile(String sFilePath) throws ExceptionZZZ{
 		boolean bReturn=false;
-		main:{
-			
-			try{
-			
-			Html objHtml = this.getDocumentEcs().getHtml();
+		main:{			
+			try{			
+				Html objHtml = this.getDocumentEcs().getHtml();
 			
 			    DataOutputStream output = null;
 				output =  new DataOutputStream(new BufferedOutputStream(new FileOutputStream(sFilePath)));
@@ -273,15 +271,15 @@ public class WriterHtmlZZZ extends KernelWriterHtmlZZZ {
 				//System.out.println(stemp);
 				output.write(objHtml.toString().getBytes());
 				output.close();//Ohne schliessen des Streams wird der Inhalt dort nicht eingef�gt.
+				
+				bReturn = true;
 			}catch(FileNotFoundException fnfe){
 					ExceptionZZZ ez = new ExceptionZZZ("File '"+sFilePath+"' can not be found.", iERROR_RUNTIME, this, ReflectCodeZZZ.getMethodCurrentName(), fnfe);
 					throw ez;
 			}catch(IOException ioe){
 				ExceptionZZZ ez = new ExceptionZZZ("IOException for File '"+sFilePath+"'", iERROR_RUNTIME,this, ReflectCodeZZZ.getMethodCurrentName(), ioe);
 				throw ez;	
-			}
-					
-			
+			}								
 		}//end main:
 		return bReturn;
 	}
