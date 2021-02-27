@@ -16,9 +16,11 @@ import java.io.OutputStreamWriter;
 import org.apache.ecs.Document;
 import org.apache.ecs.html.Html;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zKernel.markup.content.IKernelContentEcsZZZ;
 import basic.zKernel.markup.content.IKernelContentFileZZZ;
 
@@ -29,23 +31,37 @@ import basic.zKernel.markup.content.IKernelContentFileZZZ;
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
 public class KernelWriterHtmlByEcsZZZ extends KernelWriterHtmlZZZ {
-	private org.apache.ecs.Document objDoc=new Document();
+			
+	public KernelWriterHtmlByEcsZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
+		super(objKernel,saFlagControl);
+		Document objDoc = this.getDocument();
+		KernelWriterHtmlByEcsNew_(objKernel, objDoc, saFlagControl);
+	}
 	
 	/** 
 	 * @param objKernel
 	 * @param objLog
 	 * @param saFlagControl
 	 */
-	public KernelWriterHtmlByEcsZZZ(KernelZZZ objKernel, Document objDoc, String[] saFlagControl) throws ExceptionZZZ {
+	public KernelWriterHtmlByEcsZZZ(IKernelZZZ objKernel, Document objDoc, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel,saFlagControl);
-		if(this.getFlag("init")==false){		
-			if(objDoc==null){
-				ExceptionZZZ ez = new ExceptionZZZ("ECS Document Object", iERROR_PARAMETER_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
-				throw ez;
-			}
-			this.setFlag("useecs", true);
-			this.objDoc = objDoc;
-		}
+		KernelWriterHtmlByEcsNew_(objKernel, objDoc, saFlagControl);
+	}
+	
+	private boolean KernelWriterHtmlByEcsNew_(IKernelZZZ objKernel, Document objDoc, String[] saFlagControl) throws ExceptionZZZ{
+		boolean bReturn = false;
+		main:{
+			if(this.getFlag("init")==false){		
+				if(objDoc==null){
+					ExceptionZZZ ez = new ExceptionZZZ("ECS Document Object", iERROR_PARAMETER_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;
+				}
+				this.setFlag("useecs", true);
+				this.setDocument(objDoc);
+			}									
+			bReturn = true;
+		}//end main:
+		return bReturn;
 	}
 	
 	/**
@@ -106,16 +122,9 @@ public class KernelWriterHtmlByEcsZZZ extends KernelWriterHtmlZZZ {
 	 * @return ECS-Document
 	 */
 	public org.apache.ecs.Document getDocument(){
-		return this.objDoc;
+		return this.getDocumentEcs();
 	}
-	
-	/**
-	 * @param objDoc, of Type ECS-Document
-	 */
-	public void setDocument(org.apache.ecs.Document objDoc){
-		this.objDoc=objDoc;
-	}
-	
+		
 	 /** Create a file with the whole document-content
 	 * @param sFilePath
 	 * @return boolean, indicating the success of the method
@@ -136,19 +145,25 @@ public class KernelWriterHtmlByEcsZZZ extends KernelWriterHtmlZZZ {
 			//output.write(objHtml.toString().getBytes());
 			//output.close();//Ohne schliessen des Streams wird der Inhalt dort nicht eingefügt.
          	
+			//Vor dem ggfs. erstmaligen Erstellen ggfs. die notwendigen Verzeichnisse erzeugen.
+			boolean bErg = FileEasyZZZ.createDirectoryForFile(sFilePath);
+			if(bErg) {
+				this.getLogObject().WriteLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
+			}
+			
 				//20190712: Ziel ist es nun UTF-8 Datei zu erstellen
 	         	OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(sFilePath),"UTF-8"); 
 	         	writer.write(objHtml.toString());
 	         	writer.close();
+	         	
+	         	bReturn = true;
 			}catch(FileNotFoundException e){
 				ExceptionZZZ ez = new ExceptionZZZ("File '"+sFilePath+"' can not be found.", iERROR_RUNTIME,(Object)this,ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;
 			}catch(IOException e){
 				ExceptionZZZ ez = new ExceptionZZZ(e.getMessage(), iERROR_RUNTIME,(Object)this, ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;	
-			}
-					
-			
+			}								
 		}//end main:
 		return bReturn;
 	}
@@ -159,7 +174,7 @@ public class KernelWriterHtmlByEcsZZZ extends KernelWriterHtmlZZZ {
 	}
 
 	public boolean replaceContent(IKernelContentFileZZZ objContent) throws ExceptionZZZ {
-		// TODO Auto-generated method stub
-		return false;
+		ExceptionZZZ ez = new ExceptionZZZ("Wrong content. Use a ECS content only", iERROR_PARAMETER_VALUE, this, ReflectCodeZZZ.getMethodCurrentName());
+		throw ez;
 	}
 }

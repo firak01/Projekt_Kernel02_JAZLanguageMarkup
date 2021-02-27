@@ -38,8 +38,8 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	private boolean bFlagUseFile = false;
 	private boolean bFlagUseEcs = false;
 	
-	Document objDocEcs=new Document();
-	
+	private org.apache.ecs.Document objDocEcs=null;
+	private org.jdom.Document objDocJdom= null;
 	
 	public KernelWriterHtmlZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
@@ -132,15 +132,35 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	/**
 	 * @return ECS-Document
 	 */
-	public Document getDocumentEcs(){
+	public org.apache.ecs.Document getDocumentEcs(){
+		if(this.objDocEcs==null) {
+			this.objDocEcs=new org.apache.ecs.Document();
+		}
 		return this.objDocEcs;
 	}
 	
 	/**
 	 * @param objDoc, of Type ECS-Document
 	 */
-	public void setDocumentEcs(Document objDoc){
+	public void setDocument(org.apache.ecs.Document objDoc){
 		this.objDocEcs=objDoc;
+	}
+	
+	/**
+	 * @return ECS-Document
+	 */
+	public org.jdom.Document getDocumentJDom(){
+		if(this.objDocJdom==null) {
+			this.objDocJdom=new org.jdom.Document();
+		}
+		return this.objDocJdom;
+	}
+	
+	/**
+	 * @param objDoc, of Type ECS-Document
+	 */
+	public void setDocument(org.jdom.Document objDoc){
+		this.objDocJdom=objDoc;
 	}
 
 	/** Function can get the flags of this class or the super-class.

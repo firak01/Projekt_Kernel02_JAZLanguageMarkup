@@ -15,18 +15,18 @@ import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
+import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.markup.content.IKernelContentEcsZZZ;
 import basic.zKernel.markup.content.IKernelContentFileZZZ;
 
-public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {
-	private org.jdom.Document objDoc= null;
+public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {	
 	private KernelReaderHtmlZZZ objReader = null;
 	
 	public KernelWriterHtmlByFileZZZ(IKernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel, saFlagControl);	
 		if(this.getFlag("init")==false){		
-			this.setFlag("useecs", true);		
+			this.setFlag("useecs", false);		
 		}
 	}
 
@@ -49,8 +49,8 @@ public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {
 	}
 
 	public boolean replaceContent(IKernelContentEcsZZZ objContent) throws ExceptionZZZ {
-		// TODO Auto-generated method stub
-		return false;
+		ExceptionZZZ ez = new ExceptionZZZ("Wrong content. Use a IKernelContentFileZZZ content only", iERROR_PARAMETER_VALUE, this, ReflectCodeZZZ.getMethodCurrentName());
+		throw ez;
 	}
 
 	public boolean replaceContent(IKernelContentFileZZZ objContentStore) throws ExceptionZZZ {
@@ -103,6 +103,12 @@ public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {
 				  sFilePath = "." + File.pathSeparator + sFilePathin;
 				  objFile = new File(sFilePath);
 			  }
+			  
+			//Vor dem ggfs. erstmaligen Erstellen ggfs. die notwendigen Verzeichnisse erzeugen.
+				boolean bErg = FileEasyZZZ.createDirectoryForFile(objFile);
+				if(bErg) {
+					this.getLogObject().WriteLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
+				}
 			  
 			  //2. Stream f�r das Schreiben in die Datei holen.
 			  try {
@@ -181,12 +187,9 @@ public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {
 	}
 	
 	
-	//####### GETTER / SETTER
-	public void setDocument(org.jdom.Document document){
-		this.objDoc = document;
-	}
+	//####### GETTER / SETTER	
 	public org.jdom.Document getDocument(){
-		return this.objDoc;
+		return this.getDocumentJDom();
 	}
 	private void setReaderCurrent(KernelReaderHtmlZZZ objReader){
 		this.objReader = objReader;
