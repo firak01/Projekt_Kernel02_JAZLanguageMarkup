@@ -38,7 +38,7 @@ public class KernelContentZZZ extends KernelUseObjectZZZ implements IKernelConte
 		super();
 	}
 	 
-	public KernelContentZZZ(IKernelZZZ objKernel){ 
+	public KernelContentZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{ 
 		super(objKernel);
 	}
 	

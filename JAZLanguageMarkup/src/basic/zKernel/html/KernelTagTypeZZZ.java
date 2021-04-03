@@ -8,7 +8,7 @@ import basic.zKernel.KernelUseObjectZZZ;
 
 public abstract class KernelTagTypeZZZ extends KernelUseObjectZZZ implements IKernelTagTypeZZZ {
 
-	public KernelTagTypeZZZ(IKernelZZZ objKernel){
+	public KernelTagTypeZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel);
 	}
 	 

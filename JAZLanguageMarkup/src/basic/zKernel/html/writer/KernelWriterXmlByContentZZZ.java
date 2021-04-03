@@ -29,7 +29,7 @@ public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
 	private ContentXmlZZZ objContent = null;
 	private String sEncodingUsed = "ISO-8859-1"; // für deutsch";
 	
-	public KernelWriterXmlByContentZZZ(IKernelZZZ objKernel){
+	public KernelWriterXmlByContentZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel);
 	}
 	

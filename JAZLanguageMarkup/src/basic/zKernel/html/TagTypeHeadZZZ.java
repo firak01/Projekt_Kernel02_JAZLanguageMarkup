@@ -9,7 +9,7 @@ public class TagTypeHeadZZZ extends KernelTagTypeZZZ {
 	public final static String TagName = "head";
 	 
 	//######## Constructor
-	public TagTypeHeadZZZ(KernelZZZ objKernel){
+	public TagTypeHeadZZZ(KernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel);
 	}
 	

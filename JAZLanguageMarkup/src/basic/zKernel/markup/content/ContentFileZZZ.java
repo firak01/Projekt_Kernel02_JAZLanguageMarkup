@@ -12,7 +12,7 @@ public class ContentFileZZZ extends KernelContentZZZ implements IKernelContentFi
 	File objFile;
 	KernelReaderHtmlZZZ objReaderHtml;
 	
-	public ContentFileZZZ(IKernelZZZ objKernel) {
+	public ContentFileZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
 		super(objKernel);
 	}
 	public ContentFileZZZ(IKernelZZZ objKernel, File objFile) throws ExceptionZZZ{

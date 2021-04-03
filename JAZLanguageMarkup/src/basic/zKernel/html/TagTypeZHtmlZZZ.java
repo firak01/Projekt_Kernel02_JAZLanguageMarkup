@@ -11,7 +11,7 @@ public class TagTypeZHtmlZZZ  extends KernelTagTypeZZZ{
 	public final static String TagName = "zhtml";
 	
 	//###### Constructor
-	public TagTypeZHtmlZZZ(IKernelZZZ objKernel) {
+	public TagTypeZHtmlZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
 		super(objKernel);
 	}
 

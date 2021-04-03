@@ -15,7 +15,7 @@ public class TagTypeInputZZZ extends KernelTagTypeZZZ{
 	public final static String TagName = "input";
 	
 	//###### Constructor
-	public TagTypeInputZZZ(IKernelZZZ objKernel) {
+	public TagTypeInputZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
 		super(objKernel);
 	}
 

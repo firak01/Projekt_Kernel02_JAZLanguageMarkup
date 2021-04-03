@@ -13,7 +13,7 @@ public abstract class ContentEcsZZZ extends KernelContentZZZ implements IKernelC
 	private HashMap hmECS=new HashMap(); //Speicherung der ECS-Elemente: hmECS("Alias")= new H1(hmVar("UE1");
 	private ArrayList alsECSIndex = new ArrayList(); //Speicherung der Reihenfolge der ECS-Elemente: alsECSIndex(i)="Alias"
 
-	public ContentEcsZZZ(IKernelZZZ objKernel) {
+	public ContentEcsZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
 		super(objKernel);
 	}
 

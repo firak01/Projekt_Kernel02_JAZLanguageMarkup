@@ -14,7 +14,7 @@ public class TagTypeBodyZZZ extends KernelTagTypeZZZ {
 	public final static String TagName = "body";
 	 
 	//######## Constructor
-	public TagTypeBodyZZZ(IKernelZZZ objKernel){
+	public TagTypeBodyZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel);
 	}
 	

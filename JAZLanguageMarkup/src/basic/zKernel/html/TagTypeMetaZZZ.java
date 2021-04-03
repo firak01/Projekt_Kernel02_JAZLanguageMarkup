@@ -12,7 +12,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 	public final static String TagName = "meta";
 	 
 	//######## Constructor
-	public TagTypeMetaZZZ(IKernelZZZ objKernel){
+	public TagTypeMetaZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel);
 	}
 	
