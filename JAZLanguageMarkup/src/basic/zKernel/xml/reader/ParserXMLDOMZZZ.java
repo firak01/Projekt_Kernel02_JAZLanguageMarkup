@@ -15,7 +15,7 @@ package basic.zKernel.xml.reader;
 import org.xml.sax.SAXException;
 
 import basic.zKernel.KernelZZZ;
-
+import basic.zKernel.flag.IFlagUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -95,7 +95,7 @@ import basic.zKernel.KernelUseObjectZZZ;
 				stemp = saFlagControl[iCount];
 				btemp = setFlag(stemp, true);
 				if(btemp==false){ 								   
-					   ExceptionZZZ ez = new ExceptionZZZ( stemp, iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 					 
+					   ExceptionZZZ ez = new ExceptionZZZ( stemp, IFlagUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 					 
 					   throw ez;		 
 				}
 			}
@@ -131,14 +131,14 @@ import basic.zKernel.KernelUseObjectZZZ;
 		
 			//DocumentBuilderObjekt und Document erstellen
 			DocumentBuilderFactory domfactory = DocumentBuilderFactory.newInstance();
-			//+++ Gültigkeitsprüfung aktivieren
+			//+++ Gï¿½ltigkeitsprï¿½fung aktivieren
 			domfactory.setValidating(true);
 			//+++ Whitespace ignorieren
 			domfactory.setIgnoringElementContentWhitespace(true);
 		
 			DocumentBuilder dombuilder = domfactory.newDocumentBuilder();
 		
-			//+++ Einen default-Errorhandler bestimmen, das ist notwendig wg. der Gültigkeitsprüfung
+			//+++ Einen default-Errorhandler bestimmen, das ist notwendig wg. der Gï¿½ltigkeitsprï¿½fung
 			//Merke: Die Original-Klasse gibt nix aus, darum mit meiner erweiterten Klasse arbeiten.
 			DTDErrorZZZ eh = new DTDErrorZZZ();
 			dombuilder.setErrorHandler(eh);
@@ -146,8 +146,8 @@ import basic.zKernel.KernelUseObjectZZZ;
 			//+++ Einlesen der Datei in das XML-Dokument
 			domdoc = dombuilder.parse(objFile);
 		
-			//+++ Prüfen des documents
-			//TODO GOON: Das muss auch für andere Dokumente gehen !!! Ggf. muss der Root Name konfigurierbar sein
+			//+++ Prï¿½fen des documents
+			//TODO GOON: Das muss auch fï¿½r andere Dokumente gehen !!! Ggf. muss der Root Name konfigurierbar sein
 			/*
 			String sTemp = "ursuppe";
 			boolean bTemp = this.proofDocumentRootName(sTemp);
@@ -160,7 +160,7 @@ import basic.zKernel.KernelUseObjectZZZ;
 			*/
 
 		} //end try
-		// die verschiedenen Catch - Blöcke
+		// die verschiedenen Catch - Blï¿½cke
 		//TODO GOON: alle auf ExceptionZZZ runterbrechen. 
 		catch(ParserConfigurationException e){
 			e.printStackTrace();
@@ -235,7 +235,7 @@ public String readTagRootName() throws ExceptionZZZ{
 		int iNumberOfTag = domCardList.getLength();
 		System.out.println("Number of cards found by tag 'name': " + iNumberOfTag);
 
-		//Die Größe der ArrayListe festlegen
+		//Die Grï¿½ï¿½e der ArrayListe festlegen
 		alsCardValue.ensureCapacity(iNumberOfTag);
 
 		//String Wert in die ArrayListe aufnehmen
@@ -269,17 +269,17 @@ public String readTagRootName() throws ExceptionZZZ{
 		short shNodeType = 0;
 		String sTemp = "";
 		Node domNodeFound = null;
-		NodeList nl2 = null; //enthält die Kinderdokument
+		NodeList nl2 = null; //enthï¿½lt die Kinderdokument
 		
 	main:
 	{	
 		//Handle auf das DOM-Dokument
 		Document domdoc = this.getDocument();
 		
-		//Nodelist mit dem Schlüsselwert
+		//Nodelist mit dem Schlï¿½sselwert
 		NodeList nl = domdoc.getElementsByTagName(sKeyNameToFind);
 		System.out.println("Number of Cards found by tag '" + sKeyNameToFind + "': " + nl.getLength());
-		//Node aus der Nodelist, der dem Schlüsselwert entspricht
+		//Node aus der Nodelist, der dem Schlï¿½sselwert entspricht
 		for(int iCounter = 0; iCounter <= nl.getLength()-1;iCounter++){
 			Node domTagTemp = nl.item(iCounter);
 			shNodeType = domTagTemp.getNodeType();
@@ -310,7 +310,7 @@ public String readTagRootName() throws ExceptionZZZ{
 			if(domNodeFound != null){
 				bFunction = readTagValue(nl2, sTagNameToFind,alsCardName);			
 			}// end if (domNodeFound != null)	 
-		} //end äusserste For - Schleife
+		} //end ï¿½usserste For - Schleife
 	}
 	end:
 	{	
@@ -437,7 +437,7 @@ public String readTagRootName() throws ExceptionZZZ{
 			// Erst einmal das Parent-Elemente holen
 			objNodeParent = objNodein.getParentNode();
 			if(objNodeParent == null){
-				break main; //die root erreicht/überschritten !!!			
+				break main; //die root erreicht/ï¿½berschritten !!!			
 			}
 			//Falls es sich um die erste Ebene nach dem Root handelt, abbrechen damit man nicht in einen ganz anderen Zweig kommt.
 			bTemp = proofNodeIsLevelFirst(objNodein);
@@ -606,9 +606,9 @@ public String readTagRootName() throws ExceptionZZZ{
 					//Entspricht der Kinderwert dem gesuchten Wert. ???
 					if (sTemp.equals(sTagNameToFind)){
 						Node domNodeTemp = domNodeChild.getFirstChild();
-						//System.out.println("Wert beträgt: " + domNodeTemp.getNodeValue());
+						//System.out.println("Wert betrï¿½gt: " + domNodeTemp.getNodeValue());
 						
-						//Wert der Liste hinzufügen !!! Sie wird nicht gelöscht !!!
+						//Wert der Liste hinzufï¿½gen !!! Sie wird nicht gelï¿½scht !!!
 						if(alsCardName != null){
 							alsCardName.add(domNodeTemp.getNodeValue());
 						}else{
@@ -617,7 +617,7 @@ public String readTagRootName() throws ExceptionZZZ{
 						}
 						break main;
 					}else{
-						//Nächsten Knoten ermitteln
+						//Nï¿½chsten Knoten ermitteln
 						NodeList nl5 = domNodeChild.getChildNodes();
 						bFunction = readTagValue(nl5,sTagNameToFind, alsCardName);
 						
@@ -679,7 +679,7 @@ public String readTagRootName() throws ExceptionZZZ{
 		
 		
 		
-		//Node aus der Nodelist, der dem Schlüsselwert entspricht
+		//Node aus der Nodelist, der dem Schlï¿½sselwert entspricht
 		for(int iCounter2 = 0; iCounter2 <= nl.getLength()-1; iCounter2++){				
 					Node domNodeChild = nl.item(iCounter2);					
 					stemp = domNodeChild.getNodeName();
@@ -723,7 +723,7 @@ public String readTagRootName() throws ExceptionZZZ{
 			    
 			    //Falls immer noch nix gefunden wurde, diese Funktion rekursiv aufrufen.
 			    //Dabei vom Parent-Node ausgehen.
-			    //Ziel ist es dadurch zur nächsten ParentNode zu gehen
+			    //Ziel ist es dadurch zur nï¿½chsten ParentNode zu gehen
 			    if(domNodeFound == null){
 			    	domNodeFound = readNodeFirstByKey(domNodeParent, sTagKeyName, sKey);
 			    } //end if
@@ -750,7 +750,7 @@ public String readTagRootName() throws ExceptionZZZ{
 		
 	main:
 	{
-		//Node aus der Nodelist, der dem Schlüsselwert entspricht
+		//Node aus der Nodelist, der dem Schlï¿½sselwert entspricht
 		for(int iCounter2 = 0; iCounter2 <= nl.getLength()-1; iCounter2++){				
 					Node domNodeChild = nl.item(iCounter2);
 					sTemp = domNodeChild.getNodeName();
@@ -826,7 +826,7 @@ public String readTagRootName() throws ExceptionZZZ{
 			//for(iCounter2 = 0; iCounter2 < iNumberOfTag2; iCounter2++){
 				objNodeTemp = nl.item(iCounter);
 				shTagType = objNodeTemp.getNodeType();
-				//Wurde der Begriff gefunden ? Wenn ja, ihn der ArrayList hinzufügen.
+				//Wurde der Begriff gefunden ? Wenn ja, ihn der ArrayList hinzufï¿½gen.
 				if(shTagType==Node.TEXT_NODE){
 					sValue = objNodeTemp.getNodeValue();
 					
@@ -936,7 +936,7 @@ public String readTagRootName() throws ExceptionZZZ{
 			break main;
 		}
 		} //end try
-		// die verschiedenen Catch - Blöcke
+		// die verschiedenen Catch - Blï¿½cke
 		catch(Exception e){
 			e.printStackTrace();
 			break main;

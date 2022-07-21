@@ -28,6 +28,7 @@ import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zBasic.util.file.ResourceEasyZZZ;
 import basic.zBasic.util.web.cgi.UrlLogicZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.flag.IFlagUserZZZ;
 
 
 /**
@@ -110,7 +111,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 					stemp = saFlagControl[iCount];
 					btemp = setFlag(stemp, true);
 					if(btemp==false){ 								   
-						   ExceptionZZZ ez = new ExceptionZZZ( stemp, iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 
+						   ExceptionZZZ ez = new ExceptionZZZ( stemp, IFlagUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 
 						   throw ez;		 
 					}
 				}
