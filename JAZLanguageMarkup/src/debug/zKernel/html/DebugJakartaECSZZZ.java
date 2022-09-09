@@ -72,7 +72,7 @@ public class DebugJakartaECSZZZ {
 		 
 		 //Ausgabe des HTML-Codes in eine Datei
 		 //TODO Dies durch eine Z-Kernel-Wrapper-Klasse erledigen
-		 File objFileConfig = objKernel.getFileConfigByAlias("IPPage");
+		 File objFileConfig = objKernel.getFileConfigModuleOLDDIRECT("IPPage");
 		 String sFile = objKernel.getParameterByProgramAlias(objFileConfig, "ProgPage", "TargetFile").getValue(); 
 		 String sDir = objKernel.getParameterByProgramAlias(objFileConfig, "ProgPage", "TargetDirectory").getValue(); 
 		 if(sDir==null||sDir.equals("")){
