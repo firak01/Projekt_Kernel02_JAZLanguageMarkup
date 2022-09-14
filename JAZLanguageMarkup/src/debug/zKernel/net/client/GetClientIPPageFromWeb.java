@@ -44,6 +44,9 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 		main:{
 		try{
 //			1. Erstellen das Z-Kernel Objekt
+//			objKernel = new KernelZZZ("FGL", "01", "", "ZKernelConfigIPPage_default.ini",(String) null);
+			
+			//Funktioniert aber auch ohne Angabe der Datei, dann wird die Defaultdatei aus einer Konstante genommen.
 			objKernel = new KernelZZZ("FGL", "01", "", "",(String) null);
 			
 			//2. Protokoll
