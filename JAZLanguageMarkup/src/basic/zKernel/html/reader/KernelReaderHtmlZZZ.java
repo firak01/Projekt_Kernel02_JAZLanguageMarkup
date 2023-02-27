@@ -192,6 +192,8 @@ System.out.println("test:" + stemp2);
 		} //hier sind einfach noch zu wenig Informationen
 		*/
 				
+		//  http://nekohtml.sourceforge.net/faq.html#hierarchy
+		//	nekohtml-1.9.21.zip
 		org.cyberneko.html.parsers.DOMParser parser = new org.cyberneko.html.parsers.DOMParser();
 		this.objHTMLParser = parser;
 		try {
