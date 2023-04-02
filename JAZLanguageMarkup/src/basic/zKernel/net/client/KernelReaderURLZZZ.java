@@ -28,7 +28,7 @@ import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zBasic.util.file.ResourceEasyZZZ;
 import basic.zBasic.util.web.cgi.UrlLogicZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
-import basic.zKernel.flag.IFlagUserZZZ;
+import basic.zKernel.flag.IFlagZUserZZZ;
 
 
 /**

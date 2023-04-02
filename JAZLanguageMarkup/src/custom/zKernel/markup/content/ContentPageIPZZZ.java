@@ -17,7 +17,7 @@ import org.apache.ecs.html.Input;
 
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
-import basic.zKernel.flag.IFlagUserZZZ;
+import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.markup.content.ContentEcsZZZ;
@@ -43,7 +43,7 @@ public class ContentPageIPZZZ extends ContentEcsZZZ {
 					stemp = saFlagControl[iCount];
 					btemp = setFlag(stemp, true);
 					if(btemp==false){ 								   
-						   ExceptionZZZ ez = new ExceptionZZZ(stemp, IFlagUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 
+						   ExceptionZZZ ez = new ExceptionZZZ(stemp, IFlagZUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 
 						   throw ez;		 
 					}
 				}

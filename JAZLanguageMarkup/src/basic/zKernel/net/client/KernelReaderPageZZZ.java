@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
-import basic.zKernel.flag.IFlagUserZZZ;
+import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
