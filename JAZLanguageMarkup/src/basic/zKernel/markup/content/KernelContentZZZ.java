@@ -134,7 +134,7 @@ public class KernelContentZZZ extends KernelUseObjectZZZ implements IKernelConte
 	 * Verwendete Flags:
 	 * - RemoveZHTML
 	 */
-	public boolean setFlag(String sFlagName, boolean bFlagValue){
+	public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

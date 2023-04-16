@@ -175,15 +175,22 @@ public boolean start(){
 		}//END main
 	}catch(ExceptionZZZ ez){
 		this.getLogObject().WriteLineDate(ez.getDetailAllLast());
-		this.setFlag("HasError", true);
+		try {
+			this.setFlag("HasError", true);
+		} catch (ExceptionZZZ e) {			
+			e.printStackTrace();
+		}
 	}finally{
 		if(this.getSocketObjectCurrent()!=null){
 			try {
 				this.getSocketObjectCurrent().close();
 			} catch (IOException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-				this.setFlag("HasError", true);
+				try {
+					this.setFlag("HasError", true);
+				} catch (ExceptionZZZ e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 	}
@@ -344,8 +351,9 @@ public boolean getFlag(String sFlagName){
  * Flags used:<CR>
  * - isconnected
  * - haserror
+ * @throws ExceptionZZZ 
  */
-public boolean setFlag(String sFlagName, boolean bFlagValue){
+public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 	boolean bFunction = false;
 	main:{
 		if(StringZZZ.isEmpty(sFlagName)) break main;

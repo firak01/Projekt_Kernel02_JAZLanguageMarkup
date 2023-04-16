@@ -119,7 +119,7 @@ public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
 	 * Flags:
 	 * 	- IsArray
 	 */
-	public boolean setFlag(String sFlagName, boolean bFlagValue){
+	public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 			boolean bFunction = false;
 			main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

@@ -635,8 +635,9 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 	 * @return boolean
 	 *
 	 * javadoc created by: 0823, 29.06.2006 - 14:39:37
+	 * @throws ExceptionZZZ 
 	 */
-	public boolean setProxyDisabled(){
+	public boolean setProxyDisabled() throws ExceptionZZZ{
 		System.setProperty( "proxySet", "false" );
 		this.setFlag("useproxy", false);		
 		return true;
@@ -707,8 +708,9 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 	 * - useaccount
 	 * - usestream
 	 * - useproxy
+	 * @throws ExceptionZZZ 
 	 */
-	public boolean setFlag(String sFlagName, boolean bFlagValue){
+	public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

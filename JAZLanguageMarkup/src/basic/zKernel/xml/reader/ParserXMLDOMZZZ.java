@@ -358,8 +358,9 @@ public String readTagRootName() throws ExceptionZZZ{
 	 * - FileChanged, if a value is written to the file the flag is changed to true,
 	 * - FileUnsaved, if a value is written to the file the flag is changed to true, if the save() method is used it is reset to false.
 	 * 			  source_remove: after copying the source_files will be removed.
+	 * @throws ExceptionZZZ 
 	 */
-	public boolean setFlag(String sFlagName, boolean bFlagValue){
+	public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

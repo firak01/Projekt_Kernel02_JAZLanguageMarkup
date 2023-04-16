@@ -76,34 +76,42 @@ public class PortScanRunnerZZZ extends KernelUseObjectZZZ implements Runnable {
 		//System.out.println("Connected to  "+ sHost + ":" + iPort);
 		Integer intPort = new Integer(iPort); 
 		this.objPortScanner.addPortConnected(intPort); //!!! diese Methode ist synchronsiert und darum minimal !!! Noc nicht einmal die Variablen Integer-Machung kommt da rein.
-		
-		
-		
+
 		} catch (UnknownHostException e) {
 			System.out.println("Unknown host: " + sHost);
-			this.setFlag("IsUnknownHost", true);
-			this.objPortScanner.setFlag("IsUnknownHost", true);
+			try {
+				this.setFlag("IsUnknownHost", true);
+			} catch (ExceptionZZZ e3) {				
+				e3.printStackTrace();
+			}
+			try {
+				this.objPortScanner.setFlag("IsUnknownHost", true);
+			} catch (ExceptionZZZ e2) {				
+				e2.printStackTrace();
+			}
 			if (target != null)
 				try {
 					target.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+				} catch (IOException e1) {					
+					e1.printStackTrace();
 				}
 				
-			//Weitere Fehler treten "erwartet" auf, wenn der scan fehlschl�gt.	Sie werden auch nicht weiter verfolgt.
+			//Weitere Fehler treten "erwartet" auf, wenn der scan fehlschlaegt.	Sie werden auch nicht weiter verfolgt.
 			//zu  beachten: Das weitere target.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			this.setFlag("HasError", true);
+			try {
+				this.setFlag("HasError", true);
+			} catch (ExceptionZZZ e2) {				
+				e2.printStackTrace();
+			}
 			if (target != null)
 				try {
 					target.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} catch (IOException e1) {					
 					//e1.printStackTrace();
 				}
+		} catch (ExceptionZZZ e) {			
+			e.printStackTrace();
 		}
 		}//END main:
 	}
@@ -155,8 +163,9 @@ public class PortScanRunnerZZZ extends KernelUseObjectZZZ implements Runnable {
 	 	- hasError
 	- isconnected
 	- HostUnknown
+	 * @throws ExceptionZZZ 
 	 */
-	public boolean setFlag(String sFlagName, boolean bFlagValue){
+	public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{			
 			if(StringZZZ.isEmpty(sFlagName)) break main;

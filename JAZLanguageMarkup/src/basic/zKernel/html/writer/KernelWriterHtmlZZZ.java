@@ -199,9 +199,10 @@ public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{
 	 * The following new flags are supported:
 	 * --- useFile
 	 * --- useEcs
+	 * @throws ExceptionZZZ 
  * @see basic.zBasic.IFunctionZZZ_loesch#setFlag(java.lang.String, boolean)
  */
-public boolean setFlag(String sFlagName, boolean bFlagValue){
+public boolean setFlag(String sFlagName, boolean bFlagValue) throws ExceptionZZZ{
 	boolean bFunction = false;
 	main:{
 		if(StringZZZ.isEmpty(sFlagName)) break main;
