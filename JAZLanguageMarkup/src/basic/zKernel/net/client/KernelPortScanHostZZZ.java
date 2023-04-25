@@ -83,7 +83,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 					throw ez;
 				}
 				
-				//Vor den Scans das durchf�hren. Merke: W�hrend des Scans wird das auch immer wieder �berpr�ft.
+				//Vor den Scans das durchfuehren. Merke: Waehrend des Scans wird das auch immer wieder ueberprueft.
 				boolean btemp = KernelPingHostZZZ.isHostKnown(this.sHost, this.getPortKnown());
 				if(btemp==false){
 					this.setFlag("IsUnknownHost", true);
