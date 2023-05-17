@@ -136,10 +136,10 @@ public boolean start(){
 							this.setFlag("istimeout", true);
 							///? das haserrror flag ebenfalls auf false setzen ???
 							customProcessOnTimeoutConnected();
-							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close(); //Sonst m�ssen vom Client immer wieder neue Ports zur Verf�gung gestellt werden.
+							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close(); //Sonst muessen vom Client immer wieder neue Ports zur Verfuegung gestellt werden.
 						}else{
 							customProcessOnTimeout();
-							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();  //Sonst m�ssen vom Client immer wieder neue Ports zur Verf�gung gestellt werden.
+							if(this.getSocketObjectCurrent()!=null) this.getSocketObjectCurrent().close();  //Sonst muessen vom Client immer wieder neue Ports zur Verfuegung gestellt werden.
 						}						
 						break; //Damit die innere do while schleife verlassen, es ist ein timeout-fall.
 					}

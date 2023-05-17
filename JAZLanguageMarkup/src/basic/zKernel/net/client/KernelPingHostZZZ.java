@@ -158,7 +158,7 @@ public class KernelPingHostZZZ extends KernelUseObjectZZZ{
 		//InternetAdresse daraus machen.
 			InetAddress objAddress = InetAddress.getByName(sHost);
 			
-			//AB 1.4 gibt es dann diese Klasse, die den R�ckagabewert (die 4 IP-Adressen-Bestandteile) einfacher handelt.
+			//AB 1.4 gibt es dann diese Klasse, die den Rueckagabewert (die 4 IP-Adressen-Bestandteile) einfacher handelt.
 			InetSocketAddress objAddressSocket = new InetSocketAddress(objAddress, iPort);
 			
 		    //Nun die Zeit messen mit den jakarta-commons
@@ -168,8 +168,8 @@ public class KernelPingHostZZZ extends KernelUseObjectZZZ{
 			//Nun einen Socket-Chanel �ffen					
 			SocketChannel objSC = null;
 			objSC = SocketChannel.open();
-			objSC.configureBlocking(true); //Daraufhin wird .connect true zur�ckliefern. Ansonsten muss man warten.
-		    bReturn = objSC.connect(objAddressSocket);  //Das f�hrt noch keine endg�ltige connection durch !!!
+			objSC.configureBlocking(true); //Daraufhin wird .connect true zurueckliefern. Ansonsten muss man warten.
+		    bReturn = objSC.connect(objAddressSocket);  //Das fuehrt noch keine endgueltige connection durch !!!
 		    
 		    bReturn = objSC.finishConnect(); //ggf. sollte man das Warten in einem anderen Thread durchf�hren
 		  
