@@ -12,7 +12,9 @@ import java.util.List;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.DOMBuilder;
+import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+import org.jdom.output.Format.TextMode;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -876,12 +878,30 @@ System.out.println("test:" + stemp2);
 	}
 	
 	public String getDocumentAsString() {
+		return this.getDocumentAsString(null);
+	}
+	
+	public String getDocumentAsString(Format formatIn) {
 		String sReturn = null;
 		main:{
 			Document doc = this.getDocument();
 			if(doc==null)break main;
 			
-			sReturn = new XMLOutputter().outputString(doc);			
+			XMLOutputter xmlout = new XMLOutputter();			 
+			Format format=null;
+			if(formatIn!=null) {
+				format = formatIn;
+			}else {
+				format = xmlout.getFormat();				
+				format.setOmitDeclaration(true); //Ohne diese Formatierungshinweise, wird die Zeile <?xml version="1.0" encoding="UTF-8"?> vorangestellt, was bei einem HTML-Dokument ggf. fuer falsche Deutsche Umlaute sorgt.
+				format.setOmitEncoding(true);   
+				format.setExpandEmptyElements(true); //aus <aaa/> wird dann <aaa></aaa>    
+				format.setTextMode(TextMode.PRESERVE);//Ohne diesen Formatierungshinweis, wird ggf. auch der META-Tag mit /> als Abschluss versehen. Dann funktioniert scheinbar dieser Tag im Browser nicht mehr. Die deutschen Umlaute gehen verloren.
+			}			
+			xmlout.setFormat(format);
+			 
+			sReturn = xmlout.outputString(doc);
+			 
 		}//end main:
 		return sReturn;
 	}

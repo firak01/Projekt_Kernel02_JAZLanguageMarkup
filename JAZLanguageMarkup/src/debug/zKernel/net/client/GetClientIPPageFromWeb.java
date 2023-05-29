@@ -77,6 +77,8 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 			
 			KernelReaderPageZZZ objReaderPage = objReaderURL.getReaderPage();
 			KernelReaderHtmlZZZ objReaderHTML = objReaderPage.getReaderHTML();
+			String sDoc = objReaderHTML.getDocumentAsString();
+			System.out.println("document as string: \n"+sDoc);
 			
 			//Nun alle input-Elemente holen
 			ArrayList listaElem = new ArrayList();
@@ -158,8 +160,9 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 					System.out.println("No further document found");
 					break main;
 				}
-				String sDoc = objReaderHTML2.getDocumentAsString();
-				System.out.println("document as string: \n"+sDoc);
+
+				String sDoc2 = objReaderHTML2.getDocumentAsString();
+				System.out.println("document as string: \n"+sDoc2);
 				
 				Element elemRoot = doc.getRootElement();
 				if(elemRoot == null){

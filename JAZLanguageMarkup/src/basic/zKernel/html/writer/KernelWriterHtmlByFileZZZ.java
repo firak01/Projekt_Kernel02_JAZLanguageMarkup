@@ -110,7 +110,7 @@ public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {
 					this.getLogObject().WriteLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
 				}
 			  
-			  //2. Stream f�r das Schreiben in die Datei holen.
+			  //2. Stream fuer das Schreiben in die Datei holen.
 			  try {
 				FileOutputStream fout = new FileOutputStream(objFile);
 				BufferedOutputStream bfout = new BufferedOutputStream(fout);
