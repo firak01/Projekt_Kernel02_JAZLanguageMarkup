@@ -12,6 +12,7 @@ import java.util.List;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.DOMBuilder;
+import org.jdom.output.XMLOutputter;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -21,6 +22,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.html.IKernelTagTypeZZZ;
 import basic.zKernel.html.KernelTagFactoryZZZ;
 import basic.zKernel.html.KernelTagTypeZZZ;
 import basic.zKernel.html.KernelTagZZZ;
@@ -464,7 +466,7 @@ System.out.println("test:" + stemp2);
 	 * javadoc created by: 0823, 28.06.2006 - 15:36:34
 	 * @throws ExceptionZZZ 
 	 */
-	public ArrayList readElementAll(org.jdom.Document docin, KernelTagTypeZZZ objTagType) throws ExceptionZZZ{
+	public ArrayList readElementAll(org.jdom.Document docin, IKernelTagTypeZZZ objTagType) throws ExceptionZZZ{
 		ArrayList alsReturn = new ArrayList();
 		main:{
 			org.jdom.Document doc = null;
@@ -511,7 +513,7 @@ System.out.println("test:" + stemp2);
 	 * javadoc created by: 0823, 28.06.2006 - 16:23:58
 	 * @throws ExceptionZZZ 
 	 */
-	public void searchElementAll(Element elemin, KernelTagTypeZZZ objTagType, ArrayList alsReturn) throws ExceptionZZZ{
+	public void searchElementAll(Element elemin, IKernelTagTypeZZZ objTagType, ArrayList alsReturn) throws ExceptionZZZ{
 		main:{ 
 			Element elem = null;
 			check:{				
@@ -559,7 +561,7 @@ System.out.println("test:" + stemp2);
 		}//End main
 	}
 	
-	public org.jdom.Element searchElementFirst(Element elem, KernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
+	public org.jdom.Element searchElementFirst(Element elem, IKernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
 		Element objReturn = null;
 		main:{
 			check:{
@@ -871,6 +873,17 @@ System.out.println("test:" + stemp2);
 		}else{
 			System.out.println("Unexpected type: " + o.getClass().getName());
 		}
+	}
+	
+	public String getDocumentAsString() {
+		String sReturn = null;
+		main:{
+			Document doc = this.getDocument();
+			if(doc==null)break main;
+			
+			sReturn = new XMLOutputter().outputString(doc);			
+		}//end main:
+		return sReturn;
 	}
 	
 	private static void printSpaces(int n) {	    

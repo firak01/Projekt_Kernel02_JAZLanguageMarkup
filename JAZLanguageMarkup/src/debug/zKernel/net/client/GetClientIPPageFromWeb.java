@@ -158,6 +158,9 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 					System.out.println("No further document found");
 					break main;
 				}
+				String sDoc = objReaderHTML2.getDocumentAsString();
+				System.out.println("document as string: \n"+sDoc);
+				
 				Element elemRoot = doc.getRootElement();
 				if(elemRoot == null){
 					System.out.println("No root found in document.");

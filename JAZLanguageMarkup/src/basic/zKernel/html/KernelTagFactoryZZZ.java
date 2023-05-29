@@ -76,7 +76,7 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 	* 
 	* lindhaueradmin; 02.07.2006 08:22:02
 	 */
-	public static KernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem, KernelTagTypeZZZ objType) throws ExceptionZZZ{
+	public static KernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem, IKernelTagTypeZZZ objType) throws ExceptionZZZ{
 		KernelTagZZZ objReturn = null;
 		main:{ 
 			check:{

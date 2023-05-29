@@ -8,7 +8,7 @@ import basic.zKernel.KernelZZZ;
 
 public class TagInputZZZ extends KernelTagZZZ{
 
-	public TagInputZZZ(IKernelZZZ objKernel, KernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
+	public TagInputZZZ(IKernelZZZ objKernel, IKernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
 		super(objKernel, objType, objElem);		
 	}
 }

@@ -8,14 +8,14 @@ import basic.zKernel.KernelUseObjectZZZ;
 
 public class KernelTagZZZ extends KernelUseObjectZZZ {
 		private org.jdom.Element objElem = null;
-		private KernelTagTypeZZZ objTagType = null;
+		private IKernelTagTypeZZZ objTagType = null;
 		
-		public KernelTagZZZ(IKernelZZZ objKernel, KernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
+		public KernelTagZZZ(IKernelZZZ objKernel, IKernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
 			super(objKernel);
 			KernelTagNew_(objType, objElem);
 		}
 		
-		private void KernelTagNew_(KernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
+		private void KernelTagNew_(IKernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
 			main:{
 				check:{
 					if(objType==null){
@@ -46,7 +46,7 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 	public String readValue() throws ExceptionZZZ{
 		String sReturn = null;
 		main:{
-			org.jdom.Element objElem; KernelTagTypeZZZ objType;
+			org.jdom.Element objElem; IKernelTagTypeZZZ objType;
 			check:{
 				objElem = this.getElement();
 				if(objElem==null){
@@ -71,7 +71,7 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 	public String readName() throws ExceptionZZZ{
 		String sReturn = null;
 		main:{
-			org.jdom.Element objElem; KernelTagTypeZZZ objType;
+			org.jdom.Element objElem; IKernelTagTypeZZZ objType;
 			check:{
 				objElem = this.getElement();
 				if(objElem==null){
@@ -101,10 +101,10 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 			this.objElem = objElem;
 		}
 		
-		private void  setTagType(KernelTagTypeZZZ objTagType){
+		private void  setTagType(IKernelTagTypeZZZ objTagType){
 			this.objTagType = objTagType;
 		}
-		public KernelTagTypeZZZ getTagType(){
+		public IKernelTagTypeZZZ getTagType(){
 			return this.objTagType;
 		}
 }
