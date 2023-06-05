@@ -6,8 +6,8 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelZZZ;
 
-public class TagZHtmlZZZ  extends KernelTagZZZ{
-	public TagZHtmlZZZ(KernelZZZ objKernel, KernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
+public class TagZHtmlZZZ  extends AbstractKernelTagZZZ{
+	public TagZHtmlZZZ(KernelZZZ objKernel, AbstractKernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
 		super(objKernel, objType, objElem);		
 	}
 }

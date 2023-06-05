@@ -57,6 +57,11 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 	private boolean bFlagUseProxy=false;
 	
 	
+	public KernelReaderURLZZZ(String sURLToReadIn, String[]saFlagControl) throws ExceptionZZZ{
+		super("");
+		KernelReaderURLNew_(sURLToReadIn,(String)null,(String)null, saFlagControl,(String)null);
+	}
+	
 	/**
 	 * Use this constructor if you don�t need a password/user for the page
 	 * @param objKernel
@@ -152,7 +157,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 					InputStream in = this.getURLContentStream();
 					
 					  //make the page reader object
-					  objReturn = new KernelReaderPageZZZ(this.getKernelObject(), in, (String[]) null, "");
+					  objReturn = new KernelReaderPageZZZ(in, (String[]) null, "");
 				}else{
 					//make the page reader object form an arraylist
 					ArrayList obj_alsURLContent = this.getURLContentArrayList();
@@ -163,7 +168,7 @@ public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
 					  */
 					  
 					  //make the page reader object
-					  objReturn = new KernelReaderPageZZZ(this.getKernelObject(), obj_alsURLContent, (String[]) null, "");
+					  objReturn = new KernelReaderPageZZZ(obj_alsURLContent, (String[]) null, "");
 					}//getFlag("Stream")
 			}else{
 				//return the formerly gotten object

@@ -9,8 +9,8 @@ import basic.zKernel.KernelUseObjectZZZ;
 public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 
 	
-	public static KernelTagTypeZZZ createTagTypeByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
-		KernelTagTypeZZZ objReturn = null;
+	public static AbstractKernelTagTypeZZZ createTagTypeByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
+		AbstractKernelTagTypeZZZ objReturn = null;
 		main:{			
 			check:{
 					if(objElem == null){
@@ -19,14 +19,21 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 					}
 			}//end check
 		
-		if(objElem.getName().equalsIgnoreCase("input")){
+			String sTagName = objElem.getName().toLowerCase();
+			switch (sTagName) {
+			case "input":
 				objReturn = new TagTypeInputZZZ(objKernel);
-		}else if(objElem.getName().equalsIgnoreCase("body")){
+				break;
+			case "body":
 				objReturn = new TagTypeBodyZZZ(objKernel);
-		}else{
-			ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"unhandled element-type '" + objElem.getName() + "'", iERROR_PARAMETER_VALUE, ReflectCodeZZZ.getMethodCurrentName(), "");
-			throw ez;				
-		}
+				break;
+			case "table":
+				objReturn = new TagTypeTableZZZ(objKernel);
+				break;			
+			default:
+				ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"unhandled element-type '" + objElem.getName() + "'", iERROR_PARAMETER_VALUE, ReflectCodeZZZ.getMethodCurrentName(), "");
+				throw ez;				
+			}
 		
 		}//end main
 		return objReturn;
@@ -42,8 +49,8 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 	* 
 	* lindhaueradmin; 30.06.2006 07:23:31
 	 */
-	public static KernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
-		KernelTagZZZ objReturn = null;
+	public static AbstractKernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{
+		AbstractKernelTagZZZ objReturn = null;
 		main:{ 
 			check:{
 				if(objElem == null){
@@ -52,10 +59,16 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 				}
 			}//END check:
 		
-		KernelTagTypeZZZ objType = KernelTagFactoryZZZ.createTagTypeByElement(objKernel, objElem);
-		if(objType.getTagName().equalsIgnoreCase("input")){
-			objReturn = new TagInputZZZ( objKernel, objType, objElem);
-		}else{
+		AbstractKernelTagTypeZZZ objType = KernelTagFactoryZZZ.createTagTypeByElement(objKernel, objElem);
+		String sTagName = objType.getTagName().toLowerCase();
+		switch (sTagName) {
+		case "input":
+			objReturn = new TagInputZZZ( objKernel, objElem);
+			break;
+		case "table":
+			objReturn = new TagTableZZZ( objKernel, objElem);
+			break;			
+		default:
 			ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"unhandled tag '"+ objType.getTagName() +"'", iERROR_PARAMETER_VALUE, ReflectCodeZZZ.getMethodCurrentName(), "");
 			throw ez;	
 		}
@@ -76,8 +89,8 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 	* 
 	* lindhaueradmin; 02.07.2006 08:22:02
 	 */
-	public static KernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem, IKernelTagTypeZZZ objType) throws ExceptionZZZ{
-		KernelTagZZZ objReturn = null;
+	public static AbstractKernelTagZZZ createTagByElement(IKernelZZZ objKernel, org.jdom.Element objElem, IKernelTagTypeZZZ objType) throws ExceptionZZZ{
+		AbstractKernelTagZZZ objReturn = null;
 		main:{ 
 			check:{
 				if(objElem == null){
@@ -90,15 +103,25 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 				}
 			}//END check:
 
-		if(objType.getTagName().equalsIgnoreCase("input")){
-			objReturn = new TagInputZZZ( objKernel, objType, objElem);
-		}else{
+		String sTagName = objType.getTagName().toLowerCase();
+		switch(sTagName) {
+		case "input":
+			objReturn = new TagInputZZZ(objElem);			
+			break;
+		case "table":
+			objReturn = new TagTableZZZ(objElem);			
+			break;
+		default:
 			ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"unhandled tag '"+ objType.getTagName() +"'", iERROR_PARAMETER_VALUE, ReflectCodeZZZ.getMethodCurrentName(), "");
 			throw ez;	
 		}
 		
+		objReturn.setKernelObject(objKernel);
+		
 		}//END main
 		return objReturn;
 	}
+	
+	
 	
 }

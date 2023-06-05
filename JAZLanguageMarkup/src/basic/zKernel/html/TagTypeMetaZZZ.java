@@ -8,17 +8,22 @@ import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
-public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {	
-	public final static String TagName = "meta";
+public class TagTypeMetaZZZ  extends AbstractKernelTagTypeZZZ {	
+	public final static String sTAGNAME = "meta";
 	 
 	//######## Constructor
+	public TagTypeMetaZZZ() throws ExceptionZZZ{
+		super("");
+	}
+	
 	public TagTypeMetaZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
 		super(objKernel);
 	}
 	
 	//### gerbt aus dem Interface
+	@Override
 	public String getTagName() {
-		return TagTypeMetaZZZ.TagName;
+		return TagTypeMetaZZZ.sTAGNAME;
 	}
 
 	/* Gibt NULL zur�ck, weil es nur einen META-TAG gibt, und nix womit man die Tags unterscheiden kann.
@@ -26,6 +31,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 	 * (non-Javadoc)
 	 * @see basic.zKernel.html.IKernelTagTypeZZZ#getTagKey(org.jdom.Element)
 	 */
+	@Override
 	public String getTagKey(Element objElem) throws ExceptionZZZ {	
 		return null;
 	}
@@ -35,6 +41,7 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 	 * (non-Javadoc)
 	 * @see basic.zKernel.html.IKernelTagTypeZZZ#readValue(org.jdom.Element)
 	 */
+	@Override
 	public String readValue(Element objElem) throws ExceptionZZZ {	
 		return null;
 	}
@@ -43,7 +50,15 @@ public class TagTypeMetaZZZ  extends KernelTagTypeZZZ {
 	 *  (non-Javadoc)
 	 * @see basic.zKernel.html.IKernelTagTypeZZZ#readName(org.jdom.Element)
 	 */
+	@Override
 	public String readName(Element objElem) throws ExceptionZZZ {	
+		return null;
+	}
+	
+
+	@Override
+	public String readTagKey(Element objElem) throws ExceptionZZZ {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	

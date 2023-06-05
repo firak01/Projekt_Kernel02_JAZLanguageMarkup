@@ -1,35 +1,47 @@
 package basic.zKernel.html;
 
+import java.util.List;
+
+import org.jdom.Content;
 import org.jdom.Element;
 
-import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
+import basic.zBasic.ExceptionZZZ;
+import basic.zBasic.ReflectCodeZZZ;
 
-public class TagTypeZHtmlZZZ  extends AbstractKernelTagTypeZZZ{
-	public final static String sTAGNAME = "zhtml";
+/**This tag describes a input-tag in html.
+ * @author 0823
+ *
+ */
+public class TagTypeTableHeaderZZZ extends AbstractKernelTagTypeZZZ{
+	public final static String sTAGNAME = "th";
 	
 	//###### Constructor
-	public TagTypeZHtmlZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
+	public TagTypeTableHeaderZZZ() throws ExceptionZZZ{
+		super("");
+	}
+	
+	public TagTypeTableHeaderZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
 		super(objKernel);
 	}
 
-//######### gerbt aus dem Interface
+//######### geerbt aus dem Interface
+	@Override
 	public String getTagKey(Element objElem) throws ExceptionZZZ{
-		return this.readName(objElem);
-	}
-	public String getTagName() {
-		return TagTypeZHtmlZZZ.sTAGNAME;
+		return this.readTagKey(objElem);
 	}
 	
 	@Override
 	public String readTagKey(Element objElem) throws ExceptionZZZ {
-		// TODO Auto-generated method stub
-		return null;
+		return this.readId(objElem); //Merke: Das Attribut "name" ist fuer Tabellen nicht zulässing, darum "id" verwenden
 	}
 	
-
+	@Override
+	public String getTagName() {
+		return TagTypeTableHeaderZZZ.sTAGNAME;
+	}
+	
 	
 	/**Read the value from an element.
 	 * This element is representing an "input" tag.
@@ -39,6 +51,7 @@ public class TagTypeZHtmlZZZ  extends AbstractKernelTagTypeZZZ{
 	 * javadoc created by: 0823, 29.06.2006 - 17:31:59
 	 * @throws ExceptionZZZ 
 	 */
+	@Override
 	public String readValue(org.jdom.Element objElem) throws ExceptionZZZ{
 		String sReturn = null;
 		main:{
@@ -49,17 +62,14 @@ public class TagTypeZHtmlZZZ  extends AbstractKernelTagTypeZZZ{
 				}
 			}//END check
 		
+		//Eine Tabelle hat selbst keinen Inhalt, nur weitere Elemente (Zeilen tr, Spalten td)
+		List listElem = objElem.getContent();
+		sReturn = listElem.toString();
 		
-		sReturn = objElem.getValue();
-		
-		
-		/* FGL: So liest man den Value-Wert aus. ABER: Beim ZHTML - Tag z�hlt nur der name
-		//org.jdom.Attribute att = objElem.getAttribute("value");
-		//if(att==null) break main;
-		
-		//sReturn = att.getValue();
-		*/
-		
+//		org.jdom.Attribute att = objElem.getAttribute("value");
+//		if(att==null) break main;
+//		
+//		sReturn = att.getValue();
 		
 		/* FGL: DAS IST MIR ZU KOMPLIZIERT, so liest man den Attribut-Wert aus
 		boolean bIPNrElement = false;

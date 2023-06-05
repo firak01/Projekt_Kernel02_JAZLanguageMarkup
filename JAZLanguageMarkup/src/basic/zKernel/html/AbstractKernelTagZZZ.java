@@ -2,15 +2,23 @@ package basic.zKernel.html;
 
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
+
+import org.jdom.Element;
+
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 
-public class KernelTagZZZ extends KernelUseObjectZZZ {
+public abstract class AbstractKernelTagZZZ extends KernelUseObjectZZZ implements IKernelTagZZZ{
 		private org.jdom.Element objElem = null;
 		private IKernelTagTypeZZZ objTagType = null;
 		
-		public KernelTagZZZ(IKernelZZZ objKernel, IKernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
+		public AbstractKernelTagZZZ(IKernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
+			super("");
+			KernelTagNew_(objType, objElem);
+		}
+		
+		public AbstractKernelTagZZZ(IKernelZZZ objKernel, IKernelTagTypeZZZ objType, org.jdom.Element objElem) throws ExceptionZZZ{
 			super(objKernel);
 			KernelTagNew_(objType, objElem);
 		}
@@ -42,6 +50,10 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 		return this.getTagType().getTagKey(objElem);
 	}
 	
+	public String getValue() throws ExceptionZZZ{
+		return this.readValue();
+	}
+	
 	
 	public String readValue() throws ExceptionZZZ{
 		String sReturn = null;
@@ -66,6 +78,31 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 			
 		}//END main:
 		return sReturn;
+	}
+	
+	public boolean setValue(String sValue) throws ExceptionZZZ{
+		boolean bReturn = false;
+		main:{
+			org.jdom.Element objElem; IKernelTagTypeZZZ objType;
+			check:{
+				objElem = this.getElement();
+				if(objElem==null){
+					ExceptionZZZ ez = new ExceptionZZZ("Element",iERROR_PROPERTY_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;
+				}
+				
+				objType = this.getTagType();
+				if(objType==null){
+					ExceptionZZZ ez = new ExceptionZZZ("TagType",iERROR_PROPERTY_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;
+				}
+									
+			}//END check:
+			
+			bReturn = objType.setValue(objElem, sValue);
+			
+		}//END main:
+		return bReturn;
 	}
 	
 	public String readName() throws ExceptionZZZ{
@@ -107,4 +144,28 @@ public class KernelTagZZZ extends KernelUseObjectZZZ {
 		public IKernelTagTypeZZZ getTagType(){
 			return this.objTagType;
 		}
+		
+		public static boolean isTagOfType(org.jdom.Element objElement, IKernelTagTypeZZZ objTagType) throws ExceptionZZZ{
+			boolean bReturn = false;
+			main:{
+				if(objElement==null) {
+					ExceptionZZZ ez = new ExceptionZZZ("org.jdom.Element",iERROR_PARAMETER_MISSING, TagTableZZZ.class,  ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;	
+				}
+				if(objTagType==null) {
+					ExceptionZZZ ez = new ExceptionZZZ("IKernelTagTypeZZZ",iERROR_PARAMETER_MISSING, TagTableZZZ.class,  ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;	
+				}
+				
+				String stemp = objElement.getQualifiedName();
+				String sTagName = objTagType.getTagName();
+				if(stemp.equalsIgnoreCase(sTagName)){
+					bReturn = true;
+				}								
+			}//end main
+			return bReturn;
+		}
+		
+		//###### AUS INTERFACES
+		
 }

@@ -36,4 +36,6 @@ public interface IKernelTagTypeZZZ {
 	
 	
 	public abstract String readName(org.jdom.Element objElem) throws ExceptionZZZ;
+	
+	public abstract boolean setValue(org.jdom.Element objElem, String sValue) throws ExceptionZZZ;
 }

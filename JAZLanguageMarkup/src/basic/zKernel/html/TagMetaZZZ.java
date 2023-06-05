@@ -7,10 +7,10 @@ import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
-public class TagMetaZZZ extends KernelTagZZZ{
+public class TagMetaZZZ extends AbstractKernelTagZZZ{
 
-	public TagMetaZZZ(IKernelZZZ objKernel, KernelTagTypeZZZ objType, Element objElem) throws ExceptionZZZ {
-		super(objKernel, objType, objElem);		
+	public TagMetaZZZ(IKernelZZZ objKernel, Element objElem) throws ExceptionZZZ {
+		super(objKernel, new TagTypeMetaZZZ(), objElem);		
 	}
 	
 	public String readCharset() throws ExceptionZZZ{

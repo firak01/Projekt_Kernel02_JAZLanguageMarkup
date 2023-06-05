@@ -10,8 +10,8 @@ import basic.zKernel.KernelZZZ;
  * @author 0823
  *
  */
-public class TagTypeBodyZZZ extends KernelTagTypeZZZ {	
-	public final static String TagName = "body";
+public class TagTypeBodyZZZ extends AbstractKernelTagTypeZZZ {	
+	public final static String sTAGNAME = "body";
 	 
 	//######## Constructor
 	public TagTypeBodyZZZ(IKernelZZZ objKernel) throws ExceptionZZZ{
@@ -19,21 +19,26 @@ public class TagTypeBodyZZZ extends KernelTagTypeZZZ {
 	}
 	
 	//### gerbt aus dem Interface
+	
+	@Override
 	public String getTagName() {
-		return TagTypeBodyZZZ.TagName;
+		return TagTypeBodyZZZ.sTAGNAME;
 	}
 
+	@Override
 	public String getTagKey(Element objElem) throws ExceptionZZZ {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String readValue(Element objElem) throws ExceptionZZZ {
+	@Override
+	public String readTagKey(Element objElem) throws ExceptionZZZ {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public String readName(Element objElem) throws ExceptionZZZ {
+	
+	@Override
+	public String readValue(Element objElem) throws ExceptionZZZ {
 		// TODO Auto-generated method stub
 		return null;
 	}

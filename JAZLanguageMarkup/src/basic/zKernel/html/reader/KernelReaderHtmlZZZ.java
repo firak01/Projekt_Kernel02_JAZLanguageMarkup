@@ -26,8 +26,8 @@ import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
 import basic.zKernel.html.IKernelTagTypeZZZ;
 import basic.zKernel.html.KernelTagFactoryZZZ;
-import basic.zKernel.html.KernelTagTypeZZZ;
-import basic.zKernel.html.KernelTagZZZ;
+import basic.zKernel.html.AbstractKernelTagTypeZZZ;
+import basic.zKernel.html.AbstractKernelTagZZZ;
 import basic.zKernel.html.TagMetaZZZ;
 import basic.zKernel.html.TagTypeBodyZZZ;
 import basic.zKernel.html.TagTypeHeadZZZ;
@@ -51,6 +51,12 @@ public class KernelReaderHtmlZZZ extends KernelUseObjectZZZ{
 		String[] satemp = {"init"};
 		KernelReaderHtmlNew_((File) null, satemp);
 	}
+	
+	public KernelReaderHtmlZZZ(InputStream inStream, String[] saFlagControl) throws ExceptionZZZ {
+		super("");
+		KernelReaderHTMLNew_(inStream, saFlagControl);
+	}
+	
 	public KernelReaderHtmlZZZ(IKernelZZZ objKernel, InputStream inStream, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
 		KernelReaderHTMLNew_(inStream, saFlagControl);
@@ -272,7 +278,7 @@ System.out.println("test:" + stemp2);
 			org.jdom.Element metaElem = this.readHeadFirst(doc, metaType);
 			if(metaElem==null) break main;
 			
-			TagMetaZZZ metaTag = new TagMetaZZZ(objKernel, metaType, metaElem);			
+			TagMetaZZZ metaTag = new TagMetaZZZ(objKernel, metaElem);			
 			sReturn = metaTag.readCharset();            //.getAttributeValue("content");	//MErke: Der Tag sieht so aus:    <META content="text/html; charset=ISO-8859-1" http-equiv="content-type" />
 		}//END main:
 		return sReturn;
@@ -331,7 +337,7 @@ System.out.println("test:" + stemp2);
 				Element elem = (Element)objIterator.next();
 				//System.out.println(elem.getName());
 				
-				if(elem.getName().equalsIgnoreCase(TagTypeBodyZZZ.TagName)){
+				if(elem.getName().equalsIgnoreCase(TagTypeBodyZZZ.sTAGNAME)){
 					elemReturn = elem;
 					break main;
 				}
@@ -398,7 +404,7 @@ System.out.println("test:" + stemp2);
 				Element elem = (Element)objIterator.next();
 				//System.out.println(elem.getName());
 				 
-				if(elem.getName().equalsIgnoreCase(TagTypeHeadZZZ.TagName)){
+				if(elem.getName().equalsIgnoreCase(TagTypeHeadZZZ.sTAGNAME)){
 					elemReturn = elem;
 					break main;
 				}
@@ -422,7 +428,7 @@ System.out.println("test:" + stemp2);
 	* 
 	* lindhaueradmin; 11.04.2007 10:09:40
 	 */
-	public org.jdom.Element readHeadFirst(org.jdom.Document docin, KernelTagTypeZZZ objTagType) throws ExceptionZZZ{
+	public org.jdom.Element readHeadFirst(org.jdom.Document docin, AbstractKernelTagTypeZZZ objTagType) throws ExceptionZZZ{
 		org.jdom.Element elemReturn = null;
 		main:{
 			org.jdom.Document doc = null;
@@ -588,7 +594,7 @@ System.out.println("test:" + stemp2);
 		      if(elemChild.getName().equalsIgnoreCase(objTagType.getTagName())){
 		    	  
 		    	  //Nun daraus einen TagMachen und den Key dieses Tags mit dem Namen vergleichen
-		    	  KernelTagZZZ objTag = KernelTagFactoryZZZ.createTagByElement(this.getKernelObject(), elemChild, objTagType);
+		    	  AbstractKernelTagZZZ objTag = KernelTagFactoryZZZ.createTagByElement(this.getKernelObject(), elemChild, objTagType);
 		    	  if(objTag.getTagKey(elemChild)==sName){
 		    		objReturn = elemChild;  
 		    	  }		    	  		    	 
@@ -609,8 +615,8 @@ System.out.println("test:" + stemp2);
 	* 
 	* lindhaueradmin; 13.07.2006 09:27:27
 	 */
-	public KernelTagZZZ searchTagFirst(Element elem, KernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
-		KernelTagZZZ objReturn = null;
+	public AbstractKernelTagZZZ searchTagFirst(Element elem, AbstractKernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
+		AbstractKernelTagZZZ objReturn = null;
 		main:{
 			check:{
 				if(elem==null){
@@ -633,7 +639,7 @@ System.out.println("test:" + stemp2);
 		      Element elemChild = (Element) objIterator.next();
 		      if(elemChild.getName().equalsIgnoreCase(objTagType.getTagName())){
 		    	  
-		    	  //Nun daraus einen TagMachen und den Key dieses Tags mit dem Namen vergleichen
+		    	  //Nun daraus einen Tag machen und den Key dieses Tags mit dem Namen vergleichen
 		    	  objReturn = KernelTagFactoryZZZ.createTagByElement(this.getKernelObject(), elemChild, objTagType);
 		    	  String stemp = objReturn.getTagKey(elemChild);
 		    	  if(stemp.equals(sName)){
@@ -642,7 +648,18 @@ System.out.println("test:" + stemp2);
 		    		  objReturn = null;
 		    	  }
 		      }
-		      searchElementFirst(elemChild, objTagType, sName);
+		      
+		      Element elemFound = searchElementFirst(elemChild, objTagType, sName);
+		      if(elemFound!=null) {
+		    	  //Nun daraus einen Tag machen und den Key dieses Tags mit dem Namen vergleichen
+		    	  objReturn = KernelTagFactoryZZZ.createTagByElement(this.getKernelObject(), elemChild, objTagType);
+		    	  String stemp = objReturn.getTagKey(elemChild);
+		    	  if(stemp.equals(sName)){
+		    		break main;  
+		    	  }else{
+		    		objReturn = null;
+		    	  }
+		      }
 		    }		
 		
 		}//END main
@@ -661,8 +678,8 @@ System.out.println("test:" + stemp2);
 	* 
 	* lindhaueradmin; 13.07.2006 09:25:08
 	 */
-	public KernelTagZZZ readTagFirstZZZ(Document docin, KernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
-		KernelTagZZZ objReturn = null;
+	public AbstractKernelTagZZZ readTagFirstZZZ(Document docin, AbstractKernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
+		AbstractKernelTagZZZ objReturn = null;
 		main:{
 			org.jdom.Document doc = null;
 			check:{
@@ -712,8 +729,8 @@ System.out.println("test:" + stemp2);
 	* 
 	* lindhaueradmin; 13.07.2006 09:20:35
 	 */
-	public KernelTagZZZ readTagFirstZZZ(KernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
-		KernelTagZZZ objReturn = null;
+	public AbstractKernelTagZZZ readTagFirstZZZ(AbstractKernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ{
+		AbstractKernelTagZZZ objReturn = null;
 		main:{
 			org.jdom.Document doc = null;
 			check:{
@@ -743,7 +760,7 @@ System.out.println("test:" + stemp2);
 	* lindhaueradmin; 02.07.2006 08:00:03
 	 * @throws ExceptionZZZ 
 	 */
-	public org.jdom.Element readElementFirst(Document docin, KernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ {
+	public org.jdom.Element readElementFirst(Document docin, IKernelTagTypeZZZ objTagType, String sName) throws ExceptionZZZ {
 		org.jdom.Element objReturn= null;
 		main:{
 			org.jdom.Document doc = null;

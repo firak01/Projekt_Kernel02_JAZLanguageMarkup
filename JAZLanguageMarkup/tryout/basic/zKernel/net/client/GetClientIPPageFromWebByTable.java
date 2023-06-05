@@ -1,4 +1,4 @@
-package debug.zKernel.net.client;
+package basic.zKernel.net.client;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,23 +20,24 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.IConstantZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.html.KernelTagFactoryZZZ;
-import basic.zKernel.html.AbstractKernelTagTypeZZZ;
-import basic.zKernel.html.AbstractKernelTagZZZ;
 import basic.zKernel.html.TagInputZZZ;
 import basic.zKernel.html.TagTypeInputZZZ;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 
+import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import custom.zKernel.LogZZZ;
 
-public class GetClientIPPageFromWeb implements IConstantZZZ{
+public class GetClientIPPageFromWebByTable implements IConstantZZZ{
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		TODOGOON20230602; //Erste einmal die Page nach der Tabelle durchsuchen per DebugKlasse...
 		
 		KernelZZZ objKernel = null;
 		LogZZZ objLog = null;

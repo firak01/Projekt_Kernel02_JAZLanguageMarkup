@@ -2,5 +2,6 @@
     <wb-module deploy-name="JAZLanguageMarkup">
         <wb-resource deploy-path="/" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/test"/>
+        <wb-resource deploy-path="/" source-path="/tryout"/>
     </wb-module>
 </project-modules>

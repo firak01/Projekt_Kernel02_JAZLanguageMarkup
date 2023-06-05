@@ -32,6 +32,23 @@ public class KernelReaderPageZZZ extends KernelUseObjectZZZ{
 	private InputStream obj_inStreamURLContent;
 	private KernelReaderHtmlZZZ objReaderHTML;
 	
+	public KernelReaderPageZZZ(ArrayList obj_alsURLContent, String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
+		super("");
+		KernelPageReaderNew_(saFlagControl);
+		if(this.getFlag("init")==false){
+			KernelPageReaderNewByArrayList_(obj_alsURLContent, sFlagControl);
+		}
+	}
+	
+	public KernelReaderPageZZZ(InputStream obj_inStreamURLContent, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ{
+		super("");		
+		KernelPageReaderNew_(saFlagControl);
+		if(!this.getFlag("init")){
+			KernelPageReaderNewByStream_(obj_inStreamURLContent, sFlagControl);
+		}
+	}
+	
+	
 	public KernelReaderPageZZZ(IKernelZZZ objKernel, ArrayList obj_alsURLContent, String[] saFlagControl, String sFlagControl ) throws ExceptionZZZ{
 		super(objKernel);
 		KernelPageReaderNew_(saFlagControl);
@@ -41,7 +58,7 @@ public class KernelReaderPageZZZ extends KernelUseObjectZZZ{
 	}
 	
 	public KernelReaderPageZZZ(IKernelZZZ objKernel, InputStream obj_inStreamURLContent, String[] saFlagControl, String sFlagControl) throws ExceptionZZZ{
-		super(objKernel);
+		super(objKernel);		
 		KernelPageReaderNew_(saFlagControl);
 		if(this.getFlag("init")==false){
 			KernelPageReaderNewByStream_(obj_inStreamURLContent, sFlagControl);
@@ -140,7 +157,7 @@ public class KernelReaderPageZZZ extends KernelUseObjectZZZ{
 	
 	public KernelReaderHtmlZZZ getReaderHTML() throws ExceptionZZZ{
 		if(this.objReaderHTML==null){
-			this.objReaderHTML = new KernelReaderHtmlZZZ(this.getKernelObject(), this.getURLContentStream(), (String[]) null);			
+			this.objReaderHTML = new KernelReaderHtmlZZZ(this.getURLContentStream(), (String[]) null);			
 		}
 		return this.objReaderHTML;
 	}
