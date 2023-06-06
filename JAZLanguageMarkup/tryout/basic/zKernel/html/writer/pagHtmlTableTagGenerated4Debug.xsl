@@ -27,8 +27,23 @@
 	        <xsl:for-each select="tabledata/row">
 	            <tr>
 	            	<xsl:for-each select="column">	
-	            		<td>                
-	                    <xsl:value-of select="value"/>
+	            		
+	            		<td> 
+	            		<xsl:choose>							 								
+								<xsl:when test="@name='ipnr'">								
+									<!-- Mache einen Link -->
+				            		<a>             
+				            			<xsl:attribute name = "href"><!-- create href attribute -->	            			
+				                    		<xsl:value-of select="value"/>
+				                    	</xsl:attribute>
+				                    	<xsl:value-of select="value"/>
+				                    </a>								
+								</xsl:when>						
+								<xsl:otherwise>
+									<!-- Nur normale Ausgabe des Stringwerts -->
+									<xsl:value-of select="value"/>								
+								</xsl:otherwise>-->												
+						</xsl:choose>  	            	
 	                    </td>	                    
 	                </xsl:for-each>
 	            </tr>
