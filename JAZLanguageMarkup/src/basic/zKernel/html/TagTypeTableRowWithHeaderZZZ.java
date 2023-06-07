@@ -15,22 +15,22 @@ import basic.zBasic.ReflectCodeZZZ;
  * @author 0823
  *
  */
-public class TagTypeTableRowZZZ extends AbstractKernelTagTypeZZZ{
+public class TagTypeTableRowWithHeaderZZZ extends AbstractKernelTagTypeZZZ{
 	public final static String sTAGNAME = "tr";
 	
 	//###### Constructor
-	public TagTypeTableRowZZZ() throws ExceptionZZZ{
+	public TagTypeTableRowWithHeaderZZZ() throws ExceptionZZZ{
 		super("");
 	}
 	
-	public TagTypeTableRowZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
+	public TagTypeTableRowWithHeaderZZZ(IKernelZZZ objKernel) throws ExceptionZZZ {
 		super(objKernel);
 	}
 
 //######### geerbt aus dem Interface
 	@Override
 	public String getTagName() {
-		return TagTypeTableRowZZZ.sTAGNAME;
+		return TagTypeTableRowWithHeaderZZZ.sTAGNAME;
 	}
 	
 	@Override
@@ -126,7 +126,7 @@ public class TagTypeTableRowZZZ extends AbstractKernelTagTypeZZZ{
 			}
 			
 			String stemp = objElement.getQualifiedName();
-			if(stemp.equalsIgnoreCase(TagTypeTableRowZZZ.sTAGNAME)){
+			if(stemp.equalsIgnoreCase(TagTypeTableRowWithHeaderZZZ.sTAGNAME)){
 				
 				//Das reicht noch nicht Darunter duerfen keine TH-Elemente sein
 				List<Element> list = objElement.getChildren(TagTypeTableHeaderCellZZZ.sTAGNAME.toUpperCase());
@@ -147,7 +147,7 @@ public class TagTypeTableRowZZZ extends AbstractKernelTagTypeZZZ{
 			}
 			
 			String stemp = objElement.getQualifiedName();
-			if(stemp.equalsIgnoreCase(TagTypeTableRowZZZ.sTAGNAME)){
+			if(stemp.equalsIgnoreCase(TagTypeTableRowWithHeaderZZZ.sTAGNAME)){
 				
 				//Das reicht noch nicht Darunter dürfen muessen TH-Elemente sein
 				List<Element> list = objElement.getChildren(TagTypeTableHeaderCellZZZ.sTAGNAME.toUpperCase());

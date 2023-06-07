@@ -105,6 +105,10 @@ public abstract class AbstractKernelTagZZZ extends KernelUseObjectZZZ implements
 		return bReturn;
 	}
 	
+	public String getName() throws ExceptionZZZ{
+		return this.readName();
+	}
+	
 	public String readName() throws ExceptionZZZ{
 		String sReturn = null;
 		main:{
@@ -129,6 +133,35 @@ public abstract class AbstractKernelTagZZZ extends KernelUseObjectZZZ implements
 		}//END main:
 		return sReturn;
 	}
+	
+	public String getId() throws ExceptionZZZ{
+		return this.readId();
+	}
+	
+	public String readId() throws ExceptionZZZ{
+		String sReturn = null;
+		main:{
+			org.jdom.Element objElem; IKernelTagTypeZZZ objType;
+			check:{
+				objElem = this.getElement();
+				if(objElem==null){
+					ExceptionZZZ ez = new ExceptionZZZ("Element",iERROR_PROPERTY_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;
+				}
+				
+				objType = this.getTagType();
+				if(objType==null){
+					ExceptionZZZ ez = new ExceptionZZZ("TagType",iERROR_PROPERTY_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+					throw ez;
+				}
+									
+			}//END check:
+			
+			sReturn = objType.readId(objElem);
+			
+		}//END main:
+		return sReturn;
+	}
 		
 		//######## Getter / Setter ##################
 		public org.jdom.Element getElement(){
@@ -138,7 +171,7 @@ public abstract class AbstractKernelTagZZZ extends KernelUseObjectZZZ implements
 			this.objElem = objElem;
 		}
 		
-		private void  setTagType(IKernelTagTypeZZZ objTagType){
+		protected void  setTagType(IKernelTagTypeZZZ objTagType){
 			this.objTagType = objTagType;
 		}
 		public IKernelTagTypeZZZ getTagType(){

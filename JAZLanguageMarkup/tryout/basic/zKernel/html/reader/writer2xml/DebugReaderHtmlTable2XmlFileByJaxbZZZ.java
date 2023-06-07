@@ -17,9 +17,13 @@ import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zKernel.html.IKernelTagZZZ;
 import basic.zKernel.html.TagInputZZZ;
 import basic.zKernel.html.TagTableCellZZZ;
+import basic.zKernel.html.TagTableColumnCellZZZ;
+import basic.zKernel.html.TagTableRowWithHeaderZZZ;
 import basic.zKernel.html.TagTableRowZZZ;
+import basic.zKernel.html.TagTableWithHeaderZZZ;
 import basic.zKernel.html.TagTableZZZ;
 import basic.zKernel.html.TagTypeInputZZZ;
+import basic.zKernel.html.TagTypeTableWithHeaderZZZ;
 import basic.zKernel.html.TagTypeTableZZZ;
 import basic.zKernel.html.classes.ventian.ColumnType;
 import basic.zKernel.html.classes.ventian.ObjectFactory;
@@ -54,7 +58,7 @@ public class DebugReaderHtmlTable2XmlFileByJaxbZZZ {
 		KernelReaderHtmlZZZ objReaderHTML = objReaderPage.getReaderHTML();
 		 
 		//Nun die Tabelle holen, danach die Zeilen und dann  nach dem dem Namen "IPNr" in der passenden Spalte suchen.
-		TagTypeTableZZZ objTagTypeTable = new TagTypeTableZZZ();			
+		TagTypeTableWithHeaderZZZ objTagTypeTable = new TagTypeTableWithHeaderZZZ();			
 		IKernelTagZZZ objTag = objReaderHTML.readTagFirstZZZ(objTagTypeTable, "tableWithIpNr");
 		if(objTag!=null) {
 			//### 1. Auf die Methoden des Interface beschränkt
@@ -62,7 +66,7 @@ public class DebugReaderHtmlTable2XmlFileByJaxbZZZ {
 						
 			//##########################################
 			//Zuerst den Wert auslesen
-			TagTableZZZ objTable = (TagTableZZZ) objTag;
+			TagTableWithHeaderZZZ objTable = (TagTableWithHeaderZZZ) objTag;
 			String sReturn = objTable.getValue(2,1);
 			System.out.println("sReturn = " + sReturn);
 			
@@ -89,23 +93,37 @@ public class DebugReaderHtmlTable2XmlFileByJaxbZZZ {
 			//TableData objTableData = objFactory.createTabledata(objTableDataType);
 			ArrayList<RowType> listRowType = (ArrayList<RowType>) objTableDataType.getRow();
 			
-			ArrayList<TagTableRowZZZ>listRow = (ArrayList<TagTableRowZZZ>) objTable.getRows();
+			//ArrayList<TagTableRowZZZ>listRow = (ArrayList<TagTableRowZZZ>) objTable.getRows();
+			ArrayList<TagTableRowWithHeaderZZZ>listRowWithHeader = (ArrayList<TagTableRowWithHeaderZZZ>) objTable.getRowsWithHeader();
 			int iRowIndex = -1;
-			for(TagTableRowZZZ objRow : listRow) {				
+			for(TagTableRowWithHeaderZZZ objRowWithHeader : listRowWithHeader) {				
 				iRowIndex++;				
 				//RowType objRowType = listRowType.get(iRowIndex);
 				RowType objRowType = objFactory.createRowType();
 				listRowType.add(objRowType);
 				
-				ArrayList<TagTableCellZZZ> listCell = (ArrayList<TagTableCellZZZ>) objRow.getCells();
+				//Merke: ColumnCells haben auch immer den passenden Headerwert, quasi als Überschrift
+				ArrayList<TagTableColumnCellZZZ> listColumnCell = (ArrayList<TagTableColumnCellZZZ>) objRowWithHeader.getColumnCells();
 				ArrayList<ColumnType> listColumnType = (ArrayList) objRowType.getColumn();
 				int iCellIndex = -1;
-				for(TagTableCellZZZ objCell : listCell) {
+				//for(TagTableCellZZZ objCell : listCell) {
+				for(TagTableColumnCellZZZ objCell : listColumnCell) {
 					iCellIndex++;
 					//ColumnType objColumnType = listColumnType.get(iCellIndex);
 					ColumnType objColumnType = objFactory.createColumnType();
 					objColumnType.setValue(objCell.getValue());				
 					
+					if(objCell.getLabel()!=null) { //DAS IST DER UNTERSCHIED ZU EINER NORMALEN TagTableCellZZZ aus einer Tabelle ohne Header berücksichtigung.
+						objColumnType.setLabel(objCell.getLabel());
+					}
+					
+					if(objCell.getName()!=null) {
+						objColumnType.setName(objCell.getName());
+					}
+					
+					if(objCell.getId()!=null) {
+						objColumnType.setId(objCell.getId());
+					}
 					listColumnType.add(objColumnType);
 				}
 			}
@@ -114,22 +132,19 @@ public class DebugReaderHtmlTable2XmlFileByJaxbZZZ {
 	         javax.xml.bind.Marshaller marshaller = jaxbCtx.createMarshaller();
 	         marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); //NOI18N
 	         marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	         //Fehler ohne JAXB-Element:
 	         //marshaller.marshal(objTableDataType, System.out); //Fehler:
 	         //javax.xml.bind.MarshalException
 	         //- with linked exception:
 	         //	 [com.sun.istack.internal.SAXException2: unable to marshal type "basic.zKernel.html.classes.ventian.TabledataType" as an element because it is missing an @XmlRootElement annotation]
 
-	         //Funktionierende Ausgabe auf die Konsole: marshaller.marshal(objRootElement, System.out);
+	         //Funktionierende Ausgabe auf die Konsole mit JAXB-element:
+	         //marshaller.marshal(objRootElement, System.out);
 	         
 	         //https://stackoverflow.com/questions/13788617/jaxb-marshalling-java-to-output-xml-file
-	         //If you are using a JAXB 2.1 or greater then you can marshal directly to a java.io.File object:
-	         //File file = new File( "nosferatu.xml" );
-	         String sFileRootPath = FileEasyZZZ.getFileRootPath();
-	         
-	         DebugWriterHtmlByXsltZZZ objDummyTarget = new DebugWriterHtmlByXsltZZZ();
-	         String sPackagePath = ReflectCodeZZZ.getPackagePath(objDummyTarget);
+	         //If you are using a JAXB 2.1 or greater then you can marshal directly to a java.io.File object:	         	       
+	         String sPackagePath = ReflectCodeZZZ.getPackagePath(DebugWriterHtmlByXsltZZZ.class);
 	         String sFilePathTryout = FileEasyZZZ.joinFilePathName("tryout",sPackagePath);//sonst kommt src als erster Pfadteil
-	         //String sFilePath = FileEasyZZZ.joinFilePathName(sFilePathTryout,sPackagePath);
 	         String sFilePathTotal = FileEasyZZZ.joinFilePathName(sFilePathTryout, "TableDataInput4Debug.xml");
 	         System.out.println("Creating new file '" + sFilePathTotal + "' by Marshaller."); 
 	         File file = new File(sFilePathTotal);

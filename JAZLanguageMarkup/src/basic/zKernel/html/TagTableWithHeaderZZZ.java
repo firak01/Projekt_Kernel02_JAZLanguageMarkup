@@ -10,19 +10,30 @@ import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 
-public class TagTableZZZ extends AbstractKernelTagZZZ{
+public class TagTableWithHeaderZZZ extends TagTableZZZ{
 	private static final long serialVersionUID = -4171802821086651895L;
-	
-	public TagTableZZZ(Element objElem) throws ExceptionZZZ {
-		super(new TagTypeTableZZZ(), objElem);		
+
+	public TagTableWithHeaderZZZ(Element objElem) throws ExceptionZZZ {
+		super(objElem);		
+		TagTableWithHeaderNew_();
 	}
 	
-	public TagTableZZZ(IKernelZZZ objKernel, Element objElem) throws ExceptionZZZ {
-		super(objKernel, new TagTypeTableZZZ(), objElem);		
+	public TagTableWithHeaderZZZ(IKernelZZZ objKernel, Element objElem) throws ExceptionZZZ {
+		super(objKernel, objElem);	
+		TagTableWithHeaderNew_();
+	}
+	
+	private boolean TagTableWithHeaderNew_() throws ExceptionZZZ{
+		this.setTagType(new TagTypeTableWithHeaderZZZ());
+		return true;
 	}
 	
 	public List<TagTableRowZZZ>getRows() throws ExceptionZZZ{
 		return this.readRows();
+	}
+	
+	public List<TagTableRowWithHeaderZZZ>getRowsWithHeader() throws ExceptionZZZ{
+		return this.readRowsWithHeader();
 	}
 	
 	public int getRowMin() throws ExceptionZZZ {
@@ -51,9 +62,11 @@ public class TagTableZZZ extends AbstractKernelTagZZZ{
 		return iReturn;
 	}
 	
+		
+		
 		//Speziel für Tabellen gilt: Sie haben keinen eigenen String-Wert, sondern weitere Elemente... Zeilen.
 		@SuppressWarnings("null")
-		public List<Element>readRowsAsElement() throws ExceptionZZZ {
+		public List<Element>readHeaderRowsAsElement() throws ExceptionZZZ {
 			List<Element>listReturn = new ArrayList<Element>();
 			main:{
 				Element objElem = this.getElement();
@@ -65,83 +78,68 @@ public class TagTableZZZ extends AbstractKernelTagZZZ{
 				//Hier nun eine Liste der TagTableRowZZZ - elemente machen!!!
 				//Beachte: Der Tabellen Header muss mit th - element TagTableHeaderZZZ - element sein.
 				for(Element objElemtemp : listtemp) {//Das ist nur 1 Element: TBODY						
-//					String sName = objElemtemp.getQualifiedName();
-//					if(sName.equals("TBODY")) {
+//							String sName = objElemtemp.getQualifiedName();
+//							if(sName.equals("TBODY")) {
 						@SuppressWarnings("unchecked")
 						List<Element> listbody = objElemtemp.getChildren();
 						for(Element objRowtemp : listbody){						
 							String sName = objRowtemp.getQualifiedName();						
 							if(sName.equals("TR")) {
 								//Nun Headerzeile rausfiltern
-								boolean bHeader = TagTableZZZ.isTableHeader(objRowtemp);
-								if(!bHeader) {
+								boolean bHeader = TagTableWithHeaderZZZ.isTableHeader(objRowtemp);
+								if(bHeader) {
 									listReturn.add(objRowtemp);
 								}
 							}
 						}
-//					}				
+//							}				
 				}
 				
 			}
 			return listReturn;
 		}
 		
-		//Speziel für Tabellen gilt: Sie haben keinen eigenen String-Wert, sondern weitere Elemente... Zeilen.
-				@SuppressWarnings("null")
-				public List<Element>readHeaderRowsAsElement() throws ExceptionZZZ {
-					List<Element>listReturn = new ArrayList<Element>();
-					main:{
-						Element objElem = this.getElement();
-						if(objElem == null) break main;
-						
-						@SuppressWarnings("unchecked")
-						List<Element> listtemp = objElem.getChildren("TBODY");
-						
-						//Hier nun eine Liste der TagTableRowZZZ - elemente machen!!!
-						//Beachte: Der Tabellen Header muss mit th - element TagTableHeaderZZZ - element sein.
-						for(Element objElemtemp : listtemp) {//Das ist nur 1 Element: TBODY						
-//							String sName = objElemtemp.getQualifiedName();
-//							if(sName.equals("TBODY")) {
-								@SuppressWarnings("unchecked")
-								List<Element> listbody = objElemtemp.getChildren();
-								for(Element objRowtemp : listbody){						
-									String sName = objRowtemp.getQualifiedName();						
-									if(sName.equals("TR")) {
-										//Nun Headerzeile rausfiltern
-										boolean bHeader = TagTableZZZ.isTableHeader(objRowtemp);
-										if(!bHeader) {
-											listReturn.add(objRowtemp);
-										}
-									}
-								}
-//							}				
-						}
-						
-					}
-					return listReturn;
-				}
-		
-		public List<TagTableRowZZZ> readRows() throws ExceptionZZZ{
-			List<TagTableRowZZZ>listReturn = new ArrayList<TagTableRowZZZ>();
+		public List<TagTableRowWithHeaderZZZ> readRowsWithHeader() throws ExceptionZZZ{
+			List<TagTableRowWithHeaderZZZ>listReturn = new ArrayList<TagTableRowWithHeaderZZZ>();
 			main:{
 				List<Element> listElement = this.readRowsAsElement();
+				
+				List<TagTableRowZZZ>listRow = new ArrayList<TagTableRowZZZ>();
 				for(Element element : listElement) {
 					TagTableRowZZZ objRow = new TagTableRowZZZ(element);
-					listReturn.add(objRow);
+					listRow.add(objRow);
 				}
+				
+				List<Element> listElementHeader = this.readHeaderRowsAsElement();
+
+				List<TagTableRowZZZ>listHeaderRow = new ArrayList<TagTableRowZZZ>();
+				for(Element element : listElementHeader) {
+					TagTableRowZZZ objRow = new TagTableRowZZZ(element);
+					listHeaderRow.add(objRow);
+				}
+				
+				//Annahme, es gibt nur 1 Header-Zeile
+				TagTableRowZZZ objHeaderRow = listHeaderRow.get(0);
+				
+				//Nun die Liste mit den RowWithHeader-Objekten aufbauen
+				for(TagTableRowZZZ objRow : listRow) {
+					TagTableRowWithHeaderZZZ objRowWithHeader = new TagTableRowWithHeaderZZZ(objRow.getElement(), objHeaderRow.getElement());
+					listReturn.add(objRowWithHeader);
+				}
+				
 			}//end main:
 			return listReturn;
 		}
 		
-		public TagTableRowZZZ getRow(int iRow) throws ExceptionZZZ{			
-			TagTableRowZZZ objReturn = null;
+		public TagTableRowWithHeaderZZZ getRow(int iRow) throws ExceptionZZZ{			
+			TagTableRowWithHeaderZZZ objReturn = null;
 			main:{
 				if(iRow<=0){
 					ExceptionZZZ ez = new ExceptionZZZ("Row starts with 1.", iERROR_PARAMETER_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
 					throw ez;
 				}
 				
-				List<TagTableRowZZZ> listRow = this.getRows();
+				List<TagTableRowWithHeaderZZZ> listRow = this.getRowsWithHeader();
 				if(iRow > listRow.size()) break main;
 				
 				objReturn = listRow.get(iRow-1);			
@@ -165,8 +163,8 @@ public class TagTableZZZ extends AbstractKernelTagZZZ{
 			
 				//Eine Tabelle hat selbst keinen Inhalt, nur weitere Elemente (Zeilen tr, Spalten td)
 				boolean bAnyRow=false;
-				List<TagTableRowZZZ> listRow = this.readRows();
-				for(TagTableRowZZZ objRow: listRow) {
+				List<TagTableRowWithHeaderZZZ> listRow = this.readRowsWithHeader();
+				for(TagTableRowWithHeaderZZZ objRow: listRow) {
 					String sRow = objRow.getValue();					
 					if(bAnyRow) {
 						sReturn = sReturn + "\n" + sRow;
@@ -248,42 +246,7 @@ public class TagTableZZZ extends AbstractKernelTagZZZ{
 			}//end main;
 			return bReturn;
 		}
-	
-		
-	
-	
-	
-	
+
 	//######################### STATIC 
-	public static boolean isTableHeader(Element objElement) throws ExceptionZZZ{
-		boolean bReturn = false;
-		main:{
-			if(objElement==null) {
-				ExceptionZZZ ez = new ExceptionZZZ("org.jdom.Element",iERROR_PARAMETER_MISSING, TagTableZZZ.class,  ReflectCodeZZZ.getMethodCurrentName());
-				throw ez;	
-			}
-			
-			boolean bIsRow = TagTypeTableRowZZZ.isTableHeader(objElement);
-			if(!bIsRow) break main;
-						
-			bReturn = true;
-		}//end main
-		return bReturn;
-	}
-	
-	public static boolean isTableRow(Element objElement) throws ExceptionZZZ{
-		boolean bReturn = false;
-		main:{
-			if(objElement==null) {
-				ExceptionZZZ ez = new ExceptionZZZ("org.jdom.Element",iERROR_PARAMETER_MISSING, TagTableZZZ.class,  ReflectCodeZZZ.getMethodCurrentName());
-				throw ez;	
-			}
-			
-			boolean bIsRow = TagTypeTableRowZZZ.isTableRow(objElement);
-			if(!bIsRow) break main;
-			
-			bReturn = true;
-		}//end main
-		return bReturn;
-	}
+
 }

@@ -30,7 +30,12 @@
 	            		
 	            		<td> 
 	            		<xsl:choose>							 								
-								<xsl:when test="@name='ipnr'">								
+								<xsl:when test="@name='ipnr'">	<!-- DIESER ALIASWERT IST NOCH NICHT IM XML VORHANDEN -->
+									<!-- Die normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
+									<xsl:attribute name = "headers">
+									    <xsl:value-of select="label"/>
+									</xsl:attribute>
+															
 									<!-- Mache einen Link -->
 				            		<a>             
 				            			<xsl:attribute name = "href"><!-- create href attribute -->	            			
@@ -38,9 +43,27 @@
 				                    	</xsl:attribute>
 				                    	<xsl:value-of select="value"/>
 				                    </a>								
-								</xsl:when>						
+								</xsl:when>	
+								<xsl:when test="label='IP-Adresse'"> <!-- hier müsste eigentlich auf einen unique Aliasname sein und nicht ein flexibles Label -->
+									<!-- Die normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
+									<xsl:attribute name = "headers">
+									    <xsl:value-of select="label"/>
+									</xsl:attribute>
+																	
+									<!-- Mache einen Link für die IP-Adresse -->
+				            		<a>             
+				            			<xsl:attribute name = "href"><!-- create href attribute -->	            			
+				                    		<xsl:value-of select="value"/>
+				                    	</xsl:attribute>
+				                    	<xsl:value-of select="value"/>
+				                    </a>								
+								</xsl:when>
+													
 								<xsl:otherwise>
-									<!-- Nur normale Ausgabe des Stringwerts -->
+									<!-- Nur normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
+									<xsl:attribute name = "headers">
+									    <xsl:value-of select="label"/>
+									</xsl:attribute>
 									<xsl:value-of select="value"/>								
 								</xsl:otherwise>-->												
 						</xsl:choose>  	            	

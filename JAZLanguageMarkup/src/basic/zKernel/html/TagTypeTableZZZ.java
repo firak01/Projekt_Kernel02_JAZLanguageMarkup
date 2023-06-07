@@ -17,6 +17,7 @@ import basic.zBasic.ReflectCodeZZZ;
  */
 public class TagTypeTableZZZ extends AbstractKernelTagTypeZZZ{
 	public final static String sTAGNAME = "table";
+	public final static String sZDISCRIMINATOR = "";//Damit werden Unterklassen unterschieden
 	
 	//###### Constructor
 	public TagTypeTableZZZ() throws ExceptionZZZ{

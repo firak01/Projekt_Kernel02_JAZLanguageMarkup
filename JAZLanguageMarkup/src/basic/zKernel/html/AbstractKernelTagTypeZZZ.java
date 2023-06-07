@@ -12,7 +12,8 @@ import basic.zKernel.KernelUseObjectZZZ;
 
 public abstract class AbstractKernelTagTypeZZZ extends KernelUseObjectZZZ implements IKernelTagTypeZZZ {
 	private static final long serialVersionUID = -8395401121654554620L;
-
+	private String sZDiscriminator = ""; //Damit werden unterklassen unterschieden. Z.B. table und tableWithHeader.
+	
 	public AbstractKernelTagTypeZZZ() throws ExceptionZZZ {
 		super("");
 	}
@@ -27,10 +28,22 @@ public abstract class AbstractKernelTagTypeZZZ extends KernelUseObjectZZZ implem
 	 
 	//################## VOM INTERFACE GEERBT ########################
 	public abstract String getTagName();
+	
 		
 	public abstract String getTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
     public abstract String readTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
-		
+	
+    @Override
+    public String getZDiscriminator() {
+    	return this.sZDiscriminator;
+    }
+    
+    @Override
+    public void setZDiscriminator(String sZDiscriminator) {
+    	this.sZDiscriminator=sZDiscriminator;
+    }
+    
+    
 	/**Read the value from an element.
 	 * This element is representing an "input" tag.
 	 * E.g.: <input name='IPNr' type='Hidden' value='84.135.199.2'>

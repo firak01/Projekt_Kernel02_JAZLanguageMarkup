@@ -9,5 +9,7 @@ import basic.zBasic.ExceptionZZZ;
 public interface IKernelTagZZZ {
 	public org.jdom.Element getElement();		
 	public IKernelTagTypeZZZ getTagType();
-	public String getValue() throws ExceptionZZZ;	
+	public String getValue() throws ExceptionZZZ;
+	public String getName() throws ExceptionZZZ;
+	public String getId() throws ExceptionZZZ;		
 }

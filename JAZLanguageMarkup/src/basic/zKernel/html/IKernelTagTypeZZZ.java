@@ -7,8 +7,8 @@ import basic.zBasic.ExceptionZZZ;
  *
  */
 public interface IKernelTagTypeZZZ {
-	public String TagName = ""; 
-	
+	public String sTagName = ""; 
+	public String sDiscriminator = "";
 	
 	/** Returns a unique name. E.g. for input-tags this will be the name attribute.
 	* @return String
@@ -33,9 +33,14 @@ public interface IKernelTagTypeZZZ {
 	 * javadoc created by: 0823, 29.06.2006 - 17:33:49
 	 */
 	public abstract String readValue(org.jdom.Element objElem) throws ExceptionZZZ;
-	
+	public abstract boolean setValue(org.jdom.Element objElem, String sValue) throws ExceptionZZZ;
 	
 	public abstract String readName(org.jdom.Element objElem) throws ExceptionZZZ;
+	public abstract String readId(org.jdom.Element objElem) throws ExceptionZZZ;
 	
-	public abstract boolean setValue(org.jdom.Element objElem, String sValue) throws ExceptionZZZ;
+	//Damit werden spezielle Untertypen unterschieden. 
+	//Z.B. table reicht nicht, es gibt auch TableWithHeaderZZZ
+	//Das wird in der KernelTagFactoryZZZ zur Erzeugung der korrekten Klasse verwendet
+	public String getZDiscriminator();
+	public void setZDiscriminator(String sDiscriminator);
 }

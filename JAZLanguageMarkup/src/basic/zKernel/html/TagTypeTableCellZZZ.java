@@ -55,35 +55,93 @@ public class TagTypeTableCellZZZ extends AbstractKernelTagTypeZZZ{
 	 * @throws ExceptionZZZ 
 	 */
 	public String readValue(org.jdom.Element objElem) throws ExceptionZZZ{
+		return TagTypeTableCellZZZ.readValueStatic(objElem);
+		
+//		String sReturn = null;
+//		main:{
+//			check:{
+//				if(objElem==null){
+//					ExceptionZZZ ez = new ExceptionZZZ("JElement", iERROR_PARAMETER_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
+//					throw ez;
+//				}
+//			}//END check
+//		
+//		//Eine Zelle in einer Tabelle ist mit TD = Table Data gekennzeichnet
+//		//Merke: Eine Tabellenspalte ist demnach eine Sammlung von Zellen über mehrer Zeilen hinweg...
+//		//       TODO ggfs. dafuer eine eigene Klasse machen 
+//		List listElem = objElem.getContent();
+//		
+//		//Dieser Scheiss Filter funktioniert nicht so einfach...
+////		Filter objFilter = new ElementFilter("Text");		
+////		Iterator it = objElem.getDescendants(objFilter);
+////		while(it.hasNext()) {
+////			Element el = (Element) it.next();
+////			sReturn = el.toString();
+////		}
+//		
+//		for(Object el : listElem) {
+//			if(el instanceof Text) {
+//				Text objText = (Text) el;
+//				sReturn = objText.getTextTrim();//Whitespace wird darum entfernt.
+//			}
+//		}
+//
+//		}//END main
+//		return sReturn;
+	}
+	
+	/**Read the value from an element.
+	 * This element is representing an "input" tag.
+	 * E.g.: <input name='IPNr' type='Hidden' value='84.135.199.2'> 
+	 * @return String, e.g. 84.135.199.2
+	 *
+	 * javadoc created by: 0823, 29.06.2006 - 17:31:59
+	 * @throws ExceptionZZZ 
+	 */	
+	public static String readValueStatic(org.jdom.Element objElem) throws ExceptionZZZ{
 		String sReturn = null;
 		main:{
-			check:{
-				if(objElem==null){
-					ExceptionZZZ ez = new ExceptionZZZ("JElement", iERROR_PARAMETER_MISSING, this, ReflectCodeZZZ.getMethodCurrentName());
-					throw ez;
-				}
-			}//END check
+			if(objElem==null){
+				ExceptionZZZ ez = new ExceptionZZZ("JElement", iERROR_PARAMETER_MISSING, TagTypeTableHeaderCellZZZ.class, ReflectCodeZZZ.getMethodCurrentName());
+				throw ez;
+			}
 		
-		//Eine Zelle in einer Tabelle ist mit TD = Table Data gekennzeichnet
-		//Merke: Eine Tabellenspalte ist demnach eine Sammlung von Zellen über mehrer Zeilen hinweg...
-		//       TODO ggfs. dafuer eine eigene Klasse machen 
+		//Eine Tabelle hat selbst keinen Inhalt, nur weitere Elemente (Zeilen tr, Spalten td)
 		List listElem = objElem.getContent();
-		
-		//Dieser Scheiss Filter funktioniert nicht so einfach...
-//		Filter objFilter = new ElementFilter("Text");		
-//		Iterator it = objElem.getDescendants(objFilter);
-//		while(it.hasNext()) {
-//			Element el = (Element) it.next();
-//			sReturn = el.toString();
-//		}
-		
 		for(Object el : listElem) {
 			if(el instanceof Text) {
 				Text objText = (Text) el;
 				sReturn = objText.getTextTrim();//Whitespace wird darum entfernt.
 			}
 		}
-
+	
+//		org.jdom.Attribute att = objElem.getAttribute("value");
+//		if(att==null) break main;
+//		
+//		sReturn = att.getValue();
+		
+		/* FGL: DAS IST MIR ZU KOMPLIZIERT, so liest man den Attribut-Wert aus
+		boolean bIPNrElement = false;
+		List lAtt = elem.getAttributes();
+		if(lAtt !=null){
+			Iterator iteratorAtt = lAtt.iterator();
+			while(iteratorAtt.hasNext()){
+				//In dieser Schleife alle Attribute eines Inputfelds durchgehen
+				Attribute att = (Attribute) iteratorAtt.next();
+				System.out.print(att.getName());
+				System.out.println(" ... " + att.getValue());
+				if(att.getName().equals("name")){
+					if(att.getValue().equals("IPNr")) bIPNrElement = true;
+				}
+				if(att.getName().equals("value") && bIPNrElement ==true){
+					sURLNext = att.getValue();
+				}
+				
+			}
+		}
+			*/			
+		
+		
 		}//END main
 		return sReturn;
 	}
@@ -112,16 +170,19 @@ public class TagTypeTableCellZZZ extends AbstractKernelTagTypeZZZ{
 		//	}
 	    
 	    int iIndex=-1;
+	    boolean bAnyReplaced = false;
 		for(Object el : listElem) {
 			iIndex++;
 			if(el instanceof Text) {
 				Text objText = new Text(sValue);
 				listElem.remove(el);
 				listElem.add(iIndex, objText);
+				bAnyReplaced = true;
 			}
 
 		}
-
+		
+		bReturn = bAnyReplaced;
 	}//END main
 	return bReturn;
 	}

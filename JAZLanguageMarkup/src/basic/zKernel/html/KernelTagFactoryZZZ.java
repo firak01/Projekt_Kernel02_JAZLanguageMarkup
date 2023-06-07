@@ -109,8 +109,12 @@ public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
 			objReturn = new TagInputZZZ(objElem);			
 			break;
 		case "table":
-			objReturn = new TagTableZZZ(objElem);			
-			break;
+			if(objType.getZDiscriminator().equals(TagTypeTableWithHeaderZZZ.sZDISCRIMINATOR)){
+				objReturn = new TagTableWithHeaderZZZ(objElem);
+			}else {
+				objReturn = new TagTableZZZ(objElem);
+			}
+			break;		
 		default:
 			ExceptionZZZ ez = new ExceptionZZZ(sERROR_PARAMETER_VALUE+"unhandled tag '"+ objType.getTagName() +"'", iERROR_PARAMETER_VALUE, ReflectCodeZZZ.getMethodCurrentName(), "");
 			throw ez;	
