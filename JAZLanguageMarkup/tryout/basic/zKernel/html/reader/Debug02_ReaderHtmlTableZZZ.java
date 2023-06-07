@@ -19,7 +19,7 @@ import basic.zKernel.html.TagTypeTableZZZ;
 import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 
-public class DebugReaderHtmlTableZZZ {
+public class Debug02_ReaderHtmlTableZZZ {
 
 	public static void main(String[] args) {
 		try {

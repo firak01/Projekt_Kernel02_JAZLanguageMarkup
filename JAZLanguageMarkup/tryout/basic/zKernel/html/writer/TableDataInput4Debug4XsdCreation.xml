@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tabledata>
+    <row>
+        <column>
+            <headId>Servername</headId>
+            <value>test1</value>
+        </column>
+        <column>
+            <headId>IPNr</headId>
+            <value>79.196.199.114</value>
+        </column>
+        <column>
+            <headId>IP-Port 4 Connection</headId>
+            <value>5000</value>
+        </column>
+        <column>
+            <headId>IP-Port 4 Listening</headId>
+            <value>5001</value>
+        </column>
+        <column>
+            <headId>IP-Datum</headId>
+            <value>2017-1-4</value>
+        </column>
+        <column>
+            <headId>IP-Uhrzeit</headId>
+            <value>9:32</value>
+        </column>
+    </row>
+    <row>
+        <column>
+            <headId>Servername</headId>
+            <value>neuer test</value>
+        </column>
+        <column>
+            <headId>IPNr</headId>
+            <value>79.196.199.222</value>
+        </column>
+        <column>
+            <headId>IP-Port 4 Connection</headId>
+            <value>5002</value>
+        </column>
+        <column>
+            <headId>IP-Port 4 Listening</headId>
+            <value>5012</value>
+        </column>
+        <column>
+            <headId>IP-Datum</headId>
+            <value>2017-1-5</value>
+        </column>
+        <column>
+            <headId>IP-Uhrzeit</headId>
+            <value>9:59</value>
+        </column>
+    </row>
+</tabledata>

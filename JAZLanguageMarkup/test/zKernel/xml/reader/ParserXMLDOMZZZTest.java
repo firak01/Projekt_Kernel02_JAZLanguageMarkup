@@ -26,7 +26,7 @@ import custom.zUtil.io.FileZZZ;
 
 public class ParserXMLDOMZZZTest extends TestCase{
 		//+++ Pfad ermitteln	 
-		private final String sFILE_DIRECTORY_DEFAULT = "test" + File.separator + ReflectCodeZZZ.getPackagePath(this);
+		private final String sFILE_DIRECTORY_DEFAULT = "test" + File.separator + ReflectCodeZZZ.getPackagePathForConstant(this);
 		private final static String sFILE_NAME_DEFAULT = new String("ursuppe.xml");
 		//TODO: Das liefert noch einen Fehler, die XSD-Datei scheint noch nicht korrekt zu sein:   private final static String sFILE_NAME_DEFAULT = new String("ursuppe mit verweis auf xsd.xml");
 		

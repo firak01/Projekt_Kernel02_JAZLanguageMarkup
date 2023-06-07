@@ -9,10 +9,19 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import basic.zBasic.ExceptionZZZ;
+import basic.zBasic.IConstantZZZ;
+import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
 
-public class KernelWriterHtmlByXsltZZZ {
+public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 	private String sDirectoryOutput=null;
+	private String sFileNameOutput=null;
+	private String sFilePathTotalOutput=null;
+	
+	private File fileXslt=null;
+	private File fileXml=null;
+	private File fileHtmlOutput=null;
 	
 	public KernelWriterHtmlByXsltZZZ() {
 		
@@ -21,6 +30,25 @@ public class KernelWriterHtmlByXsltZZZ {
 	public String getDirectoryOutput(){
 		return this.sDirectoryOutput;
 	}
+	public File getFileXslt() {
+		return this.fileXslt;
+	}
+	public void setFileXslt(File fileXslt) {
+		this.fileXslt = fileXslt;
+	}
+	public File getFileXml() {
+		return this.fileXml;
+	}
+	public void setFileXml(File fileXml) {
+		this.fileXml = fileXml;
+	}
+	public File getFileHtmlOutut() {
+		return this.fileHtmlOutput;
+	}
+	public void setFileHtmlOutput(File fileHtmlOutput) {
+		this.fileHtmlOutput = fileHtmlOutput;
+	}
+	
 	public void setDirectoryOutput(String sDirectory)throws Exception{
 		if(sDirectory==null)throw new Exception("Directory must not be null.");
 		if(sDirectory.equals("")) throw new Exception("Directory must not be empty.");
@@ -40,19 +68,24 @@ public class KernelWriterHtmlByXsltZZZ {
 		main:{
 			if(fileXslt==null) throw new Exception("No Style File provided.");
 			if(fileXslt.exists()==false) throw new Exception("File Style does not exist: '" + fileXslt.getAbsolutePath() + "'");
+			this.setFileXslt(fileXslt);
 			
-			if(fileXml==null) break main;
-			if(fileXml.exists()==false) break main;
+			if(fileXml==null) throw new Exception("No Xml File provided.");
+			if(fileXml.exists()==false) throw new Exception("File XML does not exist: '" + fileXml.getAbsolutePath() + "'");
+			this.setFileXml(fileXml);
 			
 			System.out.println("\n");
-			System.out.println("Input: XML (" + fileXml.getAbsolutePath() + ")");			
-			//String sPathNew = this.getDirectoryOutput() + File.separator + "xsltStep" + (iRun) + File.separator + fileXml.getName();
-			String sPathNew = this.getDirectoryOutput() + File.separator + FileEasyZZZ.getNameWithChangedEnd(fileXslt, "html");
-			File fileXPageNew = new File(sPathNew);			
-			System.out.println("Output: XML (" + fileXPageNew + ")");
+			System.out.println("Input: XML (" + fileXml.getAbsolutePath() + ")");
+			
+			File fileXPageNew = this.getFileHtmlOutut();
+			if(fileXPageNew==null) {
+				String sPathNew = this.computeFilePathTotalOutput();				
+				fileXPageNew = new File(sPathNew);
+				this.setFileHtmlOutput(fileXPageNew);
+			}
+			System.out.println("Output: XML (" + fileXPageNew.getAbsolutePath() + ")");
 			
 			System.out.print("Transforming...");
-
 			StreamSource xmlSource = new StreamSource(fileXml);
 			StreamSource xsltSource = new StreamSource(fileXslt);
 				
@@ -61,16 +94,37 @@ public class KernelWriterHtmlByXsltZZZ {
 			Result xmlResultStream = new StreamResult(new java.io.BufferedOutputStream(out));
 			TransformerFactory transFact = TransformerFactory.newInstance();
 			Transformer trans = transFact.newTransformer(xsltSource);
-
 			trans.transform(xmlSource, xmlResultStream);
 			
 			out.close();
-				
-			System.out.print(" Success!");
-			
+						
+			System.out.println("Success!");
 												
 			bReturn = true;
 		}// end main
 		return bReturn;
+	}
+	
+	public String computeFilePathTotalOutput() throws ExceptionZZZ{
+		String sReturn = null;
+		main:{
+			File fileXslt = this.getFileXslt();
+			if(fileXslt==null) {
+				ExceptionZZZ ez = new ExceptionZZZ("File Xslt as Property missing", iERROR_RUNTIME);
+				throw ez;
+			};
+			if(fileXslt.exists()==false){
+				ExceptionZZZ ez = new ExceptionZZZ("File Style does not exist: '" + fileXslt.getAbsolutePath() + "'", iERROR_PROPERTY_VALUE);
+				throw ez;
+			}
+			
+			String sDirectoryOutput=this.getDirectoryOutput();
+			if(StringZZZ.isEmpty(sDirectoryOutput)){
+				sDirectoryOutput = FileEasyZZZ.getParent(fileXslt);
+			}
+			String sPathNew = sDirectoryOutput + File.separator + FileEasyZZZ.getNameWithChangedEnd(fileXslt, "html");
+			sReturn = sPathNew;
+		}//end main:
+		return sReturn;
 	}
 }

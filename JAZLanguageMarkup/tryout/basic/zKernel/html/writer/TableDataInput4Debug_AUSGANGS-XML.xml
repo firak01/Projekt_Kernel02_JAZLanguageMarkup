@@ -1,54 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Datei mit xml Struktur zur Generierung der xsd Datei.
+     Hier mit: https://www.freeformatter.com/xsd-generator.html
+     Das XSD Desing ist dabei "Venetian Blind" 
+     Die xsd Datei wird wiederum zur Generierung von JAXB-Klassen verwendet: 
+     Eclipse, rechtsclick auf xsd Datei. "Generate JAXB Classes"-->
+     
+     
+ 
 <tabledata>
     <row>
         <column>
-            <label>Servername</label>
+            <headId>Servername</headId>
             <value>test1</value>
         </column>
         <column>
-            <label>IP-Adresse</label>
+            <headId>IP-Adresse</headId>
             <value>79.196.199.114</value>
         </column>
         <column>
-            <label>IP-Port 4 Connection</label>
+            <headId>IP-Port 4 Connection</headId>
             <value>5000</value>
         </column>
         <column>
-            <label>IP-Port 4 Listening</label>
+            <headId>IP-Port 4 Listening</headId>
             <value>5001</value>
         </column>
         <column>
-            <label>IP-Datum</label>
+            <headId>IP-Datum</headId>
             <value>2017-1-4</value>
         </column>
         <column>
-            <label>IP-Uhrzeit</label>
+            <headId>IP-Uhrzeit</headId>
             <value>9:32</value>
         </column>
     </row>
     <row>
         <column>
-            <label>Servername</label>
+            <headId>Servername</headId>
             <value>neuer test</value>
         </column>
-        <column name='IPNr'>
-            <label>IP-Adresse</label>
+        <column>
+            <headId>IPNr</headId>
             <value>79.196.199.222</value>
         </column>
         <column>
-            <label>IP-Port 4 Connection</label>
+            <headId>IP-Port 4 Connection</headId>
             <value>5002</value>
         </column>
         <column>
-            <label>IP-Port 4 Listening</label>
+            <headId>IP-Port 4 Listening</headId>
             <value>5012</value>
         </column>
         <column>
-            <label>IP-Datum</label>
+            <headId>IP-Datum</headId>
             <value>2017-1-5</value>
         </column>
         <column>
-            <label>IP-Uhrzeit</label>
+            <headId>IP-Uhrzeit</headId>
             <value>9:59</value>
         </column>
     </row>

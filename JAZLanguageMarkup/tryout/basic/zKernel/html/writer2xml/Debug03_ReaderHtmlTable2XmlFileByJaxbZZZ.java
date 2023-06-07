@@ -25,16 +25,16 @@ import basic.zKernel.html.TagTableZZZ;
 import basic.zKernel.html.TagTypeInputZZZ;
 import basic.zKernel.html.TagTypeTableWithHeaderZZZ;
 import basic.zKernel.html.TagTypeTableZZZ;
-import basic.zKernel.html.classes.ventian.ColumnType;
-import basic.zKernel.html.classes.ventian.ObjectFactory;
-import basic.zKernel.html.classes.ventian.RowType;
-import basic.zKernel.html.classes.ventian.TabledataType;
+import basic.zKernel.html.classes.ventianExample.ColumnType;
+import basic.zKernel.html.classes.ventianExample.ObjectFactory;
+import basic.zKernel.html.classes.ventianExample.RowType;
+import basic.zKernel.html.classes.ventianExample.TabledataType;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
-import basic.zKernel.html.writer.DebugWriterHtmlByXsltZZZ;
+import basic.zKernel.html.writer.Debug01_WriterHtmlByXsltZZZ;
 import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 
-public class DebugReaderHtmlTable2XmlFileByJaxbZZZ {
+public class Debug03_ReaderHtmlTable2XmlFileByJaxbZZZ {
 
 	public static void main(String[] args) {
 		try {
@@ -143,7 +143,7 @@ public class DebugReaderHtmlTable2XmlFileByJaxbZZZ {
 	         
 	         //https://stackoverflow.com/questions/13788617/jaxb-marshalling-java-to-output-xml-file
 	         //If you are using a JAXB 2.1 or greater then you can marshal directly to a java.io.File object:	         	       
-	         String sPackagePath = ReflectCodeZZZ.getPackagePath(DebugWriterHtmlByXsltZZZ.class);
+	         String sPackagePath = ReflectCodeZZZ.getPackagePath(Debug01_WriterHtmlByXsltZZZ.class);
 	         String sFilePathTryout = FileEasyZZZ.joinFilePathName("tryout",sPackagePath);//sonst kommt src als erster Pfadteil
 	         String sFilePathTotal = FileEasyZZZ.joinFilePathName(sFilePathTryout, "TableDataInput4Debug.xml");
 	         System.out.println("Creating new file '" + sFilePathTotal + "' by Marshaller."); 
