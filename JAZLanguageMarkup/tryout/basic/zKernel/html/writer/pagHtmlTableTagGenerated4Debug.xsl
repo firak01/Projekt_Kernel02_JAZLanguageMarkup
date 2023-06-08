@@ -86,7 +86,7 @@
 								<xsl:otherwise>
 									<!-- Nur normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
 									<xsl:attribute name = "headers">
-									    <xsl:value-of select="headIp"/>
+									    <xsl:value-of select="headId"/>
 									</xsl:attribute>
 									<xsl:value-of select="value"/>								
 								</xsl:otherwise>-->												
