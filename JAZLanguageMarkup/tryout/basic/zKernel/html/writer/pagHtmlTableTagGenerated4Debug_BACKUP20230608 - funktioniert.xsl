@@ -79,10 +79,8 @@
 						<!-- <xsl:variable name="current_labelFromMap" select="map:get($mapTableHeadLabel,(string)$headId)"/> -->
 						<!-- <xsl:variable name="current_labelFromMap" select="java:get($mapTableHeadLabel,(string)$headId)"/> -->
 						<!-- <xsl:variable name="current_labelFromMap2" select="map:get(mapTableHeadLabel,headId)"/> -->
-						
-						<!-- Das klappt, aber mal das spezielle template aufrufen -->
-<!-- 						<xsl:variable name="current_labelFromMap3" select="map:get($mapTableHeadLabel,string($headId))"/>		 -->
-<!-- 						<xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map3 with variable key='),string($current_labelFromMap3))"/></xsl:message> -->
+						<xsl:variable name="current_labelFromMap3" select="map:get($mapTableHeadLabel,string($headId))"/>		
+						<xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map3 with variable key='),string($current_labelFromMap3))"/></xsl:message>
 		
 
 					
@@ -172,30 +170,19 @@
 	<!-- TODOGOON: Besser waere es noch man wuerde oben in der XSLT-Seite eine Map definieren und hier nur auf den Map-Inhalt abpruefen!!! -->
 	<xsl:template name="mapHeaderIdToLabel">
     <xsl:param name="current_headerId"/>
-<!-- 	<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - Input current_headerId='),string($current_headerId))"/></xsl:message> -->
-						
-<!-- Die Loesung hier die Ueberschriften ueber eine Fallunterschreibung zu verwalten ist nicht optimal -->				    
-<!-- 	<xsl:choose> -->
-<!-- 	<xsl:when test="$current_headerId='IPNr'"> -->
-<!-- 	<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - match for: '),string($current_headerId))"/></xsl:message> -->
-<!-- 		<xsl:value-of select="'IP Adresse'" /> -->
 
-<!-- Verbesserte Loesung: -->
-<!-- Hole aus einer Java-Map das Label. Merke: Java Map wird dem Transformer-Objekt uebergeben. -->
-		<xsl:variable name="current_labelFromMap" select="map:get($mapTableHeadLabel,string($current_headerId))"/>		
-<!-- 	<xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map in template with variable key='),string($current_labelFromMap))"/></xsl:message> -->
+	<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - Input current_headerId='),string($current_headerId))"/></xsl:message>    
+	<xsl:choose>
+	<xsl:when test="$current_headerId='IPNr'">
+		<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - match for: '),string($current_headerId))"/></xsl:message>
+		<xsl:value-of select="'IP Adresse'" />
+	</xsl:when>
+	<xsl:otherwise>
+		<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - no match for: '),string($current_headerId))"/></xsl:message>
+		<!-- falls nicht gemappt, gib die eingegebene Id zurueck -->
+		<xsl:value-of select="$current_headerId" />
+	</xsl:otherwise>
+	</xsl:choose>
 	
-		<xsl:choose>	
-		<xsl:when test="$current_labelFromMap!=''">
-			<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - match for: '),string($current_headerId))"/></xsl:message>
-			<xsl:value-of select="$current_labelFromMap" />
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - no match for: '),string($current_headerId))"/></xsl:message>
-			<!-- falls nicht gemappt, gib die eingegebene Id zurueck -->
-			<xsl:value-of select="$current_headerId" />
-		</xsl:otherwise>
-		</xsl:choose>
-		
-	</xsl:template>
+</xsl:template>
 </xsl:stylesheet>

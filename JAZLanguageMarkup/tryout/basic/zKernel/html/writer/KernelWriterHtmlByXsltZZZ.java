@@ -2,6 +2,8 @@ package basic.zKernel.html.writer;
 
 import java.io.File;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Transformer;
@@ -94,6 +96,22 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 			Result xmlResultStream = new StreamResult(new java.io.BufferedOutputStream(out));
 			TransformerFactory transFact = TransformerFactory.newInstance();
 			Transformer trans = transFact.newTransformer(xsltSource);
+			
+			//java - Retrieving Hashmap value in XSLT
+			//Voraussetzung in xslt im stylesheet Tag setzen ... <... xmlns:map="xalan://java.util.Map" extension-element-prefixes="map">
+			//siehe: https://xml.apache.org/xalan-j/extensions.html#supported-lang
+		
+			
+			Map<String,String> mapTableHeadLabel = new HashMap<String,String>();
+			mapTableHeadLabel.put("IPNr", "IP Adresse");
+			mapTableHeadLabel.put("ServerName", "Name des Severs");
+			mapTableHeadLabel.put("IPPortListen", "Port für Listener");
+			mapTableHeadLabel.put("IPPortConnect", "Port für Verbindung");
+			mapTableHeadLabel.put("IPDate", "IP Datum");
+			mapTableHeadLabel.put("IPTime", "IP Zeit");
+			
+			trans.setParameter("mapTableHeadLabel", mapTableHeadLabel);
+						
 			trans.transform(xmlSource, xmlResultStream);
 			
 			out.close();

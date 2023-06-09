@@ -1,4 +1,4 @@
-package basic.zKernel.html.reader.writer2xml;
+package basic.zKernel.html.writer2xml;
 
 import java.awt.List;
 import java.io.File;

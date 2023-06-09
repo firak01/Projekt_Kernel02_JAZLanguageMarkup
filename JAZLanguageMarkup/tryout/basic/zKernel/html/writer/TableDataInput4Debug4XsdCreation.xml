@@ -2,7 +2,7 @@
 <tabledata>
     <row>
         <column>
-            <headId>Servername</headId>
+            <headId>ServerName</headId>
             <value>test1</value>
         </column>
         <column>
@@ -10,25 +10,25 @@
             <value>79.196.199.114</value>
         </column>
         <column>
-            <headId>IP-Port 4 Connection</headId>
+            <headId>IPPortConnect</headId>
             <value>5000</value>
         </column>
         <column>
-            <headId>IP-Port 4 Listening</headId>
+            <headId>IPPortListen</headId>
             <value>5001</value>
         </column>
         <column>
-            <headId>IP-Datum</headId>
+            <headId>IPDate</headId>
             <value>2017-1-4</value>
         </column>
         <column>
-            <headId>IP-Uhrzeit</headId>
+            <headId>IPTime</headId>
             <value>9:32</value>
         </column>
     </row>
     <row>
         <column>
-            <headId>Servername</headId>
+            <headId>ServerName</headId>
             <value>neuer test</value>
         </column>
         <column>
@@ -36,19 +36,19 @@
             <value>79.196.199.222</value>
         </column>
         <column>
-            <headId>IP-Port 4 Connection</headId>
+            <headId>IPPortConnect</headId>
             <value>5002</value>
         </column>
         <column>
-            <headId>IP-Port 4 Listening</headId>
+            <headId>IPPortListen</headId>
             <value>5012</value>
         </column>
         <column>
-            <headId>IP-Datum</headId>
+            <headId>IPDate</headId>
             <value>2017-1-5</value>
         </column>
         <column>
-            <headId>IP-Uhrzeit</headId>
+            <headId>IPTime</headId>
             <value>9:59</value>
         </column>
     </row>
