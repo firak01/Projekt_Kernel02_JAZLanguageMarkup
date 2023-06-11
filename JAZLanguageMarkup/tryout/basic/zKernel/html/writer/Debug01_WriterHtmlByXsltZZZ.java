@@ -1,8 +1,11 @@
 package basic.zKernel.html.writer;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.util.abstractList.HashMapIndexedZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zKernel.html.reader.Debug02_ReaderHtmlTableZZZ;
 
@@ -29,7 +32,40 @@ public class Debug01_WriterHtmlByXsltZZZ {
         System.out.println("The new file will have the same name as the xslt file with the ending html: '" + sFilePathTotal + "'");
         File fileHtmlOutput = new File(sFilePathTotal);
         objWriter.setFileHtmlOutput(fileHtmlOutput);
-      
+
+        Map<String,String> mapTableHeadLabel = new HashMap<String,String>();
+		mapTableHeadLabel.put("IPNr", "IP Adresse");
+		mapTableHeadLabel.put("ServerName", "Name des Severs");
+		mapTableHeadLabel.put("IPPortListen", "Port für Listener");
+		mapTableHeadLabel.put("IPPortConnect", "Port für Verbindung");
+		mapTableHeadLabel.put("IPDate", "IP Datum");
+		mapTableHeadLabel.put("IPTime", "IP Zeit");
+		objWriter.setHashMapTableHeader(mapTableHeadLabel);
+		
+		//TODGOON: Aus der HashMap die Index HashMap errechnen.
+		HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();        
+        TableHeadZZZ h01 = new TableHeadZZZ("IPNr", "IP Adresse");
+        mapIndexedTableHeadLabel.put(h01);
+			
+		TableHeadZZZ h02 = new TableHeadZZZ("ServerName", "Name des Servers");
+		mapIndexedTableHeadLabel.put(h02);
+		
+		TableHeadZZZ h03 = new TableHeadZZZ("IPPortListen", "Port für Listener");
+		mapIndexedTableHeadLabel.put(h03);
+		
+		TableHeadZZZ h04 = new TableHeadZZZ("IPPortConnect", "Port für Verbindung");
+		mapIndexedTableHeadLabel.put(h04);
+		
+		TableHeadZZZ h05 = new TableHeadZZZ("IPDate", "IP Datum");
+		mapIndexedTableHeadLabel.put(h05);
+		
+		TableHeadZZZ h06 = new TableHeadZZZ("IPTime", "IP Zeit");
+		mapIndexedTableHeadLabel.put(h06);
+		
+		String sDummy = new String("komme ich im XSLT an?");
+		mapIndexedTableHeadLabel.setDummy(sDummy);
+        objWriter.setHashMapIndexedTableHeader(mapIndexedTableHeadLabel);
+		
 		int iRun = 1;
 		boolean bSuccess = objWriter.transformFileOnStyle(fileXslt, fileXml, iRun);
 		if(bSuccess) {

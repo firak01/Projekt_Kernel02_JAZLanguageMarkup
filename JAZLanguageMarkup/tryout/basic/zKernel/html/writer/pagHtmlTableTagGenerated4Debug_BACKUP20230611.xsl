@@ -10,50 +10,39 @@
     xmlns:counter="basic.zKernel.html.writer.MyCounter"
     extension-element-prefixes="map mapindexed head counter">
    
-    <!-- a doctype is not allowed in content <!DOCTYPE html> -->
-	<!-- Merke: Wir machen hier nix mit PDF, also raus... xmlns:fo="http://www.w3.org/1999/XSL/Format" -->
-	<!-- das braucht man... xmlns:xalan="http://xml.apache.org/xalan" -->
-	<!-- darunter dann etwas in der Form... 	xmlns:prefix=URI -->
-	<!-- In a literal result element or extension element include the xsl prefix:
-			xsl:extension-element-prefixes="prefix1 prefix2 ..." -->
-    <!-- Was das soll weiss ich nicht...  exclude-result-prefixes="java"> -->
 
 	<xsl:output method="html" />
 	
 	<!-- Diese Parameter werden im Java Code an das Transformer - Objekt uebergeben -->
 	<xsl:param name="mapTableHeadLabel" select="java:java.util.HashMap.new" />
 	<xsl:param name="mapTableHeadLabelIndexed" select="java:jbasic.zBasic.util.abstractList.HashMapIndexedZZZ.new" />
-
-	<!-- Merke: Objekte koennen auch uebergeben werden. D.h. hier angekommen, haben im Java gesetzten Werte
-	            hier: mapTableHeadLabelIndexe -->
-	<!--        Daher funktioniert es die HashMapIndexed schon vorher zu erstellen, mit:
+	
+	<!-- Merke: Objekte koennen nicht uebergeben werden. D.h. hier angekommen, haben Sie alle gesetzten Werte verloren -->
+	<!--        Daher funktioniert es nicht die HashMapIndexed schon vorher zu erstellen, mit:
 			<xsl:stylesheet ...
 	            xmlns:mapindexed="xalan://basic.zBasic.util.abstractList.HashMapIndexedZZZ"
 	            ...
     		<xsl:param name="mapTableHeadLabelIndexed" select="java:jbasic.zBasic.util.abstractList.HashMapIndexedZZZ.new" />
   	  -->
   
-  	<!-- Merke: Damit auch auf andere Objekte, die in den uebergebenen Objekten enthalten sind zugegriffen werden kann,
-  	            mussen diese Klassen auch definiert worden sein -->
-  	<!--        Daher ist notwendig:
-  	 			<xsl:stylesheet ...
-  	 			   xmlns:head="xalan://basic.zKernel.html.writer.TableHeadZZZ"-->
-  
- 	<!-- Davon zu unterscheiden sind Komponenten, die als Xalan-Objekte hier vorort erstellt werden -->
-  	<!-- Merke: Damit auch diese bekannt sind, muss defiert werden:
-  				<xsl:stylesheet ...
-  				   xmlns:counter="basic.zKernel.html.writer.MyCounter"
-   -->
   <xalan:component prefix="counter"
                    elements="init incr" functions="read">
     <xalan:script lang="javaclass" src="xalan://basic.zKernel.html.writer.MyCounter"/>
   </xalan:component>
-  
   <!-- Fuer weitere Beispiele siehe auch: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwje0cvi07j_AhXbgv0HHd8oCWY4ChAWegQIGRAB&url=https%3A%2F%2Fwi.wu.ac.at%2Frgf%2Fdiplomarbeiten%2FBakkStuff%2F2007%2F200706_Pezerovic%2FPezerovic_XSLT_Using_External_Functions_20070608.pdf&usg=AOvVaw3en0M7Y-DfW7UuWJpXuCeg -->
   <!-- obiger link liefert ein PDF, das ich mir in mein google docs Verzeichnis java / java_xslt gespeichert habe -->
   
 	<xsl:template match="/">
-
+	
+	
+	
+	<!-- a doctype is not allowed in content <!DOCTYPE html> -->
+	<!-- Merke: Wir machen hier nix mit PDF, also raus... xmlns:fo="http://www.w3.org/1999/XSL/Format" -->
+	<!-- das braucht man... xmlns:xalan="http://xml.apache.org/xalan" -->
+	<!-- darunter dann etwas in der Form... 	xmlns:prefix=URI -->
+	<!-- In a literal result element or extension element include the xsl prefix:
+			xsl:extension-element-prefixes="prefix1 prefix2 ..." -->
+    <!-- Was das soll weiss ich nicht...  exclude-result-prefixes="java"> -->
 	<html>
 	<head>
 	    <!-- ./ ist das gleiche Verzeichnis. Aber / ist das Root Verzeichnis des Servers -->
@@ -107,20 +96,34 @@
 			<xsl:for-each select="/tabledata/row">			
 			<xsl:if test="position()=1"><!-- Das soll nur 1x laufen fuer die 1. Zeile -->
 			<tr>
-				<counter:init name="index" value="0"/>		
+				<counter:init name="index" value="1"/>		
 				<xsl:for-each select="column">
 					<xsl:variable name="index">
 						 <xsl:value-of select="counter:read('index')"/>
 					</xsl:variable>					
 					<xsl:message><xsl:value-of select="concat(string('index from java counter='),string($index))"/></xsl:message>
 				
-					<!-- ###################################### -->
-					<!-- Der Weg ohne eine Sortierung per Index -->
 					<xsl:variable name="headId">
 						<xsl:value-of select="headId"/>
 					</xsl:variable>
 					<xsl:message><xsl:value-of select="concat(string('in for-each: headId='),string($headId))"/></xsl:message>
+				
+				
+<!-- 					<xsl:variable name = "current_labelFromMap"> -->
+<!-- 						<xsl:value-of select="map:get($mapTableHeadLabel,(string)$headId)"/> -->
+<!-- 					</xsl:variable> -->
+
+						<!-- <xsl:variable name="current_labelFromMap" select="map:get($mapTableHeadLabel,(string)$headId)"/> -->
+						<!-- <xsl:variable name="current_labelFromMap" select="java:get($mapTableHeadLabel,(string)$headId)"/> -->
+						<!-- <xsl:variable name="current_labelFromMap2" select="map:get(mapTableHeadLabel,headId)"/> -->
 						
+						<!-- Das klappt, aber mal das spezielle template aufrufen -->
+<!-- 						<xsl:variable name="current_labelFromMap3" select="map:get($mapTableHeadLabel,string($headId))"/>		 -->
+<!-- 						<xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map3 with variable key='),string($current_labelFromMap3))"/></xsl:message> -->
+		
+
+					
+			
 					<!-- Hole ueber das Template fuer diese Spalte die Tabellenueberschrift -->
 					<xsl:variable name="current_label">
         				<xsl:call-template name="mapHeaderIdToLabel">
@@ -128,31 +131,9 @@
         				</xsl:call-template>
     				</xsl:variable>
 					<xsl:message><xsl:value-of select="concat(string('theHeaderLabel='),string($current_label))"/></xsl:message>
-<!-- 					<th>					 -->
-<!-- 						<xsl:value-of select="$current_label"/> -->
-<!-- 					</th> -->
-					<!-- ###################################### -->
-					
-					
-					<!-- Der Weg ueber eine Sortierung per Index -->
-					<xsl:variable name="headId_byIndex">
-						<xsl:call-template name="mapHeaderIdByIndex">
-            				<xsl:with-param name="current_index" select="$index"/>
-        				</xsl:call-template>
-					</xsl:variable>
-					<xsl:message><xsl:value-of select="concat(string('theHeaderId by Index='),string($headId_byIndex))"/></xsl:message>
-					
-					<xsl:variable name="headLabel_byIndex">
-						<xsl:call-template name="mapHeaderLabelByIndex">
-            				<xsl:with-param name="current_index" select="$index"/>
-        				</xsl:call-template>
-					</xsl:variable>
-					<xsl:message><xsl:value-of select="concat(string('theHeaderLabel by Index='),string($headLabel_byIndex))"/></xsl:message>
-					
 					<th>					
-						<xsl:value-of select="$headLabel_byIndex"/>
+						<xsl:value-of select="$current_label"/>
 					</th>
-					<!-- ########################################### -->
 					
 					<counter:incr name="index"/>
 				</xsl:for-each>
@@ -224,7 +205,8 @@
 	</html>
 	</xsl:template>
 	
-	<!-- Template: Hole anhand der HeaderId (Kommt aus dem XML) die passende Tabellenueberschrift. Hier ist also die Stelle an der die "Labels" definiert werden -->	
+	<!-- Template: Hole anhand der HeaderId (Kommt aus dem XML) die passende Tabellenueberschrift. Hier ist also die Stelle an der die "Labels" definiert werden -->
+	<!-- TODOGOON: Besser waere es noch man wuerde oben in der XSLT-Seite eine Map definieren und hier nur auf den Map-Inhalt abpruefen!!! -->
 	<xsl:template name="mapHeaderIdToLabel">
     <xsl:param name="current_headerId"/>
 <!-- 	<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - Input current_headerId='),string($current_headerId))"/></xsl:message> -->
@@ -250,44 +232,7 @@
 			<!-- falls nicht gemappt, gib die eingegebene Id zurueck -->
 			<xsl:value-of select="$current_headerId" />
 		</xsl:otherwise>
-		</xsl:choose>		
+		</xsl:choose>
+		
 	</xsl:template>
-	
-	<!-- Template: Hole anhand eines Zähler-Index (Kommt aus einer hier lokal als Xalan-Komponente definierten Java-Klasse) den passende Eintrag aus einer an das Script uebergebenen Java HashMap mit Index -->
-	<!-- Das ist noch eine bessere Lösung, da nun die Reihenfolge der Spalten so definiert werden kann, unabhängig von der Reihenfolge im XML -->
-	<xsl:template name="mapHeaderIdByIndex">
-    <xsl:param name="current_index"/>
- 		<xsl:message><xsl:value-of select="concat(string('mapTableHeadObjectByIndex - Input current_index='),string($current_index))"/></xsl:message>
-		 	
- 		<!-- Verbesserte Loesung: -->
-		<!-- Hole aus einer indizierten Java-Map das TableHead-Objekt. Merke: Das HashMapsIndexed Java Objekt wird dem Transformer-Objekt uebergeben. -->
-		<!-- Das liefert das abgespeicherte Java-Objekt zurueck, vom Typ: tryout\basic\zKernel\html\writer\TableHeadZZZ.java -->
-		<xsl:variable name="current_objectFromMap" select="mapindexed:getValue($mapTableHeadLabelIndexed,$current_index)"/>		
-	 	<xsl:message><xsl:value-of select="concat(string('current_objectFromMap: '),string($current_objectFromMap))"/></xsl:message>
-	 	
-	 	<!-- Nun aus dem abgespeicherten Java-Objekt die Details holen -->
-		<xsl:variable name="current_headId" select="head:getHeadId($current_objectFromMap)"/>
-		<xsl:message><xsl:value-of select="concat(string('current_headId='),string($current_headId))"/></xsl:message>
-	 	
-	 	<xsl:value-of select="$current_headId"/>
-    </xsl:template>
-    
-    <!-- Template: Hole anhand eines Zähler-Index (Kommt aus einer hier lokal als Xalan-Komponente definierten Java-Klasse) den passende Eintrag aus einer an das Script uebergebenen Java HashMap mit Index -->
-	<!-- Das ist noch eine bessere Lösung, da nun die Reihenfolge der Spalten so definiert werden kann, unabhängig von der Reihenfolge im XML -->
-	<xsl:template name="mapHeaderLabelByIndex">
-    <xsl:param name="current_index"/>
- 		<xsl:message><xsl:value-of select="concat(string('mapTableHeadObjectByIndex - Input current_index='),string($current_index))"/></xsl:message>
-		 	
- 		<!-- Verbesserte Loesung: -->
-		<!-- Hole aus einer indizierten Java-Map das TableHead-Objekt. Merke: Das HashMapsIndexed Java Objekt wird dem Transformer-Objekt uebergeben. -->
-		<!-- Das liefert das abgespeicherte Java-Objekt zurueck, vom Typ: tryout\basic\zKernel\html\writer\TableHeadZZZ.java -->
-		<xsl:variable name="current_objectFromMap" select="mapindexed:getValue($mapTableHeadLabelIndexed,$current_index)"/>		
-	 	<xsl:message><xsl:value-of select="concat(string('current_objectFromMap: '),string($current_objectFromMap))"/></xsl:message>
-	 	
-	 	<!-- Nun aus dem abgespeicherten Java-Objekt die Details holen -->
-		<xsl:variable name="current_headLabel" select="head:getHeadLabel($current_objectFromMap)"/>
-		<xsl:message><xsl:value-of select="concat(string('current_headLabel='),string($current_headLabel))"/></xsl:message>
-	 	
-	 	<xsl:value-of select="$current_headLabel"/>
-    </xsl:template>
 </xsl:stylesheet>
