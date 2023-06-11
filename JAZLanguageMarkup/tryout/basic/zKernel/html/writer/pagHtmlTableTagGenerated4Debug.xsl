@@ -116,18 +116,18 @@
 				
 					<!-- ###################################### -->
 					<!-- Der Weg ohne eine Sortierung per Index -->
-					<xsl:variable name="headId">
-						<xsl:value-of select="headId"/>
-					</xsl:variable>
-					<xsl:message><xsl:value-of select="concat(string('in for-each: headId='),string($headId))"/></xsl:message>
+<!-- 					<xsl:variable name="headId"> -->
+<!-- 						<xsl:value-of select="headId"/> -->
+<!-- 					</xsl:variable> -->
+<!-- 					<xsl:message><xsl:value-of select="concat(string('in for-each: headId='),string($headId))"/></xsl:message> -->
 						
-					<!-- Hole ueber das Template fuer diese Spalte die Tabellenueberschrift -->
-					<xsl:variable name="current_label">
-        				<xsl:call-template name="mapHeaderIdToLabel">
-            				<xsl:with-param name="current_headerId" select="$headId"/>
-        				</xsl:call-template>
-    				</xsl:variable>
-					<xsl:message><xsl:value-of select="concat(string('theHeaderLabel='),string($current_label))"/></xsl:message>
+<!-- 					Hole ueber das Template fuer diese Spalte die Tabellenueberschrift -->
+<!-- 					<xsl:variable name="current_label"> -->
+<!--         				<xsl:call-template name="mapHeaderIdToLabel"> -->
+<!--             				<xsl:with-param name="current_headerId" select="$headId"/> -->
+<!--         				</xsl:call-template> -->
+<!--     				</xsl:variable> -->
+<!-- 					<xsl:message><xsl:value-of select="concat(string('theHeaderLabel='),string($current_label))"/></xsl:message> -->
 <!-- 					<th>					 -->
 <!-- 						<xsl:value-of select="$current_label"/> -->
 <!-- 					</th> -->
@@ -162,50 +162,93 @@
 			
 			<!-- Daten -->
 	        <xsl:for-each select="tabledata/row">
-	            <tr>
+	            <counter:init name="index" value="0"/><!-- den counter fuer jede Zeile neu setzen -->
+	            <tr>	            	
 	            	<xsl:for-each select="column">	
+	            		<xsl:if test="position()=1">
+	            				            	
+	            		</xsl:if><!-- Das soll nur 1x laufen fuer die 1. Spalte. Merke: in der tr- -->
+	            		<xsl:variable name="index">
+						 	<xsl:value-of select="counter:read('index')"/>
+						</xsl:variable>
 	            		
-	            		<td> 
-	            		<xsl:choose>							 								
-								<xsl:when test="@name='ipnr'">	<!-- DIESER ALIASWERT IST NOCH NICHT IM XML VORHANDEN -->
-									<!-- Die normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
-									<xsl:attribute name = "headers">
-									    <xsl:value-of select="headId"/>
-									</xsl:attribute>
+<!-- 	            		<td>  -->	            		
+<!-- 	            		<xsl:choose>	 -->
+<!-- Allererste Loesung zu Domino Zeiten "VIA" Projekt. Wenn ipnr als Name eines Inputfelds existiert haette -->	            								 								
+<!-- 								<xsl:when test="@name='ipnr'">	DIESER ALIASWERT IST NOCH NICHT IM XML VORHANDEN -->
+<!-- 									Die normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
+<!-- 									<xsl:attribute name = "headers"> -->
+<!-- 									    <xsl:value-of select="headId"/> -->
+<!-- 									</xsl:attribute> -->
 															
-									<!-- Mache einen Link -->
-				            		<a>             
-				            			<xsl:attribute name = "href"><!-- create href attribute -->	            			
-				                    		<xsl:value-of select="value"/>
-				                    	</xsl:attribute>
-				                    	<xsl:value-of select="value"/>
-				                    </a>								
-								</xsl:when>	
-								<xsl:when test="headId='IPNr'"> <!-- hier müsste eigentlich auf einen unique Aliasname sein und nicht ein flexibles Label -->
+<!-- 									Mache einen Link -->
+<!-- 				            		<a>              -->
+<!-- 				            			<xsl:attribute name = "href">create href attribute	            			 -->
+<!-- 				                    		<xsl:value-of select="value"/> -->
+<!-- 				                    	</xsl:attribute> -->
+<!-- 				                    	<xsl:value-of select="value"/> -->
+<!-- 				                    </a>								 -->
+<!-- 								</xsl:when>	 -->
+
+<!-- Loesung ueber eine einfache HashMap ohne Indizierung. Die Reihenfolge der Spalten entspricht der Reihenfolge im XML -->
+<!-- 								<xsl:when test="headId='IPNr'"> hier müsste eigentlich auf einen unique Aliasname sein und nicht ein flexibles Label -->								
+<!-- 									Die normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
+<!-- 									<xsl:attribute name = "headers"> -->
+<!-- 									    <xsl:value-of select="headId"/> -->
+<!-- 									</xsl:attribute> -->
+																	
+<!-- 									Mache einen Link für die IP-Adresse -->
+<!-- 				            		<a>              -->
+<!-- 				            			<xsl:attribute name = "href">create href attribute	            			 -->
+<!-- 				                    		<xsl:value-of select="value"/> -->
+<!-- 				                    	</xsl:attribute> -->
+<!-- 				                    	<xsl:value-of select="value"/> -->
+<!-- 				                    </a>								 -->
+<!-- 								</xsl:when> -->
+
+<!-- Loesung ueber eine HashMap mit Indizierung. Der Index gibt die Reihenfolge der Spalten an. -->
+						<td>
+						
+						<!-- Der Weg ueber eine Sortierung per Index -->
+						<xsl:variable name="headId_byIndex">
+							<xsl:call-template name="mapHeaderIdByIndex">
+	            				<xsl:with-param name="current_index" select="$index"/>
+	        				</xsl:call-template>
+						</xsl:variable>
+						<xsl:message><xsl:value-of select="concat(string('the HeadId by Index='),string($headId_byIndex))"/></xsl:message>
+						
+						<!-- Der richtige Knoten ist derjenige mit dem Wert des per Index ermittelten schluessels -->
+						<!-- Zugriff auf ein Element, dass auf der gleichen Ebene liegt, wie das Element, welches den Wert 17 hat -->
+						<!--  <xsl:variable name="checkStudium" select="Root/Antrag/applicationContent/applicationContentId[.='17']/../applicationContentFieldInput/SelectionField/defaulttext" /> -->
+						<xsl:variable name="value_byHeadId" select="..//headId[.=$headId_byIndex]/../value" />
+						<xsl:message><xsl:value-of select="concat(string('the Value by HeadId byIndex='),string($value_byHeadId))"/></xsl:message>
+						
+						<xsl:choose>
+								<xsl:when test="$headId_byIndex='IPNr'"> <!-- hier müsste eigentlich auf einen unique Aliasname sein und nicht ein flexibles Label -->
 									<!-- Die normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
 									<xsl:attribute name = "headers">
-									    <xsl:value-of select="headId"/>
+									    <xsl:value-of select="$headId_byIndex"/>
 									</xsl:attribute>
 																	
-									<!-- Mache einen Link für die IP-Adresse -->
+									<!-- Mache einen Link für die IP-Adresse -->								
 				            		<a>             
 				            			<xsl:attribute name = "href"><!-- create href attribute -->	            			
-				                    		<xsl:value-of select="value"/>
+				                    		<xsl:value-of select="$value_byHeadId"/>
 				                    	</xsl:attribute>
-				                    	<xsl:value-of select="value"/>
+				                    	<xsl:value-of select="$value_byHeadId"/>
 				                    </a>								
-								</xsl:when>
-													
+								</xsl:when>													
 								<xsl:otherwise>
 									<!-- Nur normale Ausgabe des Stringwerts mit Bezug auf die Headerzeile -->
 									<xsl:attribute name = "headers">
-									    <xsl:value-of select="headId"/>
+									    <xsl:value-of select="$headId_byIndex"/>
 									</xsl:attribute>
-									<xsl:value-of select="value"/>								
+									<xsl:value-of select="$value_byHeadId"/>								
 								</xsl:otherwise>											
 						</xsl:choose>  	            	
-	                    </td>	                    
-	                </xsl:for-each>
+	                    </td>	   
+	                     <counter:incr name="index"/>                 
+	                </xsl:for-each>	                
 	            </tr>
 	        </xsl:for-each>
 		</table>
