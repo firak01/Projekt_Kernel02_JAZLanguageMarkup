@@ -1,4 +1,4 @@
-package basic.zKernel.html.writer;
+package use.zKernel.html.step01.writer;
 
 import java.io.File;
 import java.io.OutputStream;
@@ -13,12 +13,10 @@ import javax.xml.transform.stream.StreamSource;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.IConstantZZZ;
-import basic.zBasic.util.abstractList.HashMapIndexedZZZ;
-import basic.zBasic.util.abstractList.HashMapMultiIndexedZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
 
-public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
+public class KernelWriterHtmlByXsltZZZ_BACKUP_HashMap implements IConstantZZZ {
 	private String sDirectoryOutput=null;
 	private String sFileNameOutput=null;
 	private String sFilePathTotalOutput=null;
@@ -27,10 +25,7 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 	private File fileXml=null;
 	private File fileHtmlOutput=null;
 	
-	private HashMapIndexedZZZ<Integer,TableHeadZZZ> hmIndexedTableHeaderLabel=null;
-	private Map<String,String> hmTableHeaderLabel=null;
-	
-	public KernelWriterHtmlByXsltZZZ() {
+	public KernelWriterHtmlByXsltZZZ_BACKUP_HashMap() {
 		
 	}
 	
@@ -49,7 +44,7 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 	public void setFileXml(File fileXml) {
 		this.fileXml = fileXml;
 	}
-	public File getFileHtmlOutut() {
+	public File getFileHtmlOutput() {
 		return this.fileHtmlOutput;
 	}
 	public void setFileHtmlOutput(File fileHtmlOutput) {
@@ -68,19 +63,6 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 		this.sDirectoryOutput = sDirectory;
 	}
 	
-	public void setHashMapIndexedTableHeader(HashMapIndexedZZZ<Integer,TableHeadZZZ>hmIndexedHeaderLabel) {
-		this.hmIndexedTableHeaderLabel = hmIndexedHeaderLabel;
-	}
-	public HashMapIndexedZZZ<Integer,TableHeadZZZ>getHashMapIndexedTableHeader() {
-		return this.hmIndexedTableHeaderLabel;
-	}
-	
-	public void setHashMapTableHeader(Map<String,String>hmHeaderLabel) {
-		this.hmTableHeaderLabel = hmHeaderLabel;
-	}
-	public Map<String,String>getHashMapTableHeader() {
-		return this.hmTableHeaderLabel;
-	}
 	
 	public boolean transformFileOnStyle(File fileXslt, File fileXml, int iRun)throws Exception{
 		boolean bReturn = false;
@@ -97,7 +79,7 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 			System.out.println("\n");
 			System.out.println("Input: XML (" + fileXml.getAbsolutePath() + ")");
 			
-			File fileXPageNew = this.getFileHtmlOutut();
+			File fileXPageNew = this.getFileHtmlOutput();
 			if(fileXPageNew==null) {
 				String sPathNew = this.computeFilePathTotalOutput();				
 				fileXPageNew = new File(sPathNew);
@@ -118,13 +100,17 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 			//java - Retrieving Hashmap value in XSLT
 			//Voraussetzung in xslt im stylesheet Tag setzen ... <... xmlns:map="xalan://java.util.Map" extension-element-prefixes="map">
 			//siehe: https://xml.apache.org/xalan-j/extensions.html#supported-lang
-								
-			Map<String,String> mapTableHeadLabel = this.getHashMapTableHeader();
-			trans.setParameter("mapTableHeadLabel", mapTableHeadLabel);		
+		
 			
-			HashMapIndexedZZZ<Integer,TableHeadZZZ> hmIndexedTableHeadLabel = this.getHashMapIndexedTableHeader();
-			System.out.println("mapIndexedTableHeadLabel.toString() = '" + hmIndexedTableHeadLabel.toString() + "'");
-			trans.setParameter("mapTableHeadLabelIndexed", hmIndexedTableHeadLabel);
+			Map<String,String> mapTableHeadLabel = new HashMap<String,String>();
+			mapTableHeadLabel.put("IPNr", "IP Adresse");
+			mapTableHeadLabel.put("ServerName", "Name des Severs");
+			mapTableHeadLabel.put("IPPortListen", "Port für Listener");
+			mapTableHeadLabel.put("IPPortConnect", "Port für Verbindung");
+			mapTableHeadLabel.put("IPDate", "IP Datum");
+			mapTableHeadLabel.put("IPTime", "IP Zeit");
+			
+			trans.setParameter("mapTableHeadLabel", mapTableHeadLabel);
 						
 			trans.transform(xmlSource, xmlResultStream);
 			

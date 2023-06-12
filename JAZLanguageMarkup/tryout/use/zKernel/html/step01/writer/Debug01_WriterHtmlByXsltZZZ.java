@@ -1,4 +1,4 @@
-package basic.zKernel.html.writer;
+package use.zKernel.html.step01.writer;
 
 import java.io.File;
 import java.util.HashMap;
@@ -7,18 +7,18 @@ import java.util.Map;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapIndexedZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
-import basic.zKernel.html.reader.Debug02_ReaderHtmlTableZZZ;
+import use.zKernel.html.step02.reader.Debug02_ReaderHtmlTableZZZ;
 
 public class Debug01_WriterHtmlByXsltZZZ {
 
 	public static void main(String[] args) {
 		try {
 		//XML Datei fuer die Werte
-		File fileXml = FileEasyZZZ.searchFile("tryout\\basic\\zKernel\\html\\writer","TableDataInput4Debug4XsdCreation.xml");
+		File fileXml = FileEasyZZZ.searchFile("tryout\\use\\zKernel\\html\\step01\\writer","TableDataInput4Debug4XsdCreation.xml");
 		
 		//XSLT Datei fuer die Transformation
 		//Diese enthaelt auch die HTML-Tags
-		File fileXslt = FileEasyZZZ.searchFile("tryout\\basic\\zKernel\\html\\writer","pagHtmlTableTagGenerated4Debug.xsl");
+		File fileXslt = FileEasyZZZ.searchFile("tryout\\use\\zKernel\\html\\step01\\writer","pagHtmlTableTagGenerated4Debug.xsl");
 		
 		
 		KernelWriterHtmlByXsltZZZ objWriter = new KernelWriterHtmlByXsltZZZ();
@@ -34,7 +34,7 @@ public class Debug01_WriterHtmlByXsltZZZ {
         objWriter.setFileHtmlOutput(fileHtmlOutput);
 
         Map<String,String> mapTableHeadLabel = new HashMap<String,String>();
-		mapTableHeadLabel.put("IPNr", "IP Adresse");
+        mapTableHeadLabel.put("IPNr", "IP Adresse");
 		mapTableHeadLabel.put("ServerName", "Name des Severs");
 		mapTableHeadLabel.put("IPPortListen", "Port für Listener");
 		mapTableHeadLabel.put("IPPortConnect", "Port für Verbindung");
@@ -43,12 +43,13 @@ public class Debug01_WriterHtmlByXsltZZZ {
 		objWriter.setHashMapTableHeader(mapTableHeadLabel);
 		
 		//TODGOON: Aus der HashMap die Index HashMap errechnen.
-		HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();        
-        TableHeadZZZ h01 = new TableHeadZZZ("IPNr", "IP Adresse");
-        mapIndexedTableHeadLabel.put(h01);
-			
+		HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();               
 		TableHeadZZZ h02 = new TableHeadZZZ("ServerName", "Name des Servers");
 		mapIndexedTableHeadLabel.put(h02);
+		
+		TableHeadZZZ h01 = new TableHeadZZZ("IPNr", "IP Adresse");
+	    mapIndexedTableHeadLabel.put(h01);
+			
 		
 		TableHeadZZZ h03 = new TableHeadZZZ("IPPortListen", "Port für Listener");
 		mapIndexedTableHeadLabel.put(h03);

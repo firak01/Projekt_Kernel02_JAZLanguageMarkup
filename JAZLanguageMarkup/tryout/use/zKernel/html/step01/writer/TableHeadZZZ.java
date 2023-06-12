@@ -1,4 +1,4 @@
-package basic.zKernel.html.writer;
+package use.zKernel.html.step01.writer;
 
 public class TableHeadZZZ {
 	private String sHeadLabel=null;

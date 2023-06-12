@@ -1,4 +1,4 @@
-package basic.zKernel.html.writer2xml;
+package use.zKernel.html.step03.writer2xml;
 
 import java.awt.List;
 import java.io.File;
@@ -12,6 +12,7 @@ import org.jdom.Element;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.util.datatype.dateTime.DateTimeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zKernel.html.IKernelTagZZZ;
@@ -30,16 +31,16 @@ import basic.zKernel.html.classes.ventianExample.ObjectFactory;
 import basic.zKernel.html.classes.ventianExample.RowType;
 import basic.zKernel.html.classes.ventianExample.TabledataType;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
-import basic.zKernel.html.writer.Debug01_WriterHtmlByXsltZZZ;
 import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
+import use.zKernel.html.step01.writer.Debug01_WriterHtmlByXsltZZZ;
 
 public class Debug03_ReaderHtmlTable2XmlFileByJaxbZZZ {
 
 	public static void main(String[] args) {
 		try {
 		//HTML Datei, die zuvor generiert worden ist aus Werten einer XML Datei.
-		String sFilepath = "tryout\\basic\\zKernel\\html\\reader\\pagHtmlTableTagGenerated4Debug.html";
+		String sFilepath = "tryout\\use\\zKernel\\html\\step02\\reader\\pagHtmlTableTagGenerated4Debug.html";
 		File fileHtml = FileEasyZZZ.searchFile(sFilepath);
 		if(fileHtml==null) {
 			ExceptionZZZ ez = new ExceptionZZZ("File not found: '" + sFilepath + "'");
@@ -72,7 +73,7 @@ public class Debug03_ReaderHtmlTable2XmlFileByJaxbZZZ {
 			
 			//##########################################
 			//Nun den Wert aendern			
-			boolean bReturn = objTable.setValue(2,1,"neuer test");
+			boolean bReturn = objTable.setValue(2,1,"test "+DateTimeZZZ.computeTimestampUniqueString());
 			System.out.println("Wert neu gesetzt: " + bReturn);
 			
 			sReturn = objTable.getValue(2,1);

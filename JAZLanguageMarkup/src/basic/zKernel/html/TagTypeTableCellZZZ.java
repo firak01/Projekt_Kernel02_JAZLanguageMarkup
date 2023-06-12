@@ -13,6 +13,7 @@ import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.util.datatype.string.StringZZZ;
 
 /**This tag describes a input-tag in html.
  * @author 0823
@@ -99,6 +100,18 @@ public class TagTypeTableCellZZZ extends AbstractKernelTagTypeZZZ{
 	 * @throws ExceptionZZZ 
 	 */	
 	public static String readValueStatic(org.jdom.Element objElem) throws ExceptionZZZ{
+		return TagTypeTableCellZZZ.readValueStatic(objElem, 0);
+	}
+	
+	/**Read the value from an element.
+	 * This element is representing an "input" tag.
+	 * E.g.: <input name='IPNr' type='Hidden' value='84.135.199.2'> 
+	 * @return String, e.g. 84.135.199.2
+	 *
+	 * javadoc created by: 0823, 29.06.2006 - 17:31:59
+	 * @throws ExceptionZZZ 
+	 */	
+	public static String readValueStatic(org.jdom.Element objElem, int iLevelIn) throws ExceptionZZZ{
 		String sReturn = null;
 		main:{
 			if(objElem==null){
@@ -107,14 +120,33 @@ public class TagTypeTableCellZZZ extends AbstractKernelTagTypeZZZ{
 			}
 		
 		//Eine Tabelle hat selbst keinen Inhalt, nur weitere Elemente (Zeilen tr, Spalten td)
+			
+		//Hier müsste in einer Schleife durchgegangen werden und alle instanceof Text zusammengefasst werden.
+		//Das sichere ich noch mit einem "Ebenenzaehler" ab
+		int iLevel=iLevelIn;
+		if(iLevel>=5) break main;//D.h. suche nur bis zu einer Verschachtelungstiefe von 5 fuer Texte
+		
+		String sDelim = " ";
 		List listElem = objElem.getContent();
 		for(Object el : listElem) {
 			if(el instanceof Text) {
 				Text objText = (Text) el;
-				sReturn = objText.getTextTrim();//Whitespace wird darum entfernt.
-			}
-		}
-	
+				String sText = objText.getTextTrim();//Whitespace wird darum entfernt.
+				if(!StringZZZ.isEmpty(sText)) {					
+					if(!StringZZZ.isEmpty(sReturn)) {
+						sReturn = sReturn + sDelim + sText;
+					}else {
+						sReturn = sText;
+					}
+				}
+				
+			}else {
+				System.out.println((ReflectCodeZZZ.getPositionCurrent() + ": el = " + el.toString()));
+				Element eltemp = (Element)el;
+				sReturn = TagTypeTableCellZZZ.readValueStatic(eltemp, (iLevel+1));
+			}							
+		}//end for					
+			
 //		org.jdom.Attribute att = objElem.getAttribute("value");
 //		if(att==null) break main;
 //		

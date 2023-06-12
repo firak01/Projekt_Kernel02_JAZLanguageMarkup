@@ -72,51 +72,6 @@ public class TagTypeTableHeaderCellZZZ extends AbstractKernelTagTypeZZZ{
 	 */	
 	public static String readValueStatic(org.jdom.Element objElem) throws ExceptionZZZ{
 		return TagTypeTableCellZZZ.readValueStatic(objElem);
-//		String sReturn = null;
-//		main:{
-//			if(objElem==null){
-//				ExceptionZZZ ez = new ExceptionZZZ("JElement", iERROR_PARAMETER_MISSING, TagTypeTableHeaderCellZZZ.class, ReflectCodeZZZ.getMethodCurrentName());
-//				throw ez;
-//			}
-//		
-//		//Eine Tabelle hat selbst keinen Inhalt, nur weitere Elemente (Zeilen tr, Spalten td)
-//		List listElem = objElem.getContent();
-//		for(Object el : listElem) {
-//			if(el instanceof Text) {
-//				Text objText = (Text) el;
-//				sReturn = objText.getTextTrim();//Whitespace wird darum entfernt.
-//			}
-//		}
-//	
-////		org.jdom.Attribute att = objElem.getAttribute("value");
-////		if(att==null) break main;
-////		
-////		sReturn = att.getValue();
-//		
-//		/* FGL: DAS IST MIR ZU KOMPLIZIERT, so liest man den Attribut-Wert aus
-//		boolean bIPNrElement = false;
-//		List lAtt = elem.getAttributes();
-//		if(lAtt !=null){
-//			Iterator iteratorAtt = lAtt.iterator();
-//			while(iteratorAtt.hasNext()){
-//				//In dieser Schleife alle Attribute eines Inputfelds durchgehen
-//				Attribute att = (Attribute) iteratorAtt.next();
-//				System.out.print(att.getName());
-//				System.out.println(" ... " + att.getValue());
-//				if(att.getName().equals("name")){
-//					if(att.getValue().equals("IPNr")) bIPNrElement = true;
-//				}
-//				if(att.getName().equals("value") && bIPNrElement ==true){
-//					sURLNext = att.getValue();
-//				}
-//				
-//			}
-//		}
-//			*/			
-//		
-//		
-//		}//END main
-//		return sReturn;
 	}
 
 }

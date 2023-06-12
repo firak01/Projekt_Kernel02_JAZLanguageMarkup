@@ -6,8 +6,8 @@
     xmlns:java="http://xml.apache.org/xalan/java"
     xmlns:map="xalan://java.util.Map"   
     xmlns:mapindexed="xalan://basic.zBasic.util.abstractList.HashMapIndexedZZZ"
-    xmlns:head="xalan://basic.zKernel.html.writer.TableHeadZZZ" 
-    xmlns:counter="basic.zKernel.html.writer.MyCounter"
+    xmlns:head="xalan://use.zKernel.html.step01.writer.TableHeadZZZ" 
+    xmlns:counter="use.zKernel.html.step01.writer.MyCounter"
     extension-element-prefixes="map mapindexed head counter">
    
     <!-- a doctype is not allowed in content <!DOCTYPE html> -->
@@ -46,7 +46,7 @@
    -->
   <xalan:component prefix="counter"
                    elements="init incr" functions="read">
-    <xalan:script lang="javaclass" src="xalan://basic.zKernel.html.writer.MyCounter"/>
+    <xalan:script lang="javaclass" src="xalan://use.zKernel.html.step01.writer.MyCounter"/>
   </xalan:component>
   
   <!-- Fuer weitere Beispiele siehe auch: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwje0cvi07j_AhXbgv0HHd8oCWY4ChAWegQIGRAB&url=https%3A%2F%2Fwi.wu.ac.at%2Frgf%2Fdiplomarbeiten%2FBakkStuff%2F2007%2F200706_Pezerovic%2FPezerovic_XSLT_Using_External_Functions_20070608.pdf&usg=AOvVaw3en0M7Y-DfW7UuWJpXuCeg -->

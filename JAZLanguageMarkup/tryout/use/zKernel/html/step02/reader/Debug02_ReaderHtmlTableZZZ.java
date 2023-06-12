@@ -1,4 +1,4 @@
-package basic.zKernel.html.reader;
+package use.zKernel.html.step02.reader;
 
 import java.awt.List;
 import java.io.File;
@@ -16,6 +16,7 @@ import basic.zKernel.html.TagTableRowZZZ;
 import basic.zKernel.html.TagTableZZZ;
 import basic.zKernel.html.TagTypeInputZZZ;
 import basic.zKernel.html.TagTypeTableZZZ;
+import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 
@@ -24,7 +25,7 @@ public class Debug02_ReaderHtmlTableZZZ {
 	public static void main(String[] args) {
 		try {
 		//HTML Datei, die zuvor generiert worden ist aus Werten einer XML Datei.
-		String sFilepath = "tryout\\basic\\zKernel\\html\\reader\\pagHtmlTableTagGenerated4Debug.html";
+		String sFilepath = "tryout\\use\\zKernel\\html\\step02\\reader\\pagHtmlTableTagGenerated4Debug.html";
 		File fileHtml = FileEasyZZZ.searchFile(sFilepath);
 		if(fileHtml==null) {
 			ExceptionZZZ ez = new ExceptionZZZ("File not found: '" + sFilepath + "'");
