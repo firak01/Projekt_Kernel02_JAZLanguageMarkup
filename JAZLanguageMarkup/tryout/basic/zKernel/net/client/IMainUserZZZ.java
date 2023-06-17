@@ -1,6 +1,8 @@
 package basic.zKernel.net.client;
 
-public interface IMainUserZZZ {
+import basic.zKernel.IKernelUserZZZ;
+
+public interface IMainUserZZZ extends IKernelUserZZZ{
 	public IMainZZZ getMainObject();
 	public void setMainObject(IMainZZZ objMain);
 }
