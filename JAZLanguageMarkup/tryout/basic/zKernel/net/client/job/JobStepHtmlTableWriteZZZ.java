@@ -128,7 +128,7 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepZZZ {
 				}
 				objWriter.setHashMapTableHeader(mapTableHeadLabel);
 				
-				TODGOON20230617: Aus der HashMap die Index HashMap errechnen.
+				TODGOON20230617;//Aus der HashMap die Index HashMap errechnen.
 				HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();               
 				TableHeadZZZ h02 = new TableHeadZZZ("ServerName", "Name des Servers");
 				mapIndexedTableHeadLabel.put(h02);
