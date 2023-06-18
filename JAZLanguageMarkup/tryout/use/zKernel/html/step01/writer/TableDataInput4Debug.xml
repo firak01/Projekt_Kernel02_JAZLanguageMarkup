@@ -1,54 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Datei mit xml Struktur zur Generierung der xsd Datei.
+     Hier mit: https://www.freeformatter.com/xsd-generator.html
+     Das XSD Desing ist dabei "Venetian Blind" 
+     Die xsd Datei wird wiederum zur Generierung von JAXB-Klassen verwendet: 
+     Eclipse, rechtsclick auf xsd Datei. "Generate JAXB Classes"-->
+     
+     
+ 
 <tabledata>
     <row>
         <column>
-            <label>Name des Servers</label>
+            <headId>Servername</headId>
             <value>test1</value>
         </column>
         <column>
-            <label>IP Adresse</label>
+            <headId>IP-Adresse</headId>
             <value>79.196.199.114</value>
         </column>
         <column>
-            <label>Port für Listener</label>
-            <value>5001</value>
-        </column>
-        <column>
-            <label>Port für Verbindung</label>
+            <headId>IP-Port 4 Connection</headId>
             <value>5000</value>
         </column>
         <column>
-            <label>IP Datum</label>
+            <headId>IP-Port 4 Listening</headId>
+            <value>5001</value>
+        </column>
+        <column>
+            <headId>IP-Datum</headId>
             <value>2017-1-4</value>
         </column>
         <column>
-            <label>IP Zeit</label>
+            <headId>IP-Uhrzeit</headId>
             <value>9:32</value>
         </column>
     </row>
     <row>
         <column>
-            <label>Name des Servers</label>
-            <value>test 1686568546333</value>
+            <headId>Servername</headId>
+            <value>neuer test</value>
         </column>
         <column>
-            <label>IP Adresse</label>
+            <headId>IPNr</headId>
             <value>79.196.199.222</value>
         </column>
         <column>
-            <label>Port für Listener</label>
-            <value>5012</value>
-        </column>
-        <column>
-            <label>Port für Verbindung</label>
+            <headId>IP-Port 4 Connection</headId>
             <value>5002</value>
         </column>
         <column>
-            <label>IP Datum</label>
+            <headId>IP-Port 4 Listening</headId>
+            <value>5012</value>
+        </column>
+        <column>
+            <headId>IP-Datum</headId>
             <value>2017-1-5</value>
         </column>
         <column>
-            <label>IP Zeit</label>
+            <headId>IP-Uhrzeit</headId>
             <value>9:59</value>
         </column>
     </row>

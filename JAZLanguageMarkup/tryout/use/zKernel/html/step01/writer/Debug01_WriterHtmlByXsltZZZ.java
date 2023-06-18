@@ -40,7 +40,7 @@ public class Debug01_WriterHtmlByXsltZZZ {
 		mapTableHeadLabel.put("IPPortConnect", "Port für Verbindung");
 		mapTableHeadLabel.put("IPDate", "IP Datum");
 		mapTableHeadLabel.put("IPTime", "IP Zeit");
-		objWriter.setHashMapTableHeader(mapTableHeadLabel);
+		//Veralted, das wird nun alles direkt über eine HashMapIndex gemacht objWriter.setHashMapTableHeader(mapTableHeadLabel);
 		
 		//TODGOON: Aus der HashMap die Index HashMap errechnen.
 		HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();               
@@ -62,9 +62,7 @@ public class Debug01_WriterHtmlByXsltZZZ {
 		
 		TableHeadZZZ h06 = new TableHeadZZZ("IPTime", "IP Zeit");
 		mapIndexedTableHeadLabel.put(h06);
-		
-		String sDummy = new String("komme ich im XSLT an?");
-		mapIndexedTableHeadLabel.setDummy(sDummy);
+
         objWriter.setHashMapIndexedTableHeader(mapIndexedTableHeadLabel);
 		
 		int iRun = 1;

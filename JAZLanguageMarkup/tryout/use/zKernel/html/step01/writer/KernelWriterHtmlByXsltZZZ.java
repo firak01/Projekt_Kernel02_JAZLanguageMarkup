@@ -13,6 +13,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.IConstantZZZ;
+import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapIndexedZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiIndexedZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
@@ -28,7 +29,7 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 	private File fileHtmlOutput=null;
 	
 	private HashMapIndexedZZZ<Integer,TableHeadZZZ> hmIndexedTableHeaderLabel=null;
-	private Map<String,String> hmTableHeaderLabel=null;
+	//private Map<String,String> hmTableHeaderLabel=null;
 	
 	public KernelWriterHtmlByXsltZZZ() {
 		
@@ -75,14 +76,14 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 		return this.hmIndexedTableHeaderLabel;
 	}
 	
-	public void setHashMapTableHeader(Map<String,String>hmHeaderLabel) {
-		this.hmTableHeaderLabel = hmHeaderLabel;
-	}
-	public Map<String,String>getHashMapTableHeader() {
-		return this.hmTableHeaderLabel;
-	}
+//	public void setHashMapTableHeader(Map<String,String>hmHeaderLabel) {
+//		this.hmTableHeaderLabel = hmHeaderLabel;
+//	}
+//	public Map<String,String>getHashMapTableHeader() {
+//		return this.hmTableHeaderLabel;
+//	}
 	
-	public boolean transformFileOnStyle(File fileXslt, File fileXml, int iRun)throws Exception{
+	public boolean transformFileOnStyle(File fileXslt, File fileXml)throws Exception{
 		boolean bReturn = false;
 		
 		main:{
@@ -114,13 +115,17 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 			Result xmlResultStream = new StreamResult(new java.io.BufferedOutputStream(out));
 			TransformerFactory transFact = TransformerFactory.newInstance();
 			Transformer trans = transFact.newTransformer(xsltSource);
+			if(trans==null) {
+				ExceptionZZZ ez = new ExceptionZZZ("Unable to create Transformer-Object. Maybe an error in xslt. Watch the log/console.", iERROR_RUNTIME, this, ReflectCodeZZZ.getPositionCurrent());
+				throw ez;
+			}
 			
 			//java - Retrieving Hashmap value in XSLT
 			//Voraussetzung in xslt im stylesheet Tag setzen ... <... xmlns:map="xalan://java.util.Map" extension-element-prefixes="map">
 			//siehe: https://xml.apache.org/xalan-j/extensions.html#supported-lang
 								
-			Map<String,String> mapTableHeadLabel = this.getHashMapTableHeader();
-			trans.setParameter("mapTableHeadLabel", mapTableHeadLabel);		
+//			Map<String,String> mapTableHeadLabel = this.getHashMapTableHeader();
+//			trans.setParameter("mapTableHeadLabel", mapTableHeadLabel);		
 			
 			HashMapIndexedZZZ<Integer,TableHeadZZZ> hmIndexedTableHeadLabel = this.getHashMapIndexedTableHeader();
 			System.out.println("mapIndexedTableHeadLabel.toString() = '" + hmIndexedTableHeadLabel.toString() + "'");

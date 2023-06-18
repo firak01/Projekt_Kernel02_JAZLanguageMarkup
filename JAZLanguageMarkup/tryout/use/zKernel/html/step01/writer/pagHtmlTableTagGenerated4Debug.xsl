@@ -21,7 +21,7 @@
 	<xsl:output method="html" />
 	
 	<!-- Diese Parameter werden im Java Code an das Transformer - Objekt uebergeben -->
-	<xsl:param name="mapTableHeadLabel" select="java:java.util.HashMap.new" />
+	<!-- <xsl:param name="mapTableHeadLabel" select="java:java.util.HashMap.new" /> -->
 	<xsl:param name="mapTableHeadLabelIndexed" select="java:jbasic.zBasic.util.abstractList.HashMapIndexedZZZ.new" />
 
 	<!-- Merke: Objekte koennen auch uebergeben werden. D.h. hier angekommen, haben im Java gesetzten Werte
@@ -69,9 +69,9 @@
 			<xsl:value-of select="date:format-date($now,'HH:mm:ss')" />
 		</xsl:variable>
 		
-		<xsl:variable name="current_labelFromMap" select="$mapTableHeadLabel"/><!-- funktioniert, string mit Gleichheitszeichen -->
-		<xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map as total ='),string($current_labelFromMap))"/></xsl:message>
-		<xsl:message><xsl:value-of select="concat(string('theHeaderLabel as map to string='),string($mapTableHeadLabel))"/></xsl:message>
+		<!-- <xsl:variable name="current_labelFromMap" select="$mapTableHeadLabel"/>--><!-- funktioniert, string mit Gleichheitszeichen -->
+		<!-- <xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map as total ='),string($current_labelFromMap))"/></xsl:message> -->
+		<!--  <xsl:message><xsl:value-of select="concat(string('theHeaderLabel as map to string='),string($mapTableHeadLabel))"/></xsl:message> -->
 		<!-- Der einzelne Wert kann dann später so abgefragt werden -->
 		<!-- <xsl:variable name="current_labelFromMap" select="map:get($mapTableHeadLabel,string($current_headerId))"/> -->
 								
@@ -267,9 +267,10 @@
 	</html>
 	</xsl:template>
 	
+	<!-- VERALTETETES TEMPLATE -->
 	<!-- Template: Hole anhand der HeaderId (Kommt aus dem XML) die passende Tabellenueberschrift. Hier ist also die Stelle an der die "Labels" definiert werden -->	
-	<xsl:template name="mapHeaderIdToLabel">
-    <xsl:param name="current_headerId"/>
+<!-- 	<xsl:template name="mapHeaderIdToLabel"> -->
+<!--     <xsl:param name="current_headerId"/> -->
 <!-- 	<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - Input current_headerId='),string($current_headerId))"/></xsl:message> -->
 						
 <!-- Die Loesung hier die Ueberschriften ueber eine Fallunterschreibung zu verwalten ist nicht optimal -->				    
@@ -280,21 +281,21 @@
 
 <!-- Verbesserte Loesung: -->
 <!-- Hole aus einer Java-Map das Label. Merke: Java Map wird dem Transformer-Objekt uebergeben. -->
-		<xsl:variable name="current_labelFromMap" select="map:get($mapTableHeadLabel,string($current_headerId))"/>		
+<!-- 	<xsl:variable name="current_labelFromMap" select="map:get($mapTableHeadLabel,string($current_headerId))"/> -->		
 <!-- 	<xsl:message><xsl:value-of select="concat(string('theHeaderLabel from map in template with variable key='),string($current_labelFromMap))"/></xsl:message> -->
 	
-		<xsl:choose>	
-		<xsl:when test="$current_labelFromMap!=''">
-			<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - match for: '),string($current_headerId))"/></xsl:message>
-			<xsl:value-of select="$current_labelFromMap" />
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - no match for: '),string($current_headerId))"/></xsl:message>
-			<!-- falls nicht gemappt, gib die eingegebene Id zurueck -->
-			<xsl:value-of select="$current_headerId" />
-		</xsl:otherwise>
-		</xsl:choose>		
-	</xsl:template>
+<!-- 		<xsl:choose>	 -->
+<!-- 		<xsl:when test="$current_labelFromMap!=''"> -->
+<!-- 			<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - match for: '),string($current_headerId))"/></xsl:message> -->
+<!-- 			<xsl:value-of select="$current_labelFromMap" /> -->
+<!-- 		</xsl:when> -->
+<!-- 		<xsl:otherwise> -->
+<!-- 			<xsl:message><xsl:value-of select="concat(string('mapHeaderIdToLabel - no match for: '),string($current_headerId))"/></xsl:message> -->
+				<!-- falls nicht gemappt, gib die eingegebene Id zurueck -->
+<!-- 			<xsl:value-of select="$current_headerId" /> -->
+<!-- 		</xsl:otherwise> -->
+<!-- 		</xsl:choose>		 -->
+<!-- 	</xsl:template> -->
 	
 	<!-- Template: Hole anhand eines Zähler-Index (Kommt aus einer hier lokal als Xalan-Komponente definierten Java-Klasse) den passende Eintrag aus einer an das Script uebergebenen Java HashMap mit Index -->
 	<!-- Das ist noch eine bessere Lösung, da nun die Reihenfolge der Spalten so definiert werden kann, unabhängig von der Reihenfolge im XML -->

@@ -2,7 +2,9 @@ package basic.zKernel.net.client.job;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
@@ -41,27 +43,44 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepZZZ {
 	public boolean process() throws ExceptionZZZ {
 		boolean bReturn = false;
 		main:{
-			String stemp;
+			String stemp;String sPropertyUsed;
 			try {
-			//1. Hole die Interne Application für diesen Step.
-			IJobStepControllerZZZ objController = this.getJobStepController();
-			IJobZZZ objJob = objController.getJob();
-			
-			IApplicationZZZ objApplication = objJob.getApplicationObject();
-			IKernelZZZ objKernel = objApplication.getKernelObject();
-			
-			String sAlias = this.getJobStepAlias();
-			
-			//Nun die Brücke zu dem Step, den es erst einmal nur als Tryout-Debug gab.
-			//TODOGOON20230616;//Den Code nun verteilen auf die richtigen Klassen und Objekte. 
-			                 //Dabei die Werte aus dem Applications-Objekt holen
-			                 //Dabei in der Ini Datei diesen STEP (also die Klasse incl. Packagenamen) ein Program definieren.
-			                 //Die Werte dann im Program hinterlegen, also Pfad
-			                 //auf die Ausgangswerte, die auf Applicationseben/Modulebene liegen.
-			
-				//XML Datei fuer die Werte				
-				//File fileXml = FileEasyZZZ.searchFile("tryout\\use\\zKernel\\html\\step01\\writer","TableDataInput4Debug4XsdCreation.xml");
-				String sPropertyUsed = "InputDirectoryPath";
+				//1. Hole die Interne Application für diesen Step.
+	            //	 Dazu ist in der Ini Datei dieser STEP mit seinem Aliasnamen definiert (also NICHT die Klasse incl. Packagenamen) als ein Program.
+	            //	 Die Werte dann im Program hinterlegen, also Pfad				
+				IJobStepControllerZZZ objController = this.getJobStepController();
+				IJobZZZ objJob = objController.getJob();
+				
+				IApplicationZZZ objApplication = objJob.getApplicationObject();
+				IKernelZZZ objKernel = objApplication.getKernelObject();
+				
+				String sAlias = this.getJobStepAlias();
+	 
+				                 
+				
+				
+		        //Die Reihenfolge der Header, wie konfiguriert
+		        sPropertyUsed = "TableHeaderMap";		        		       
+		        Map<String,String> mapTableHeadLabel = objKernel.getParameterHashMapWithStringByProgramAlias(sAlias, sPropertyUsed);
+				Set<String>setHeadId = mapTableHeadLabel.keySet();
+				Iterator<String>itHeadId = setHeadId.iterator();
+				
+				//Aus der HashMap die Index HashMap mit den Table Head-Objekten errechnen.
+				HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();				
+				while(itHeadId.hasNext()) {
+					String sHeadId = itHeadId.next();
+					String sLabel = mapTableHeadLabel.get(sHeadId);
+					TableHeadZZZ head = new TableHeadZZZ(sHeadId,sLabel);
+				
+					mapIndexedTableHeadLabel.put(head);
+				}
+				
+				//TODOGOON: Das in einen Folgestep packen.
+				//und die mapIndexedTableHeadLabel als OutputParameter diesem Folgestep zur Verfügung stellen.
+				
+				//Das wäre dann im Folgestep...
+				//XML Datei fuer die Werte								
+				sPropertyUsed  = "InputDirectoryPath";
 				IKernelConfigSectionEntryZZZ objEntryPath = objKernel.getParameterByProgramAlias(sAlias, sPropertyUsed, true);
 				if(!objEntryPath.hasAnyValue()) {
 					String sLog = "Missing parameter: '" + sPropertyUsed + "' for Program '" + sAlias + "' in file '" + objKernel.getFileConfigKernelIni().getFileObject().getAbsolutePath() + "'.";
@@ -82,9 +101,8 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepZZZ {
 				}
 				String sFileNameInputXml = objEntryFileXml.getValue();						
 				File fileXml = FileEasyZZZ.searchFile(sDirectoryPath,sFileNameInputXml);
-				
-				//XSLT Datei fuer die Transformation. Diese enthaelt auch die HTML-Tags
-				//File fileXslt = FileEasyZZZ.searchFile("tryout\\use\\zKernel\\html\\step01\\writer","pagHtmlTableTagGenerated4Debug.xsl");
+			
+				//XSLT Datei fuer die Transformation. Diese enthaelt auch die HTML-Tags				
 				sPropertyUsed = "InputFileNameXsl";
 				IKernelConfigSectionEntryZZZ objEntryFileXsl = objKernel.getParameterByProgramAlias(sAlias, sPropertyUsed, true);
 				if(!objEntryFileXsl.hasAnyValue()) {
@@ -95,11 +113,8 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepZZZ {
 				}
 				String sFileNameInputXsl = objEntryFileXsl.getValue();
 				File fileXslt = FileEasyZZZ.searchFile(sDirectoryPath,sFileNameInputXsl);
-				
-				KernelWriterHtmlByXsltZZZ objWriter = new KernelWriterHtmlByXsltZZZ();
-			
+										
 				//Dateipfad fuer das Ergebnis Html
-				//String sPackagePath = ReflectCodeZZZ.getPackagePath(Debug02_ReaderHtmlTableZZZ.class);
 				sPropertyUsed = "OutputDirectoryPath";
 				IKernelConfigSectionEntryZZZ objEntryDirectoryHtml = objKernel.getParameterByProgramAlias(sAlias, sPropertyUsed, true);
 				if(!objEntryDirectoryHtml.hasAnyValue()) {
@@ -116,60 +131,22 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepZZZ {
 		        System.out.println("Creating new file in directory '" + sFilePathTryout + "' by KernelWriterHtmlByXsltZZZ."); 
 		        System.out.println("The new file will have the same name as the xslt file with the ending html: '" + sFilePathTotal + "'");
 		        File fileHtmlOutput = new File(sFilePathTotal);
-		        objWriter.setFileHtmlOutput(fileHtmlOutput);
 
-		        sPropertyUsed = "TableHeaderMap";		        
-		        Map<String,String> mapTableHeadLabel = objKernel.getParameterHashMapWithStringByProgramAlias(sAlias, sPropertyUsed);
-		        if(mapTableHeadLabel.isEmpty()) {
-					String sLog = "Missing parameter: '" + sPropertyUsed + "' for Program '" + sAlias + "' in file '" + objKernel.getFileConfigKernelIni().getFileObject().getAbsolutePath() + "'.";
-					System.out.println(ReflectCodeZZZ.getMethodCurrentName() + ": "+ sLog);
-					ExceptionZZZ ez = new ExceptionZZZ(sLog,iERROR_PARAMETER_MISSING, this,  ReflectCodeZZZ.getMethodCurrentName());
-					throw ez;
-				}
-				objWriter.setHashMapTableHeader(mapTableHeadLabel);
 				
-				TODGOON20230617;//Aus der HashMap die Index HashMap errechnen.
-				HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();               
-				TableHeadZZZ h02 = new TableHeadZZZ("ServerName", "Name des Servers");
-				mapIndexedTableHeadLabel.put(h02);
-				
-				TableHeadZZZ h01 = new TableHeadZZZ("IPNr", "IP Adresse");
-			    mapIndexedTableHeadLabel.put(h01);
-					
-				
-				TableHeadZZZ h03 = new TableHeadZZZ("IPPortListen", "Port für Listener");
-				mapIndexedTableHeadLabel.put(h03);
-				
-				TableHeadZZZ h04 = new TableHeadZZZ("IPPortConnect", "Port für Verbindung");
-				mapIndexedTableHeadLabel.put(h04);
-				
-				TableHeadZZZ h05 = new TableHeadZZZ("IPDate", "IP Datum");
-				mapIndexedTableHeadLabel.put(h05);
-				
-				TableHeadZZZ h06 = new TableHeadZZZ("IPTime", "IP Zeit");
-				mapIndexedTableHeadLabel.put(h06);
-				
-				String sDummy = new String("komme ich im XSLT an?");
-				mapIndexedTableHeadLabel.setDummy(sDummy);
+		        KernelWriterHtmlByXsltZZZ objWriter = new KernelWriterHtmlByXsltZZZ();
+		        objWriter.setFileHtmlOutput(fileHtmlOutput);
 		        objWriter.setHashMapIndexedTableHeader(mapIndexedTableHeadLabel);
 				
-				int iRun = 1;
-				boolean bSuccess = objWriter.transformFileOnStyle(fileXslt, fileXml, iRun);
+				boolean bSuccess = objWriter.transformFileOnStyle(fileXslt, fileXml);
 				if(bSuccess) {
 					System.out.println("The new file should be here: '" + fileHtmlOutput + "'");
+					bReturn = true;
 				}else {
 					System.out.println("A problem occured during transformation.");
 				}
-				iRun++;	
-				
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			
-			//Aus dem ApplicationObject
-			
-			bReturn = true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}									
 		}//end main:
 		return bReturn;
 	}
