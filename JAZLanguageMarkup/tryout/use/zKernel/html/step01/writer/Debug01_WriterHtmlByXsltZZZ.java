@@ -64,15 +64,14 @@ public class Debug01_WriterHtmlByXsltZZZ {
 		mapIndexedTableHeadLabel.put(h06);
 
         objWriter.setHashMapIndexedTableHeader(mapIndexedTableHeadLabel);
-		
-		int iRun = 1;
-		boolean bSuccess = objWriter.transformFileOnStyle(fileXslt, fileXml, iRun);
+
+		boolean bSuccess = objWriter.transformFileOnStyle(fileXslt, fileXml);
 		if(bSuccess) {
 			System.out.println("The new file should be here: '" + fileHtmlOutput + "'");
 		}else {
 			System.out.println("A problem occured during transformation.");
 		}
-		iRun++;	
+		
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
