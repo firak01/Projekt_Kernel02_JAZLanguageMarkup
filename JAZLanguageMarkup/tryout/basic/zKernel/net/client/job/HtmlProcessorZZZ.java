@@ -29,10 +29,14 @@ public class HtmlProcessorZZZ extends AbstractJobZZZ{
 			JobStepControllerZZZ objController = new JobStepControllerZZZ(this);
 			ArrayList<IJobStepZZZ> listaStep = objController.getJobSteps();
 			
-			//1.1 HtmlReader
+			//1.1 HtmlTableHead
+			IJobStepOutputProviderZZZ stepHtmlTableHeader = new JobStepHtmlTableColumnHeaderZZZ(objController);
+			listaStep.add((IJobStepZZZ) stepHtmlTableHeader);
+			
+			//1.1 HtmlTableWriter
 			IJobStepZZZ stepHtmlReader = new JobStepHtmlTableWriteZZZ(objController);
 			listaStep.add(stepHtmlReader);
-			
+
 			
 			//2. Verarbeiten
 			boolean bSuccess = objController.process();

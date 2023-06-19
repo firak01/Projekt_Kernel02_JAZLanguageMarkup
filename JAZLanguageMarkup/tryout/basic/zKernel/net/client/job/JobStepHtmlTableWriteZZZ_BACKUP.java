@@ -19,14 +19,14 @@ import use.zKernel.html.step01.writer.KernelWriterHtmlByXsltZZZ;
 import use.zKernel.html.step01.writer.TableHeadZZZ;
 import use.zKernel.html.step02.reader.Debug02_ReaderHtmlTableZZZ;
 
-public class JobStepHtmlTableWriteZZZ extends AbstractJobStepWithOutputZZZ {
+public class JobStepHtmlTableWriteZZZ_BACKUP extends AbstractJobStepWithOutputZZZ {
 	public static String sJOBSTEP_ALIAS="HtmlTableWriterStep";
 	
-	public JobStepHtmlTableWriteZZZ() throws ExceptionZZZ {
+	public JobStepHtmlTableWriteZZZ_BACKUP() throws ExceptionZZZ {
 		super();
 	}
 	
-	public JobStepHtmlTableWriteZZZ(JobStepControllerZZZ objController) throws ExceptionZZZ {
+	public JobStepHtmlTableWriteZZZ_BACKUP(JobStepControllerZZZ objController) throws ExceptionZZZ {
 		super(objController);
 		JobStepHtmlTableWriterNew_();
 	}
@@ -56,27 +56,33 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepWithOutputZZZ {
 				
 				String sAlias = this.getJobStepAlias();
 	 
+				                 
 				
-				//Ausgabeparameter des vorherigen TableColumn-Steps holen
-				String sJobStepPrevious = "HtmlTableColumnHeaderStep";
-				IJobStepOutputProviderZZZ objJobStepWithOutput = objController.getJobStepForOutput(sJobStepPrevious);//TODOGOON20230619 enum der JobSteps
-				if(objJobStepWithOutput==null) {
-					String sLog = "Missing previous JobStep with output: '" + sJobStepPrevious + "' for this step '" + this.getJobStepAlias() + "'.";
-					System.out.println(ReflectCodeZZZ.getMethodCurrentName() + ": "+ sLog);
-					ExceptionZZZ ez = new ExceptionZZZ(sLog,iERROR_PARAMETER_MISSING, this,  ReflectCodeZZZ.getMethodCurrentName());
-					throw ez;
-				}
-				String sJobStepPreviousOutputParameter = "TableHeadLabel";
-				IJobStepOutputZZZ objOutputStepPrevious = objJobStepWithOutput.getOutput(sJobStepPreviousOutputParameter);
-				if(objOutputStepPrevious==null) {
-					String sLog = "Missing JobStepPreviousOutputParameter: '" + sJobStepPreviousOutputParameter + "' from the step '" + sJobStepPrevious + "'.";
-					System.out.println(ReflectCodeZZZ.getMethodCurrentName() + ": "+ sLog);
-					ExceptionZZZ ez = new ExceptionZZZ(sLog,iERROR_PARAMETER_MISSING, this,  ReflectCodeZZZ.getMethodCurrentName());
-					throw ez;
+				
+		        //Die Reihenfolge der Header, wie konfiguriert
+		        sPropertyUsed = "TableHeaderMap";		        		       
+		        Map<String,String> mapTableHeadLabel = objKernel.getParameterHashMapWithStringByProgramAlias(sAlias, sPropertyUsed);
+				Set<String>setHeadId = mapTableHeadLabel.keySet();
+				Iterator<String>itHeadId = setHeadId.iterator();
+				
+				//Aus der HashMap die Index HashMap mit den Table Head-Objekten errechnen.
+				HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();				
+				while(itHeadId.hasNext()) {
+					String sHeadId = itHeadId.next();
+					String sLabel = mapTableHeadLabel.get(sHeadId);
+					TableHeadZZZ head = new TableHeadZZZ(sHeadId,sLabel);
+				
+					mapIndexedTableHeadLabel.put(head);
 				}
 				
-				HashMapIndexedZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedZZZ<Integer, TableHeadZZZ>();
-				mapIndexedTableHeadLabel = (HashMapIndexedZZZ<Integer, TableHeadZZZ>) objOutputStepPrevious.getHashMapIndexed();
+				JobStepOutputZZZ objOutput = new JobStepOutputZZZ(mapIndexedTableHeadLabel);
+				this.addOutput("TableHeadLabel",objOutput);
+				
+				
+				//TODOGOON20230618;// Das in einen Folgestep packen.
+				//und die mapIndexedTableHeadLabel als OutputParameter diesem Folgestep zur Verfügung stellen.
+				//Interface IOutputParameterProvider für AbstractJobStepWithOutput
+				//der Stepcontroller muss dann diese OutputParameter für solch einen Step zurückliefern können
 				
 				//Das wäre dann im Folgestep...
 				//TODOGOON: Diese Konfigurationen dann in einen anderen Step in der Ini-Datei konfigurieren.
@@ -141,10 +147,6 @@ public class JobStepHtmlTableWriteZZZ extends AbstractJobStepWithOutputZZZ {
 				boolean bSuccess = objWriter.transformFileOnStyle(fileXslt, fileXml);
 				if(bSuccess) {
 					System.out.println("The new file should be here: '" + fileHtmlOutput + "'");
-					
-					//Output anderen Folgesteps zur Verfügung stellen
-					IJobStepOutputZZZ objOutput = new JobStepOutputZZZ(fileHtmlOutput);
-					this.addOutput("HtmlFile", objOutput);
 					bReturn = true;
 				}else {
 					System.out.println("A problem occured during transformation.");

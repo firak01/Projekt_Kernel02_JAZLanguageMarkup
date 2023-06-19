@@ -3,6 +3,7 @@ package basic.zKernel.net.client.job;
 import java.util.ArrayList;
 
 import basic.zBasic.ExceptionZZZ;
+import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.IKernelZZZ;
 import custom.zKernel.LogZZZ;
 
@@ -34,6 +35,36 @@ public abstract class AbstractJobStepControllerZZZ implements IJobStepController
 	@Override
 	public void setJobSteps(ArrayList<IJobStepZZZ> listaJobStep) {
 		this.listaJobStep = listaJobStep;
+	}
+	
+	@Override
+	public IJobStepZZZ getJobStep(String sJobStepAlias) throws ExceptionZZZ {
+		IJobStepZZZ objReturn = null;
+		main:{
+			if(StringZZZ.isEmpty(sJobStepAlias)) break main;
+			
+			ArrayList<IJobStepZZZ> listaJobStep = this.getJobSteps();
+			for(IJobStepZZZ objJobStep : listaJobStep) {
+				if(objJobStep.getJobStepAlias().equals(sJobStepAlias)) {
+					objReturn = objJobStep;
+				}
+			}
+		}//end main:
+		return objReturn;		
+	}
+	
+	@Override
+	public IJobStepOutputProviderZZZ getJobStepForOutput(String sJobStepAlias) throws ExceptionZZZ {
+		IJobStepOutputProviderZZZ objReturn = null;
+		main:{
+			if(StringZZZ.isEmpty(sJobStepAlias)) break main;
+			
+			IJobStepZZZ objJobStep = this.getJobStep(sJobStepAlias);
+			if(objJobStep instanceof IJobStepOutputProviderZZZ) {
+				objReturn = (IJobStepOutputProviderZZZ) objJobStep;
+			}
+		}//end main:
+		return objReturn;		
 	}
 	
 	@Override
