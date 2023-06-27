@@ -11,6 +11,8 @@ import basic.zKernel.config.KernelConfigEntryUtilZZZ;
 import custom.zKernel.file.ini.FileIniZZZ;
 
 public class ConfigHtmlTableHandlerZZZ  extends AbstractKernelConfigZZZ{
+	private static String sPROJECT_NAME = "JAZLanguageMarkup";
+	private static String sPROJECT_PATH = "Projekt_Kernel02_JAZLanguageMarkup";
 	public ConfigHtmlTableHandlerZZZ() throws ExceptionZZZ{
 		super();
 	}
@@ -30,16 +32,23 @@ public class ConfigHtmlTableHandlerZZZ  extends AbstractKernelConfigZZZ{
 	}
 	
 	public String getSystemNumberDefault() {
-		return "02";
+		return "01";
 	}
 
 	public String getConfigDirectoryNameDefault() {
-		return "tryout";
+		return "<z:Null/>";
 	}
 	
 	public String getConfigFileNameDefault() {
 		return "ZKernelConfig_HtmlTableHandler.ini";
 	}
 
-	
+	@Override
+	public String getProjectName() {
+		return ConfigHtmlTableHandlerZZZ.sPROJECT_NAME;
+	}
+	@Override
+	public String getProjectDirectory() {
+		return ConfigHtmlTableHandlerZZZ.sPROJECT_PATH;
+	}
 }

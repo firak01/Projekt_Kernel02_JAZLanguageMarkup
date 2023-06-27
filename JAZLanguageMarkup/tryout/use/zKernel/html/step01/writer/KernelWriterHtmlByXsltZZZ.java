@@ -131,10 +131,8 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 			System.out.println("mapIndexedTableHeadLabel.toString() = '" + hmIndexedTableHeadLabel.toString() + "'");
 			trans.setParameter("mapTableHeadLabelIndexed", hmIndexedTableHeadLabel);
 						
-			trans.transform(xmlSource, xmlResultStream);
-			
-			out.close();
-						
+			trans.transform(xmlSource, xmlResultStream);						
+			out.close();						
 			System.out.println("Success!");
 												
 			bReturn = true;

@@ -1,0 +1,7 @@
+/* styles.css für TableData4Debug.html, welche per xslt-Transformation erzeugt wird. */
+/* Merke: In CSS ist einzeiliger Kommentar mit Raute # nicht moeglich, darum immer Stern+Slash */
+
+/* Mache einen Rand um eine Tabelle */
+table, th, td{
+	border: 1px solid black;
+}
