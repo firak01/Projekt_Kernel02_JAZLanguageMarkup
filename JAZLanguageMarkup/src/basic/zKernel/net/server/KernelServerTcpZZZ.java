@@ -174,10 +174,12 @@ public boolean start(){
 
 		}//END main
 	}catch(ExceptionZZZ ez){
-		this.getLogObject().WriteLineDate(ez.getDetailAllLast());
 		try {
+			this.getLogObject().WriteLineDate(ez.getDetailAllLast());
+			System.out.println(ez.getDetailAllLast());
 			this.setFlag("HasError", true);
-		} catch (ExceptionZZZ e) {			
+		} catch (ExceptionZZZ e) {	
+			System.out.println(ez.getDetailAllLast());
 			e.printStackTrace();
 		}
 	}finally{

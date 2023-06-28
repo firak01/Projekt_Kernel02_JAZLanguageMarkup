@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import basic.zBasic.ExceptionZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.component.AbstractKernelModuleZZZ;
 
-public abstract class AbstractMainZZZ extends KernelUseObjectZZZ implements Runnable,IMainZZZ{
+public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements Runnable,IMainZZZ{
 	private IApplicationZZZ objApplication = null;
 	//UI ... private ClientTrayUIZZZ objClientTray=null;
 	
@@ -26,8 +27,9 @@ public abstract class AbstractMainZZZ extends KernelUseObjectZZZ implements Runn
 	* @param sStatus 
 	* 
 	* lindhaueradmin; 13.07.2006 08:38:51
+	 * @throws ExceptionZZZ 
 	 */
-	public void logStatusString(String sStatus){
+	public void logStatusString(String sStatus) throws ExceptionZZZ{
 		if(sStatus!=null){
 			this.addStatusString(sStatus);
 			
@@ -91,5 +93,11 @@ public abstract class AbstractMainZZZ extends KernelUseObjectZZZ implements Runn
 	@Override
 	public void setApplicationObject(IApplicationZZZ objApplication) {
 		this.objApplication = objApplication;
+	}
+	
+	//### Aus IKernelModuleZZZ
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub			
 	}
 }

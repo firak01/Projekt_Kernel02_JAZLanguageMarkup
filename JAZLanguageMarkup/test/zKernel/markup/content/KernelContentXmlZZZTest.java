@@ -68,7 +68,7 @@ public class KernelContentXmlZZZTest extends TestCase{
 	//Die Tests		
 	public void testContructor(){
 		
-//		try{ 
+		try{ 
 				//+++ Hier wird ein Fehler erwarte
 				KernelContentXmlZZZ objContentInit = new ContentXmlDummyZZZ();
 				boolean btemp = objContentInit.getFlag("init");
@@ -92,9 +92,9 @@ public class KernelContentXmlZZZTest extends TestCase{
 				assertNotNull(objKernelLog);				
 				objKernelLog.Write(ReflectCodeZZZ.getMethodCurrentName() + "# succesfully created");
 					
-//		}catch(ExceptionZZZ ez){
-//			fail("Method throws an exception." + ez.getMessageLast());			
-//		}
+		}catch(ExceptionZZZ ez){
+			fail("Method throws an exception." + ez.getMessageLast());			
+		}
 	}//END testConstructor
 	
 	public void testSetGetVarFromString(){
