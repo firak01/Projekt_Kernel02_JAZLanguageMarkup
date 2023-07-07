@@ -5,11 +5,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry exported="true" kind="src" path="/JAZKernel"/>
 	<classpathentry exported="true" kind="lib" path="/ZKernelFileCollection/resolver.jar"/>
-	<classpathentry kind="lib" path="/ZKernelFileCollection/commons-codec-1.7/commons-codec-1.7.jar" sourcepath="/ZKernelFileCollection/commons-codec-1.7/commons-codec-1.7-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/ZKernelFileCollection/commons-codec-1.7/commons-codec-1.7-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2.jar" sourcepath="/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2-src.zip">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2.zip!/docs/apidocs"/>
@@ -23,11 +18,6 @@
 	<classpathentry kind="lib" path="/ZKernelFileCollection/nekohtml-1.9.21/nekohtml.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/ZKernelFileCollection/nekohtml-1.9.21/javadoc.zip!/javadoc"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/ZKernelFileCollection/jdom-1.1.3/jdom-1.1.3.jar" sourcepath="/ZKernelFileCollection/jdom-1.1.3/jdom-1.1.3-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/ZKernelFileCollection/jdom-1.1.3/jdom-1.1.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/xalan-j_2_7_1/xalan.jar"/>
