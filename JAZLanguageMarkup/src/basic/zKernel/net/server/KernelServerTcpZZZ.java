@@ -10,12 +10,12 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.IKernelZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 import basic.zKernel.KernelZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 
-public class KernelServerTcpZZZ extends KernelUseObjectZZZ implements Runnable{
+public class KernelServerTcpZZZ extends AbstractKernelUseObjectZZZ implements Runnable{
 	private String sPort="";	
 	private String sHost = "";
 	private short shPort=0;     //Der umgewandelte portname
@@ -348,7 +348,7 @@ public boolean getFlag(String sFlagName){
 
 
 /**
- * @see zzzKernel.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
+ * @see AbstractKernelUseObjectZZZ.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
  * @param sFlagName
  * Flags used:<CR>
  * - isconnected

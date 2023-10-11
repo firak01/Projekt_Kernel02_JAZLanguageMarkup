@@ -14,7 +14,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 
 /**
@@ -23,7 +23,7 @@ import basic.zKernel.KernelUseObjectZZZ;
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
-public class KernelScriptVariableZZZ extends KernelUseObjectZZZ{
+public class KernelScriptVariableZZZ extends AbstractKernelUseObjectZZZ{
 	private String sName;
 	private ArrayList obj_alVar=new ArrayList(0);  //Merke: Intern wird n�mlich auch eine einfache Variable in solch einer ArrayList gespeichert.
 	

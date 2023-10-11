@@ -21,7 +21,7 @@ import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 
 /**Use this class to check a host on a certain port.
@@ -32,7 +32,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
  * @author 0823
  *
  */
-public class KernelPingHostZZZ extends KernelUseObjectZZZ{
+public class KernelPingHostZZZ extends AbstractKernelUseObjectZZZ{
 	public final static String sPORT2CHECK = "80";
 	private String sPort2Check = "";
 	private long lMilliSeconds = 0; //Die Anzahl der Millisekunden, die es ben�tigt, einen ping durchzuf�hren.

@@ -17,7 +17,7 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 
 /**
@@ -28,7 +28,7 @@ import basic.zKernel.KernelUseObjectZZZ;
  * Merke: Xml wird hiermit nicht behandelt, da dabei intern ein JDOM Dokument verwendet wird.
  * @author Lindhauer
  */
-public class KernelContentZZZ extends KernelUseObjectZZZ implements IKernelContentZZZ{
+public class KernelContentZZZ extends AbstractKernelUseObjectZZZ implements IKernelContentZZZ{
 	private HashMapMultiZZZ hmVar=new HashMapMultiZZZ();//Speicherung der Variablen: hmVar("UE1")="Beispiel �berschrift"
 	//private MultiValueMap hmVar = new MultiValueMap();
 	

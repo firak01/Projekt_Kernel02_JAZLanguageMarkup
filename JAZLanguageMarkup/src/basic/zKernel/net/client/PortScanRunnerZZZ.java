@@ -10,7 +10,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 
 /**This class is use by a thread to connect to the provided hostname and port.
@@ -20,7 +20,7 @@ import basic.zKernel.KernelUseObjectZZZ;
  * @author 0823
  *
  */
-public class PortScanRunnerZZZ extends KernelUseObjectZZZ implements Runnable {
+public class PortScanRunnerZZZ extends AbstractKernelUseObjectZZZ implements Runnable {
 	private int iPort;
 	private KernelPortScanHostZZZ objPortScanner;
 	
@@ -157,7 +157,7 @@ public class PortScanRunnerZZZ extends KernelUseObjectZZZ implements Runnable {
 	}
 
 	/**
-	 * @see zzzKernel.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
+	 * @see AbstractKernelUseObjectZZZ.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
 	 * @param sFlagName
 	 * Flags used:<CR>
 	 	- hasError

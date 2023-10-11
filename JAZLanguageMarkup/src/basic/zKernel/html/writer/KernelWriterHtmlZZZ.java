@@ -22,7 +22,7 @@ import basic.zKernel.IKernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zKernel.markup.content.IKernelContentEcsZZZ;
 import basic.zKernel.markup.content.IKernelContentFileZZZ;
@@ -35,7 +35,7 @@ import basic.zKernel.markup.content.KernelContentZZZ;
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
-public abstract class KernelWriterHtmlZZZ extends KernelUseObjectZZZ{		
+public abstract class KernelWriterHtmlZZZ extends AbstractKernelUseObjectZZZ{		
 	private boolean bFlagUseFile = false;
 	private boolean bFlagUseEcs = false;
 	

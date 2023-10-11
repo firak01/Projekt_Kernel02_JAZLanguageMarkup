@@ -17,7 +17,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.script.data.KernelScriptVariableZZZ;
 
 
@@ -27,7 +27,7 @@ import basic.zKernel.script.data.KernelScriptVariableZZZ;
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
-public class KernelReaderScriptZZZ extends KernelUseObjectZZZ{
+public class KernelReaderScriptZZZ extends AbstractKernelUseObjectZZZ{
 	private ArrayList obj_alsHTML;
 	private ArrayList obj_alsScript;
     private RE objRegExp_VarCompare; //Regul�rer Ausdruck f�r den Vergleichsoperator (z.B. in der if-Klause

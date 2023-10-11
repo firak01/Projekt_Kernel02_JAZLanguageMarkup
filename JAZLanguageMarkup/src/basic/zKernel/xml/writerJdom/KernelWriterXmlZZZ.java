@@ -2,12 +2,12 @@ package basic.zKernel.xml.writerJdom;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zKernel.markup.content.IKernelContentXmlZZZ;
 
-public abstract class KernelWriterXmlZZZ  extends KernelUseObjectZZZ {
+public abstract class KernelWriterXmlZZZ  extends AbstractKernelUseObjectZZZ {
 	public KernelWriterXmlZZZ(KernelZZZ objKernel, String[] saFlagControl) throws ExceptionZZZ {
 		super(objKernel);
 		main:{		

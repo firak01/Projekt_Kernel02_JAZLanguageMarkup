@@ -14,7 +14,7 @@ import org.jdom.output.Format.TextMode;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.markup.content.ContentXmlZZZ;
@@ -25,7 +25,7 @@ import basic.zKernel.markup.content.IKernelContentFileZZZ;
  * @author lindhauer
  *
  */
-public class KernelWriterXmlByContentZZZ  extends KernelUseObjectZZZ{
+public class KernelWriterXmlByContentZZZ  extends AbstractKernelUseObjectZZZ{
 	private ContentXmlZZZ objContent = null;
 	private String sEncodingUsed = "ISO-8859-1"; // für deutsch";
 	

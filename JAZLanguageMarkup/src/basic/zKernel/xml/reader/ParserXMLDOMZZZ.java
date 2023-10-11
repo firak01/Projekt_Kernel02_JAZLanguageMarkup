@@ -19,7 +19,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 	/**
 	 * @author 0823
 	 *
@@ -28,7 +28,7 @@ import basic.zKernel.KernelUseObjectZZZ;
 	 * To enable and disable the creation of type comments go to
 	 * Window>Preferences>Java>Code Generation.
 	 */
-	public class ParserXMLDOMZZZ extends KernelUseObjectZZZ{
+	public class ParserXMLDOMZZZ extends AbstractKernelUseObjectZZZ{
 		private File objFile;
 		private Document domdoc;
 		private Element domroot;
@@ -352,7 +352,7 @@ public String readTagRootName() throws ExceptionZZZ{
 	}
 
 	/**
-	 * @see zzzKernel.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
+	 * @see AbstractKernelUseObjectZZZ.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
 	 * @param sFlagName
 	 * Flags used:<CR>
 	 * - FileChanged, if a value is written to the file the flag is changed to true,

@@ -8,9 +8,9 @@ import org.jdom.Element;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 
-public abstract class AbstractKernelTagTypeZZZ extends KernelUseObjectZZZ implements IKernelTagTypeZZZ {
+public abstract class AbstractKernelTagTypeZZZ extends AbstractKernelUseObjectZZZ implements IKernelTagTypeZZZ {
 	private static final long serialVersionUID = -8395401121654554620L;
 	private String sZDiscriminator = ""; //Damit werden unterklassen unterschieden. Z.B. table und tableWithHeader.
 	

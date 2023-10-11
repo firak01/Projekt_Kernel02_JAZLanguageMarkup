@@ -15,7 +15,7 @@ import basic.zKernel.KernelZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.html.reader.KernelReaderHtmlZZZ;
 import basic.zKernel.script.reader.KernelReaderScriptJavascriptZZZ;
 
@@ -26,7 +26,7 @@ import basic.zKernel.script.reader.KernelReaderScriptJavascriptZZZ;
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
-public class KernelReaderPageZZZ extends KernelUseObjectZZZ{	
+public class KernelReaderPageZZZ extends AbstractKernelUseObjectZZZ{	
 	private ArrayList obj_alsURLContent; 
 	private KernelReaderScriptJavascriptZZZ objReaderJS;
 	private InputStream obj_inStreamURLContent;

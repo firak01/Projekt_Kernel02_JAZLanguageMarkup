@@ -4,9 +4,9 @@ import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 
-public class KernelTagFactoryZZZ extends KernelUseObjectZZZ{
+public class KernelTagFactoryZZZ extends AbstractKernelUseObjectZZZ{
 
 	
 	public static AbstractKernelTagTypeZZZ createTagTypeByElement(IKernelZZZ objKernel, org.jdom.Element objElem) throws ExceptionZZZ{

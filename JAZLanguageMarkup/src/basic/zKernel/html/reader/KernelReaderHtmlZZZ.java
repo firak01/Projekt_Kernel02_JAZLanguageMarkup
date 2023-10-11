@@ -23,7 +23,7 @@ import basic.zKernel.KernelZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.html.IKernelTagTypeZZZ;
 import basic.zKernel.html.KernelTagFactoryZZZ;
 import basic.zKernel.html.AbstractKernelTagTypeZZZ;
@@ -39,7 +39,7 @@ import basic.zKernel.html.TagTypeMetaZZZ;
  * This class uses nekoHTML to parse a html file. (remark: Xerces is used for nekoHTML)
  * jdom will be used to handle the structure of the result of the parsing process.
  */
-public class KernelReaderHtmlZZZ extends KernelUseObjectZZZ{
+public class KernelReaderHtmlZZZ extends AbstractKernelUseObjectZZZ{
 	private File objFile = null;
 	private InputStream inStream = null;
 	private org.jdom.Document objDocument = null;

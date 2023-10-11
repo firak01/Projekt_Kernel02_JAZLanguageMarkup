@@ -27,7 +27,7 @@ import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
 import basic.zBasic.util.file.ResourceEasyZZZ;
 import basic.zBasic.util.web.cgi.UrlLogicZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 
 
@@ -41,7 +41,7 @@ import basic.zKernel.flag.IFlagZUserZZZ;
  *  
  * 
  */
-public class KernelReaderURLZZZ extends  KernelUseObjectZZZ{
+public class KernelReaderURLZZZ extends  AbstractKernelUseObjectZZZ{
 	private String sURLToRead=null;
 	private String sURLUsed = null; //die tatsächlich verwendete URL, z.B. wenn relative Dateien noch mit dem Protokoll und absoluten Dateipfad ergänzt werden müssen.
 	private String sPassword=null;
@@ -707,7 +707,7 @@ private boolean loadURLContent_(URLConnection objURLCon) throws ExceptionZZZ{
 
 
 	/**
-	 * @see zzzKernel.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
+	 * @see AbstractKernelUseObjectZZZ.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
 	 * @param sFlagName
 	 * Flags used:<CR>
 	 * - useaccount

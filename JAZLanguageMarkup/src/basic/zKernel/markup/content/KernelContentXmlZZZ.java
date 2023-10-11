@@ -17,14 +17,14 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.IKernelZZZ;
 
 /** Merke: Anders als bei KernelContentZZZ wird hier intern ein JDOM-Dokument zum Speichern der Daten verwendet.
  * @author lindhaueradmin
  *
  */
-public abstract class KernelContentXmlZZZ extends KernelUseObjectZZZ implements IKernelContentZZZ, IKernelContentMultiZZZ, IKernelContentXmlZZZ, IKernelContentComputableZZZ{
+public abstract class KernelContentXmlZZZ extends AbstractKernelUseObjectZZZ implements IKernelContentZZZ, IKernelContentMultiZZZ, IKernelContentXmlZZZ, IKernelContentComputableZZZ{
 	private Document document=null;
 	private String sRootName = "";
 	

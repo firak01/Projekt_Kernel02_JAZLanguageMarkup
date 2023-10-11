@@ -5,10 +5,10 @@ import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.machine.EnvironmentZZZ;
 import basic.zKernel.IKernelConfigSectionEntryZZZ;
 import basic.zKernel.IKernelZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.net.client.KernelPingHostZZZ;
 
-public abstract class AbstractApplicationZZZ extends KernelUseObjectZZZ implements IMainUserZZZ{
+public abstract class AbstractApplicationZZZ extends AbstractKernelUseObjectZZZ implements IMainUserZZZ{
 	//Der Bezug zur Startenden Klasse
 	private IMainZZZ objMain = null;
 	

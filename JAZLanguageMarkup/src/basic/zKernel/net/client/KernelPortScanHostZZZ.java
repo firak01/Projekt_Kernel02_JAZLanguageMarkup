@@ -9,11 +9,11 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.IKernelZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zKernel.flag.IFlagZUserZZZ;
 
-public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
+public class KernelPortScanHostZZZ  extends AbstractKernelUseObjectZZZ{
 	private String sHost = null;
 	private String sPortKnown = null; //Der Port wird f�r den 
 	public final static String sPORT_KNOWN = "80";
@@ -165,7 +165,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 
 	//###### FLAGS
 	/**
-	 * @see zzzKernel.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
+	 * @see AbstractKernelUseObjectZZZ.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
 	 * @param sFlagName
 	 * Flags used:<CR>
 	 	- isUnknownHost
@@ -200,7 +200,7 @@ public class KernelPortScanHostZZZ  extends KernelUseObjectZZZ{
 	}
 
 	/**
-	 * @see zzzKernel.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
+	 * @see AbstractKernelUseObjectZZZ.basic.KernelUseObjectZZZ#setFlag(java.lang.String, boolean)
 	 * @param sFlagName
 	 * Flags used:<CR>
 	 	- isUnknownHost

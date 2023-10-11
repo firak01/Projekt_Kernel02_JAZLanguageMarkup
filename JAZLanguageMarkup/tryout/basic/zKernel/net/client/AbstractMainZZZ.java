@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zKernel.IKernelZZZ;
-import basic.zKernel.KernelUseObjectZZZ;
+import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.component.AbstractKernelModuleZZZ;
 
 public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements Runnable,IMainZZZ{
