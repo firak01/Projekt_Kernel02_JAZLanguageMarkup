@@ -8,12 +8,12 @@ import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.component.AbstractKernelModuleZZZ;
 
 public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements Runnable,IMainZZZ{
-	private IApplicationZZZ objApplication = null;
+	protected IApplicationZZZ objApplication = null;
 	//UI ... private ClientTrayUIZZZ objClientTray=null;
 	
-	private String sStatusCurrent = null; //Hierueber kann das Frontend abfragen, was gerade in der Methode "start()" so passiert.
-	private ArrayList listaStatus = new ArrayList(); //Hierueber werden alle gesetzten Stati, die in der Methode "start()" gesetzt wurden festgehalten.
-	                                                                      //Ziel: Das Frontend soll so Infos im laufende Prozess per Button-Click abrufen k�nnen.
+	protected String sStatusCurrent = null; //Hierueber kann das Frontend abfragen, was gerade in der Methode "start()" so passiert.
+	protected ArrayList<String> listaStatus = new ArrayList<String>(); //Hierueber werden alle gesetzten Stati, die in der Methode "start()" gesetzt wurden festgehalten.
+	                                                                      //Ziel: Das Frontend soll so Infos im laufende Prozess per Button-Click abrufen koennen.
 
 	public AbstractMainZZZ() throws ExceptionZZZ {
 		super();
@@ -31,7 +31,7 @@ public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements
 	 */
 	public void logStatusString(String sStatus) throws ExceptionZZZ{
 		if(sStatus!=null){
-			this.addStatusString(sStatus);
+			//this.addStatusString(sStatus);
 			
 			IKernelZZZ objKernel = this.getKernelObject();
 			if(objKernel!= null){
@@ -77,9 +77,9 @@ public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements
 	 *
 	 * javadoc created by: 0823, 17.07.2006 - 09:00:55
 	 */
-	public ArrayList getStatusStringAll(){
-		return this.listaStatus;
-	}
+//	public ArrayList getStatusStringAll(){
+//		return this.listaStatus;
+//	}
 	
 
 	@Override
