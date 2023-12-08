@@ -24,5 +24,7 @@
 	<classpathentry kind="lib" path="/ZKernelFileCollection/xalan-j_2_7_1/serializer.jar"/>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/xalan-j_2_7_1/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/xalan-j_2_7_1/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/ZKernelFileCollection/jdic.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JAZWin32"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
