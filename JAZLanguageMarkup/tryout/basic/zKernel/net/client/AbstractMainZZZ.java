@@ -97,7 +97,8 @@ public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements
 	
 	//### Aus IKernelModuleZZZ
 	@Override
-	public void reset() {
-		// TODO Auto-generated method stub			
+	public boolean reset() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
