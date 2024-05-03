@@ -42,7 +42,12 @@ public class ExternalIPReceiverZZZ {
 			System.out.println("end");
 			}catch(ExceptionZZZ ez){
 				if(objLog!=null){
-				objLog.WriteLineDate(ez.getDetailAllLast());
+				try {
+					objLog.WriteLineDate(ez.getDetailAllLast());
+				} catch (ExceptionZZZ e) {					
+					e.printStackTrace();
+					System.out.println(ez.getDetailAllLast());
+				}
 				break main;
 				}else{
 					System.out.println(ez.getDetailAllLast());

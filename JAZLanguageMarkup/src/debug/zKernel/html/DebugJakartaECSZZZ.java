@@ -98,8 +98,16 @@ public class DebugJakartaECSZZZ {
      	writer.close();
      	
 	      }catch(ExceptionZZZ ez){
-	    	  if (objLog != null) objLog.WriteLineDate(ez.getDetailAllLast());
-	    	  System.out.println(ez.getDetailAllLast());									
+	    	  if (objLog != null)
+				try {
+					objLog.WriteLineDate(ez.getDetailAllLast());
+				} catch (ExceptionZZZ e) {				
+					e.printStackTrace();
+					System.out.println(ez.getDetailAllLast());
+				}	
+	    	  else {
+	    		  System.out.println(ez.getDetailAllLast());
+	    	  }
 		} catch (Exception e) {
   			e.printStackTrace();
 		}		

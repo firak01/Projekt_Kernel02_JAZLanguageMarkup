@@ -51,11 +51,16 @@ public class DebugReaderScriptJavascript {
 		System.out.println("end");
 		
 		}catch(ExceptionZZZ ez){
-			if(objLog!=null){
-				objLog.WriteLineDate(ez.getDetailAllLast());
-				break main;
-			}else{
+			if(objLog==null){
+				ez.printStackTrace();
 				System.out.println(ez.getDetailAllLast());
+			}else {
+				try {
+					objLog.WriteLineDate(ez.getDetailAllLast());
+				} catch (ExceptionZZZ e) {					
+					e.printStackTrace();
+					System.out.println(e.getDetailAllLast());
+				}
 			}
 		}
 	}//end main:
