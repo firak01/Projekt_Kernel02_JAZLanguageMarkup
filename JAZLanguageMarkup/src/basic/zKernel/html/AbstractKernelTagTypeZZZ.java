@@ -12,7 +12,8 @@ import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 public abstract class AbstractKernelTagTypeZZZ extends AbstractKernelUseObjectZZZ implements IKernelTagTypeZZZ {
 	private static final long serialVersionUID = -8395401121654554620L;
-	private String sZDiscriminator = ""; //Damit werden unterklassen unterschieden. Z.B. table und tableWithHeader.
+	protected String sTagName = "";
+	protected String sZDiscriminator = ""; //Damit werden unterklassen unterschieden. Z.B. table und tableWithHeader.
 	
 	public AbstractKernelTagTypeZZZ() throws ExceptionZZZ {
 		super("");
@@ -27,12 +28,16 @@ public abstract class AbstractKernelTagTypeZZZ extends AbstractKernelUseObjectZZ
 	}
 	 
 	//################## VOM INTERFACE GEERBT ########################
-	public abstract String getTagName();
+	@Override
+	public String getTagName() {
+		return this.sTagName;
+	}
 	
+	@Override
+	public void setTagName(String sTagName) {
+		this.sTagName = sTagName;
+	}
 		
-	public abstract String getTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
-    public abstract String readTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
-	
     @Override
     public String getZDiscriminator() {
     	return this.sZDiscriminator;
@@ -43,7 +48,13 @@ public abstract class AbstractKernelTagTypeZZZ extends AbstractKernelUseObjectZZ
     	this.sZDiscriminator=sZDiscriminator;
     }
     
-    
+	@Override
+	public abstract String getTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
+	
+	@Override
+    public abstract String readTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
+
+	
 	/**Read the value from an element.
 	 * This element is representing an "input" tag.
 	 * E.g.: <input name='IPNr' type='Hidden' value='84.135.199.2'>

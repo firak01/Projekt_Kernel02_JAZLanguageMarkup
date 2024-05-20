@@ -7,8 +7,9 @@ import basic.zBasic.ExceptionZZZ;
  *
  */
 public interface IKernelTagTypeZZZ {
-	public String sTagName = ""; 
-	public String sDiscriminator = "";
+//20240518: Falls die nicht noch irgendwo exotisch gebraucht werden (z.B. Hibernate, oder so) raus.
+//	public String sTagName = ""; 
+//	public String sDiscriminator = "";
 	
 	/** Returns a unique name. E.g. for input-tags this will be the name attribute.
 	* @return String
@@ -16,7 +17,8 @@ public interface IKernelTagTypeZZZ {
 	* lindhaueradmin; 02.07.2006 09:38:23
 	 */
 	public abstract String getTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
-	
+		
+	public abstract String readTagKey(org.jdom.Element objElem) throws ExceptionZZZ;
 	
 	/**Returns the name of the tag
 	 * @return String
@@ -24,6 +26,8 @@ public interface IKernelTagTypeZZZ {
 	 * javadoc created by: 0823, 29.06.2006 - 11:58:29
 	 */
 	public abstract String getTagName(); 
+	public abstract void setTagName(String sTagName);
+	
 	
 	
 	/**Reading the value from a tag depends on the attributes, which a tag-type has.
