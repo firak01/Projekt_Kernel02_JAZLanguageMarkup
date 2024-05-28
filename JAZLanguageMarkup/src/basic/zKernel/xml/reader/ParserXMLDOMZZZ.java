@@ -131,14 +131,14 @@ import basic.zKernel.AbstractKernelUseObjectZZZ;
 		
 			//DocumentBuilderObjekt und Document erstellen
 			DocumentBuilderFactory domfactory = DocumentBuilderFactory.newInstance();
-			//+++ G�ltigkeitspr�fung aktivieren
+			//+++ Gueltigkeitspruefung aktivieren
 			domfactory.setValidating(true);
 			//+++ Whitespace ignorieren
 			domfactory.setIgnoringElementContentWhitespace(true);
 		
 			DocumentBuilder dombuilder = domfactory.newDocumentBuilder();
 		
-			//+++ Einen default-Errorhandler bestimmen, das ist notwendig wg. der G�ltigkeitspr�fung
+			//+++ Einen default-Errorhandler bestimmen, das ist notwendig wg. der Gueltigkeitspruefung
 			//Merke: Die Original-Klasse gibt nix aus, darum mit meiner erweiterten Klasse arbeiten.
 			DTDErrorZZZ eh = new DTDErrorZZZ();
 			dombuilder.setErrorHandler(eh);
@@ -160,7 +160,7 @@ import basic.zKernel.AbstractKernelUseObjectZZZ;
 			*/
 
 		} //end try
-		// die verschiedenen Catch - Bl�cke
+		// die verschiedenen Catch - Bloecke
 		//TODO GOON: alle auf ExceptionZZZ runterbrechen. 
 		catch(ParserConfigurationException e){
 			e.printStackTrace();
