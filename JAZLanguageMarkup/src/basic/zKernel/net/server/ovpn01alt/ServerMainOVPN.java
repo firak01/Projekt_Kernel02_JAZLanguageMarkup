@@ -12,7 +12,7 @@ import custom.zUtil.io.FileExpansionZZZ;
 import custom.zUtil.io.FileZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zBasic.util.abstractList.ArrayListZZZ;
+import basic.zBasic.util.abstractList.ArrayListUtilZZZ;
 import basic.zBasic.util.datatype.calling.ReferenceArrayZZZ;
 import basic.zBasic.util.datatype.calling.ReferenceZZZ;
 import basic.zBasic.util.datatype.string.StringArrayZZZ;
@@ -315,7 +315,7 @@ public class ServerMainOVPN extends AbstractMainOVPN {
 	}
 	
 	public void logStatusString(ArrayList<String>lista) throws ExceptionZZZ {
-		String[]sa = ArrayListZZZ.toStringArray(lista);
+		String[]sa = ArrayListUtilZZZ.toStringArray(lista);
 		this.logStatusString(sa);
 	}
 	
