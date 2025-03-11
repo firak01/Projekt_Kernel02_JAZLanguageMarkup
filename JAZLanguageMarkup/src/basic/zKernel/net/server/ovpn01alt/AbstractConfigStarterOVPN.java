@@ -9,7 +9,7 @@ import basic.zBasic.util.abstractList.HashMapIterableKeyZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;
 import basic.zKernel.IKernelZZZ;
-import basic.zKernel.flag.IFlagZUserZZZ;
+import basic.zKernel.flag.IFlagZEnabledZZZ;
 
 
 public abstract class AbstractConfigStarterOVPN extends AbstractKernelUseObjectZZZ implements IConfigStarterOVPN, IMainUserOVPN, IConfigMapper4BatchUserOVPN{
@@ -62,7 +62,7 @@ public abstract class AbstractConfigStarterOVPN extends AbstractKernelUseObjectZ
 						stemp = saFlagControl[iCount];
 						btemp = setFlag(stemp, true);
 						if(btemp==false){ 								   
-							   ExceptionZZZ ez = new ExceptionZZZ( stemp, IFlagZUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 							 
+							   ExceptionZZZ ez = new ExceptionZZZ( stemp, IFlagZEnabledZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 							 
 							   throw ez;		 
 						}
 					}

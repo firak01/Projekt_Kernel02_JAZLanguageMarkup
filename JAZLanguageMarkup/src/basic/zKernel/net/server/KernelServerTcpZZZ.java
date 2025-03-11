@@ -13,7 +13,7 @@ import basic.zKernel.IKernelZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 import basic.zKernel.KernelZZZ;
-import basic.zKernel.flag.IFlagZUserZZZ;
+import basic.zKernel.flag.IFlagZEnabledZZZ;
 
 public class KernelServerTcpZZZ extends AbstractKernelUseObjectZZZ implements Runnable{
 	private String sPort="";	
@@ -57,7 +57,7 @@ public class KernelServerTcpZZZ extends AbstractKernelUseObjectZZZ implements Ru
 						stemp = saFlagControl[iCount];
 						btemp = setFlag(stemp, true);
 						if(btemp==false){ 								   
-							   ExceptionZZZ ez = new ExceptionZZZ(stemp, IFlagZUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 							   
+							   ExceptionZZZ ez = new ExceptionZZZ(stemp, IFlagZEnabledZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 							   
 							   throw ez;		 
 						}
 					}

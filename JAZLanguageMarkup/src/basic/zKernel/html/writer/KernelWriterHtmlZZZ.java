@@ -23,7 +23,7 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;
-import basic.zKernel.flag.IFlagZUserZZZ;
+import basic.zKernel.flag.IFlagZEnabledZZZ;
 import basic.zKernel.markup.content.IKernelContentEcsZZZ;
 import basic.zKernel.markup.content.IKernelContentFileZZZ;
 import basic.zKernel.markup.content.KernelContentZZZ;
@@ -52,7 +52,7 @@ public abstract class KernelWriterHtmlZZZ extends AbstractKernelUseObjectZZZ{
 					stemp = saFlagControl[iCount];
 					btemp = setFlag(stemp, true);
 					if(btemp==false){ 								   
-						   ExceptionZZZ ez = new ExceptionZZZ(stemp, IFlagZUserZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 					   
+						   ExceptionZZZ ez = new ExceptionZZZ(stemp, IFlagZEnabledZZZ.iERROR_FLAG_UNAVAILABLE, this, ReflectCodeZZZ.getMethodCurrentName()); 					   
 						   throw ez;		 
 					}
 				}
