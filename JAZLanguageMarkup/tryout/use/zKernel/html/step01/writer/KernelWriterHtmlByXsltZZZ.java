@@ -14,7 +14,7 @@ import javax.xml.transform.stream.StreamSource;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.IConstantZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zBasic.util.abstractList.HashMapIndexedObjektZZZ;
+import basic.zBasic.util.abstractList.HashMapIndexedObjectZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiIndexedZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
@@ -28,7 +28,7 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 	private File fileXml=null;
 	private File fileHtmlOutput=null;
 	
-	private HashMapIndexedObjektZZZ<Integer,TableHeadZZZ> hmIndexedTableHeaderLabel=null;
+	private HashMapIndexedObjectZZZ<Integer,TableHeadZZZ> hmIndexedTableHeaderLabel=null;
 	//private Map<String,String> hmTableHeaderLabel=null;
 	
 	public KernelWriterHtmlByXsltZZZ() {
@@ -69,10 +69,10 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 		this.sDirectoryOutput = sDirectory;
 	}
 	
-	public void setHashMapIndexedTableHeader(HashMapIndexedObjektZZZ<Integer,TableHeadZZZ>hmIndexedHeaderLabel) {
+	public void setHashMapIndexedTableHeader(HashMapIndexedObjectZZZ<Integer,TableHeadZZZ>hmIndexedHeaderLabel) {
 		this.hmIndexedTableHeaderLabel = hmIndexedHeaderLabel;
 	}
-	public HashMapIndexedObjektZZZ<Integer,TableHeadZZZ>getHashMapIndexedTableHeader() {
+	public HashMapIndexedObjectZZZ<Integer,TableHeadZZZ>getHashMapIndexedTableHeader() {
 		return this.hmIndexedTableHeaderLabel;
 	}
 	
@@ -127,7 +127,7 @@ public class KernelWriterHtmlByXsltZZZ implements IConstantZZZ {
 //			Map<String,String> mapTableHeadLabel = this.getHashMapTableHeader();
 //			trans.setParameter("mapTableHeadLabel", mapTableHeadLabel);		
 			
-			HashMapIndexedObjektZZZ<Integer,TableHeadZZZ> hmIndexedTableHeadLabel = this.getHashMapIndexedTableHeader();
+			HashMapIndexedObjectZZZ<Integer,TableHeadZZZ> hmIndexedTableHeadLabel = this.getHashMapIndexedTableHeader();
 			System.out.println("mapIndexedTableHeadLabel.toString() = '" + hmIndexedTableHeadLabel.toString() + "'");
 			trans.setParameter("mapTableHeadLabelIndexed", hmIndexedTableHeadLabel);
 						

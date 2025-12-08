@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zBasic.util.abstractList.HashMapIndexedObjektZZZ;
+import basic.zBasic.util.abstractList.HashMapIndexedObjectZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
 import use.zKernel.html.step02.reader.Debug02_ReaderHtmlTableZZZ;
 
@@ -43,7 +43,7 @@ public class Debug01_WriterHtmlByXsltZZZ {
 		//Veralted, das wird nun alles direkt über eine HashMapIndex gemacht objWriter.setHashMapTableHeader(mapTableHeadLabel);
 		
 		//TODGOON: Aus der HashMap die Index HashMap errechnen.
-		HashMapIndexedObjektZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedObjektZZZ<Integer, TableHeadZZZ>();               
+		HashMapIndexedObjectZZZ<Integer, TableHeadZZZ> mapIndexedTableHeadLabel = new HashMapIndexedObjectZZZ<Integer, TableHeadZZZ>();               
 		TableHeadZZZ h02 = new TableHeadZZZ("ServerName", "Name des Servers");
 		mapIndexedTableHeadLabel.put(h02);
 		
