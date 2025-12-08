@@ -18,7 +18,7 @@ import org.apache.regexp.RE;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
-import basic.zBasic.util.abstractList.ArrayListExtendedZZZ;
+import basic.zBasic.util.abstractList.ArrayListZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.script.data.KernelScriptVariableZZZ;
 import basic.zKernel.IKernelZZZ;
@@ -76,7 +76,7 @@ public class KernelReaderScriptJavascriptZZZ extends KernelReaderScriptZZZ {
 			}
 			
 			//now parse the arraylist and get all javascript-sections
-			ArrayListExtendedZZZ obj_alsScript = new ArrayListExtendedZZZ(100);			
+			ArrayListZZZ obj_alsScript = new ArrayListZZZ(100);			
 			int istart = 0;
 			int iend = 0;
 			for(int icount = 0; icount <= obj_alsPage.size()-1;icount++){
