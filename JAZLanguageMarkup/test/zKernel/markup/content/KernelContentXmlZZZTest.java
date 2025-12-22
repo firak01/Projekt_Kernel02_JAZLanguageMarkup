@@ -21,7 +21,7 @@ import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiZZZ;
 import basic.zBasic.util.file.DriveEasyZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
-import basic.zKernel.KernelLogZZZ;
+import basic.zKernel.AbstractKernelLogZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zKernel.html.TagTypeInputZZZ;
 import basic.zKernel.html.TagTypeZHtmlZZZ;
@@ -88,7 +88,7 @@ public class KernelContentXmlZZZTest extends TestCase{
 				assertFalse("Unexpected: The init flag was expected NOT to be set", btemp);
 				
 				//+++ Nun eine Log-Ausgabe (Notes-Log)
-				KernelLogZZZ objKernelLog = objContentTest.getLogObject();
+				AbstractKernelLogZZZ objKernelLog = objContentTest.getLogObject();
 				assertNotNull(objKernelLog);				
 				objKernelLog.Write(ReflectCodeZZZ.getMethodCurrentName() + "# succesfully created");
 					

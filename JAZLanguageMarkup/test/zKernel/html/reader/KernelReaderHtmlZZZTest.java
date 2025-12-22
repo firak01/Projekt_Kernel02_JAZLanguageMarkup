@@ -7,7 +7,7 @@ import org.jdom.Element;
 
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
-import basic.zKernel.KernelLogZZZ;
+import basic.zKernel.AbstractKernelLogZZZ;
 import basic.zKernel.html.TagTypeInputZZZ;
 import basic.zKernel.html.TagTypeZHtmlZZZ;
 import basic.zKernel.html.TagZHtmlZZZ;
@@ -53,7 +53,7 @@ public class KernelReaderHtmlZZZTest extends TestCase{
 					assertFalse("Unexpected: The init flag was expected NOT to be set", btemp);
 					
 					//+++ Nun eine Log-Ausgabe (Notes-Log)
-					KernelLogZZZ objKernelLog = objReaderTest.getLogObject();
+					AbstractKernelLogZZZ objKernelLog = objReaderTest.getLogObject();
 					assertNotNull(objKernelLog);				
 					objKernelLog.Write("succesfully created");
 						
