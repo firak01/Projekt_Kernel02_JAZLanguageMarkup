@@ -204,8 +204,9 @@ public class KernelWriterXmlByContentZZZ  extends AbstractKernelUseObjectZZZ{
 	* @param sEncoding
 	* 
 	* lindhauer; 03.03.2008 15:24:23
+	 * @throws ExceptionZZZ 
 	 */
-	public void setEncoding(String sEncoding){
+	public void setEncoding(String sEncoding) throws ExceptionZZZ{
 		if(StringZZZ.isEmpty(sEncoding)){
 			this.sEncodingUsed = "";
 		}else{

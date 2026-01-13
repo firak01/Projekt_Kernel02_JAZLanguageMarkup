@@ -68,8 +68,9 @@ public class KernelPingHostZZZ extends AbstractKernelUseObjectZZZ{
 	 * @return boolean
 	 *
 	 * javadoc created by: 0823, 08.08.2006 - 11:08:37
+	 * @throws ExceptionZZZ 
 	 */
-	public static boolean isHostKnown(String sHost, String sPort){
+	public static boolean isHostKnown(String sHost, String sPort) throws ExceptionZZZ{
 		return isHostKnown_(sHost, sPort);
 	}
 	
@@ -80,12 +81,13 @@ public class KernelPingHostZZZ extends AbstractKernelUseObjectZZZ{
 	 * @return boolean
 	 *
 	 * javadoc created by: 0823, 08.08.2006 - 11:08:37
+	 * @throws ExceptionZZZ 
 	 */
-	public boolean isHostKnown(String sHost){
+	public boolean isHostKnown(String sHost) throws ExceptionZZZ{
 		return isHostKnown_(sHost, this.getPort2Check());
 	}
 	
-	private static boolean isHostKnown_(String sHost, String sPort){
+	private static boolean isHostKnown_(String sHost, String sPort) throws ExceptionZZZ{
 		boolean bReturn = false;
 		main:{
 			Socket target = null;

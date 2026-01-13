@@ -323,7 +323,7 @@ public String readTagRootName() throws ExceptionZZZ{
 	@see zzzKernel.basic.KernelObjectZZZ#getFlag(java.lang.String)
 	Flags used: nothing
 	 */
-	public boolean getFlag(String sFlagName){
+	public boolean getFlag(String sFlagName) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

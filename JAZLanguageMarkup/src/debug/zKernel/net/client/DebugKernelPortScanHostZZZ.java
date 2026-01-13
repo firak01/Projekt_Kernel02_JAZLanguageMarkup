@@ -68,9 +68,13 @@ public class DebugKernelPortScanHostZZZ {
 			
 		} catch (ExceptionZZZ e) {
 			if(objScan!=null){
-				if(objScan.getFlag("IsUnknownHost")){
-					System.out.println("The host is not known - Error catched.");
-					System.exit(1);
+				try {
+					if(objScan.getFlag("IsUnknownHost")){
+						System.out.println("The host is not known - Error catched.");
+						System.exit(1);
+					}
+				} catch (ExceptionZZZ e1) {
+					e1.printStackTrace();
 				}
 			}
 			//Alle m�glichen anderen Fehler

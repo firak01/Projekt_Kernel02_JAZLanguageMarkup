@@ -127,7 +127,7 @@ public class PortScanRunnerZZZ extends AbstractKernelUseObjectZZZ implements Run
 	- isconnected
 	- HostUnknown
 	 */
-	public boolean getFlag(String sFlagName){
+	public boolean getFlag(String sFlagName) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

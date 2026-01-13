@@ -164,12 +164,13 @@ public class ServerConnectionWatchRunnerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen
 
 //	######### GetFlags - Handled ##############################################
 	/** (non-Javadoc)
+	 * @throws ExceptionZZZ 
 	@see zzzKernel.basic.KernelObjectZZZ#getFlag(java.lang.String)
 	Flags used:<CR>
 	-  isConnected	
 	- haserror
 	 */
-	public boolean getFlag(String sFlagName){
+	public boolean getFlag(String sFlagName) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

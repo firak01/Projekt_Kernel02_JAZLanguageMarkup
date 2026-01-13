@@ -160,7 +160,7 @@ public class ServerConnectionListenerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen ex
 		return sReturn;
 	}
 	
-	public String getVpnIpRemote(){
+	public String getVpnIpRemote() throws ExceptionZZZ{
 		String sReturn = "";
 		main:{
 			check:{

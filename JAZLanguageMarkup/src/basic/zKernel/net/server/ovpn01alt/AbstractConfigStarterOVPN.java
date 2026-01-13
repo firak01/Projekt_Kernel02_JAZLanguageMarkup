@@ -219,7 +219,7 @@ public abstract class AbstractConfigStarterOVPN extends AbstractKernelUseObjectZ
 	- hasInput
 	- stoprequested
 	 */
-	public boolean getFlag(String sFlagName){
+	public boolean getFlag(String sFlagName) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;

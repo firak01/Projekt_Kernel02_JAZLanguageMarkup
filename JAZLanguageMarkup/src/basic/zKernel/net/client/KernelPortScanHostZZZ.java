@@ -169,8 +169,9 @@ public class KernelPortScanHostZZZ  extends AbstractKernelUseObjectZZZ{
 	 * @param sFlagName
 	 * Flags used:<CR>
 	 	- isUnknownHost
+	 * @throws ExceptionZZZ 
 	 */
-	public boolean getFlag(String sFlagName){
+	public boolean getFlag(String sFlagName) throws ExceptionZZZ{
 		boolean bFunction = false;
 		main:{
 			if(StringZZZ.isEmpty(sFlagName)) break main;
@@ -260,8 +261,9 @@ public class KernelPortScanHostZZZ  extends AbstractKernelUseObjectZZZ{
 	 * @return String
 	 *
 	 * javadoc created by: 0823, 08.08.2006 - 11:25:22
+	 * @throws ExceptionZZZ 
 	 */
-	public String getPortKnown(){
+	public String getPortKnown() throws ExceptionZZZ{
 		String sReturn="";
 		if(StringZZZ.isEmpty(this.sPortKnown)){
 			sReturn = sPORT_KNOWN;

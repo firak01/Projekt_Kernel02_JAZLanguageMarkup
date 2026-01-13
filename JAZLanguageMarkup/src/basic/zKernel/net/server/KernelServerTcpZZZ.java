@@ -313,12 +313,13 @@ public void setTimeout(int iTimeOut){
 
 //######### GetFlags - Handled ##############################################
 /** (non-Javadoc)
+ * @throws ExceptionZZZ 
 @see zzzKernel.basic.KernelObjectZZZ#getFlag(java.lang.String)
 Flags used:<CR>
 -  isConnected	
 - haserror
  */
-public boolean getFlag(String sFlagName){
+public boolean getFlag(String sFlagName) throws ExceptionZZZ{
 	boolean bFunction = false;
 	main:{
 		if(StringZZZ.isEmpty(sFlagName)) break main;
