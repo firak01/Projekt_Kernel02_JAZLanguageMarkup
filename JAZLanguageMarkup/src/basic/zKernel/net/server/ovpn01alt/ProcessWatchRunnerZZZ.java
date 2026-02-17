@@ -113,7 +113,7 @@ public class ProcessWatchRunnerZZZ extends AbstractKernelUseObjectZZZ implements
 		    BufferedReader err = new BufferedReader(new InputStreamReader(objProcess.getErrorStream()) );
 		    for ( String s; (s = err.readLine()) != null; ){
 			      //System.out.println( s );
-		    	this.getLogObject().WriteLine(this.getNumber() + "# ERROR: "+ s);
+		    	this.getLogObject().writeLine(this.getNumber() + "# ERROR: "+ s);
 		    	this.setFlag("hasError", true);
 		    	Thread.sleep(20);			
 		    	if( this.getFlag("stoprequested")==true) break main;
@@ -141,7 +141,7 @@ public class ProcessWatchRunnerZZZ extends AbstractKernelUseObjectZZZ implements
 			BufferedReader in = new BufferedReader( new InputStreamReader(objProcess.getInputStream()) );
 				for ( String s; (s = in.readLine()) != null; ){
 				  //System.out.println( s );
-					this.getLogObject().WriteLine(this.getNumber() +"#"+ s);
+					this.getLogObject().writeLine(this.getNumber() +"#"+ s);
 					this.setFlag("hasOutput", true);
 					Thread.sleep(20);					
 					if( this.getFlag("stoprequested")==true) break main;
