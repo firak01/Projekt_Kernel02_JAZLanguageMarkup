@@ -107,7 +107,7 @@ public class KernelWriterHtmlByFileZZZ extends KernelWriterHtmlZZZ {
 			//Vor dem ggfs. erstmaligen Erstellen ggfs. die notwendigen Verzeichnisse erzeugen.
 				boolean bErg = FileEasyZZZ.createDirectoryForFile(objFile);
 				if(bErg) {
-					this.getLogObject().WriteLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
+					this.getLogObject().writeLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
 				}
 			  
 			  //2. Stream fuer das Schreiben in die Datei holen.

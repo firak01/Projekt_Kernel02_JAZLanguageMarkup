@@ -69,7 +69,7 @@ public class ProcessWatchRunnerZZZ extends AbstractKernelUseObjectZZZ implements
 			check:{
 				
 			}//END check:
-			this.getLogObject().WriteLineDate("ProcessWatchRunner #"+ this.getNumber() + " started.");
+			this.getLogObject().writeLineDate("ProcessWatchRunner #"+ this.getNumber() + " started.");
 				//Solange laufen, bis irgendeine Form des Outputs zur�ckkommt
 		do{
 					this.writeOutputToLog();		//Man muss wohl erst den InputStream abgreifen, damit der Process weiterlaufen kann.
@@ -87,11 +87,11 @@ public class ProcessWatchRunnerZZZ extends AbstractKernelUseObjectZZZ implements
 					}
 		}while(true);
 		this.bEnded = true;
-		this.getLogObject().WriteLineDate("ProcessWatchRunner #"+ this.getNumber() + " ended.");
+		this.getLogObject().writeLineDate("ProcessWatchRunner #"+ this.getNumber() + " ended.");
 					
 		}catch(ExceptionZZZ ez){
 			try {
-				this.getLogObject().WriteLineDate(ez.getDetailAllLast());
+				this.getLogObject().writeLineDate(ez.getDetailAllLast());
 			} catch (ExceptionZZZ e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -179,7 +179,7 @@ public class ProcessWatchRunnerZZZ extends AbstractKernelUseObjectZZZ implements
 			BufferedWriter out = new BufferedWriter( new OutputStreamWriter(objProcess.getOutputStream()) );
 			out.write(sOut);
 		
-			this.getLogObject().WriteLineDate(this.getNumber() +"# STRING SEND TO PROCESS: "+ sOut);
+			this.getLogObject().writeLineDate(this.getNumber() +"# STRING SEND TO PROCESS: "+ sOut);
 			this.setFlag("hasInput", true);
 			
 			} catch (IOException e) {

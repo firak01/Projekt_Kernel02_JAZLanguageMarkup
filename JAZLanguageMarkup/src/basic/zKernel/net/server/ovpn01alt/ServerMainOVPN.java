@@ -267,7 +267,7 @@ public class ServerMainOVPN extends AbstractMainOVPN {
 		} catch (ExceptionZZZ ez) {
 			try {
 				this.setFlag("haserror", true);
-				this.getKernelObject().getLogObject().WriteLineDate(ez.getDetailAllLast());
+				this.getKernelObject().getLogObject().writeLineDate(ez.getDetailAllLast());
 			} catch (ExceptionZZZ e) {				
 				e.printStackTrace();
 			}			
@@ -300,7 +300,7 @@ public class ServerMainOVPN extends AbstractMainOVPN {
 			
 			IKernelZZZ objKernel = this.getKernelObject();
 			if(objKernel!= null){
-				objKernel.getLogObject().WriteLineDate(sStatus);
+				objKernel.getLogObject().writeLineDate(sStatus);
 			}
 		}
 	}

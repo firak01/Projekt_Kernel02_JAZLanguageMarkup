@@ -68,7 +68,7 @@ public class ServerConnectionListenerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen ex
 	public boolean customProcess() throws ExceptionZZZ{
 		boolean bReturn = false;
 		main:{
-			this.getLogObject().WriteLineDate("Accepted by client " + this.getServerSocketObject().getInetAddress());
+			this.getLogObject().writeLineDate("Accepted by client " + this.getServerSocketObject().getInetAddress());
 			//System.out.println("Accepted by client " + this.getServerSocketObject().getInetAddress());	
 			System.out.println(ReflectCodeZZZ.getMethodCurrentName() + "# Accepted from server " + this.getServerSocketObject().getInetAddress() + " by client " + this.getSocketObjectCurrent().getRemoteSocketAddress());
 			
@@ -96,9 +96,9 @@ public class ServerConnectionListenerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen ex
 				int iSecondTimeOut = 0;
 				if(!StringZZZ.isEmpty(sSecondTimeOut)){
 					 iSecondTimeOut = Integer.parseInt(sSecondTimeOut);
-					 this.getLogObject().WriteLineDate("Waiting for network connection to come up." + sConnection +" for " + String.valueOf(iSecondTimeOut) + " Seconds  #" + ReflectCodeZZZ.getMethodCurrentName());
+					 this.getLogObject().writeLineDate("Waiting for network connection to come up." + sConnection +" for " + String.valueOf(iSecondTimeOut) + " Seconds  #" + ReflectCodeZZZ.getMethodCurrentName());
 				}else{
-					this.getLogObject().WriteLineDate("Waiting for network connection to come up." + sConnection +". No timeout-time configured." + ReflectCodeZZZ.getMethodCurrentName());
+					this.getLogObject().writeLineDate("Waiting for network connection to come up." + sConnection +". No timeout-time configured." + ReflectCodeZZZ.getMethodCurrentName());
 				}
 				
 				
@@ -108,13 +108,13 @@ public class ServerConnectionListenerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen ex
 						objSockTemp = new ServerSocket(this.getPort(), BACKLOG, this.getHost());		
 						
 						//Wenn man hierhin kommt, dann ist alles o.k.
-						this.getLogObject().WriteLineDate("Network connection seems to be available." + sConnection +"  #" + ReflectCodeZZZ.getMethodCurrentName());
+						this.getLogObject().writeLineDate("Network connection seems to be available." + sConnection +"  #" + ReflectCodeZZZ.getMethodCurrentName());
 						bReturn=true;
 						break main;
 						
 					}catch(IOException e){
 							//Keinen Fehler ausgeben, nur eine Sekunde warten
-							this.getLogObject().WriteLineDate("Waiting for network connection to come up." + sConnection + " #" + ReflectCodeZZZ.getMethodCurrentName());
+							this.getLogObject().writeLineDate("Waiting for network connection to come up." + sConnection + " #" + ReflectCodeZZZ.getMethodCurrentName());
 							Thread.sleep(1000);	
 							iSecondTimeOut--;
 					}									

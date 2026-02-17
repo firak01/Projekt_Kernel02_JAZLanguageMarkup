@@ -148,7 +148,7 @@ public class KernelWriterHtmlByEcsZZZ extends KernelWriterHtmlZZZ {
 			//Vor dem ggfs. erstmaligen Erstellen ggfs. die notwendigen Verzeichnisse erzeugen.
 			boolean bErg = FileEasyZZZ.createDirectoryForFile(sFilePath);
 			if(bErg) {
-				this.getLogObject().WriteLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
+				this.getLogObject().writeLineDate("Directory for filepath created/exists: '"+sFilePath+"'");
 			}
 			
 				//20190712: Ziel ist es nun UTF-8 Datei zu erstellen

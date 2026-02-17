@@ -25,7 +25,7 @@ public class DebugServerConnectionListenerZZZ {
 			File objFile = null;
 			try {
 				objKernel = new KernelZZZ("OVPN", "01", "",  "ZKernelConfig_OVPNServer.ini", (String)null);
-				objKernel.getLogObject().WriteLineDate("TEST");
+				objKernel.getLogObject().writeLineDate("TEST");
 				
 				ServerMainOVPN objServer = new ServerMainOVPN(objKernel, null);
 				 
@@ -48,7 +48,7 @@ public class DebugServerConnectionListenerZZZ {
 						System.out.println(ez.getDetailAllLast());
 					}else {
 						try {
-							objLog.WriteLineDate(ez.getDetailAllLast());
+							objLog.writeLineDate(ez.getDetailAllLast());
 						} catch (ExceptionZZZ e) {							
 							e.printStackTrace();
 							System.out.println(e.getDetailAllLast());

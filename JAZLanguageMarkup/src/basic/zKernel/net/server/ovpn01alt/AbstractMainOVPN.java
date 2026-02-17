@@ -35,7 +35,7 @@ public abstract class AbstractMainOVPN extends AbstractKernelUseObjectZZZ implem
 			
 			IKernelZZZ objKernel = this.getKernelObject();
 			if(objKernel!= null){
-				objKernel.getLogObject().WriteLineDate(sStatus);
+				objKernel.getLogObject().writeLineDate(sStatus);
 			}
 		}
 	}

@@ -64,15 +64,15 @@ public class ServerConnectionWatchRunnerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen
 			
 			this.sTargetIP = objConfigFile.getVpnIpRemote();
 			this.sTargetPort = this.readVpnPort2Check();
-			this.getLogObject().WriteLineDate(this.getAlias() + "# Pinging every second to realize an established connection with '" + this.sTargetIP +":"+ this.sTargetPort + "'");
+			this.getLogObject().writeLineDate(this.getAlias() + "# Pinging every second to realize an established connection with '" + this.sTargetIP +":"+ this.sTargetPort + "'");
 			do{
 								
 				boolean btemp = objConfigFile.isVpnReachable(this.sTargetIP, this.sTargetPort);
 				this.setFlag("IsConnected", btemp);
 				if(this.getFlag("isconnected")==false){
-					this.getLogObject().WriteLineDate(this.getAlias() + "# Not currently connected with '" + this.sTargetIP +":"+ this.sTargetPort + "'");
+					this.getLogObject().writeLineDate(this.getAlias() + "# Not currently connected with '" + this.sTargetIP +":"+ this.sTargetPort + "'");
 				}else{
-					this.getLogObject().WriteLineDate(this.getAlias() + "# Currently a connection established with '" + this.sTargetIP +":"+ this.sTargetPort + "'");
+					this.getLogObject().writeLineDate(this.getAlias() + "# Currently a connection established with '" + this.sTargetIP +":"+ this.sTargetPort + "'");
 				}
 				Thread.sleep(1000);
 				

@@ -56,7 +56,7 @@ public class DebugReaderScriptJavascript {
 				System.out.println(ez.getDetailAllLast());
 			}else {
 				try {
-					objLog.WriteLineDate(ez.getDetailAllLast());
+					objLog.writeLineDate(ez.getDetailAllLast());
 				} catch (ExceptionZZZ e) {					
 					e.printStackTrace();
 					System.out.println(e.getDetailAllLast());

@@ -100,7 +100,7 @@ public boolean start(){
 					ExceptionZZZ ez = new ExceptionZZZ("customQueryProcess returns false. " + stemp, iERROR_RUNTIME, this, ReflectCodeZZZ.getMethodCurrentName());
 					throw ez;
 				}else{
-					this.getLogObject().WriteLineDate("customQueryProcess was successfully ended. #" + ReflectCodeZZZ.getMethodCurrentName());
+					this.getLogObject().writeLineDate("customQueryProcess was successfully ended. #" + ReflectCodeZZZ.getMethodCurrentName());
 				}
 			}//END check:
 	
@@ -169,13 +169,13 @@ public boolean start(){
 					}		
 					bReturn = true; /*wird also nur return zur�ckgebgeben, wenn ein ServerSocket mal erfolgreich initialisiert worden ist */
 				}
-				this.getLogObject().WriteLineDate("listener ended. #" + ReflectCodeZZZ.getMethodCurrentName());
+				this.getLogObject().writeLineDate("listener ended. #" + ReflectCodeZZZ.getMethodCurrentName());
 			}						
 
 		}//END main
 	}catch(ExceptionZZZ ez){
 		try {
-			this.getLogObject().WriteLineDate(ez.getDetailAllLast());
+			this.getLogObject().writeLineDate(ez.getDetailAllLast());
 			System.out.println(ez.getDetailAllLast());
 			this.setFlag("HasError", true);
 		} catch (ExceptionZZZ e) {	

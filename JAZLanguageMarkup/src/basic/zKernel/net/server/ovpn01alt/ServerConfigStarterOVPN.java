@@ -49,7 +49,7 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 		main:{
 			String sCommandConcrete=null;
 			try {
-				this.getLogObject().WriteLineDate("Trying to find OVPNExecutable.");
+				this.getLogObject().writeLineDate("Trying to find OVPNExecutable.");
 				File objFileExe = ConfigFileTemplateOvpnOVPN.findFileExe();
 				if(objFileExe==null){
 					ExceptionZZZ ez = new ExceptionZZZ( "Executabel associated with .ovpn can not be found.", iERROR_PARAMETER_MISSING, ReflectCodeZZZ.getMethodCurrentName());
@@ -61,7 +61,7 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 					ExceptionZZZ ez = new ExceptionZZZ("Executabel associated with .ovpn is not a file: '"+objFileExe.getPath()+"'", iERROR_PARAMETER_MISSING, ReflectCodeZZZ.getMethodCurrentName());
 					throw ez;
 				}
-				this.getLogObject().WriteLineDate("OVPNExecutable found");
+				this.getLogObject().writeLineDate("OVPNExecutable found");
 				
 				String sCommandParameter = ConfigFileTemplateOvpnOVPN.readCommandParameter();
 				String sCommand = null;
@@ -93,7 +93,7 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 				*/
 				Runtime load = Runtime.getRuntime();
 				if (this.getFlag("byBatch")==false){			
-					this.getLogObject().WriteLineDate("Excecuting direkt 'not implemented'");									
+					this.getLogObject().writeLineDate("Excecuting direkt 'not implemented'");									
 				}else{
 					//Das funktioniert das beim Server, indirekt über eine Batch starten					
 					//Name der zu verwendenden Batch Datei ausrechnen.
@@ -102,12 +102,12 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 					//0. Bestehende Batch Datei suchen und löschen
 					boolean  bBatchExists = FileEasyZZZ.exists(sBatch);
 					if(bBatchExists) {
-						this.getLogObject().WriteLineDate("Deleting existing batch file: '"+sBatch +"'.");
+						this.getLogObject().writeLineDate("Deleting existing batch file: '"+sBatch +"'.");
 						boolean bSuccess = FileEasyZZZ.removeFile(sBatch);
 						if(bSuccess) {
-							this.getLogObject().WriteLineDate("Existing batch file successful deleted.");
+							this.getLogObject().writeLineDate("Existing batch file successful deleted.");
 						}else {
-							this.getLogObject().WriteLineDate("Unable to delete existing batch.");
+							this.getLogObject().writeLineDate("Unable to delete existing batch.");
 						}
 					}
 					
@@ -123,7 +123,7 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 					//2. Batch File starten
 					ConfigChooserOVPN objPathConfig = new ConfigChooserOVPN(this.getKernelObject(), this.getOvpnContextUsed(), this.getServerObject().getApplicationObject());				
 					String sCommandBatch = sBatch; //objPathConfig.getDirectoryConfig()+ File.separator+"starter_"+ this.getFileConfig().getName() + ".bat";
-					this.getLogObject().WriteLineDate("Excecuting by Batch '"+ sCommandBatch +"'");				
+					this.getLogObject().writeLineDate("Excecuting by Batch '"+ sCommandBatch +"'");				
 					objReturn = load.exec("cmd /c " + sCommandBatch);
 				}//END if
 				
@@ -131,7 +131,7 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 			} catch (IOException e) {
 				String sError = "ReflectCodeZZZ.getPositionCurrent() + \": \" + IOException ('"+e.getMessage()+"') executing the commandline: '"+ sCommandConcrete +"'";
 				System.out.println(sError);
-				this.getLogObject().WriteLineDate(sError);
+				this.getLogObject().writeLineDate(sError);
 				ExceptionZZZ ez = new ExceptionZZZ(sError, iERROR_RUNTIME, this, ReflectCodeZZZ.getMethodCurrentName());
 				throw ez;
 			} 

@@ -43,7 +43,7 @@ public class ExternalIPReceiverZZZ {
 			}catch(ExceptionZZZ ez){
 				if(objLog!=null){
 				try {
-					objLog.WriteLineDate(ez.getDetailAllLast());
+					objLog.writeLineDate(ez.getDetailAllLast());
 				} catch (ExceptionZZZ e) {					
 					e.printStackTrace();
 					System.out.println(ez.getDetailAllLast());

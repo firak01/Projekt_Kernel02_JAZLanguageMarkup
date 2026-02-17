@@ -71,7 +71,7 @@ public class AbstractApplicationOVPN extends AbstractKernelUseObjectZZZ implemen
 						this.getMainObject().logStatusString("Configured proxy reached. " + sProxyHost + " : " + sProxyPort +"'");
 										
 					}catch(ExceptionZZZ ez){
-						objKernel.getLogObject().WriteLineDate("Will not use the proxy configured, because: " + ez.getDetailAllLast());
+						objKernel.getLogObject().writeLineDate("Will not use the proxy configured, because: " + ez.getDetailAllLast());
 						this.getMainObject().logStatusString("Configured proxy unreachable. " + sProxyHost + " : " + sProxyPort +"'. No proxy will be enabled.");
 					}	
 				}else {

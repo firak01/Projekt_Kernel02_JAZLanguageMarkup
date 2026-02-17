@@ -35,7 +35,7 @@ public abstract class AbstractMainZZZ extends AbstractKernelModuleZZZ implements
 			
 			IKernelZZZ objKernel = this.getKernelObject();
 			if(objKernel!= null){
-				objKernel.getLogObject().WriteLineDate(sStatus);
+				objKernel.getLogObject().writeLineDate(sStatus);
 			}
 		}
 	}
