@@ -90,7 +90,7 @@ public class KernelContentXmlZZZTest extends TestCase{
 				//+++ Nun eine Log-Ausgabe (Notes-Log)
 				AbstractKernelLogZZZ objKernelLog = objContentTest.getLogObject();
 				assertNotNull(objKernelLog);				
-				objKernelLog.Write(ReflectCodeZZZ.getMethodCurrentName() + "# succesfully created");
+				objKernelLog.write(ReflectCodeZZZ.getMethodCurrentName() + "# succesfully created");
 					
 		}catch(ExceptionZZZ ez){
 			fail("Method throws an exception." + ez.getMessageLast());			

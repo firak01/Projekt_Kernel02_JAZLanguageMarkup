@@ -55,7 +55,7 @@ public class KernelReaderHtmlZZZTest extends TestCase{
 					//+++ Nun eine Log-Ausgabe (Notes-Log)
 					AbstractKernelLogZZZ objKernelLog = objReaderTest.getLogObject();
 					assertNotNull(objKernelLog);				
-					objKernelLog.Write("succesfully created");
+					objKernelLog.write("succesfully created");
 						
 			}catch(ExceptionZZZ ez){
 				fail("Method throws an exception." + ez.getMessageLast());			
