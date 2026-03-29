@@ -3,7 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="tryout"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry exported="true" kind="src" path="/JAZKernel"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/JAZKernelEngine"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JAZWin32"/>
 	<classpathentry exported="true" kind="lib" path="/ZKernelFileCollection/resolver.jar"/>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2.jar" sourcepath="/ZKernelFileCollection/ecs1.4.2/ecs-1.4.2-src.zip">
 		<attributes>
@@ -25,6 +26,5 @@
 	<classpathentry kind="lib" path="/ZKernelFileCollection/xalan-j_2_7_1/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/xalan-j_2_7_1/xml-apis.jar"/>
 	<classpathentry kind="lib" path="/ZKernelFileCollection/jdic.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/JAZWin32"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
