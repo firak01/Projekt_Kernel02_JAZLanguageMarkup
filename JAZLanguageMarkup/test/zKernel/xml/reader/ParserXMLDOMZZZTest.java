@@ -9,20 +9,15 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-import junit.framework.TestCase;
-import basic.javagently.Stream;
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
-import basic.zBasic.util.file.ini.IniFile;
+import basic.zBasic.ReflectCodeUnensuredZZZ;
+import basic.zKernel.KernelZZZ;
 import basic.zKernel.xml.reader.DTDErrorZZZ;
 import basic.zKernel.xml.reader.ParserXMLDOMZZZ;
-import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
-import custom.zUtil.io.FileZZZ;
+import junit.framework.TestCase;
 
 public class ParserXMLDOMZZZTest extends TestCase{
 		//+++ Pfad ermitteln	 
