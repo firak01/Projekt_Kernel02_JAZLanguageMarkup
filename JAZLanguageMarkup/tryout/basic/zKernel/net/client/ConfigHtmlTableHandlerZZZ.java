@@ -11,8 +11,17 @@ import basic.zKernel.config.KernelConfigSectionEntryUtilZZZ;
 import custom.zKernel.file.ini.FileIniZZZ;
 
 public class ConfigHtmlTableHandlerZZZ  extends AbstractKernelConfigZZZ{
-	private static String sPROJECT_NAME = "JAZLanguageMarkup";
-	private static String sPROJECT_PATH = "Projekt_Kernel02_JAZLanguageMarkup";
+	
+	//#################################################
+	//Merke: Die Konstanten sind meist nicht final, damit sie von der konkreten Konfiguration
+	//       ueberschrieben werden koennen.
+	//       Final sind die fuer den Kernel selbst wichtige Konstanten
+	
+	//#####################################################################
+	//####### Reflektion zum Gesamtprojekt
+	static String sPROJECT_DIRECTORY = "Projekt_Kernel02_JAZLanguageMarkup";
+	static String sPROJECT_NAME = "JAZLanguageMarkup";
+	
 	public ConfigHtmlTableHandlerZZZ() throws ExceptionZZZ{
 		super();
 	}
@@ -49,6 +58,6 @@ public class ConfigHtmlTableHandlerZZZ  extends AbstractKernelConfigZZZ{
 	}
 	@Override
 	public String getProjectDirectory() {
-		return ConfigHtmlTableHandlerZZZ.sPROJECT_PATH;
+		return ConfigHtmlTableHandlerZZZ.sPROJECT_DIRECTORY;
 	}
 }
