@@ -51,13 +51,14 @@ public class ConfigHtmlTableHandlerZZZ  extends AbstractKernelConfigZZZ{
 	public String getConfigFileNameDefault() {
 		return "ZKernelConfig_HtmlTableHandler.ini";
 	}
-
+	
 	@Override
-	public String getProjectName() {
+	public String getProjectNameDefault() throws ExceptionZZZ {
 		return ConfigHtmlTableHandlerZZZ.sPROJECT_NAME;
 	}
+	
 	@Override
-	public String getProjectDirectory() {
+	public String getProjectDirectoryDefault() throws ExceptionZZZ {
 		return ConfigHtmlTableHandlerZZZ.sPROJECT_DIRECTORY;
 	}
 }
