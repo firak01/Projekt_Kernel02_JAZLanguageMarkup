@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import basic.zKernel.KernelZZZ;
-import basic.zUtil.io.KernelFileExpansionZZZ;
+import basic.zUtil.io.FileExpansionZZZ;
 import custom.zUtil.io.FileExpansionZZZ;
 import custom.zUtil.io.FileZZZ;
 import basic.zBasic.ExceptionZZZ;
@@ -132,7 +132,7 @@ public class ServerMainOVPN extends AbstractMainOVPN {
 						String stemp = objToken.nextToken();
 						for(int icount=0; icount <= objaFileConfigUsed.length-1; icount++){
 							File objFileTemp = objaFileConfigUsed[icount];						
-							boolean bIsExpandedOrSameFilename = KernelFileExpansionZZZ.isExpansionOrSameFilename(objFileTemp, stemp, 3);
+							boolean bIsExpandedOrSameFilename = FileExpansionZZZ.isExpansionOrSameFilename(objFileTemp, stemp, 3);
 							if(bIsExpandedOrSameFilename) {
 								listaFileConfigUsed.add(objFileTemp);
 							}
