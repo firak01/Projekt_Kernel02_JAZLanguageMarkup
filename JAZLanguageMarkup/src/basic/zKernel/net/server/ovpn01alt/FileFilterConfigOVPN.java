@@ -3,8 +3,8 @@ package basic.zKernel.net.server.ovpn01alt;
 import java.io.File;
 import java.io.FilenameFilter;
 
-import basic.zBasic.util.file.FilenamePartFilterEndingZZZ;
-import basic.zBasic.util.file.FilenamePartFilterSuffixZZZ;
+import basic.zBasic.util.file.filter.FilenamePartFilterEndingZZZ;
+import basic.zBasic.util.file.filter.FilenamePartFilterSuffixZZZ;
 
 public class FileFilterConfigOVPN implements FilenameFilter {
 	FilenamePartFilterEndingZZZ objFilterEnding;

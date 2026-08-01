@@ -17,7 +17,7 @@ import basic.zBasic.util.datatype.calling.ReferenceZZZ;
 import basic.zBasic.util.datatype.string.StringArrayZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;
-import basic.zBasic.util.file.FileTextWriterZZZ;
+import basic.zBasic.util.file.txt.stream.FileTextWriterZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zWin32.com.wmi.KernelWMIZZZ;
 

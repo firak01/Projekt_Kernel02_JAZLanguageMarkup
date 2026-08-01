@@ -10,7 +10,7 @@ import custom.zUtil.io.FileZZZ;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
-import basic.zBasic.util.file.FileTextParserZZZ;
+import basic.zBasic.util.file.txt.parser.FileTextParserZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;
 
