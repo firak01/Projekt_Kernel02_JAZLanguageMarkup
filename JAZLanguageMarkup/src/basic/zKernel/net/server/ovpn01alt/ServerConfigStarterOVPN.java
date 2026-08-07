@@ -119,6 +119,7 @@ public class ServerConfigStarterOVPN extends AbstractConfigStarterOVPN{
 					for(String sLine : listaLine){
 						objBatch.writeLine(sLine);
 					}
+					objBatch.close();
 					
 					//2. Batch File starten
 					ConfigChooserOVPN objPathConfig = new ConfigChooserOVPN(this.getKernelObject(), this.getOvpnContextUsed(), this.getServerObject().getApplicationObject());				
