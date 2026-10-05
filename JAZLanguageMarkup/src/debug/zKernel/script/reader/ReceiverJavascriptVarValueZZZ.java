@@ -12,7 +12,7 @@ import basic.zKernel.net.client.KernelReaderURLZZZ;
 import basic.zKernel.script.data.KernelScriptVariableZZZ;
 import basic.zKernel.script.reader.KernelReaderScriptJavascriptZZZ;
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 /**
  * @author Lindhauer
@@ -26,7 +26,7 @@ public class ReceiverJavascriptVarValueZZZ {
 		main:{
 
 		KernelZZZ objKernel=null;
-		LogZZZ objLog=null;
+		KernelLogZZZ objLog=null;
 	
 			try{
 		

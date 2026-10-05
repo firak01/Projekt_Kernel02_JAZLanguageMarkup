@@ -26,7 +26,7 @@ import basic.zKernel.html.writer.KernelWriterHtmlZZZ;
 import basic.zKernel.markup.content.ContentEcsZZZ;
 import basic.zKernel.markup.content.IKernelContentEcsZZZ;
 import basic.zKernel.markup.content.IKernelContentFileZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 import custom.zKernel.markup.content.ContentPageIPZZZ;
 
 //import custom.zzzKernel.ExceptionZZZ;

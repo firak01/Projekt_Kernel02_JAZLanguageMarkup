@@ -29,7 +29,7 @@ import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 public class GetClientIPPageFromWeb implements IConstantZZZ{
 
@@ -39,7 +39,7 @@ public class GetClientIPPageFromWeb implements IConstantZZZ{
 	public static void main(String[] args) {
 		
 		KernelZZZ objKernel = null;
-		LogZZZ objLog = null;
+		KernelLogZZZ objLog = null;
 		String sURLNext=null;
 		main:{
 		try{

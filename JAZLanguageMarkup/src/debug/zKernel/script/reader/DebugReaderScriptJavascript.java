@@ -12,7 +12,7 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 
 
@@ -27,7 +27,7 @@ public class DebugReaderScriptJavascript {
 	public static void main(String[] args) {	
 		
 		KernelZZZ objKernel=null;
-		LogZZZ objLog=null;
+		KernelLogZZZ objLog=null;
 	
 		main:{	
 			try{

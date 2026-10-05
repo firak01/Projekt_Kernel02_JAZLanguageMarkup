@@ -8,7 +8,7 @@ import basic.zKernel.KernelZZZ;
 import basic.zKernel.net.server.ovpn01alt.ServerConfigStarterOVPN;
 import basic.zKernel.net.server.ovpn01alt.ServerConnectionListenerZZZ_in_OVPN_ersetzt_ggfs_woanders_nutzen;
 import basic.zKernel.net.server.ovpn01alt.ServerMainOVPN;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 public class DebugServerConnectionListenerZZZ {
 	/** TODO What the method does.
@@ -42,7 +42,7 @@ public class DebugServerConnectionListenerZZZ {
 					ez.printStackTrace();
 					System.out.println(ez.getDetailAllLast());
 				}else {
-					LogZZZ objLog = objKernel.getLogObject();
+					KernelLogZZZ objLog = objKernel.getLogObject();
 					if(objLog==null){
 						ez.printStackTrace();
 						System.out.println(ez.getDetailAllLast());

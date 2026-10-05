@@ -11,7 +11,7 @@ import org.apache.ecs.Document;
 import basic.zBasic.ExceptionZZZ;
 import basic.zKernel.html.writer.KernelWriterHtmlByEcsZZZ;
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 import custom.zKernel.markup.content.ContentPageIPZZZ;
 
 
@@ -33,9 +33,9 @@ public class ContentPageIpByEcsZZZ {
 		KernelZZZ objKernel = new KernelZZZ("FGL", "01", "", "", (String)null);
 		
 		//2. Protokoll
-		LogZZZ objLog = objKernel.getLogObject();
+		KernelLogZZZ objLog = objKernel.getLogObject();
 
-		//3. Objekt, das dann später an einen ContentWriter übergeben werden kann
+		//3. Objekt, das dann spï¿½ter an einen ContentWriter ï¿½bergeben werden kann
 		ContentPageIPZZZ objContentStore = new ContentPageIPZZZ(objKernel, (String[]) null);
 		objContentStore.setVar("IPDate", "test, heute");
 		objContentStore.setVar("IPTime", "test, jetzt");

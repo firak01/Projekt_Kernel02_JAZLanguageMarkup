@@ -22,14 +22,14 @@ import basic.zKernel.xml.reader.DTDErrorZZZ;
 import basic.zKernel.xml.reader.ParserXMLDOMZZZ;
 import basic.zKernel.KernelContextZZZ;
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 public class KernelPingHostZZZTest extends TestCase {
 	//+++ TestHost festlegen	 
 	
 	//Kernel und Log-Objekt
 	private KernelZZZ objKernel;
-	private LogZZZ objLog;
+	private KernelLogZZZ objLog;
 			
 	/// +++ Die eigentlichen Test-Objekte
 	// Parsen einer Datei

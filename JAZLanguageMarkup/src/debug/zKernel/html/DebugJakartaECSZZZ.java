@@ -26,7 +26,7 @@ import org.apache.ecs.html.Title;
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 
 /**
@@ -41,7 +41,7 @@ public class DebugJakartaECSZZZ {
 		
 		main:{
 	      KernelZZZ objKernel=null;
-	      LogZZZ objLog=null;
+	      KernelLogZZZ objLog=null;
 	      try{
 		//Konfiguration-File
 		objKernel = new KernelZZZ("FGL", "01","", "ZKernelConfigKernel_default.ini",(String)null);

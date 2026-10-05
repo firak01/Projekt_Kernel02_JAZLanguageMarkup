@@ -14,7 +14,7 @@ import basic.zKernel.html.writer.KernelWriterHtmlByEcsZZZ;
 import basic.zKernel.html.writer.KernelWriterHtmlByFileZZZ;
 import basic.zKernel.markup.content.ContentFileZZZ;
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 import custom.zKernel.markup.content.ContentPageIPZZZ;
 
 public class ContentPageByFileZZZ {
@@ -39,12 +39,12 @@ public class ContentPageByFileZZZ {
 				System.out.println("Pattern-Datei gefunden.");
 			}
 			
-			//3. Objekt, das dann später an einen ContentWriter übergeben werden kann
+			//3. Objekt, das dann spï¿½ter an einen ContentWriter ï¿½bergeben werden kann
 			ContentFileZZZ objContentStore = new ContentFileZZZ(objKernel, objFilePattern);
 			objContentStore.setVar("ipexternal", "123.456.678.9");
 			objContentStore.compute();
 		    
-			/*++++ nur für eine Zwischenausgabe. NICHT LÖSCHEN
+			/*++++ nur fï¿½r eine Zwischenausgabe. NICHT Lï¿½SCHEN
 			KernelReaderHtmlZZZ objReader = objContentStore.getReaderCurrent();			
 			org.jdom.Document doc = objReader.getDocument();
 			KernelReaderHtmlZZZ.listChildrenValue(doc.getRootElement(), 0);  //Zu debugzwecken die Werte VOR Anwendung des XMLOutpuuters ausgeben.
@@ -54,7 +54,7 @@ public class ContentPageByFileZZZ {
 		    System.out.println("Verwendetes Encoding Format: " + format.getEncoding());
 		    format.setEncoding("ISO-8859-1");
 		    System.out.println("Verwendetes Encoding Format: " + format.getEncoding());
-		    xmlout.setFormat(format);  //Das muss man wieder zurückgeben, sonst funktioniert es nicht
+		    xmlout.setFormat(format);  //Das muss man wieder zurï¿½ckgeben, sonst funktioniert es nicht
 		    try {
 				xmlout.output(doc, System.out);
 			} catch (IOException e) {

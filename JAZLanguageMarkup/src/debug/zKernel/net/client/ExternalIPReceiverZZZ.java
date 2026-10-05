@@ -10,7 +10,7 @@ import basic.zBasic.ExceptionZZZ;
 import basic.zKernel.net.client.KernelReaderPageZZZ;
 import basic.zKernel.net.client.KernelReaderURLZZZ;
 import basic.zKernel.KernelZZZ;
-import custom.zKernel.LogZZZ;
+import custom.zKernel.KernelLogZZZ;
 
 
 /**
@@ -27,7 +27,7 @@ public class ExternalIPReceiverZZZ {
 		main:{
 
 		KernelZZZ objKernel=null;
-		LogZZZ objLog=null;
+		KernelLogZZZ objLog=null;
 	
 			try{
 		
