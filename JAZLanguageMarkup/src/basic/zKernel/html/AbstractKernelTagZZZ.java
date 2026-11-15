@@ -6,7 +6,7 @@ import basic.zKernel.KernelZZZ;
 import org.jdom.Element;
 
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 public abstract class AbstractKernelTagZZZ extends AbstractKernelUseObjectZZZ implements IKernelTagZZZ{

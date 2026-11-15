@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeUnensuredZZZ;
+import basic.zBasic.reflection.ReflectCodeUnensuredZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zKernel.xml.reader.DTDErrorZZZ;
 import basic.zKernel.xml.reader.ParserXMLDOMZZZ;

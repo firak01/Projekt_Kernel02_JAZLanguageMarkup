@@ -9,7 +9,7 @@ import org.jdom.Text;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 
 /**This tag describes a TH-Tag.
  * @author 0823

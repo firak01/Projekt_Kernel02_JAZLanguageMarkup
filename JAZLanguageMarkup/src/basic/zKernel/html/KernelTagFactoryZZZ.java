@@ -3,7 +3,7 @@ package basic.zKernel.html;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;
 
 public class KernelTagFactoryZZZ extends AbstractKernelUseObjectZZZ{

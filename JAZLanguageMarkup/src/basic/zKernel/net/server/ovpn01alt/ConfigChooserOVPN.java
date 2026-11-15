@@ -19,6 +19,7 @@ import org.jdesktop.jdic.filetypes.Association;
 import org.jdesktop.jdic.filetypes.AssociationService;
 
 import basic.zBasic.ExceptionZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.ArrayListUtilZZZ;
 import basic.zBasic.util.datatype.calling.ReferenceArrayZZZ;
 import basic.zBasic.util.datatype.calling.ReferenceZZZ;
@@ -29,7 +30,6 @@ import basic.zBasic.util.file.ResourceEasyZZZ;
 import basic.zBasic.util.file.jar.JarEasyZZZ;
 import basic.zBasic.util.file.jar.JarInfo;
 import basic.zBasic.util.file.zip.ZipEntryFilter;
-import basic.zBasic.ReflectCodeZZZ;
 import basic.zKernel.IKernelConfigSectionEntryZZZ;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.AbstractKernelUseObjectZZZ;

@@ -17,7 +17,7 @@ import org.jdom.output.XMLOutputter;
 
 import junit.framework.TestCase;
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashMapMultiZZZ;
 import basic.zBasic.util.file.DriveEasyZZZ;
 import basic.zBasic.util.file.FileEasyZZZ;

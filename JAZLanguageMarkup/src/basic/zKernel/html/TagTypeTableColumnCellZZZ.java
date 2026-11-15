@@ -12,7 +12,7 @@ import org.jdom.filter.Filter;
 import basic.zKernel.IKernelZZZ;
 import basic.zKernel.KernelZZZ;
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 
 /**This tag describes a input-tag in html.
  * @author 0823

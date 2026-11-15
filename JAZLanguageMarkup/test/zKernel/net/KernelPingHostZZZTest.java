@@ -15,7 +15,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zBasic.util.datatype.string.StringZZZ;
 import basic.zKernel.net.client.KernelPingHostZZZ;
 import basic.zKernel.xml.reader.DTDErrorZZZ;

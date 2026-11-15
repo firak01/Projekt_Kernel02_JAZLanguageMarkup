@@ -14,7 +14,7 @@ import org.jdesktop.jdic.filetypes.AssociationService;
 
 
 import basic.zBasic.ExceptionZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zBasic.util.abstractList.HashtableIndexedZZZ;
 import basic.zBasic.util.abstractList.HashtableSortedZZZ;
 import basic.zBasic.util.abstractList.HashtableZZZ;

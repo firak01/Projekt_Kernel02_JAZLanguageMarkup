@@ -18,7 +18,7 @@ import org.w3c.dom.Document;
 
 import basic.zBasic.ExceptionZZZ;
 import basic.zBasic.IConstantZZZ;
-import basic.zBasic.ReflectCodeZZZ;
+import basic.zBasic.reflection.ReflectCodeZZZ;
 import basic.zKernel.html.KernelTagFactoryZZZ;
 import basic.zKernel.html.AbstractKernelTagTypeZZZ;
 import basic.zKernel.html.AbstractKernelTagZZZ;
